@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "db-connect": "node server/database/connection.js",
     "client-dev": "npx webpack --watch",
     "server-dev": "nodemon server/ --watch"
   },
