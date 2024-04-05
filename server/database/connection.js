@@ -1,4 +1,5 @@
-const createClient = require('./db.js');
+/* eslint-disable no-console */
+const createClient = require('./db');
 
 const client = createClient();
 
