@@ -36,7 +36,6 @@ module.exports = {
       'process.env': {
         SERVER_IP: JSON.stringify(process.env.SERVER_IP),
         PORT: JSON.stringify(process.env.PORT),
-        VERSION: JSON.stringify(process.env.VERSION),
       },
     }),
   ],
