@@ -1,4 +1,4 @@
-require model from '../model';
+const model = require('../model');
 
 const controller = {};
 
