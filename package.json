@@ -32,6 +32,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "nodemon": "^3.1.0",
+    "passport": "^0.7.0",
     "pg": "^8.11.5",
     "postcss": "^8.4.38",
     "postcss-loader": "^8.1.1",
