@@ -17,30 +17,12 @@ const createTableQuery = `
     FOREIGN KEY (role_id) REFERENCES roles(id)
   );
 
-  CREATE TABLE admin_credentials (
-    id SERIAL PRIMARY KEY,
-    admin_id INT NOT NULL,
-    admin_email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    FOREIGN KEY (admin_id) REFERENCES admin(id),
-    FOREIGN KEY (admin_email) REFERENCES admin(email)
-  );
-
   CREATE TABLE teachers (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     role_id INT NOT NULL,
     FOREIGN KEY (role_id) REFERENCES roles(id)
-  );
-
-  CREATE TABLE teachers_credentials (
-    id SERIAL PRIMARY KEY,
-    teacher_id INT NOT NULL,
-    teacher_email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    FOREIGN KEY (teacher_id) REFERENCES teachers(id),
-    FOREIGN KEY (teacher_email) REFERENCES teachers(email)
   );
 
   CREATE TABLE teachers_calendar (
@@ -84,15 +66,6 @@ const createTableQuery = `
     FOREIGN KEY (role_id) REFERENCES roles(id)
   );
 
-  CREATE TABLE students_credentials (
-    id SERIAL PRIMARY KEY,
-    student_id INT NOT NULL,
-    student_email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    FOREIGN KEY (student_id) REFERENCES students(id),
-    FOREIGN KEY (student_email) REFERENCES students(email)
-  );
-
   CREATE TABLE students_calendar (
     id SERIAL PRIMARY KEY,
     student_id INT NOT NULL,
@@ -123,6 +96,14 @@ const createTableQuery = `
     FOREIGN KEY (student_id) REFERENCES students(id)
   );
 
+  CREATE TABLE credentials (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role_id INT NOT NULL,
+    FOREIGN KEY (role_id) REFERENCES roles(id)
+  );
+
   CREATE INDEX idx_student_id ON students(id);
   CREATE INDEX idx_teachers_id ON teachers(id);
   CREATE INDEX idx_classes_id ON classes(id);
@@ -130,7 +111,7 @@ const createTableQuery = `
 
 client.connect()
   .then(() => {
-    client.query('DROP TABLE IF EXISTS roles, admin, admin_credentials, teachers, teachers_emails, teacher_credentials, teachers_calendar, classes, assignments, teachers_assignments, students, students_emails, student_credentials, students_calendar, students_assignments, classes_students CASCADE;');
+    client.query('DROP TABLE IF EXISTS roles, admin, teachers, teachers_emails, teachers_calendar, classes, assignments, teachers_assignments, students, students_emails, students_calendar, students_assignments, classes_students, credentials CASCADE;');
   })
   .then(() => {
     console.log('Connected to Postgres database');
