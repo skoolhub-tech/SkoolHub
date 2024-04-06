@@ -1,3 +1,13 @@
-const model = {};
+const getClasses = require('./getClasses');
+const getTeachers = require('./getTeachers');
+const getStudents = require('./getStudents');
+const getAdmin = require('./getAdmin');
+const getRoleAtLogin = require('./getRoleAtLogin');
 
-module.exports = model;
+module.exports = {
+  getClasses,
+  getTeachers,
+  getStudents,
+  getAdmin,
+  getRoleAtLogin,
+};

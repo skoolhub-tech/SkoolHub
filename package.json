@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "db-connect": "node server/database/connection.js",
+    "seed": "node server/database/seed.js",
     "client-dev": "npx webpack --watch",
     "server-dev": "nodemon server/ --watch"
   },
@@ -28,10 +29,14 @@
     "autoprefixer": "^10.4.19",
     "axios": "^1.6.8",
     "bcryptjs": "^2.4.3",
+    "buffer": "^6.0.3",
     "cors": "^2.8.5",
+    "crypto-browserify": "^3.12.0",
     "css-loader": "^7.0.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "jspdf": "^2.5.1",
     "nodemon": "^3.1.0",
     "passport": "^0.7.0",
     "pdfjs": "^2.5.3",
@@ -46,8 +51,13 @@
     "react-router": "^6.22.3",
     "react-router-dom": "^6.22.3",
     "speakeasy": "^2.0.0",
+    "stream-browserify": "^3.0.0",
     "style-loader": "^3.3.4",
-    "tailwindcss": "^3.4.3"
+    "tailwindcss": "^3.4.3",
+    "url": "^0.11.3",
+    "util": "^0.12.5",
+    "uuid": "^9.0.1",
+    "vm-browserify": "^1.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
