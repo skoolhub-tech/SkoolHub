@@ -6,7 +6,7 @@ import {
 import Login from './components/Login';
 import NavBar from './components/NavBar';
 import Calendar from './Task_list/Calendar';
-import UserDataProvider from './components/data-providers/UserDataProvider';
+import { UserDataProvider } from './components/data-providers/UserDataProvider';
 import Classes from './components/Classes';
 
 function App() {
