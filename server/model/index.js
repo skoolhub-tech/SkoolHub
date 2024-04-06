@@ -1,3 +1,5 @@
-const model = {};
+const getClasses = require('./getClasses');
 
-module.exports = model;
+module.exports = {
+  getClasses,
+};

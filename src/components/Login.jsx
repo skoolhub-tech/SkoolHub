@@ -293,7 +293,7 @@ function Login() {
       );
     } if (loginInfo.submitted) {
       return (
-        <form onSubmit={handleCodeVerification}>
+        <form className="login-form" onSubmit={handleCodeVerification}>
           <label htmlFor="code">Code</label>
           <input
             name="code"
@@ -307,7 +307,7 @@ function Login() {
       );
     }
     return (
-      <form onSubmit={handleLogin}>
+      <form className="login-form" onSubmit={handleLogin}>
         <label htmlFor="username">Username</label>
         <input
           name="username"
@@ -330,7 +330,7 @@ function Login() {
   };
 
   return (
-    <div className="login-form">
+    <div>
       {handleLoginPage()}
     </div>
   );
