@@ -2,8 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
+  const navigate = useNavigate();
+
   const handleNavigation = (path) => {
-    useNavigate(path);
+    navigate(path);
   };
 
   return (
