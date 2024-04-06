@@ -5,9 +5,7 @@
 /*
 LOGIN PAGE CSS ========================================
 */
-body {
-  transform: scale(1.5);
-}
+
 .login-page, .login-form {
   display: flex;
   justify-content: center;
