@@ -3,14 +3,11 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 const Context = React.createContext();
-const {
-  useState, useEffect, useContext, useMemo
-} = React;
+const { useState, useEffect, useContext } = React;
 
 // Data provider component
 export function DataProvider({ children }) {
   const [data, setData] = useState({});
-  const [submitAssignmentModalIsOpen, setSubmitAssignmentModalIsOpen] = useState(false);
 
   // Un-comment to perform some get request on mount
   // useEffect(() => {
@@ -21,17 +18,11 @@ export function DataProvider({ children }) {
 
   // Returns wrapper component for all components
   // Pass state and methods to value prop for access in other components
-  return useMemo(() => (
-    <Context.Provider value={{
-      data,
-      submitAssignmentModalIsOpen,
-      setSubmitAssignmentModalIsOpen,
-      /* additional state, methods */
-    }}
-    >
+  return (
+    <Context.Provider value={data /* additional state, methods */}>
       {children}
     </Context.Provider>
-  ), [data, submitAssignmentModalIsOpen, setSubmitAssignmentModalIsOpen, children]);
+  );
 }
 
 DataProvider.propTypes = {
