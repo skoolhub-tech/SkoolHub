@@ -8,9 +8,9 @@ import NavBar from './components/NavBar';
 import Calendar from './Task_list/Calendar';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = () =&gt; {
+  const handleLogin = () => {
     setIsLoggedIn(true);
   };
 
@@ -28,7 +28,7 @@ function App() {
               <Route path="/skoolhub/events" element={<Calendar />} />
               <Route path="/skoolhub/classes" element={<h1>Classes</h1>} />
               <Route path="/skoolhub/emails" element={<h1>Emails</h1>} />
-              { //redrect if route doesn't match anything
+              { // redrect if route doesn't match anything
               }
               <Route path="*" element={<Navigate to="/skoolhub/homepage" />} />
             </Routes>
