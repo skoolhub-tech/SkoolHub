@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SubmitAssignmentModal from './SubmitAssignmentModal';
 
-function SubmitAssignmentButton() {
+function SubmitAssignmentButton({ studentEmail, assignmentId }) {
   const [submitAssignmentModalIsOpen, setSubmitAssignmentModalIsOpen] = useState(false);
   return (
     <div>
@@ -9,6 +9,8 @@ function SubmitAssignmentButton() {
       {submitAssignmentModalIsOpen && (
       <SubmitAssignmentModal
         setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}
+        studentEmail={studentEmail}
+        assignmentId={assignmentId}
       />
       )}
     </div>

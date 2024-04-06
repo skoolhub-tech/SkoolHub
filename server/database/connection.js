@@ -80,6 +80,7 @@ const createTableQuery = `
     id SERIAL PRIMARY KEY,
     student_id INT NOT NULL,
     assignment_id INT NOT NULL,
+    file_path VARCHAR(255) NOT NULL,
     score INT NOT NULL,
     total_points INT NOT NULL,
     grade VARCHAR(255) NOT NULL,
