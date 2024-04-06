@@ -12,11 +12,19 @@ function EmailForm() {
     senderEmail: '',
     receiverEmail: '',
   });
+  const [emailSent, setEmailSent] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const email = async (e) => {
     e.preventDefault();
-    const result = await sendEmail(formData);
-    console.log(result);
+    const response = await sendEmail(formData);
+    if (response === 'Email Sent!') {
+      setEmailSent(true);
+      setErrorMessage('');
+    } else {
+      setEmailSent(false);
+      setErrorMessage(response);
+    }
   };
 
   const handleChange = (e) => {
@@ -56,6 +64,8 @@ function EmailForm() {
       </label>
       <br />
       <button type="submit">Send Email</button>
+      {emailSent && <p>Email Sent!</p>}
+      {errorMessage && <p>{errorMessage}</p>}
     </form>
   );
 }

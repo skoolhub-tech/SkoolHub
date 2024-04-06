@@ -27,8 +27,19 @@ async function sendEmail(formData) {
     await axios.post('https://api.emailjs.com/api/v1.0/email/send', data);
     return 'Email Sent!';
   } catch (error) {
-    return 'Email Failed to Send!';
+    return error.message;
   }
 }
+/*
+can make .env contain the keys and url for the email service
+app.post('/send-email', (req, res) => {
+  axios.post('https://api.emailjs.com/api/v1.0/email/send', req.body)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((error) => {
+      res.send
+    }
+*/
 
 export default sendEmail;

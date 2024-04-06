@@ -37,8 +37,19 @@ async function autoEmail() {
     await axios.post('https://api.emailjs.com/api/v1.0/email/send', data);
     return 'AutoEmail Sent!';
   } catch (error) {
-    return 'AutoEmail failed to Send!';
+    return error.message;
   }
 }
+/*
+can make .env contain the keys and url for the email service
+app.post('/autoemail', (req, res) => {
+  axios.post('https://api.emailjs.com/api/v1.0/email/send', req.body)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((error) => {
+      res.send
+    }
+*/
 
 export default autoEmail;
