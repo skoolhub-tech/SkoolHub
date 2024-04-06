@@ -55,8 +55,8 @@ const createTableQuery = `
     id SERIAL PRIMARY KEY,
     teacher_id INT NOT NULL,
     name VARCHAR(255) NOT NULL,
-    event_date DATE NOT NULL,
-    event_time TIME NOT NULL,
+    event_start TIMESTAMP NOT NULL,
+    event_end TIMESTAMP NOT NULL,
     completed BOOLEAN NOT NULL,
     FOREIGN KEY (teacher_id) REFERENCES teachers(id)
   );
@@ -72,7 +72,7 @@ const createTableQuery = `
     id SERIAL PRIMARY KEY,
     class_id INT NOT NULL,
     name VARCHAR(255) NOT NULL,
-    due_date DATE NOT NULL,
+    due_date TIMESTAMP NOT NULL,
     FOREIGN KEY (class_id) REFERENCES classes(id)
   );
 
@@ -113,8 +113,8 @@ const createTableQuery = `
     id SERIAL PRIMARY KEY,
     student_id INT NOT NULL,
     name VARCHAR(255) NOT NULL,
-    event_date DATE NOT NULL,
-    event_time TIME NOT NULL,
+    event_start TIMESTAMP NOT NULL,
+    event_end TIMESTAMP NOT NULL,
     completed BOOLEAN NOT NULL,
     FOREIGN KEY (student_id) REFERENCES students(id)
   );
