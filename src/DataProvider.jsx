@@ -9,12 +9,12 @@ const { useState, useEffect, useContext } = React;
 export function DataProvider({ children }) {
   const [data, setData] = useState({});
 
-  // Set to perform some get request on mount
-  useEffect(() => {
-    axios.get(/* path */)
-      .then((response) => setData(response.data))
-      .catch((error) => console.error(error));
-  }, []);
+  // Un-comment to perform some get request on mount
+  // useEffect(() => {
+  //   axios.get(/* path */)
+  //     .then((response) => setData(response.data))
+  //     .catch((error) => console.error(error));
+  // }, []);
 
   // Returns wrapper component for all components
   // Pass state and methods to value prop for access in other components
