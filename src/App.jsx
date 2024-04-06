@@ -9,6 +9,7 @@ function App() {
   return (
     <div className="login-page">
       <h1 className="login-h1">SkoolHub</h1>
+      <p>Tedious out. Teaching in.</p>
       <Login />
       {/*</div>// <div>
     //   <Router>
