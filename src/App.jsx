@@ -19,34 +19,34 @@ function App() {
   return (
 
     <div className="navbar-container">
-    <UserDataProvider>
-      <Router>
-        {isLoggedIn ? (
-          <>
-            {/* <h1>SkoolHub</h1> */}
-            <NavBar />
-            <Routes>
-              <Route path="/skoolhub/homepage" element={<h1>Homepage</h1>} />
-              <Route path="/skoolhub/assignments" element={<h1>Assignments</h1>} />
-              <Route path="/skoolhub/events" element={<Calendar />} />
-              <Route path="/skoolhub/classes" element={<Classes />} />
-              <Route path="/skoolhub/emails" element={<h1>Emails</h1>} />
-              { // redrect if route doesn't match anything
-              }
-              <Route path="*" element={<Navigate to="/skoolhub/homepage" />} />
-            </Routes>
-          </>
-        ) : (
-          <div className="login-page">
-            <h1 className="login-h1">SkoolHub</h1>
-            <p className="login-p">Tedious out. Teaching in.</p>
-            <Login onLogin={handleLogin} />
-          </div>
+      <UserDataProvider>
+        <Router>
+          {isLoggedIn ? (
+            <>
+              {/* <h1>SkoolHub</h1> */}
+              <NavBar />
+              <Routes>
+                <Route path="/skoolhub/homepage" element={<h1>Homepage</h1>} />
+                <Route path="/skoolhub/assignments" element={<h1>Assignments</h1>} />
+                <Route path="/skoolhub/events" element={<Calendar />} />
+                <Route path="/skoolhub/classes" element={<Classes />} />
+                <Route path="/skoolhub/emails" element={<h1>Emails</h1>} />
+                { // redrect if route doesn't match anything
+                }
+                <Route path="*" element={<Navigate to="/skoolhub/homepage" />} />
+              </Routes>
+            </>
+          ) : (
+            <div className="login-page">
+              <h1 className="login-h1">SkoolHub</h1>
+              <p className="login-p">Tedious out. Teaching in.</p>
+              <Login onLogin={handleLogin} />
+            </div>
 
-        )}
-      </Router>
-    </UserDataProvider>
-
+          )}
+        </Router>
+      </UserDataProvider>
+    </div>
   );
 }
 
