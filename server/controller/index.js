@@ -1,3 +1,5 @@
-const controller = {};
+const getClasses = require('./getClasses');
 
-module.exports = controller;
+module.exports = {
+  getClasses,
+};
