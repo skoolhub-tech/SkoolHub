@@ -22,9 +22,9 @@ app.get(`/${process.env.LOADERIO_IO_TOKEN}`, (req, res) => {
   res.type('txt').send(`${process.env.LOADERIO_IO_TOKEN}`);
 });
 
-// app.get('*', (req, res) => {
-//   res.sendFile(Path.resolve(__dirname, '../dist/index.html'));
-// });
+app.get('*', (req, res) => {
+  res.sendFile(Path.resolve(__dirname, '../dist/index.html'));
+});
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
