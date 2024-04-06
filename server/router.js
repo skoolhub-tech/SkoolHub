@@ -2,7 +2,7 @@ const router = require('express').Router();
 const controller = require('./controller');
 
 // GET requests
-// router.get('/roles', controller.getRoles);
+router.get('/login/role', controller.getRoleAtLogin);
 router.get('/admin', controller.getAdmin);
 router.get('/classes', controller.getClasses);
 router.get('/teachers', controller.getTeachers);
