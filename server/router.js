@@ -5,6 +5,7 @@ const controller = require('./controller');
 router.get('/login/role', controller.getRoleAtLogin);
 router.get('/admin', controller.getAdmin);
 router.get('/classes', controller.getClasses);
+router.get('/classes/:classId/students', controller.getClassStudents);
 router.get('/teachers', controller.getTeachers);
 // router.get('/teachers/assignments/:teacherId', controller.getTeacherAssignments);
 // router.get('/teachers/calendar/:teacherId', controller.getTeacherCalendar);
