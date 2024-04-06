@@ -12,28 +12,28 @@ function NavBar() {
     <div className="nav-bar">
       <button
         type="button"
-        onClick={() => handleNavigation('/assignments')}
+        onClick={() => handleNavigation('/skoolhub/assignments')}
         className="tab"
       >
         Assignments
       </button>
       <button
         type="button"
-        onClick={() => handleNavigation('/events')}
+        onClick={() => handleNavigation('/skoolhub/events')}
         className="tab"
       >
         Events
       </button>
       <button
         type="button"
-        onClick={() => handleNavigation('/classes')}
+        onClick={() => handleNavigation('/skoolhub/classes')}
         className="tab"
       >
         Classes
       </button>
       <button
         type="button"
-        onClick={() => handleNavigation('/emails')}
+        onClick={() => handleNavigation('/skoolhub/emails')}
         className="tab"
       >
         Emails
