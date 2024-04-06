@@ -1,15 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+body {
+  background-color: #CED2BA;
+}
 /*
-LOGIN PAGE CSS ========================================
+LOGIN PAGE / NAV BAR CSS ========================================
 */
 
 .login-page, .login-form {
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: scale(1.25);
 }
 .login-page {
   min-height: 100vh;
@@ -17,25 +20,34 @@ LOGIN PAGE CSS ========================================
   background-color: #CED2BA;
   flex-direction: column;
 }
-.login-h1, .login-form, p{
+.login-h1, .login-form, .login-p, body{
   font-family: "Comfortaa", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
 }
-p {
+.login-p {
   font-size: small;
+  position: relative;
+  top: -20px;
 }
-.login-form {
+
+.login-form , .nav-bar{
   background-color: #ABBD9A;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   flex-direction: column;
   row-gap: 5px;
+  width: fit-content;
 
 }
-.login-button {
+.nav-bar {
+  column-gap: 5px;
+  display: flex;
+  flex-direction: row;
+}
+.login-button, .tab {
   background-color: #CED2BA;
   border: none;
   border-radius: 5px;
@@ -50,5 +62,29 @@ p {
 }
 .login-button:hover {
   background-color: #acbb5e;
-  filter: drop-shadow(0 0 2em #10d90daa);
+  filter: drop-shadow(0 0 2em #707a3e);
+}
+.tab:hover {
+  background-color: #875D3B;
+  filter: drop-shadow(0 0 2em #707a3e);
+}
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  padding-top: 10%;
+  transform: scale(1.25);
+}
+.tab-active {
+  background-color: #875D3B;
+  filter: drop-shadow(0 0 2em #707a3e);
+  border-radius: 5px;
+  padding: 5px;
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  cursor: pointer;
+  transition: background-color 0.5s;
+  border: 1px solid #07070aaa;
 }

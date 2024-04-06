@@ -8,7 +8,7 @@ import NavBar from './components/NavBar';
 import Calendar from './Task_list/Calendar';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
@@ -16,11 +16,11 @@ function App() {
 
   return (
 
-    <div>
+    <div className="navbar-container">
       <Router>
         {isLoggedIn ? (
           <>
-            <h1>SkoolHub</h1>
+            {/* <h1>SkoolHub</h1> */}
             <NavBar />
             <Routes>
               <Route path="/skoolhub/homepage" element={<h1>Homepage</h1>} />
@@ -36,7 +36,7 @@ function App() {
         ) : (
           <div className="login-page">
             <h1 className="login-h1">SkoolHub</h1>
-            <p>Tedious out. Teaching in.</p>
+            <p className="login-p">Tedious out. Teaching in.</p>
             <Login onLogin={handleLogin} />
           </div>
 
