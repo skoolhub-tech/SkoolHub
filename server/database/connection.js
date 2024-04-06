@@ -34,15 +34,7 @@ const createTableQuery = `
     FOREIGN KEY (role_id) REFERENCES roles(id)
   );
 
-  CREATE TABLE teachers_emails (
-    id SERIAL PRIMARY KEY,
-    teacher_id INT NOT NULL,
-    teacher_email VARCHAR(255) NOT NULL,
-    FOREIGN KEY (teacher_id) REFERENCES teachers(id),
-    FOREIGN KEY (teacher_email) REFERENCES teachers(email)
-  );
-
-  CREATE TABLE teacher_credentials (
+  CREATE TABLE teachers_credentials (
     id SERIAL PRIMARY KEY,
     teacher_id INT NOT NULL,
     teacher_email VARCHAR(255) NOT NULL,
@@ -92,15 +84,7 @@ const createTableQuery = `
     FOREIGN KEY (role_id) REFERENCES roles(id)
   );
 
-  CREATE TABLE students_emails (
-    id SERIAL PRIMARY KEY,
-    student_id INT NOT NULL,
-    student_email VARCHAR(255) NOT NULL,
-    FOREIGN KEY (student_id) REFERENCES students(id),
-    FOREIGN KEY (student_email) REFERENCES students(email)
-  );
-
-  CREATE TABLE student_credentials (
+  CREATE TABLE students_credentials (
     id SERIAL PRIMARY KEY,
     student_id INT NOT NULL,
     student_email VARCHAR(255) NOT NULL,
