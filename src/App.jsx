@@ -6,9 +6,10 @@ import {
 import Login from './components/Login';
 import NavBar from './components/NavBar';
 import Calendar from './Task_list/Calendar';
+import UserDataProvider from './components/data-providers/UserDataProvider';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
@@ -16,7 +17,7 @@ function App() {
 
   return (
 
-    <div>
+    <UserDataProvider>
       <Router>
         {isLoggedIn ? (
           <>
@@ -42,7 +43,7 @@ function App() {
 
         )}
       </Router>
-    </div>
+    </UserDataProvider>
 
   );
 }

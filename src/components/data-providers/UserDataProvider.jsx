@@ -6,7 +6,7 @@ const { useState, useContext, useMemo } = React;
 
 // Data provider component
 export function UserDataProvider({ children }) {
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState({ role: 1, email: 'jane.doe@hotmail.com' });
   const userState = useMemo(
     () => ({ userData, setUserData }),
     [userData, setUserData],
@@ -27,6 +27,6 @@ UserDataProvider.propTypes = {
 export const useUserData = () => useContext(Context);
 
 // To access state and methods inside this component,
-// import { useData } from './path/to/DataProvider'
+// import { useUserData } from './path/to/DataProvider'
 // then inside your component,
-// const { state/method } = useData();
+// const { userData } = useUserData();
