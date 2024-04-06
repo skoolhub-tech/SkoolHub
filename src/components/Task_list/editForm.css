@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  min-width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
@@ -12,8 +12,10 @@
 }
 
 .modal-content {
-  background-color: white;
+  background-color: #858D6F; /* Set the background color to ABBD9A */
   padding: 20px;
+  width: 40%;
+  height: auto;
   border-radius: 5px;
 }
 
@@ -24,6 +26,7 @@
 
 label {
   margin-bottom: 10px;
+  color: white;
 }
 
 input {
@@ -35,7 +38,7 @@ input {
 
 button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #ABBD9A;
   color: white;
   border: none;
   border-radius: 5px;
@@ -43,5 +46,22 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #875D3B;
+}
+
+.exit-button {
+  align-self: flex-end;
+  padding: 5px 10px;
+  background-color: transparent;
+  background-color: #ABBD9A;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-left: auto;
+  font-size: 16px;
+}
+
+.exit-button:hover {
+  background-color: #875D3B;
 }

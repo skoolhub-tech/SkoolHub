@@ -33,6 +33,10 @@ function TaskCalendar() {
     setEditTask(true);
   };
 
+  const closeEditTask = () => {
+    setEditTask(false);
+  };
+
   return (
     <div style={{ height: 500 }}>
       <Calendar
@@ -40,7 +44,7 @@ function TaskCalendar() {
         events={events}
         onSelectEvent={handleSelectEvent}
       />
-      {editTask && <EditTask task={selectedTask} />}
+      {editTask && <EditTask task={selectedTask} closeEditTask={closeEditTask} />}
     </div>
   );
 }

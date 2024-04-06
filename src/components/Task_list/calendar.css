@@ -82,7 +82,7 @@
     }
 
     .rbc-event.rbc-selected, .rbc-day-slot .rbc-selected.rbc-background-event {
-      background-color: #60664f;
+      background-color: #875D3B;
     }
 
     .rbc-event-label {
@@ -197,4 +197,8 @@
       text-align: left;
       border-bottom: 1px solid #875D3B;
     }
+
+
+
+
 

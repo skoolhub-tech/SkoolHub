@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './editForm.css';
 
-function EditTask({ task }) {
+function EditTask({ task, closeEditTask }) {
   const [editedTask, setEditedTask] = useState({
     ...task,
     start: task.start.toISOString().substring(0, 16),
@@ -26,6 +26,7 @@ function EditTask({ task }) {
     <div className="modal">
       {/* Modal */}
       <div className="modal-content">
+        <button type="button" className="exit-button" onClick={closeEditTask}>Exit</button>
         <form className="floating-form" onSubmit={handleSubmit}>
           <label htmlFor="title">Title:</label>
           <input
@@ -39,6 +40,7 @@ function EditTask({ task }) {
 
           <label htmlFor="start">Start:</label>
           <input
+            className="start-input"
             type="datetime-local"
             id="start"
             name="start"
@@ -49,6 +51,7 @@ function EditTask({ task }) {
 
           <label htmlFor="end">End:</label>
           <input
+            className="end-input"
             type="datetime-local"
             id="end"
             name="end"
