@@ -6,7 +6,7 @@ const { useState, useContext, useMemo } = React;
 
 // Data provider component
 export function UserDataProvider({ children }) {
-  const [userData, setUserData] = useState({ role: 1, email: 'jane.doe@hotmail.com' });
+  const [userData, setUserData] = useState({ role: 2, email: 'jane.doe@hotmail.com' });
   const userState = useMemo(
     () => ({ userData, setUserData }),
     [userData, setUserData],
