@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "db-connect": "node server/database/connection.js",
+    "seed": "node server/database/seed.js",
     "client-dev": "npx webpack --watch",
     "server-dev": "nodemon server/ --watch"
   },
