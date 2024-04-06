@@ -34,12 +34,9 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': JSON.stringify({
-        // Explicitly define the environment variables you need
         SERVER_IP: process.env.SERVER_IP,
         PORT: process.env.PORT,
-        // Add any other environment variables you need here
       }),
-      // If you need to use process.browser
       'process.browser': true,
     }),
   ],
