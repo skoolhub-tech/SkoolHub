@@ -33,10 +33,14 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': {
-        SERVER_IP: JSON.stringify(process.env.SERVER_IP),
-        PORT: JSON.stringify(process.env.PORT),
-      },
+      'process.env': JSON.stringify({
+        // Explicitly define the environment variables you need
+        SERVER_IP: process.env.SERVER_IP,
+        PORT: process.env.PORT,
+        // Add any other environment variables you need here
+      }),
+      // If you need to use process.browser
+      'process.browser': true
     }),
   ],
   resolve: {
@@ -45,13 +49,13 @@ module.exports = {
       crypto: require.resolve('crypto-browserify'),
       url: require.resolve('url/'),
       util: require.resolve('util/'),
-      vm: require.resolve('vm-browserify'), // Add this line for the `vm` module
-      buffer: require.resolve('buffer/'), // Ensure `buffer` is also included
+      vm: require.resolve('vm-browserify'),
+      buffer: require.resolve('buffer/'),
     },
     extensions: ['.js', '.jsx', '.css'],
     modules: [
       'node_modules',
-      '/src/tests',
+      path.resolve(__dirname, 'src/tests'),
     ],
   },
 };
