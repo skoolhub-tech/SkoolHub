@@ -6,19 +6,9 @@ const adminData = [
   { name: 'Jane Johnson', email: 'jane.johnson@skool.edu' },
 ];
 
-const adminCredentialsData = [
-  { admin_id: 1, admin_email: 'jsmith@gmail.com', password: 'vasetime' },
-  { admin_id: 2, admin_email: 'jane.johnson@skool.edu', password: 'testingblue' },
-];
-
 const teachersData = [
   { name: 'John Doe', email: 'john.doe@aol.com' },
   { name: 'Jane Doe', email: 'jane.doe@hotmail.com' },
-];
-
-const teacherCredentialsData = [
-  { teacher_id: 1, teacher_email: 'john.doe@aol.com', password: 'passworda;lkdfja' },
-  { teacher_id: 2, teacher_email: 'jane.doe@hotmail.com', password: 'password123' },
 ];
 
 const studentsData = [
@@ -52,39 +42,6 @@ const studentsData = [
   { name: 'Chloe Foster', email: 'chloe.foster@gmail.com' },
   { name: 'Samuel Morgan', email: 'samuel.morgan@gmail.com' },
   { name: 'Natalie Howard', email: 'natalie.howard@gmail.com' },
-];
-
-const studentCredentialsData = [
-  { student_id: 1, student_email: 'john.smith@gmail.com', password: 'password' },
-  { student_id: 2, student_email: 'jane.johnson@gmail.com', password: 'test' },
-  { student_id: 3, student_email: 'michael.brown@gmail.com', password: 'dog' },
-  { student_id: 4, student_email: 'emily.davis@gmail.com', password: 'ohno' },
-  { student_id: 5, student_email: 'william.miller@gmail.com', password: 'safe' },
-  { student_id: 6, student_email: 'olivia.wilson@gmail.com', password: 'apples' },
-  { student_id: 7, student_email: 'james.taylor@gmail.com', password: 'carrots' },
-  { student_id: 8, student_email: 'sophia.anderson@gmail.com', password: 'cake' },
-  { student_id: 9, student_email: 'benjamin.thomas@gmail.com', password: 'shoes' },
-  { student_id: 10, student_email: 'isabella.martinez@gmail.com', password: 'bird' },
-  { student_id: 11, student_email: 'daniel.jackson@gmail.com', password: 'car' },
-  { student_id: 12, student_email: 'mia.white@gmail.com', password: 'pw123' },
-  { student_id: 13, student_email: 'joseph.harris@gmail.com', password: 'bkapei93291kda;c' },
-  { student_id: 14, student_email: 'charlotte.clark@gmail.com', password: 'corn' },
-  { student_id: 15, student_email: 'david.lewis@gmail.com', password: 'sebastian' },
-  { student_id: 16, student_email: 'abigail.young@gmail.com', password: 'byebye' },
-  { student_id: 17, student_email: 'andrew.hall@gmail.com', password: 'animals' },
-  { student_id: 18, student_email: 'elizabeth.allen@gmail.com', password: 'partytime' },
-  { student_id: 19, student_email: 'joshua.king@gmail.com', password: 'ilikebrownies' },
-  { student_id: 20, student_email: 'ella.wright@gmail.com', password: 'cauliflowercake' },
-  { student_id: 21, student_email: 'christopher.green@gmail.com', password: 'ridinghigh' },
-  { student_id: 22, student_email: 'sofia.baker@gmail.com', password: 'plannedflight' },
-  { student_id: 23, student_email: 'andrew.hill@gmail.com', password: 'southwest' },
-  { student_id: 24, student_email: 'ava.phillips@gmail.com', password: 'towels' },
-  { student_id: 25, student_email: 'matthew.turner@gmail.com', password: 'connection' },
-  { student_id: 26, student_email: 'grace.carter@gmail.com', password: 'githubrules' },
-  { student_id: 27, student_email: 'ryan.ward@gmail.com', password: 'godzilla' },
-  { student_id: 28, student_email: 'chloe.foster@gmail.com', password: 'mothra' },
-  { student_id: 29, student_email: 'samuel.morgan@gmail.com', password: 'rodan' },
-  { student_id: 30, student_email: 'natalie.howard@gmail.com', password: 'ghidorah' },
 ];
 
 const classesData = [
@@ -264,6 +221,43 @@ const studentCalendarData = [
   },
 ];
 
+const credentialsData = [
+  { email: 'jsmith@gmail.com', password: 'vasetime', role_id: 1 },
+  { email: 'jane.johnson@skool.edu', password: 'testingblue', role_id: 1 },
+  { email: 'john.doe@aol.com', password: 'passworda;lkdfja', role_id: 2 },
+  { email: 'jane.doe@hotmail.com', password: 'password123', role_id: 2 },
+  { email: 'john.smith@gmail.com', password: 'password', role_id: 3 },
+  { email: 'jane.johnson@gmail.com', password: 'test', role_id: 3 },
+  { email: 'michael.brown@gmail.com', password: 'dog', role_id: 3 },
+  { email: 'emily.davis@gmail.com', password: 'ohno', role_id: 3 },
+  { email: 'william.miller@gmail.com', password: 'safe', role_id: 3 },
+  { email: 'olivia.wilson@gmail.com', password: 'apples', role_id: 3 },
+  { email: 'james.taylor@gmail.com', password: 'carrots', role_id: 3 },
+  { email: 'sophia.anderson@gmail.com', password: 'cake', role_id: 3 },
+  { email: 'benjamin.thomas@gmail.com', password: 'shoes', role_id: 3 },
+  { email: 'isabella.martinez@gmail.com', password: 'bird', role_id: 3 },
+  { email: 'daniel.jackson@gmail.com', password: 'car', role_id: 3 },
+  { email: 'mia.white@gmail.com', password: 'pw123', role_id: 3 },
+  { email: 'joseph.harris@gmail.com', password: 'bkapei93291kda;c', role_id: 3 },
+  { email: 'charlotte.clark@gmail.com', password: 'corn', role_id: 3 },
+  { email: 'david.lewis@gmail.com', password: 'sebastian', role_id: 3 },
+  { email: 'abigail.young@gmail.com', password: 'byebye', role_id: 3 },
+  { email: 'andrew.hall@gmail.com', password: 'animals', role_id: 3 },
+  { email: 'elizabeth.allen@gmail.com', password: 'partytime', role_id: 3 },
+  { email: 'joshua.king@gmail.com', password: 'ilikebrownies', role_id: 3 },
+  { email: 'ella.wright@gmail.com', password: 'cauliflowercake', role_id: 3 },
+  { email: 'christopher.green@gmail.com', password: 'ridinghigh', role_id: 3 },
+  { email: 'sofia.baker@gmail.com', password: 'plannedflight', role_id: 3 },
+  { email: 'andrew.hill@gmail.com', password: 'southwest', role_id: 3 },
+  { email: 'ava.phillips@gmail.com', password: 'towels', role_id: 3 },
+  { email: 'matthew.turner@gmail.com', password: 'connection', role_id: 3 },
+  { email: 'grace.carter@gmail.com', password: 'githubrules', role_id: 3 },
+  { email: 'ryan.ward@gmail.com', password: 'godzilla', role_id: 3 },
+  { email: 'chloe.foster@gmail.com', password: 'mothra', role_id: 3 },
+  { email: 'samuel.morgan@gmail.com', password: 'rodan', role_id: 3 },
+  { email: 'natalie.howard@gmail.com', password: 'ghidorah', role_id: 3 },
+];
+
 async function seed() {
   const client = createClient();
   try {
@@ -304,24 +298,6 @@ async function seed() {
       `);
     });
 
-    studentCredentialsData.forEach(async (student) => {
-      await client.query(`
-        INSERT INTO students_credentials (student_id, student_email, password) VALUES (${student.student_id}, '${student.student_email}', '${student.password}');
-      `);
-    });
-
-    teacherCredentialsData.forEach(async (teacher) => {
-      await client.query(`
-        INSERT INTO teachers_credentials (teacher_id, teacher_email, password) VALUES (${teacher.teacher_id}, '${teacher.teacher_email}', '${teacher.password}');
-      `);
-    });
-
-    adminCredentialsData.forEach(async (admin) => {
-      await client.query(`
-        INSERT INTO admin_credentials (admin_id, admin_email, password) VALUES (${admin.admin_id}, '${admin.admin_email}', '${admin.password}');
-      `);
-    });
-
     teacherAssignmentData.forEach(async (teacherAssignment) => {
       await client.query(`
         INSERT INTO teachers_assignments (teacher_id, assignment_id) VALUES (${teacherAssignment.teacher_id}, ${teacherAssignment.assignment_id});
@@ -349,6 +325,12 @@ async function seed() {
     studentCalendarData.forEach(async (studentEvent) => {
       await client.query(`
         INSERT INTO students_calendar (name, student_id, event_start, event_end, completed) VALUES ('${studentEvent.name}', ${studentEvent.student_id}, '${studentEvent.event_start}', '${studentEvent.event_end}', ${studentEvent.completed});
+      `);
+    });
+
+    credentialsData.forEach(async (credential) => {
+      await client.query(`
+        INSERT INTO credentials (email, password, role_id) VALUES ('${credential.email}', '${credential.password}', ${credential.role_id});
       `);
     });
   } catch (error) {
