@@ -6,6 +6,7 @@ import {
 import Login from './components/Login';
 import NavBar from './components/NavBar';
 import Calendar from './Task_list/Calendar';
+import Classes from './components/Classes';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,7 +27,7 @@ function App() {
               <Route path="/skoolhub/homepage" element={<h1>Homepage</h1>} />
               <Route path="/skoolhub/assignments" element={<h1>Assignments</h1>} />
               <Route path="/skoolhub/events" element={<Calendar />} />
-              <Route path="/skoolhub/classes" element={<h1>Classes</h1>} />
+              <Route path="/skoolhub/classes" element={<Classes />} />
               <Route path="/skoolhub/emails" element={<h1>Emails</h1>} />
               { // redrect if route doesn't match anything
               }
