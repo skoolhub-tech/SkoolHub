@@ -1,4 +1,5 @@
-const createClient = require('./db.js');
+/* eslint-disable no-console */
+const createClient = require('./db');
 
 const client = createClient();
 
@@ -11,17 +12,16 @@ const createTableQuery = `
   CREATE TABLE admin (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    role_id INT NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
+    role_id INT NOT NULL,
     FOREIGN KEY (role_id) REFERENCES roles(id)
   );
 
   CREATE TABLE admin_credentials (
     id SERIAL PRIMARY KEY,
     admin_id INT NOT NULL,
-    username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
     admin_email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     FOREIGN KEY (admin_id) REFERENCES admin(id),
     FOREIGN KEY (admin_email) REFERENCES admin(email)
   );
@@ -29,8 +29,8 @@ const createTableQuery = `
   CREATE TABLE teachers (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    role_id INT NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
+    role_id INT NOT NULL,
     FOREIGN KEY (role_id) REFERENCES roles(id)
   );
 
@@ -45,9 +45,8 @@ const createTableQuery = `
   CREATE TABLE teacher_credentials (
     id SERIAL PRIMARY KEY,
     teacher_id INT NOT NULL,
-    username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
     teacher_email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     FOREIGN KEY (teacher_id) REFERENCES teachers(id),
     FOREIGN KEY (teacher_email) REFERENCES teachers(email)
   );
@@ -56,8 +55,8 @@ const createTableQuery = `
     id SERIAL PRIMARY KEY,
     teacher_id INT NOT NULL,
     name VARCHAR(255) NOT NULL,
-    event_date DATE NOT NULL,
-    event_time TIME NOT NULL,
+    event_start TIMESTAMP NOT NULL,
+    event_end TIMESTAMP NOT NULL,
     completed BOOLEAN NOT NULL,
     FOREIGN KEY (teacher_id) REFERENCES teachers(id)
   );
@@ -71,9 +70,9 @@ const createTableQuery = `
 
   CREATE TABLE assignments (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
     class_id INT NOT NULL,
-    due_date DATE NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    due_date TIMESTAMP NOT NULL,
     FOREIGN KEY (class_id) REFERENCES classes(id)
   );
 
@@ -88,8 +87,8 @@ const createTableQuery = `
   CREATE TABLE students (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    role_id INT NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
+    role_id INT NOT NULL,
     FOREIGN KEY (role_id) REFERENCES roles(id)
   );
 
@@ -104,9 +103,8 @@ const createTableQuery = `
   CREATE TABLE student_credentials (
     id SERIAL PRIMARY KEY,
     student_id INT NOT NULL,
-    username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
     student_email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     FOREIGN KEY (student_id) REFERENCES students(id),
     FOREIGN KEY (student_email) REFERENCES students(email)
   );
@@ -115,8 +113,8 @@ const createTableQuery = `
     id SERIAL PRIMARY KEY,
     student_id INT NOT NULL,
     name VARCHAR(255) NOT NULL,
-    event_date DATE NOT NULL,
-    event_time TIME NOT NULL,
+    event_start TIMESTAMP NOT NULL,
+    event_end TIMESTAMP NOT NULL,
     completed BOOLEAN NOT NULL,
     FOREIGN KEY (student_id) REFERENCES students(id)
   );
