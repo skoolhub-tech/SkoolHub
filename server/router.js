@@ -14,7 +14,8 @@ router.get('/students', controller.getStudents);
 // router.get('/assignments/:classId', controller.getAssignments);
 
 // POST requests
-
+router.post('/sendemail', controller.sendPeerEmail);
+router.post('/sendautoemail', controller.sendAutoEmail);
 // PUT requests
 
 module.exports = router;
