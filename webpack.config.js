@@ -40,6 +40,14 @@ module.exports = {
     }),
   ],
   resolve: {
+    fallback: {
+      stream: require.resolve('stream-browserify'),
+      crypto: require.resolve('crypto-browserify'),
+      url: require.resolve('url/'),
+      util: require.resolve('util/'),
+      vm: require.resolve('vm-browserify'), // Add this line for the `vm` module
+      buffer: require.resolve('buffer/'), // Ensure `buffer` is also included
+    },
     extensions: ['.js', '.jsx', '.css'],
     modules: [
       'node_modules',
