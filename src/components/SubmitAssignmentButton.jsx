@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
+import SubmitAssignmentModal from './SubmitAssignmentModal';
+import { useData } from '../DataProvider';
 
 function SubmitAssignmentButton() {
+  const { setSubmitAssignmentModalIsOpen } = useData();
   return (
     <div>
-      <button type="button" className="submitAssignmentButtonButton">Submit Assignment</button>
+      <button type="button" className="submitAssignmentButtonButton" onClick={() => setSubmitAssignmentModalIsOpen(true)}>Submit Assignment</button>
+      <SubmitAssignmentModal />
     </div>
   );
 }
