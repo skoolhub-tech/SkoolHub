@@ -1,6 +1,5 @@
 import React from 'react';
 import './styles.css';
-import speakeasy from 'speakeasy';
 
 function App() {
   return (
