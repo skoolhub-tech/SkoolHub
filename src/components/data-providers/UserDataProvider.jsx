@@ -27,6 +27,6 @@ UserDataProvider.propTypes = {
 export const useUserData = () => useContext(Context);
 
 // To access state and methods inside this component,
-// import { useUserData } from './path/to/DataProvider'
+// import { useUserData } from './path/to/UserDataProvider'
 // then inside your component,
 // const { userData } = useUserData();
