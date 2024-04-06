@@ -26,25 +26,35 @@ function EmailForm() {
   return (
     <form onSubmit={email}>
       <label>
-        Subject:
-        <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleChange} required />
-      </label>
-      <label>
-        Message:
-        <input type="text" name="message" value={formData.message} onChange={handleChange} required />
-      </label>
-      <label>
-        Sender:
+        Your Name:
+        <br />
         <input type="text" name="sender" value={formData.sender} onChange={handleChange} required />
       </label>
+      <br />
       <label>
-        Sender Email:
+        Your Email:
+        <br />
         <input type="email" name="senderEmail" value={formData.senderEmail} onChange={handleChange} required />
       </label>
+      <br />
       <label>
-        Receiver Email:
+        Recipient Email:
+        <br />
         <input type="email" name="receiverEmail" value={formData.receiverEmail} onChange={handleChange} required />
       </label>
+      <br />
+      <label>
+        Subject:
+        <br />
+        <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleChange} required />
+      </label>
+      <br />
+      <label>
+        Message:
+        <br />
+        <textarea name="message" value={formData.message} onChange={handleChange} required />
+      </label>
+      <br />
       <button type="submit">Send Email</button>
     </form>
   );
