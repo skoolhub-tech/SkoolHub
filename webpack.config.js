@@ -45,8 +45,5 @@ module.exports = {
       'node_modules',
       '/src/tests',
     ],
-    fallback: {
-      crypto: false,
-    },
   },
 };
