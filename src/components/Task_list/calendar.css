@@ -6,9 +6,15 @@
 
   .rbc-event {
       background-color: #858D6F;
-      border: 1px solid #858D6F;
+      border: 1px solid #875D3B;
       color: #fff;
   }
+
+  .rbc-event:hover {
+    background-color: #875D3B;
+    border: 1px solid #858D6F;
+    color: #fff;
+}
 
     .rbc-calendar {
       background-color: #DCCCBB;

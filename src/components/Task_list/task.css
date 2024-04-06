@@ -1,0 +1,17 @@
+.add-task {
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+  margin-left: auto;
+  background-color: #858D6F;
+}
+
+.tasks-header {
+  display: flex;
+  padding-top: 15px;
+  justify-content: center;
+}
+
+.task-container {
+  background-color: #ABBD9A;
+}

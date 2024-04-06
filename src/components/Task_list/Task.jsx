@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import TaskCalendar from './Calendar';
+import './task.css';
 
 function Task() {
   return (
-    <div>
-      <h1>Tasks</h1>
-      <button className="add-task" type="submit">Add Task</button>
+    <div className="task-container">
+      <h1 className="tasks-header">
+        Events & Tasks
+        <button className="add-task" type="submit">Add Task</button>
+      </h1>
       <TaskCalendar />
     </div>
   );
