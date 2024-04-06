@@ -3,30 +3,52 @@
 @tailwind utilities;
 
 /*
-LOGIN PAGE CSS
+LOGIN PAGE CSS ========================================
 */
-.login-page {
+
+.login-page, .login-form {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.login-page {
   min-height: 100vh;
   min-width: 100vh;
   background-color: #CED2BA;
   flex-direction: column;
 }
-.login-h1 {
+.login-h1, .login-form, p{
   font-family: "Comfortaa", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
 }
+p {
+  font-size: small;
+}
 .login-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: #ABBD9A;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   flex-direction: column;
+  row-gap: 5px;
+
+}
+.login-button {
+  background-color: #CED2BA;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  cursor: pointer;
+  transition: background-color 0.5s;
+  border: 1px solid #07070aaa;
+  /* filter: drop-shadow(0 0 1em #0d17d9aa); */
+}
+.login-button:hover {
+  background-color: #acbb5e;
+  filter: drop-shadow(0 0 2em #10d90daa);
 }
