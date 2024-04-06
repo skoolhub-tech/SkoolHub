@@ -324,7 +324,7 @@ function Login() {
           value={loginInfo.password}
           onChange={(e) => setLoginInfo({ ...loginInfo, password: e.target.value })}
         />
-        <button type="submit">Log In</button>
+        <button className="login-button" type="submit">Log In</button>
       </form>
     );
   };
