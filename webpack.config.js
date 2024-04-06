@@ -40,7 +40,7 @@ module.exports = {
         // Add any other environment variables you need here
       }),
       // If you need to use process.browser
-      'process.browser': true
+      'process.browser': true,
     }),
   ],
   resolve: {
