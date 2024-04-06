@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.css';
+import SubmitAssignmentButton from './components/SubmitAssignmentButton';
 
 function App() {
   return (
