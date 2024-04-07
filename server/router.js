@@ -1,7 +1,7 @@
 const router = require('express').Router();
 require('dotenv').config();
-const controller = require('./controller');
 const multer = require('multer');
+const controller = require('./controller');
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -28,9 +28,5 @@ router.post('/sendemail', controller.sendPeerEmail);
 router.post('/sendautoemail', controller.sendAutoEmail);
 router.post('/submitassignment', upload.single('file'), controller.submitAssignment);
 // PUT requests
-
-
-
-
 
 module.exports = router;
