@@ -19,7 +19,7 @@ function Homepage() {
         Error: error,
       }));
     // get assignments
-    // get tasks
+    axios.get(``)
   }, []);
 
   return (
