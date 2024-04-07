@@ -39,7 +39,7 @@ function App() {
           ) : (
             <div className="login-page">
               <h1 className="login-h1">SkoolHub</h1>
-              <p className="login-p">Tedious out. Teaching in.</p>
+              <p className="login-p">Teaching in. Tedious out.</p>
               <Login onLogin={handleLogin} />
             </div>
 

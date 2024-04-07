@@ -3,6 +3,7 @@
 @tailwind utilities;
 body {
   background-color: #CED2BA;
+  padding-top: -50px;
 }
 /*
 LOGIN PAGE / NAV BAR CSS ========================================
