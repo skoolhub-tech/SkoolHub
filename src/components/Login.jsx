@@ -1,12 +1,15 @@
 // 2-factor without library
 /// ///////////////////////////////////////////////////////////////////////////////
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import emailjs from '@emailjs/browser';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { useUserData } from './data-providers/UserDataProvider';
 
 function Login({ handleLoginEvent }) {
+  const { userState } = useContext(useUserData);
+  const { setUserData } = userState;
   const [loginInfo, setLoginInfo] = useState({
     email: '',
     password: '',
@@ -14,6 +17,20 @@ function Login({ handleLoginEvent }) {
     enteredCode: '',
     submitted: false,
   });
+
+  const setUserRole = (email, password) => {
+    axios.post('skoolhub/login/role', { email, password })
+      .then((response) => {
+        setUserData({
+          role: response.data.role,
+          email,
+        });
+      })
+      .catch((error) => console.error({
+        Message: 'Error retrieving role.',
+        Error: error,
+      }));
+  };
 
   const sendCodeByEmail = async (email, code) => {
     try {
@@ -42,6 +59,7 @@ function Login({ handleLoginEvent }) {
       enteredCode: '',
       submitted: false,
     });
+    setUserData({ role: null, email: null });
   };
 
   useEffect(() => {
@@ -52,6 +70,7 @@ function Login({ handleLoginEvent }) {
 
     if (!sessionToken) {
       handleLoginEvent(false);
+      setUserData({ role: null, email: null });
     } else {
       const expiredTime = 30 * 60 * 1000;
       const storedTime = localStorage.getItem('date');
@@ -60,6 +79,7 @@ function Login({ handleLoginEvent }) {
         handleLogout();
       } else {
         handleLoginEvent(true);
+        setUserRole(loginInfo.email, loginInfo.password);
       }
     }
   }, []);
@@ -72,9 +92,11 @@ function Login({ handleLoginEvent }) {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get('/skoolhub/login', { params: { email: loginInfo.email, password: loginInfo.password } });
+      const response = await axios.get('/skoolhub/login', {
+        params: { email: loginInfo.email, password: loginInfo.password },
+      });
 
-      console.log('Responsessssss', response);
+      console.log('Responses', response);
       await sendCodeByEmail('nhu.le1236@gmail.com', response.data.token);
       setLoginInfo({ ...loginInfo, code: response.data.token, submitted: true });
     } catch (err) {
@@ -89,6 +111,7 @@ function Login({ handleLoginEvent }) {
     e.preventDefault();
     if (loginInfo.code === loginInfo.enteredCode) {
       handleLoginEvent(true);
+      setUserRole(loginInfo.email, loginInfo.password);
       const sessionToken = generateSessionToken();
       localStorage.setItem('sessionToken', sessionToken);
       localStorage.setItem('date', Date.now());
