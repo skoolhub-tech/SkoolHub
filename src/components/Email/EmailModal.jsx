@@ -1,6 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function EmailModal({ setMessage, setSubject, email, setEmailModal }) {
+function EmailModal({
+  setMessage, setSubject, email, setEmailModal,
+}) {
   // update Subject and line of email, send email on submit
   return (
     <form onSubmit={email}>
@@ -17,5 +20,12 @@ function EmailModal({ setMessage, setSubject, email, setEmailModal }) {
     </form>
   );
 }
+
+EmailModal.propTypes = {
+  setMessage: PropTypes.func.isRequired,
+  setSubject: PropTypes.func.isRequired,
+  email: PropTypes.func.isRequired,
+  setEmailModal: PropTypes.func.isRequired,
+};
 
 export default EmailModal;

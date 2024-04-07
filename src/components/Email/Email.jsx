@@ -5,21 +5,30 @@ import EmailModal from './EmailModal';
 import DropDown from './DropDownSelector';
 import DraftEmailButton from './DraftEmailButton';
 import PeopleList from './PeopleList';
-// test with actual teacher and see their class and class list update correctly
-function Email({ userEmail, userName }) {
+import { useUserData } from '../data-providers/UserDataProvider';
+/*
+  for testing email util fn is commented out
+  user friendly error message / success message is commented out
+  update sender name once dataprovider is updated
+*/
+function Email() {
+  const { userData } = useUserData();
+  // conditional render states
   const [emailSent, setEmailSent] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [potentialEmailees, setPotentialEmailees] = useState([]);
-  const [receiverEmailList, setRecieverEmailList] = useState({});
-  const [classes, setClasses] = useState([]);//
-  const [currentClass, setCurrentClass] = useState('');
-  const [body, setBody] = useState('');
-  const [subjectLine, setSubjectLine] = useState('');
   const [emailModal, setEmailModal] = useState(false);
+  // View states/data
+  const [potentialEmailees, setPotentialEmailees] = useState([]);
+  const [classes, setClasses] = useState([]);
+  const [currentClass, setCurrentClass] = useState({ name: 'select a class' });
+  // email form data
+  const [subjectLine, setSubjectLine] = useState('');
+  const [body, setBody] = useState('');
+  const [receiverEmailList, setRecieverEmailList] = useState({});
 
   // change this to just the teachers classes
   useEffect(() => {
-    axios.get('/skoolhub/classes')
+    axios.get(`/skoolhub/classes/${userData.email}`)
       .then((response) => {
         setClasses(response.data);
       })
@@ -27,17 +36,20 @@ function Email({ userEmail, userName }) {
         console.error(error);
       });
   }, []);
-  // sends email
+
+  // sends email to all selected selected people in class/faculty
   const email = async (e) => {
     e.preventDefault();
     const emailList = Object.keys(receiverEmailList).join(', ');
     const data = {
       subject: subjectLine,
       message: body,
-      sender: userName,
-      senderEmail: userEmail,
+      sender: '',
+      senderEmail: userData.email,
       receiverEmail: emailList,
     };
+    console.log(data, 'data');
+    /*
     const response = await sendEmail(data);
     if (response === 'Email Sent!') {
       setEmailSent(true);
@@ -45,11 +57,17 @@ function Email({ userEmail, userName }) {
     } else {
       setEmailSent(false);
       setErrorMessage(response);
-    }
+    } */
   };
 
   // get students in class set state to list of student Objects
   const handleClassChange = (classObj) => {
+    setRecieverEmailList({});
+    if (classObj === 'Faculty') {
+      setCurrentClass({ name: 'Faculty' });
+      setPotentialEmailees([]);
+      return;
+    }
     setCurrentClass(classObj);
     if (!classObj) {
       setPotentialEmailees([]);
@@ -74,12 +92,14 @@ function Email({ userEmail, userName }) {
         handleClassChange={handleClassChange}
       />
       <DraftEmailButton setEmailModal={setEmailModal} />
-      <PeopleList
-        currentClass={currentClass}
-        potentialEmailees={potentialEmailees}
-        receiverEmailList={receiverEmailList}
-        setRecieverEmailList={setRecieverEmailList}
-      />
+      {potentialEmailees.length > 0 && (
+        <PeopleList
+          currentClass={currentClass}
+          potentialEmailees={potentialEmailees}
+          receiverEmailList={receiverEmailList}
+          setRecieverEmailList={setRecieverEmailList}
+        />
+      )}
       {emailModal && (
         <EmailModal
           setEmailModal={setEmailModal}
