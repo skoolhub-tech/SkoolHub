@@ -113,7 +113,7 @@ const createTableQuery = `
 
 client.connect()
   .then(() => {
-    client.query('DROP TABLE IF EXISTS roles, admin, teachers, teachers_emails, teachers_calendar, classes, assignments, teachers_assignments, students, students_emails, students_calendar, students_assignments, classes_students, credentials CASCADE;');
+    client.query('DROP TABLE IF EXISTS roles, admin, teachers, teachers_emails, teachers_calendar, classes, assignments, teachers_assignments, students, students_emails, students_calendar, students_assignments, classes_students, credentials, admin_credentials, teachers_credentials, students_credentials CASCADE;');
   })
   .then(() => {
     console.log('Connected to Postgres database');
