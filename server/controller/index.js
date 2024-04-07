@@ -6,6 +6,7 @@ const getTeachers = require('./getTeachers');
 const getStudents = require('./getStudents');
 const getRoleAtLogin = require('./getRoleAtLogin');
 const getClassStudents = require('./getClassStudents');
+const submitAssignment = require('./submitAssignment');
 
 module.exports = {
   getClasses,
@@ -16,4 +17,5 @@ module.exports = {
   getStudents,
   getRoleAtLogin,
   getClassStudents,
+  submitAssignment,
 };

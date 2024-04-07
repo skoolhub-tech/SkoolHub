@@ -312,7 +312,7 @@ async function seed() {
 
     studentsAssignmentsData.forEach(async (studentAssignment) => {
       await client.query(`
-        INSERT INTO students_assignments (student_id, assignment_id, score, total_points, grade, completed) VALUES (${studentAssignment.student_id}, ${studentAssignment.assignment_id}, ${studentAssignment.score}, ${studentAssignment.total_points}, '${studentAssignment.grade}', ${studentAssignment.completed});
+        INSERT INTO students_assignments (student_id, assignment_id, file_path, score, total_points, grade, completed) VALUES (${studentAssignment.student_id}, ${studentAssignment.assignment_id}, 'placeholder', ${studentAssignment.score}, ${studentAssignment.total_points}, '${studentAssignment.grade}', ${studentAssignment.completed});
       `);
     });
 

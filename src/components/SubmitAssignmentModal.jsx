@@ -9,16 +9,18 @@ function SubmitAssignmentModal({ setSubmitAssignmentModalIsOpen, studentEmail, a
   const handleFileSubmit = async (file) => {
     const formData = new FormData();
 
-    const submitToServer = (fileData) => {
-      const body = { studentEmail, assignmentId, fileData };
-      const headers = { 'Content-Type': 'multipart/form-data' };
-      axios.post(`http://${process.env.SERVER_IP}:${process.env.PORT}`, body, { headers })
+    const submitToServer = (fileData) => { // Use formData directly
+      axios.post(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/submitassignment`, fileData) // Removed the headers object
         .then((response) => {
           console.log('Success:', response);
         }).catch((error) => {
           console.error('Error:', error);
         });
     };
+
+    // Preparing formData
+    formData.append('studentEmail', studentEmail);
+    formData.append('assignmentId', assignmentId.toString()); // Ensure assignmentId is a string
 
     if (file.type === 'application/pdf') {
       formData.append('file', file, file.name);
@@ -43,6 +45,7 @@ function SubmitAssignmentModal({ setSubmitAssignmentModalIsOpen, studentEmail, a
     event.preventDefault();
     const file = event.target.file.files[0];
     handleFileSubmit(file);
+    setSubmitAssignmentModalIsOpen(false);
   };
 
   return (
@@ -61,5 +64,5 @@ export default SubmitAssignmentModal;
 SubmitAssignmentModal.propTypes = {
   setSubmitAssignmentModalIsOpen: PropTypes.func.isRequired,
   studentEmail: PropTypes.string.isRequired,
-  assignmentId: PropTypes.string.isRequired,
+  assignmentId: PropTypes.number.isRequired,
 };

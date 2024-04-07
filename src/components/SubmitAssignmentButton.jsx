@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import SubmitAssignmentModal from './SubmitAssignmentModal';
 
 function SubmitAssignmentButton({ studentEmail, assignmentId }) {
@@ -18,3 +19,8 @@ function SubmitAssignmentButton({ studentEmail, assignmentId }) {
 }
 
 export default SubmitAssignmentButton;
+
+SubmitAssignmentButton.propTypes = {
+  studentEmail: PropTypes.string.isRequired,
+  assignmentId: PropTypes.number.isRequired,
+};

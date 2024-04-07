@@ -10,7 +10,7 @@ module.exports = async (assignmentId) => {
     const { rows } = await client.query(query, values);
     return rows;
   } catch (err) {
-    console.error(err);
+    console.error(`error getting class id from assignment id: ${err}`);
     throw err;
   } finally {
     await client.end();

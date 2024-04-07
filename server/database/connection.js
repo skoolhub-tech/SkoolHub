@@ -81,12 +81,13 @@ const createTableQuery = `
     student_id INT NOT NULL,
     assignment_id INT NOT NULL,
     file_path VARCHAR(255) NOT NULL,
-    score INT NOT NULL,
-    total_points INT NOT NULL,
-    grade VARCHAR(255) NOT NULL,
+    score INT,
+    total_points INT,
+    grade VARCHAR(255),
     completed BOOLEAN NOT NULL,
     FOREIGN KEY (student_id) REFERENCES students(id),
-    FOREIGN KEY (assignment_id) REFERENCES assignments(id)
+    FOREIGN KEY (assignment_id) REFERENCES assignments(id),
+    UNIQUE (student_id, assignment_id)
   );
 
   CREATE TABLE classes_students (

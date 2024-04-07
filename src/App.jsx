@@ -8,6 +8,7 @@ import NavBar from './components/NavBar';
 import Calendar from './Task_list/Calendar';
 import { UserDataProvider } from './components/data-providers/UserDataProvider';
 import Classes from './components/Classes';
+import SubmitAssignmentButton from './components/SubmitAssignmentButton';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -22,6 +23,7 @@ function App() {
       <Router>
         {isLoggedIn ? (
           <>
+            <SubmitAssignmentButton studentEmail="joshua.king@gmail.com" assignmentId={1} />
             <h1>SkoolHub</h1>
             <NavBar />
             <Routes>
