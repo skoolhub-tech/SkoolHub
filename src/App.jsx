@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 import Login from './components/Login';
 import NavBar from './components/NavBar';
-import Calendar from './Task_list/Calendar';
+import Task from './components/Task_list/Task';
 import { UserDataProvider } from './components/data-providers/UserDataProvider';
 import Classes from './components/Classes';
 
@@ -17,6 +17,7 @@ function App() {
   };
 
   return (
+
 
     <div className="navbar-container">
       <UserDataProvider>
