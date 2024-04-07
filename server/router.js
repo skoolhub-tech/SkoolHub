@@ -1,8 +1,12 @@
 const router = require('express').Router();
+require('dotenv').config();
 const controller = require('./controller');
 const multer = require('multer');
 
-const upload = multer({ storage: multer.memoryStorage() });
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 1024 * 1024 * 10 },
+});
 
 // GET requests
 router.get('/login/role', controller.getRoleAtLogin);
