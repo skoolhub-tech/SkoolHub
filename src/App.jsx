@@ -9,6 +9,7 @@ import Task from './components/Task_list/Task';
 import { UserDataProvider } from './components/data-providers/UserDataProvider';
 import Classes from './components/Classes';
 import Admin from './components/Admin/Admin';
+import Email from './components/Email/Email';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,7 +31,7 @@ function App() {
                 <Route path="/skoolhub/assignments" element={<h1>Assignments</h1>} />
                 <Route path="/skoolhub/events" element={<Task />} />
                 <Route path="/skoolhub/classes" element={<Classes />} />
-                <Route path="/skoolhub/emails" element={<h1>Emails</h1>} />
+                <Route path="/skoolhub/emails" element={<Email />} />
                 <Route path="/skoolhub/admin" element={<Admin />} />
                 { // redrect if route doesn't match anything
                 }

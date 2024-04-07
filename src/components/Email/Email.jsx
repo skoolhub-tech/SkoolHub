@@ -75,7 +75,6 @@ function Email() {
     }
     axios.get(`/skoolhub/classes/${classObj.id}/students`)
       .then((response) => {
-        console.log(response.data);
         setPotentialEmailees(response.data);
       })
       .catch((error) => {
