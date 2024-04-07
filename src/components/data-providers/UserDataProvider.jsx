@@ -42,6 +42,8 @@ export function UserDataProvider({ children, isLoggedIn, email }) {
 
 UserDataProvider.propTypes = {
   children: PropTypes.node.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  email: PropTypes.string.isRequired,
 };
 
 export const useUserData = () => useContext(Context);
