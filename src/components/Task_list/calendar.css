@@ -10,6 +10,15 @@
       color: #fff;
   }
 
+  .rbc-day-bg:hover {
+    background-color: #e8e8e8;
+  }
+
+  .rbc-time-view .rbc-time-header-gutter {
+    width: 80px !important; /* or whatever width you want */
+    min-width: 80px !important;
+  }
+
   .rbc-event:hover {
     background-color: #875D3B;
     border: 1px solid #858D6F;

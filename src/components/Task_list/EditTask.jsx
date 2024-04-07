@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './editForm.css';
+import moment from 'moment';
 
 function EditTask({ task, closeEditTask }) {
   const [editedTask, setEditedTask] = useState({
@@ -44,7 +45,7 @@ function EditTask({ task, closeEditTask }) {
             type="datetime-local"
             id="start"
             name="start"
-            value={editedTask.start}
+            value={editedTask.start ? moment(editedTask.start).format('YYYY-MM-DDTHH:mm') : ''}
             onChange={handleChange}
             disabled={false}
           />
@@ -55,12 +56,13 @@ function EditTask({ task, closeEditTask }) {
             type="datetime-local"
             id="end"
             name="end"
-            value={editedTask.end}
+            value={editedTask.end ? moment(editedTask.end).format('YYYY-MM-DDTHH:mm') : ''}
             onChange={handleChange}
             disabled={false}
           />
 
           <button type="submit">Save</button>
+          <button className="delete" type="submit">Delete</button>
         </form>
       </div>
     </div>

@@ -12,9 +12,9 @@ function TaskCalendar() {
   const [events, setEvents] = useState([
     {
       id: 1,
-      title: 'Task 1',
-      start: new Date(2024, 3, 7, 10, 0),
-      end: new Date(2024, 3, 7, 12, 0),
+      title: 'Task asfkljsa;djf;lasdjf;ladsjfl;dasjf',
+      start: new Date(2024, 3, 7, 3, 0),
+      end: new Date(2024, 3, 7, 3, 30),
     },
     {
       id: 2,
@@ -29,8 +29,20 @@ function TaskCalendar() {
   const [selectedTask, setSelectedTask] = useState({});
 
   const handleSelectEvent = (event) => {
+    console.log(event);
     setSelectedTask(event);
     setEditTask(true);
+  };
+
+  const handleSelectSlot = (slotInfo) => {
+    // Using moment to handle the date more flexibly
+    const startDate = moment(slotInfo.start).format('YYYY-MM-DD HH:mm:ss');
+    const endDate = moment(slotInfo.end).format('YYYY-MM-DD HH:mm:ss');
+    const dayOfWeek = moment(slotInfo.start).format('d'); // 'd' gives the day of the week (0 for Sunday, 6 for Saturday)
+
+    console.log(`Slot selected: start=${startDate}, end=${endDate}, day of the week=${dayOfWeek}`);
+
+    // Additional actions here
   };
 
   const closeEditTask = () => {
@@ -42,7 +54,9 @@ function TaskCalendar() {
       <Calendar
         localizer={localizer}
         events={events}
+        selectable={true}
         onSelectEvent={handleSelectEvent}
+        onSelectSlot={handleSelectSlot}
       />
       {editTask && <EditTask task={selectedTask} closeEditTask={closeEditTask} />}
     </div>
