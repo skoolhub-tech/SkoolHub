@@ -32,10 +32,6 @@ const generateOTP = (password) => {
 //   });
 // };
 
-
-
-
-
 const model = {
   login(email, password, callback) {
     const client = db();
