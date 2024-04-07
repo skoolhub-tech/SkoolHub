@@ -173,7 +173,7 @@ import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { v4 as uuidv4 } from 'uuid';
 
-function Login() {
+function Login({ handleLoginEvent, isLoggedIn }) {
   const [loginInfo, setLoginInfo] = useState({
     username: '',
     password: '',
@@ -335,5 +335,10 @@ function Login() {
     </div>
   );
 }
+
+Login.propTypes = {
+  handleLoginEvent: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+};
 
 export default Login;
