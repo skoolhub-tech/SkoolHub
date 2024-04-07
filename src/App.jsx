@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="navbar-container">
-      <UserDataProvider isLoggedIn={isLoggedIn}>
+      <UserDataProvider>
         <Router>
           {isLoggedIn ? (
             <>
