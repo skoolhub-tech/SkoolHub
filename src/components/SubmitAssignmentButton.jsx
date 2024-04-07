@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import SubmitAssignmentModal from './SubmitAssignmentModal';
 
-function SubmitAssignmentButton() {
+function SubmitAssignmentButton({ studentEmail, assignmentId }) {
   const [submitAssignmentModalIsOpen, setSubmitAssignmentModalIsOpen] = useState(false);
   return (
     <div>
@@ -9,6 +10,8 @@ function SubmitAssignmentButton() {
       {submitAssignmentModalIsOpen && (
       <SubmitAssignmentModal
         setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}
+        studentEmail={studentEmail}
+        assignmentId={assignmentId}
       />
       )}
     </div>
@@ -16,3 +19,8 @@ function SubmitAssignmentButton() {
 }
 
 export default SubmitAssignmentButton;
+
+SubmitAssignmentButton.propTypes = {
+  studentEmail: PropTypes.string.isRequired,
+  assignmentId: PropTypes.number.isRequired,
+};
