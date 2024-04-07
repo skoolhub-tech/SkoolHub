@@ -15,6 +15,7 @@ router.get('/classes', controller.getClasses);
 router.get('/classes/:teacherEmail', controller.getTeacherClasses);
 router.get('/classes/:classId/students', controller.getClassStudents);
 router.get('/teachers', controller.getTeachers);
+router.get('/login', controller.login);
 // router.get('/teachers/assignments/:teacherId', controller.getTeacherAssignments);
 // router.get('/teachers/calendar/:teacherId', controller.getTeacherCalendar);
 router.get('/students', controller.getStudents);
@@ -27,5 +28,9 @@ router.post('/sendemail', controller.sendPeerEmail);
 router.post('/sendautoemail', controller.sendAutoEmail);
 router.post('/submitassignment', upload.single('file'), controller.submitAssignment);
 // PUT requests
+
+
+
+
 
 module.exports = router;
