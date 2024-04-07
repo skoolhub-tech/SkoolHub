@@ -5,6 +5,8 @@ const {
   getClassIdFromAssignmentId,
   getStudentIdFromEmail,
   insertUpdateSubmittedAssignment,
+  getClassesFromEmail,
+  getAssignmentsForClass,
 } = require('../../server/model');
 
 async function testModels() {
@@ -34,9 +36,21 @@ async function testModels() {
     testResults.submittedAssignment = `Failed with error: ${error.message}`;
   }
 
+  try {
+    testResults.classesFromEmail = await getClassesFromEmail('joshua.king@gmail.com');
+  } catch (error) {
+    testResults.classesFromEmail = `Failed with error: ${error.message}`;
+  }
+
+  try {
+    testResults.assignmentsForClass = await getAssignmentsForClass(1);
+  } catch (error) {
+    testResults.assignmentsForClass = `Failed with error: ${error.message}`;
+  }
+
   console.log('Test Results:');
   Object.keys(testResults).forEach((key) => {
-    console.log(`${JSON.stringify(key)}: ${JSON.stringify(testResults[key][0])}`);
+    console.log(`${JSON.stringify(key)}: ${JSON.stringify(testResults[key])}`);
   });
 }
 
