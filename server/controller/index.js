@@ -1,27 +1,35 @@
-const getClasses = require('./getClasses');
-const sendPeerEmail = require('./sendPeerEmail');
-const sendAutoEmail = require('./sendAutoEmail');
 const getAdmin = require('./getAdmin');
-const getTeachers = require('./getTeachers');
-const getStudents = require('./getStudents');
-const getRoleAtLogin = require('./getRoleAtLogin');
 const getClassStudents = require('./getClassStudents');
-const submitAssignment = require('./submitAssignment');
+const getClasses = require('./getClasses');
+const getClassesAndAssignmentsForStudent = require('./getClassesAndAssignmentsForStudent');
+const getRoleAtLogin = require('./getRoleAtLogin');
+const getStudents = require('./getStudents');
 const getTeacherClasses = require('./getTeacherClasses');
+const getTeachers = require('./getTeachers');
 const login = require('./login');
+<<<<<<< HEAD
 const getStudentClassGrades = require('./getStudentClassGrades');
+=======
+const sendAutoEmail = require('./sendAutoEmail');
+const sendPeerEmail = require('./sendPeerEmail');
+const submitAssignment = require('./submitAssignment');
+>>>>>>> bc47ca05ee704eaf4a4907785808488c247088a5
 
 module.exports = {
-  getClasses,
-  sendPeerEmail,
-  sendAutoEmail,
   getAdmin,
-  getTeachers,
-  getStudents,
-  getRoleAtLogin,
   getClassStudents,
-  submitAssignment,
+  getClasses,
+  getClassesAndAssignmentsForStudent,
+  getRoleAtLogin,
+  getStudents,
   getTeacherClasses,
+  getTeachers,
   login,
+<<<<<<< HEAD
   getStudentClassGrades,
+=======
+  sendAutoEmail,
+  sendPeerEmail,
+  submitAssignment,
+>>>>>>> bc47ca05ee704eaf4a4907785808488c247088a5
 };
