@@ -14,6 +14,7 @@ router.get('/admin', controller.getAdmin);
 router.get('/classes', controller.getClasses);
 router.get('/classes/:teacherEmail', controller.getTeacherClasses);
 router.get('/classes/:classId/students', controller.getClassStudents);
+router.get('/classes/:classId/students/:studentId/grades', controller.getStudentClassGrades);
 router.get('/teachers', controller.getTeachers);
 router.get('/login', controller.login);
 // router.get('/teachers/assignments/:teacherId', controller.getTeacherAssignments);
