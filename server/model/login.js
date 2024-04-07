@@ -35,30 +35,28 @@ const generateOTP = (password) => {
 module.exports = async (email, password, callback) => {
   const client = createClient();
   client.connect();
+
+  // Define the query to check credentials
   const query = {
-    text: `SELECT * FROM admin_credentials WHERE admin_email = $1
-           UNION ALL
-           SELECT * FROM teachers_credentials WHERE teacher_email = $1
-           UNION ALL
-           SELECT * FROM students_credentials WHERE student_email = $1`,
+    text: 'SELECT * FROM credentials WHERE email = $1',
     values: [email],
   };
 
-  client.query(query, (err, res) => {
+  // Execute the query to check credentials
+  client.query(query, (err, result) => {
     if (err) {
       console.error('Error executing query:', err);
       callback(err, null, null); // Pass error and null for both token and user info
       return;
     }
 
-    if (res.rows.length === 0) {
-      // User not found
+    if (result.rows.length === 0) {
+      // If no matching user found
       callback(null, null, null); // Pass null for both token and user info
       return;
     }
 
-    const user = res.rows[0];
-
+    const user = result.rows[0];
     // Compare passwords
     if (user.password === password) {
       // Passwords match
