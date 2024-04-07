@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 import Login from './components/Login';
 import NavBar from './components/NavBar';
-import Calendar from './Task_list/Calendar';
+import Task from './components/Task_list/Task';
 import { UserDataProvider } from './components/data-providers/UserDataProvider';
 import Classes from './components/Classes';
 
@@ -27,7 +27,7 @@ function App() {
             <Routes>
               <Route path="/skoolhub/homepage" element={<h1>Homepage</h1>} />
               <Route path="/skoolhub/assignments" element={<h1>Assignments</h1>} />
-              <Route path="/skoolhub/events" element={<Calendar />} />
+              <Route path="/skoolhub/events" element={<Task />} />
               <Route path="/skoolhub/classes" element={<Classes />} />
               <Route path="/skoolhub/emails" element={<h1>Emails</h1>} />
               { // redrect if route doesn't match anything
