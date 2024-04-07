@@ -1,13 +1,16 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useUserData } from './data-providers/UserDataProvider';
+import { useUserData } from '../data-providers/UserDataProvider';
+import StudentGradesModal from './StudentGradesModal';
 
 function Classes() {
   const { userData } = useUserData();
   const [classes, setClasses] = useState([]);
   const [selectedClass, setSelectedClass] = useState('');
   const [students, setStudents] = useState([]);
+  const [selectedStudent, setSelectedStudent] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     axios.get(`/skoolhub/classes/${userData.email}`)
@@ -36,6 +39,12 @@ function Classes() {
       });
   };
 
+  const handleStudentClick = (student) => {
+    console.log(student);
+    setSelectedStudent(student);
+    setShowModal(true);
+  };
+
   return (
     <div>
       <h1>Classes</h1>
@@ -53,9 +62,22 @@ function Classes() {
           <h2>Students</h2>
           <ul>
             {students.map((student) => (
-              <li key={student.id}>{student.name}</li>
+              <li key={student.id}>
+                {student.name}
+                <button type="button" onClick={() => handleStudentClick(student)}>View Grades</button>
+              </li>
             ))}
           </ul>
+        </div>
+      )}
+      {showModal && selectedStudent && (
+        <div>
+          <StudentGradesModal
+            studentName={selectedStudent.name}
+            studentId={selectedStudent.id}
+            classId={selectedClass}
+            onClose={() => setShowModal(false)}
+          />
         </div>
       )}
     </div>
