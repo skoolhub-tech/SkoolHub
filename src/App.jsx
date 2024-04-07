@@ -11,10 +11,10 @@ import Classes from './components/Classes';
 import Admin from './components/Admin/Admin';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
+  const handleLoginEvent = (boolean) => {
+    setIsLoggedIn(boolean);
   };
 
   return (
@@ -43,7 +43,7 @@ function App() {
             <div className="login-page">
               <h1 className="login-h1">SkoolHub</h1>
               <p className="login-p">Teaching in. Tedious out.</p>
-              <Login onLogin={handleLogin} />
+              <Login handleLoginEvent={handleLoginEvent} isLoggedIn={isLoggedIn}/>
             </div>
 
           )}

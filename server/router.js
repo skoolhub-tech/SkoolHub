@@ -7,6 +7,7 @@ router.get('/admin', controller.getAdmin);
 router.get('/classes', controller.getClasses);
 router.get('/classes/:classId/students', controller.getClassStudents);
 router.get('/teachers', controller.getTeachers);
+router.get('/login', controller.login);
 // router.get('/teachers/assignments/:teacherId', controller.getTeacherAssignments);
 // router.get('/teachers/calendar/:teacherId', controller.getTeacherCalendar);
 router.get('/students', controller.getStudents);
@@ -19,7 +20,7 @@ router.post('/sendemail', controller.sendPeerEmail);
 router.post('/sendautoemail', controller.sendAutoEmail);
 // PUT requests
 
-router.get('/login', controller.userLogin);
+
 
 
 
