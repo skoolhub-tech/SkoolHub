@@ -4,6 +4,7 @@ module.exports = async (req, res) => {
   try {
     const { email, password } = req.query;
 
+    // eslint-disable-next-line consistent-return
     login(email, password, (err, token, user) => {
       if (err) {
         console.error('Error logging in:', err);
@@ -18,7 +19,7 @@ module.exports = async (req, res) => {
       const response = {
         message: 'Login successful!',
         token,
-        user
+        user,
       };
 
       res.status(200).send(response); // Changed response structure
