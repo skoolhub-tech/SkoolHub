@@ -7,7 +7,7 @@ import Login from './components/Login';
 import NavBar from './components/NavBar';
 import Task from './components/Task_list/Task';
 import { UserDataProvider } from './components/data-providers/UserDataProvider';
-import Classes from './components/Classes';
+import Classes from './components/Classes/Classes';
 import Admin from './components/Admin/Admin';
 
 function App() {
