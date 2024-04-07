@@ -1,9 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function NavBar() {
   const navigate = useNavigate();
-
+  const location = useLocation();
   const handleNavigation = (path) => {
     navigate(path);
   };
@@ -13,28 +13,28 @@ function NavBar() {
       <button
         type="button"
         onClick={() => handleNavigation('/skoolhub/assignments')}
-        className="tab"
+        className={`${location.pathname === '/skoolhub/assignments' ? 'tab-active' : 'tab'}`}
       >
         Assignments
       </button>
       <button
         type="button"
         onClick={() => handleNavigation('/skoolhub/events')}
-        className="tab"
+        className={`${location.pathname === '/skoolhub/events' ? 'tab-active' : 'tab'}`}
       >
         Events
       </button>
       <button
         type="button"
         onClick={() => handleNavigation('/skoolhub/classes')}
-        className="tab"
+        className={`${location.pathname === '/skoolhub/classes' ? 'tab-active' : 'tab'}`}
       >
         Classes
       </button>
       <button
         type="button"
         onClick={() => handleNavigation('/skoolhub/emails')}
-        className="tab"
+        className={`${location.pathname === '/skoolhub/emails' ? 'tab-active' : 'tab'}`}
       >
         Emails
       </button>
