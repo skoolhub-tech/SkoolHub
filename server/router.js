@@ -1,5 +1,12 @@
 const router = require('express').Router();
+require('dotenv').config();
 const controller = require('./controller');
+const multer = require('multer');
+
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 1024 * 1024 * process.env.MAX_FILE_SIZE },
+});
 
 // GET requests
 router.get('/login/role', controller.getRoleAtLogin);
@@ -17,6 +24,7 @@ router.get('/students', controller.getStudents);
 // POST requests
 router.post('/sendemail', controller.sendPeerEmail);
 router.post('/sendautoemail', controller.sendAutoEmail);
+router.post('/submitassignment', upload.single('file'), controller.submitAssignment);
 // PUT requests
 
 module.exports = router;
