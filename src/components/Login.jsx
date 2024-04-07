@@ -293,7 +293,7 @@ function Login() {
       );
     } if (loginInfo.submitted) {
       return (
-        <form onSubmit={handleCodeVerification}>
+        <form className="login-form" onSubmit={handleCodeVerification}>
           <label htmlFor="code">Code</label>
           <input
             name="code"
@@ -307,7 +307,7 @@ function Login() {
       );
     }
     return (
-      <form onSubmit={handleLogin}>
+      <form className="login-form" onSubmit={handleLogin}>
         <label htmlFor="username">Username</label>
         <input
           name="username"
@@ -324,13 +324,13 @@ function Login() {
           value={loginInfo.password}
           onChange={(e) => setLoginInfo({ ...loginInfo, password: e.target.value })}
         />
-        <button type="submit">Log In</button>
+        <button className="login-button" type="submit">Log In</button>
       </form>
     );
   };
 
   return (
-    <div className="login-form">
+    <div>
       {handleLoginPage()}
     </div>
   );
