@@ -65,6 +65,6 @@ function EditTask({ task, closeEditTask }) {
       </div>
     </div>
   );
-};
+}
 
 export default EditTask;

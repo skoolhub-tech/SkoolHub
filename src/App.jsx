@@ -11,7 +11,7 @@ import Classes from './components/Classes';
 import Admin from './components/Admin/Admin';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const handleLoginEvent = (boolean) => {
     setIsLoggedIn(boolean);

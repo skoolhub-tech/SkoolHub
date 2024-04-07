@@ -17,6 +17,8 @@
   width: 40%;
   height: auto;
   border-radius: 5px;
+  border: 1px solid #07070aaa;
+
 }
 
 .floating-form {
@@ -34,6 +36,7 @@ input {
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  border: 1px solid #07070aaa;
 }
 
 button {
@@ -43,6 +46,9 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  border: 1px solid #07070aaa;
+  transition: background-color 0.5s;
+  filter: drop-shadow(0 0 2em #707a3e);
 }
 
 button:hover {
@@ -60,6 +66,7 @@ button:hover {
   margin-bottom: 10px;
   margin-left: auto;
   font-size: 16px;
+  border: 1px solid #07070aaa;
 }
 
 .exit-button:hover {

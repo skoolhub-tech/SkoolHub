@@ -1,9 +1,11 @@
 .add-task {
   display: flex;
-  justify-content: flex-end; 
+  justify-content: flex-end;
   align-items: center;
   margin-left: auto;
   background-color: #858D6F;
+  transition: background-color 0.5s;
+
 }
 
 .tasks-header {
@@ -14,4 +16,5 @@
 
 .task-container {
   background-color: #ABBD9A;
+  border: 1px solid #07070aaa;
 }
