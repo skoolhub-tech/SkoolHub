@@ -17,8 +17,8 @@ module.exports = async (req, res) => {
       // Assuming you want to send both token and user info back to the client
       const response = {
         message: 'Login successful!',
-        token: token,
-        user: user
+        token,
+        user
       };
 
       res.status(200).send(response); // Changed response structure
