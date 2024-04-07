@@ -9,7 +9,7 @@ const upload = multer({
 });
 
 // GET requests
-router.get('/login/role', controller.getRoleAtLogin);
+router.post('/login/role', controller.getRoleAtLogin);
 router.get('/admin', controller.getAdmin);
 router.get('/classes', controller.getClasses);
 router.get('/classes/:teacherEmail', controller.getTeacherClasses);
