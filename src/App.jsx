@@ -5,15 +5,16 @@ import {
 } from 'react-router-dom';
 import Login from './components/Login';
 import NavBar from './components/NavBar';
-import Task from './Task_list/Calendar';
+import Task from './components/Task_list/Task';
 import { UserDataProvider } from './components/data-providers/UserDataProvider';
 import Classes from './components/Classes';
+import Admin from './components/Admin/Admin';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
+  const handleLogin = (boolean) => {
+    setIsLoggedIn(boolean);
   };
 
   return (
