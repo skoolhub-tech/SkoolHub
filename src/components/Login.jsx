@@ -1,12 +1,12 @@
-
 // 2-factor without library
 /// ///////////////////////////////////////////////////////////////////////////////
 import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
-function Login({handleLoginEvent, isLoggedIn}) {
+function Login({ handleLoginEvent }) {
   const [loginInfo, setLoginInfo] = useState({
     email: '',
     password: '',
@@ -34,7 +34,7 @@ function Login({handleLoginEvent, isLoggedIn}) {
     localStorage.removeItem('email');
     localStorage.removeItem('loggedIn');
     localStorage.removeItem('date');
-    handleLoginEvent(false)
+    handleLoginEvent(false);
     setLoginInfo({
       username: '',
       password: '',
@@ -46,12 +46,12 @@ function Login({handleLoginEvent, isLoggedIn}) {
 
   useEffect(() => {
     const sessionToken = localStorage.getItem('sessionToken');
-    const localLoggedIn = localStorage.getItem('loggedIn');
-    const localEmail = localStorage.getItem('email')
-    const date = localStorage.getItem('date');
+    // const localLoggedIn = localStorage.getItem('loggedIn');
+    // const localEmail = localStorage.getItem('email');
+    // const date = localStorage.getItem('date');
 
     if (!sessionToken) {
-      handleLoginEvent(false)
+      handleLoginEvent(false);
     } else {
       const expiredTime = 30 * 60 * 1000;
       const storedTime = localStorage.getItem('date');
@@ -59,7 +59,7 @@ function Login({handleLoginEvent, isLoggedIn}) {
       if (currentTime - storedTime > expiredTime) {
         handleLogout();
       } else {
-        handleLoginEvent(true)
+        handleLoginEvent(true);
       }
     }
   }, []);
@@ -93,7 +93,6 @@ function Login({handleLoginEvent, isLoggedIn}) {
       localStorage.setItem('sessionToken', sessionToken);
       localStorage.setItem('date', Date.now());
       localStorage.setItem('email', loginInfo.email);
-
     } else {
       console.log('code', loginInfo.code, 'entered', loginInfo.enteredCode);
       alert('Invalid code');
@@ -107,7 +106,7 @@ function Login({handleLoginEvent, isLoggedIn}) {
 
   // handles conditional rendering of login page
   const handleLoginPage = () => {
- if (loginInfo.submitted) {
+    if (loginInfo.submitted) {
       return (
         <form className="login-form" onSubmit={handleCodeVerification}>
           <label htmlFor="code">Code</label>
@@ -151,5 +150,9 @@ function Login({handleLoginEvent, isLoggedIn}) {
     </div>
   );
 }
+
+Login.propTypes = {
+  handleLoginEvent: PropTypes.func.isRequired,
+};
 
 export default Login;
