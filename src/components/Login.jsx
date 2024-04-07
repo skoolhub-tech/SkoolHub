@@ -10,6 +10,8 @@ import { useUserData } from './data-providers/UserDataProvider';
 function Login({ handleLoginEvent }) {
   const { setUserData } = useUserData();
   const [loginInfo, setLoginInfo] = useState({
+    id: '',
+    role: '',
     email: '',
     password: '',
     code: '',
@@ -67,6 +69,7 @@ function Login({ handleLoginEvent }) {
     // const localEmail = localStorage.getItem('email');
     // const date = localStorage.getItem('date');
 
+
     if (!sessionToken) {
       handleLoginEvent(false);
       setUserData({ role: null, email: null });
@@ -97,7 +100,7 @@ function Login({ handleLoginEvent }) {
 
       console.log('Responses', response);
       await sendCodeByEmail('nhu.le1236@gmail.com', response.data.token);
-      setLoginInfo({ ...loginInfo, code: response.data.token, submitted: true });
+      setLoginInfo({ ...loginInfo, code: response.data.token, submitted: true, id: response.data.user.id, role: response.data.user.role});
     } catch (err) {
       console.log('Error fetching user', err);
       alert('Invalid credentials');
@@ -115,6 +118,8 @@ function Login({ handleLoginEvent }) {
       localStorage.setItem('sessionToken', sessionToken);
       localStorage.setItem('date', Date.now());
       localStorage.setItem('email', loginInfo.email);
+      localStorage.setItem('role', loginInfo.role);
+      localStorage.setItem('id', loginInfo.id);
     } else {
       console.log('code', loginInfo.code, 'entered', loginInfo.enteredCode);
       alert('Invalid code');
