@@ -8,6 +8,7 @@ const getStudentIdFromEmail = require('./getStudentIdFromEmail');
 const getClassIdFromAssignmentId = require('./getClassIdFromAssignmentId');
 const getAssignmentDueDate = require('./getAssignmentDueDate');
 const insertUpdateSubmittedAssignment = require('./insertUpdateSubmittedAssignment');
+const getTeacherClasses = require('./getTeacherClasses');
 
 module.exports = {
   getClasses,
@@ -20,4 +21,5 @@ module.exports = {
   getClassIdFromAssignmentId,
   getAssignmentDueDate,
   insertUpdateSubmittedAssignment,
+  getTeacherClasses,
 };

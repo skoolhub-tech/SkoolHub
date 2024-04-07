@@ -12,6 +12,7 @@ const upload = multer({
 router.get('/login/role', controller.getRoleAtLogin);
 router.get('/admin', controller.getAdmin);
 router.get('/classes', controller.getClasses);
+router.get('/classes/:teacherEmail', controller.getTeacherClasses);
 router.get('/classes/:classId/students', controller.getClassStudents);
 router.get('/teachers', controller.getTeachers);
 // router.get('/teachers/assignments/:teacherId', controller.getTeacherAssignments);
