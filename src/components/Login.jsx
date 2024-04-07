@@ -1,6 +1,6 @@
 // 2-factor without library
 /// ///////////////////////////////////////////////////////////////////////////////
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
@@ -8,8 +8,7 @@ import PropTypes from 'prop-types';
 import { useUserData } from './data-providers/UserDataProvider';
 
 function Login({ handleLoginEvent }) {
-  const { userState } = useContext(useUserData);
-  const { setUserData } = userState;
+  const { setUserData } = useUserData();
   const [loginInfo, setLoginInfo] = useState({
     email: '',
     password: '',
