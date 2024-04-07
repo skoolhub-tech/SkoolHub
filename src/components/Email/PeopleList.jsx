@@ -1,10 +1,11 @@
 import React from 'react';
 import PersonEmailCard from './PersonEmailCard';
 
-function PeopleList({ potentialEmailees, receiverEmailList, setRecieverEmailList }) {
+// list out people in the class / faculty
+function PeopleList({ currentClass, potentialEmailees, receiverEmailList, setRecieverEmailList }) {
   return (
     <div>
-      <h2>{currentClass}</h2>
+      <h2>{currentClass.name}</h2>
       <ul>
         {potentialEmailees.map((person) => (
           <PersonEmailCard
