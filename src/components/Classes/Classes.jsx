@@ -81,17 +81,6 @@ function Classes() {
                 </tbody>
               </table>
             </div>
-            // <div>
-            //   <h2>Students</h2>
-            //   <ul>
-            //     {students.map((student) => (
-            //       <li key={student.id}>
-            //         {student.name}
-            //         <button type="button" onClick={() => handleStudentClick(student)}>View Grades</button>
-            //       </li>
-            //     ))}
-            //   </ul>
-            // </div>
           )}
         </>
       )}
