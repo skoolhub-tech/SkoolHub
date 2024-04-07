@@ -1,5 +1,6 @@
 const getAdmin = require('./getAdmin');
 const getAssignmentDueDate = require('./getAssignmentDueDate');
+const getAssignmentsForClass = require('./getAssignmentsForClass');
 const getClassIdFromAssignmentId = require('./getClassIdFromAssignmentId');
 const getClassStudents = require('./getClassStudents');
 const getClasses = require('./getClasses');
@@ -15,6 +16,7 @@ const login = require('./login');
 module.exports = {
   getAdmin,
   getAssignmentDueDate,
+  getAssignmentsForClass,
   getClassIdFromAssignmentId,
   getClassStudents,
   getClasses,

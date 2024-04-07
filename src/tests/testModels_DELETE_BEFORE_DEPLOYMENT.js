@@ -6,6 +6,7 @@ const {
   getStudentIdFromEmail,
   insertUpdateSubmittedAssignment,
   getClassesFromEmail,
+  getAssignmentsForClass,
 } = require('../../server/model');
 
 async function testModels() {
@@ -39,6 +40,12 @@ async function testModels() {
     testResults.classesFromEmail = await getClassesFromEmail('joshua.king@gmail.com');
   } catch (error) {
     testResults.classesFromEmail = `Failed with error: ${error.message}`;
+  }
+
+  try {
+    testResults.assignmentsForClass = await getAssignmentsForClass(1);
+  } catch (error) {
+    testResults.assignmentsForClass = `Failed with error: ${error.message}`;
   }
 
   console.log('Test Results:');
