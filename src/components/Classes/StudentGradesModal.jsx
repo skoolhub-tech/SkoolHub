@@ -55,7 +55,7 @@ function StudentGradesModal({
         </h2>
         <button type="button" onClick={onClose}>Close</button>
       </div>
-      <div className="w-96 h-96">
+      <div style={{ width: '300px', height: '300px' }}>
         <canvas ref={chartRef} />
       </div>
     </div>
