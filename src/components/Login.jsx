@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { useUserData } from './data-providers/UserDataProvider';
 
 function Login({ handleLoginEvent }) {
-  const { setUserData } = useUserData();
+  const { userData, setUserData } = useUserData();
   const [loginInfo, setLoginInfo] = useState({
     id: '',
     role: '',
@@ -18,20 +18,6 @@ function Login({ handleLoginEvent }) {
     enteredCode: '',
     submitted: false,
   });
-
-  const setUserRole = (email, password) => {
-    axios.post('skoolhub/login/role', { email, password })
-      .then((response) => {
-        setUserData({
-          role: response.data.role,
-          email,
-        });
-      })
-      .catch((error) => console.error({
-        Message: 'Error retrieving role.',
-        Error: error,
-      }));
-  };
 
   const sendCodeByEmail = async (email, code) => {
     try {
@@ -60,7 +46,12 @@ function Login({ handleLoginEvent }) {
       enteredCode: '',
       submitted: false,
     });
-    setUserData({ role: null, email: null });
+    setUserData({
+      role: null,
+      email: null,
+      name: null,
+      id: null,
+    });
   };
 
   useEffect(() => {
@@ -68,11 +59,14 @@ function Login({ handleLoginEvent }) {
     // const localLoggedIn = localStorage.getItem('loggedIn');
     // const localEmail = localStorage.getItem('email');
     // const date = localStorage.getItem('date');
-
-
     if (!sessionToken) {
       handleLoginEvent(false);
-      setUserData({ role: null, email: null });
+      setUserData({
+        role: null,
+        email: null,
+        name: null,
+        id: null,
+      });
     } else {
       const expiredTime = 30 * 60 * 1000;
       const storedTime = localStorage.getItem('date');
@@ -81,7 +75,7 @@ function Login({ handleLoginEvent }) {
         handleLogout();
       } else {
         handleLoginEvent(true);
-        setUserRole(loginInfo.email, loginInfo.password);
+        setUserData({ ...userData, email: loginInfo.email });
       }
     }
   }, []);
@@ -100,7 +94,13 @@ function Login({ handleLoginEvent }) {
 
       console.log('Responses', response);
       await sendCodeByEmail('nhu.le1236@gmail.com', response.data.token);
-      setLoginInfo({ ...loginInfo, code: response.data.token, submitted: true, id: response.data.user.id, role: response.data.user.role});
+      setLoginInfo({
+        ...loginInfo,
+        code: response.data.token,
+        submitted: true,
+        id: response.data.user.id,
+        role: response.data.user.role,
+      });
     } catch (err) {
       console.log('Error fetching user', err);
       alert('Invalid credentials');
@@ -113,7 +113,8 @@ function Login({ handleLoginEvent }) {
     e.preventDefault();
     if (loginInfo.code === loginInfo.enteredCode) {
       handleLoginEvent(true);
-      setUserRole(loginInfo.email, loginInfo.password);
+      console.log(loginInfo.email);
+      setUserData({ ...userData, email: loginInfo.email });
       const sessionToken = generateSessionToken();
       localStorage.setItem('sessionToken', sessionToken);
       localStorage.setItem('date', Date.now());
