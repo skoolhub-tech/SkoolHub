@@ -47,28 +47,42 @@ function Classes() {
 
   return (
     <div>
-      <h1>Classes</h1>
-      <select
-        value={selectedClass}
-        onChange={(e) => handleClassChange(e.target.value)}
-      >
-        <option value="">Select a class</option>
-        {classes.map((classObj) => (
-          <option key={classObj.id} value={classObj.id}>{classObj.name}</option>
-        ))}
-      </select>
-      {students.length > 0 && (
-        <div>
-          <h2>Students</h2>
-          <ul>
-            {students.map((student) => (
-              <li key={student.id}>
-                {student.name}
-                <button type="button" onClick={() => handleStudentClick(student)}>View Grades</button>
-              </li>
+      {!showModal && (
+        <>
+          <h1>Classes</h1>
+          <select
+            value={selectedClass}
+            onChange={(e) => handleClassChange(e.target.value)}
+          >
+            <option value="">Select a class</option>
+            {classes.map((classObj) => (
+              <option key={classObj.id} value={classObj.id}>{classObj.name}</option>
             ))}
-          </ul>
-        </div>
+          </select>
+          {students.length > 0 && (
+            <div>
+              <h2>Students</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Student</th>
+                    <th>View Grades</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {students.map((student) => (
+                    <tr key={student.id}>
+                      <td>{student.name}</td>
+                      <td>
+                        <button type="button" onClick={() => handleStudentClick(student)}>View Grades</button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </>
       )}
       {showModal && selectedStudent && (
         <div>

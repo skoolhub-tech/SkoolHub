@@ -11,6 +11,7 @@ const getStudentClassGrades = require('./getStudentClassGrades');
 const sendAutoEmail = require('./sendAutoEmail');
 const sendPeerEmail = require('./sendPeerEmail');
 const submitAssignment = require('./submitAssignment');
+const getTeachersAndClassesForStudent = require('./getTeachersAndClassesForStudent');
 
 module.exports = {
   getAdmin,
@@ -26,4 +27,5 @@ module.exports = {
   sendAutoEmail,
   sendPeerEmail,
   submitAssignment,
+  getTeachersAndClassesForStudent,
 };
