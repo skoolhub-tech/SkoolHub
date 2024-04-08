@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import AssignStudentClass from './AssignStudentClass';
+import { useUserData } from '../data-providers/UserDataProvider';
 import CreateUser from './CreateUser';
 import CreateClass from './CreateClass';
 
 function Admin() {
+  const { userData } = useUserData();
   const [showUsersModal, setShowUsersModal] = useState(false);
   const [showClassesModal, setShowClassesModal] = useState(false);
 
