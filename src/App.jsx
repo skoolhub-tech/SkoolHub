@@ -7,19 +7,18 @@ import Login from './components/Login';
 import NavBar from './components/NavBar';
 import Task from './components/Task_list/Task';
 import { UserDataProvider } from './components/data-providers/UserDataProvider';
-import Classes from './components/Classes';
+import Classes from './components/Classes/Classes';
 import Admin from './components/Admin/Admin';
+import Email from './components/Email/Email';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
+  const handleLogin = (boolean) => {
+    setIsLoggedIn(boolean);
   };
 
   return (
-
-
     <div className="navbar-container">
       <UserDataProvider>
         <Router>
@@ -28,24 +27,23 @@ function App() {
               {/* <h1>SkoolHub</h1> */}
               <NavBar />
               <Routes>
-                <Route path="/skoolhub/homepage" element={<h1>Homepage</h1>} />
-                <Route path="/skoolhub/assignments" element={<h1>Assignments</h1>} />
-                <Route path="/skoolhub/events" element={<Task />} />
-                <Route path="/skoolhub/classes" element={<Classes />} />
-                <Route path="/skoolhub/emails" element={<h1>Emails</h1>} />
-                <Route path="/skoolhub/admin" element={<Admin />} />
+                <Route path="/homepage" element={<h1>Homepage</h1>} />
+                <Route path="/assignments" element={<h1>Assignments</h1>} />
+                <Route path="/events" element={<Task />} />
+                <Route path="/classes" element={<Classes />} />
+                <Route path="/emails" element={<Email />} />
+                <Route path="/admin" element={<Admin />} />
                 { // redrect if route doesn't match anything
                 }
-                <Route path="*" element={<Navigate to="/skoolhub/homepage" />} />
+                <Route path="*" element={<Navigate to="/homepage" />} />
               </Routes>
             </>
           ) : (
             <div className="login-page">
               <h1 className="login-h1">SkoolHub</h1>
               <p className="login-p">Teaching in. Tedious out.</p>
-              <Login onLogin={handleLogin} />
+              <Login handleLoginEvent={handleLogin} isLoggedIn={isLoggedIn} />
             </div>
-
           )}
         </Router>
       </UserDataProvider>
