@@ -49,10 +49,10 @@ function Classes() {
   };
 
   return (
-    <div>
+    <div className="class-list-container">
       {!showModal && (
         <>
-          <h1>Classes</h1>
+          <h1>Class Name</h1>
           <select
             value={selectedClass}
             onChange={(e) => handleClassChange(e.target.value)}
@@ -63,8 +63,8 @@ function Classes() {
             ))}
           </select>
           {students.length > 0 && (
-            <div>
-              <h2>Students</h2>
+            <div className="table-container">
+              <h2 className="table-header">Students</h2>
               <table>
                 <thead>
                   <tr>
@@ -75,7 +75,7 @@ function Classes() {
                 <tbody>
                   {students.map((student) => (
                     <tr key={student.id}>
-                      <td>{student.name}</td>
+                      <td className="student-name">{student.name}</td>
                       <td>
                         <button type="button" onClick={() => handleStudentClick(student)}>View Grades</button>
                       </td>

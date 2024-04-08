@@ -1,4 +1,27 @@
-
+.class-list-container {
+  background-color: #858D6F;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+.student-name {
+  padding-right: 15rem;
+    background-color: white;
+    border-radius: 5px;
+}
+.table-container {
+  border-radius: 10px;
+  background-color: #DCCCBB;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-top: .1rem;
+}
+.table-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .classes {
   font-family: "Comfortaa", sans-serif;
   font-optical-sizing: auto;
