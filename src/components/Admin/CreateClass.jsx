@@ -12,7 +12,7 @@ function CreateClass({ exitModal }) {
   useEffect(() => {
     axios.get('/skoolhub/teachers')
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setTeachers(response.data);
       })
       .catch((error) => {
@@ -21,7 +21,7 @@ function CreateClass({ exitModal }) {
 
     axios.get('/skoolhub/classes')
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setClasses(response.data);
       })
       .catch((error) => {
