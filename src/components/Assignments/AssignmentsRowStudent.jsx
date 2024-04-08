@@ -5,7 +5,7 @@ import { useUserData } from '../data-providers/UserDataProvider';
 import SubmitAssignmentButton from './SubmitAssignmentButton';
 import ViewSubmittedAssignmentButton from './ViewSubmittedAssignmentButton';
 
-function AssignmentsRow({ assignment }) {
+function AssignmentsRow({ assignment, getClassesAndAssignmentsForStudent }) {
   const { userData: { email } } = useUserData();
 
   function getOrdinalIndicator(day) {
@@ -35,10 +35,13 @@ function AssignmentsRow({ assignment }) {
       <td>{formatDate(assignment.due_date)}</td>
       <td>{assignment.submitted_on ? formatDate(assignment.submitted_on) : ''}</td>
       <td>
-        <SubmitAssignmentButton studentEmail={email} assignmentId={assignment.id} />
+        <SubmitAssignmentButton
+          studentEmail={email}
+          assignmentId={assignment.id}
+          getClassesAndAssignmentsForStudent={getClassesAndAssignmentsForStudent}
+        />
       </td>
       <td>
-        {/* Only render ViewSubmittedAssignmentButton if assignment.submitted_on is not null */}
         {assignment.submitted_on && <ViewSubmittedAssignmentButton />}
       </td>
     </tr>
@@ -54,4 +57,5 @@ AssignmentsRow.propTypes = {
     due_date: PropTypes.string,
     submitted_on: PropTypes.string,
   }).isRequired,
+  getClassesAndAssignmentsForStudent: PropTypes.func.isRequired,
 };
