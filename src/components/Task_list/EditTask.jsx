@@ -19,12 +19,12 @@ function EditTask({ task, closeEditTask }) {
 
   const handleSave = () => {
     // Handle save action here
-    console.log(editedTask);
+    // console.log(editedTask);
   };
 
   const handleDelete = () => {
     // Handle delete action here
-    console.log("Delete task");
+    // console.log("Delete task");
   };
 
   return (
@@ -41,7 +41,7 @@ function EditTask({ task, closeEditTask }) {
             name="title"
             value={editedTask.title}
             onChange={handleChange}
-            disabled={false} // Enable editing
+            disabled={false}
           />
 
           <label htmlFor="start">Start:</label>

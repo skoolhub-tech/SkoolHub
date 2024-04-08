@@ -8,12 +8,14 @@ const getClassesFromEmail = require('./getClassesFromEmail');
 const getRoleAtLogin = require('./getRoleAtLogin');
 const getStudentIdFromEmail = require('./getStudentIdFromEmail');
 const getStudents = require('./getStudents');
+const getSubmittedOnDateForAssignment = require('./getSubmittedOnDateForAssignment');
 const getTeacherClasses = require('./getTeacherClasses');
 const getTeachers = require('./getTeachers');
 const insertUpdateSubmittedAssignment = require('./insertUpdateSubmittedAssignment');
 const login = require('./login');
 const getStudentClassGrades = require('./getStudentClassGrades');
 const getTeachersAndClasses = require('./getTeachersAndClasses');
+const getCalendar = require('./getCalendar');
 const getAllTeachersAndTheirClasses = require('./getAllTeachersAndTheirClasses');
 
 module.exports = {
@@ -27,11 +29,13 @@ module.exports = {
   getRoleAtLogin,
   getStudentIdFromEmail,
   getStudents,
+  getSubmittedOnDateForAssignment,
   getTeacherClasses,
   getTeachers,
   insertUpdateSubmittedAssignment,
   login,
   getStudentClassGrades,
   getTeachersAndClasses,
+  getCalendar,
   getAllTeachersAndTheirClasses,
 };

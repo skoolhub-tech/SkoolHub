@@ -4,7 +4,7 @@ const createClient = require('../database/db');
 module.exports = async (classId) => {
   const client = createClient();
   try {
-    const query = `SELECT name, id
+    const query = `SELECT *
     FROM assignments
     WHERE class_id = $1`;
     const values = [classId];
@@ -12,7 +12,7 @@ module.exports = async (classId) => {
     const { rows } = await client.query(query, values);
     return rows;
   } catch (err) {
-    console.error(`error getting assignment due date: ${err}`);
+    console.error(`error getting assignments: ${err}`);
     throw err;
   } finally {
     await client.end();

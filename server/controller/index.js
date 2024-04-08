@@ -13,6 +13,7 @@ const sendPeerEmail = require('./sendPeerEmail');
 const submitAssignment = require('./submitAssignment');
 const getTeachersAndClassesForStudent = require('./getTeachersAndClassesForStudent');
 const getAllTeachersAndTheirClasses = require('./getAllTeachersAndTheirClasses');
+const getCalendar = require('./getCalendar');
 
 module.exports = {
   getAdmin,
@@ -30,4 +31,5 @@ module.exports = {
   submitAssignment,
   getTeachersAndClassesForStudent,
   getAllTeachersAndTheirClasses,
+  getCalendar,
 };
