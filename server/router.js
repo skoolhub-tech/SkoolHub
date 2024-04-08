@@ -15,10 +15,12 @@ router.get('/classes/:classId/students', controller.getClassStudents);
 router.get('/classes/:teacherEmail', controller.getTeacherClasses);
 router.get('/classesAndAssignments/students', controller.getClassesAndAssignmentsForStudent);
 router.get('/login', controller.login);
-router.get('/login/role', controller.getRoleAtLogin);
+router.get('/login/role/:email', controller.getRoleAtLogin);
 router.get('/students', controller.getStudents);
 router.get('/classes/:classId/students/:studentId/grades', controller.getStudentClassGrades);
 router.get('/teachers', controller.getTeachers);
+router.get('/teachersclasses/:id', controller.getTeachersAndClassesForStudent);
+
 // router.get('/teachers/assignments/:teacherId', controller.getTeacherAssignments);
 // router.get('/teachers/calendar/:teacherId', controller.getTeacherCalendar);
 // router.get('/students/assignments/:studentId', controller.getStudentAssignments);
