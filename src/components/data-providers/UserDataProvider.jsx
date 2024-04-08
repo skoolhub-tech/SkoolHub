@@ -13,7 +13,7 @@ const {
 // Data provider component
 export function UserDataProvider({ children }) {
   const [userData, setUserData] = useState({
-    role: null,
+    role: 3,
     name: null,
     email: null,
     id: null,
