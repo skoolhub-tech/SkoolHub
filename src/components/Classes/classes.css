@@ -1,4 +1,4 @@
-.class-list-container {
+.classes {
   background-color: #858D6F;
   border-radius: 10px;
   padding: 20px;
@@ -9,7 +9,7 @@
     background-color: white;
     border-radius: 5px;
 }
-.table-container {
+.selected-class {
   border-radius: 10px;
   background-color: #DCCCBB;
   padding-left: 1rem;
@@ -17,7 +17,7 @@
   padding-bottom: 1rem;
   padding-top: .1rem;
 }
-.table-header {
+.selected-class-header {
   display: flex;
   flex-direction: row;
   justify-content: center;

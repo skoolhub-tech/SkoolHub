@@ -49,43 +49,33 @@ function Classes() {
   };
 
   return (
-    <div className="class-list-container">
-      {!showModal && (
-        <>
-          <h1>Class Name</h1>
-          <select
-            value={selectedClass}
-            onChange={(e) => handleClassChange(e.target.value)}
-          >
-            <option value="">Select a class</option>
-            {classes.map((classObj) => (
-              <option key={classObj.id} value={classObj.id}>{classObj.name}</option>
-            ))}
-          </select>
-          {students.length > 0 && (
-            <div className="table-container">
-              <h2 className="table-header">Students</h2>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Student</th>
-                    <th>View Grades</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {students.map((student) => (
-                    <tr key={student.id}>
-                      <td className="student-name">{student.name}</td>
-                      <td>
-                        <button type="button" onClick={() => handleStudentClick(student)}>View Grades</button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+    <div className="classes">
+      <div className="class-header">
+        <h1>Classes</h1>
+      </div>
+      <div className="class-dropdown">
+        <select
+          value={selectedClass}
+          onChange={(e) => handleClassChange(
+            e.target.value,
+            e.target.options[e.target.selectedIndex].text,
           )}
-        </>
+        >
+          <option value="">Select a class</option>
+          {classes.map((classObj) => (
+            <option key={classObj.id} value={classObj.id}>{classObj.name}</option>
+          ))}
+        </select>
+      </div>
+      {students.length > 0 && (
+      <div className="selected-class">
+        <div>
+          <h2 className="selected-class-header">{selectedClassName}</h2>
+        </div>
+        <div className="student-table">
+          <StudentTable students={students} handleStudentClick={handleStudentClick} />
+        </div>
+      </div>
       )}
       {showModal && selectedStudent && (
         <div className="modal-backdrop">
