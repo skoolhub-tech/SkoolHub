@@ -56,7 +56,7 @@ function TaskCalendar() {
         events={events}
         selectable={true}
         onSelectEvent={handleSelectEvent}
-        onSelectSlot={handleSelectSlot}
+        onSelectSlot={handleSelectEvent}
       />
       {editTask && <EditTask task={selectedTask} closeEditTask={closeEditTask} />}
     </div>

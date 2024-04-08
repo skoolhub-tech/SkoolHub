@@ -14,10 +14,6 @@
     background-color: #e8e8e8;
   }
 
-  .rbc-time-view .rbc-time-header-gutter {
-    width: 80px !important; /* or whatever width you want */
-    min-width: 80px !important;
-  }
 
   .rbc-event:hover {
     background-color: #875D3B;
@@ -139,6 +135,10 @@
       -webkit-box-direction: normal;
           -ms-flex-direction: row;
               flex-direction: row;
+    }
+
+    .navbar-container .rbc-calendar {
+      transform: scale(0.8);
     }
 
     .rbc-month-view {
