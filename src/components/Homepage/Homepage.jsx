@@ -20,15 +20,21 @@ function Homepage() {
         Message: 'Error retrieving classes.',
         Error: error,
       }));
-    // get calendar
+
     axios.get(`/skoolhub/calendar/${role}/${id}`)
       .then((response) => setTasks(response.data))
+      .catch((error) => console.error({
+        Message: 'Error retrieving calendar.',
+        Error: error,
+      }));
+
+    axios.get(`/skoolhub/assignments/current/${role}/${id}`)
+      .then((response) => setAssignments(response.data))
       .catch((error) => console.error({
         Message: 'Error retrieving assignments.',
         Error: error,
       }));
-    // get assignments
-  }, []);
+  }, [userData]);
 
   return (
     <div>
