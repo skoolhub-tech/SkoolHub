@@ -116,7 +116,7 @@ function NavBar({handleLogOut}) {
   return (
     <div>
       {roleView()}
-      <button type="button" onClick={handleLogOut}>Log out</button>
+      <button className="log-out-bttn" type="button" onClick={handleLogOut}>Log out</button>
     </div>
   );
 }

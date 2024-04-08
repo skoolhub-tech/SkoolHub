@@ -61,7 +61,7 @@ function App() {
 
 function HomepageWithTaskCheck() {
   const { userData } = useUserData();
-  return userData.role === 1 ? <Task /> : <h1>Homepage</h1>;
+  return userData.role === 1 ? <Task /> : <Homepage />;
 }
 
 function RoleBasedRoute({ roles, component }) {
