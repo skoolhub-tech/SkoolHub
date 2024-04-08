@@ -9,7 +9,7 @@ function Task() {
         Events & Tasks
       </h1>
       <div className="calendar-container">
-        <TaskCalendar defaultView="agenda" views={['month', 'week', 'day', 'agenda']} />
+        <TaskCalendar defaultView="month" views={['month', 'week', 'day', 'agenda']} />
       </div>
     </div>
   );
