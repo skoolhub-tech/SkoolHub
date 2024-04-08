@@ -36,7 +36,6 @@ function Login({ handleLoginEvent }) {
   const handleLogout = () => {
     localStorage.removeItem('sessionToken');
     localStorage.removeItem('email');
-    localStorage.removeItem('loggedIn');
     localStorage.removeItem('date');
     handleLoginEvent(false);
     setLoginInfo({
@@ -140,7 +139,7 @@ function Login({ handleLoginEvent }) {
           <label htmlFor="code">Code</label>
           <input
             name="enteredCode"
-            type="text"
+            type="password"
             id="code"
             value={loginInfo.enteredCode}
             onChange={handleChange}
@@ -162,7 +161,7 @@ function Login({ handleLoginEvent }) {
         <label htmlFor="password">Password</label>
         <input
           name="password"
-          type="text"
+          type="password"
           id="password"
           value={loginInfo.password}
           onChange={(e) => setLoginInfo({ ...loginInfo, password: e.target.value })}

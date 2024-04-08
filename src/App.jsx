@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './styles.css';
-import {
-  BrowserRouter as Router, Route, Routes, Navigate,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Login from './components/Login';
 import NavBar from './components/NavBar';
 import Task from './components/Task_list/Task';
@@ -13,13 +11,6 @@ import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
 import Homepage from './components/Homepage/Homepage';
 
-function HomepageWithTaskCheck() {
-  const { userData } = useUserData();
-
-  return userData.role === 1 ? <Task /> : <h1>Homepage</h1>;
-}
-
-
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -27,23 +18,29 @@ function App() {
     setIsLoggedIn(boolean);
   };
 
+  const handleLogOut = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem('sessionToken');
+    localStorage.removeItem('email');
+    localStorage.removeItem('date');
+    localStorage.removeItem('role');
+    localStorage.removeItem('id');
+  };
+
   return (
     <div className="navbar-container">
-      <UserDataProvider>
-        <Router>
+      <Router>
+        <UserDataProvider>
           {isLoggedIn ? (
             <>
-              {/* <h1>SkoolHub</h1> */}
-              <NavBar />
+              <NavBar handleLogOut={handleLogOut} />
               <Routes>
-                <Route path="/homepage" element={(<HomepageWithTaskCheck />)} />
-                <Route path="/assignments" element={<h1>Assignments</h1>} />
+                <Route path="/homepage" element={<HomepageWithTaskCheck />} />
+                <Route path="/assignments" element={<RoleBasedRoute roles={[2, 3]} component={<Assignments />} />} />
                 <Route path="/events" element={<Task />} />
-                <Route path="/classes" element={<Classes />} />
+                <Route path="/classes" element={<RoleBasedRoute roles={[2]} component={<Classes />} />} />
                 <Route path="/emails" element={<Email />} />
-                <Route path="/admin" element={<Admin />} />
-                { // redrect if route doesn't match anything
-                }
+                <Route path="/admin" element={<RoleBasedRoute roles={[1]} component={<Admin />} />} />
                 <Route path="*" element={<Navigate to="/homepage" />} />
               </Routes>
             </>
@@ -54,10 +51,20 @@ function App() {
               <Login handleLoginEvent={handleLogin} isLoggedIn={isLoggedIn} />
             </div>
           )}
-        </Router>
-      </UserDataProvider>
+        </UserDataProvider>
+      </Router>
     </div>
   );
+}
+
+function HomepageWithTaskCheck() {
+  const { userData } = useUserData();
+  return userData.role === 1 ? <Task /> : <h1>Homepage</h1>;
+}
+
+function RoleBasedRoute({ roles, component }) {
+  const { userData } = useUserData();
+  return roles.includes(userData.role) ? component : <Navigate to="/homepage" />;
 }
 
 export default App;
