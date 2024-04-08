@@ -29,7 +29,6 @@ function TaskCalendar() {
   const [selectedTask, setSelectedTask] = useState({});
 
   const handleSelectEvent = (event) => {
-    console.log(event);
     setSelectedTask(event);
     setEditTask(true);
   };

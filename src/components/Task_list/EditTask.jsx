@@ -31,7 +31,8 @@ function EditTask({ task, closeEditTask }) {
     <div className="modal">
       {/* Modal */}
       <div className="modal-content">
-        <button type="button" className="exit-button" onClick={closeEditTask}>Exit</button>
+        <button type="button" className="exit-button" onClick={closeEditTask}>Cancel</button>
+        <h2 className="edit-task">Edit Task</h2>
         <div className="floating-form">
           <label htmlFor="title">Title:</label>
           <input
@@ -74,4 +75,3 @@ function EditTask({ task, closeEditTask }) {
 }
 
 export default EditTask;
-
