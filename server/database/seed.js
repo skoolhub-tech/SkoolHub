@@ -56,6 +56,10 @@ const assignmentData = [
   { name: 'Science Assignment 1', class_id: 2, due_date: '2024-04-15' },
   { name: 'History Assignment 1', class_id: 3, due_date: '2024-04-15' },
   { name: 'English Assignment 1', class_id: 4, due_date: '2024-04-15' },
+  { name: 'Math Assignment 2', class_id: 1, due_date: '2024-04-15' },
+  { name: 'Science Assignment 2', class_id: 2, due_date: '2024-04-15' },
+  { name: 'History Assignment 2', class_id: 3, due_date: '2024-04-15' },
+  { name: 'English Assignment 2', class_id: 4, due_date: '2024-04-15' },
 ];
 
 const teacherAssignmentData = [
@@ -100,94 +104,94 @@ const classesStudentsData = [
 
 const studentsAssignmentsData = [
   {
-    student_id: 1, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true,
+    student_id: 1, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 2, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true,
+    student_id: 2, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 3, assignment_id: 3, score: 70, total_points: 100, grade: 'C', completed: true,
+    student_id: 3, assignment_id: 3, score: 70, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 4, assignment_id: 4, score: 0, total_points: 100, grade: 'F', completed: false,
+    student_id: 4, assignment_id: 4, score: 0, total_points: 100, grade: 'F', completed: false, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 5, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true,
+    student_id: 5, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 6, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true,
+    student_id: 6, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 7, assignment_id: 3, score: 100, total_points: 100, grade: 'A', completed: true,
+    student_id: 7, assignment_id: 3, score: 100, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 8, assignment_id: 4, score: 87, total_points: 100, grade: 'B', completed: true,
+    student_id: 8, assignment_id: 4, score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 9, assignment_id: 1, score: 70, total_points: 100, grade: 'C', completed: true,
+    student_id: 9, assignment_id: 1, score: 70, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 10, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true,
+    student_id: 10, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 11, assignment_id: 3, score: 65, total_points: 100, grade: 'D', completed: true,
+    student_id: 11, assignment_id: 3, score: 65, total_points: 100, grade: 'D', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 12, assignment_id: 4, score: 47, total_points: 100, grade: 'F', completed: true,
+    student_id: 12, assignment_id: 4, score: 47, total_points: 100, grade: 'F', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 13, assignment_id: 1, score: 85, total_points: 100, grade: 'B', completed: true,
+    student_id: 13, assignment_id: 1, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 14, assignment_id: 2, score: 86, total_points: 100, grade: 'B', completed: true,
+    student_id: 14, assignment_id: 2, score: 86, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 15, assignment_id: 3, score: 0, total_points: 100, grade: 'F', completed: false,
+    student_id: 15, assignment_id: 3, score: 0, total_points: 100, grade: 'F', completed: false, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 16, assignment_id: 4, score: 87, total_points: 100, grade: 'B', completed: true,
+    student_id: 16, assignment_id: 4, score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 17, assignment_id: 1, score: 91, total_points: 100, grade: 'A', completed: true,
+    student_id: 17, assignment_id: 1, score: 91, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 18, assignment_id: 2, score: 82, total_points: 100, grade: 'B', completed: true,
+    student_id: 18, assignment_id: 2, score: 82, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 19, assignment_id: 3, score: 76, total_points: 100, grade: 'C', completed: true,
+    student_id: 19, assignment_id: 3, score: 76, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 20, assignment_id: 4, score: 0, total_points: 100, grade: 'F', completed: false,
+    student_id: 20, assignment_id: 4, score: 0, total_points: 100, grade: 'F', completed: false, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 21, assignment_id: 1, score: 97, total_points: 100, grade: 'A', completed: true,
+    student_id: 21, assignment_id: 1, score: 97, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 22, assignment_id: 2, score: 84, total_points: 100, grade: 'B', completed: true,
+    student_id: 22, assignment_id: 2, score: 84, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 23, assignment_id: 3, score: 0, total_points: 100, grade: 'F', completed: false,
+    student_id: 23, assignment_id: 3, score: 0, total_points: 100, grade: 'F', completed: false, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 24, assignment_id: 4, score: 84, total_points: 100, grade: 'B', completed: true,
+    student_id: 24, assignment_id: 4, score: 84, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 25, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true,
+    student_id: 25, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 26, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true,
+    student_id: 26, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 27, assignment_id: 3, score: 70, total_points: 100, grade: 'C', completed: true,
+    student_id: 27, assignment_id: 3, score: 70, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 28, assignment_id: 4, score: 0, total_points: 100, grade: 'F', completed: false,
+    student_id: 28, assignment_id: 4, score: 0, total_points: 100, grade: 'F', completed: false, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 29, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true,
+    student_id: 29, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 30, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true,
+    student_id: 30, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
 ];
 
@@ -312,7 +316,7 @@ async function seed() {
 
     studentsAssignmentsData.forEach(async (studentAssignment) => {
       await client.query(`
-        INSERT INTO students_assignments (student_id, assignment_id, file_path, score, total_points, grade, completed) VALUES (${studentAssignment.student_id}, ${studentAssignment.assignment_id}, 'placeholder', ${studentAssignment.score}, ${studentAssignment.total_points}, '${studentAssignment.grade}', ${studentAssignment.completed});
+        INSERT INTO students_assignments (student_id, assignment_id, file_path, submitted_on, score, total_points, grade, completed) VALUES (${studentAssignment.student_id}, ${studentAssignment.assignment_id}, 'placeholder', '${studentAssignment.submitted_on}', ${studentAssignment.score}, ${studentAssignment.total_points}, '${studentAssignment.grade}', ${studentAssignment.completed});
       `);
     });
 

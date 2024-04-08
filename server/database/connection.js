@@ -81,6 +81,7 @@ const createTableQuery = `
     student_id INT NOT NULL,
     assignment_id INT NOT NULL,
     file_path VARCHAR(255) NOT NULL,
+    submitted_on TIMESTAMP NOT NULL,
     score INT,
     total_points INT,
     grade VARCHAR(255),

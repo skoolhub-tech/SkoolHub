@@ -9,9 +9,10 @@ import Task from './components/Task_list/Task';
 import { UserDataProvider } from './components/data-providers/UserDataProvider';
 import Classes from './components/Classes';
 import Admin from './components/Admin/Admin';
+import Assignments from './components/Assignments/Assignments';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const handleLoginEvent = (boolean) => {
     setIsLoggedIn(boolean);
@@ -27,7 +28,7 @@ function App() {
               <NavBar />
               <Routes>
                 <Route path="/skoolhub/homepage" element={<h1>Homepage</h1>} />
-                <Route path="/skoolhub/assignments" element={<h1>Assignments</h1>} />
+                <Route path="/skoolhub/assignments" element={<Assignments />} />
                 <Route path="/skoolhub/events" element={<Task />} />
                 <Route path="/skoolhub/classes" element={<Classes />} />
                 <Route path="/skoolhub/emails" element={<h1>Emails</h1>} />
