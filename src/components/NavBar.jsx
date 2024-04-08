@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useUserData } from './data-providers/UserDataProvider';
 
-function NavBar() {
+function NavBar({handleLogOut}) {
   const { userData } = useUserData();
   const navigate = useNavigate();
   const location = useLocation();
@@ -114,9 +114,10 @@ function NavBar() {
   };
 
   return (
-    <>
+    <div>
       {roleView()}
-    </>
+      <button className="log-out-bttn" type="button" onClick={handleLogOut}>Log out</button>
+    </div>
   );
 }
 
