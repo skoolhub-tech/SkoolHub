@@ -1,11 +1,15 @@
 /* eslint-disable no-console */
 const createClient = require('../database/db');
 
-module.exports = async (email, password) => {
+module.exports = async (email) => {
   const client = createClient();
   try {
-    const query = 'SELECT role_id FROM credentials WHERE email = $1 AND password = $2';
-    const values = [email, password];
+    const query = `SELECT id, name, role_id FROM students WHERE email = $1
+    UNION
+    SELECT id, name, role_id FROM teachers WHERE email = $1
+    UNION
+    SELECT id, name, role_id FROM admin WHERE email = $1;`;
+    const values = [email];
     await client.connect();
     const { rows } = await client.query(query, values);
     return rows;

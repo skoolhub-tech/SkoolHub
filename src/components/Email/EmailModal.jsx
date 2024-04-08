@@ -6,7 +6,7 @@ function EmailModal({
 }) {
   // update Subject and line of email, send email on submit
   return (
-    <form onSubmit={email}>
+    <form onSubmit={email} className="emailModal">
       <button type="button" onClick={() => setEmailModal(false)}>Close</button>
       <label htmlFor="subject">
         Subject:
