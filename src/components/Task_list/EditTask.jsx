@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './editForm.css';
+import moment from 'moment';
 
 function EditTask({ task, closeEditTask }) {
   const [editedTask, setEditedTask] = useState({
     ...task,
-    start: task.start.toISOString().substring(0, 16),
-    end: task.end.toISOString().substring(0, 16),
+    start: task.start,
+    end: task.end,
   });
 
   const handleChange = (e) => {
@@ -16,18 +17,23 @@ function EditTask({ task, closeEditTask }) {
     }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission here
+  const handleSave = () => {
+    // Handle save action here
     console.log(editedTask);
+  };
+
+  const handleDelete = () => {
+    // Handle delete action here
+    console.log("Delete task");
   };
 
   return (
     <div className="modal">
       {/* Modal */}
       <div className="modal-content">
-        <button type="button" className="exit-button" onClick={closeEditTask}>Exit</button>
-        <form className="floating-form" onSubmit={handleSubmit}>
+        <button type="button" className="exit-button" onClick={closeEditTask}>Cancel</button>
+        <h2 className="edit-task">Edit Task</h2>
+        <div className="floating-form">
           <label htmlFor="title">Title:</label>
           <input
             type="text"
@@ -44,7 +50,7 @@ function EditTask({ task, closeEditTask }) {
             type="datetime-local"
             id="start"
             name="start"
-            value={editedTask.start}
+            value={moment(editedTask.start).format('YYYY-MM-DDTHH:mm')}
             onChange={handleChange}
             disabled={false}
           />
@@ -55,16 +61,17 @@ function EditTask({ task, closeEditTask }) {
             type="datetime-local"
             id="end"
             name="end"
-            value={editedTask.end}
+            value={moment(editedTask.end).format('YYYY-MM-DDTHH:mm')}
             onChange={handleChange}
             disabled={false}
           />
 
-          <button type="submit">Save</button>
-        </form>
+          <button type="button" onClick={handleSave}>Save</button>
+          <button className="delete" type="button" onClick={handleDelete}>Delete</button>
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default EditTask;
