@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useUserData } from '../data-providers/UserDataProvider';
 import StudentGradesModal from './StudentGradesModal';
+import StudentTable from './StudentTable';
 import './classes.css';
 
 function Classes() {
@@ -49,54 +50,43 @@ function Classes() {
 
   return (
     <div className="classes">
-      {!showModal && (
-        <>
-          <h1>Classes</h1>
-          <select
-            value={selectedClass}
-            onChange={(e) => handleClassChange(
-              e.target.value,
-              e.target.options[e.target.selectedIndex].text,
-            )}
-          >
-            <option value="">Select a class</option>
-            {classes.map((classObj) => (
-              <option key={classObj.id} value={classObj.id}>{classObj.name}</option>
-            ))}
-          </select>
-          {students.length > 0 && (
-            <div>
-              <h2>{selectedClassName}</h2>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Student</th>
-                    <th>View Grades</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {students.map((student) => (
-                    <tr key={student.id}>
-                      <td>{student.name}</td>
-                      <td>
-                        <button type="button" onClick={() => handleStudentClick(student)}>View Grades</button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+      <div className="class-header">
+        <h1>Classes</h1>
+      </div>
+      <div className="class-dropdown">
+        <select
+          value={selectedClass}
+          onChange={(e) => handleClassChange(
+            e.target.value,
+            e.target.options[e.target.selectedIndex].text,
           )}
-        </>
+        >
+          <option value="">Select a class</option>
+          {classes.map((classObj) => (
+            <option key={classObj.id} value={classObj.id}>{classObj.name}</option>
+          ))}
+        </select>
+      </div>
+      {students.length > 0 && (
+      <>
+        <div className="selected-class-header">
+          <h2>{selectedClassName}</h2>
+        </div>
+        <div className="student-table">
+          <StudentTable students={students} handleStudentClick={handleStudentClick} />
+        </div>
+      </>
       )}
       {showModal && selectedStudent && (
-        <div>
-          <StudentGradesModal
-            studentName={selectedStudent.name}
-            studentId={selectedStudent.id}
-            classId={selectedClass}
-            onClose={() => setShowModal(false)}
-          />
+        <div className="modal-backdrop">
+          <div className="modal-content">
+            <StudentGradesModal
+              studentName={selectedStudent.name}
+              studentId={selectedStudent.id}
+              classId={selectedClass}
+              onClose={() => setShowModal(false)}
+            />
+          </div>
         </div>
       )}
     </div>
