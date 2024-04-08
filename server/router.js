@@ -21,7 +21,7 @@ router.get('/classes/:classId/students/:studentId/grades', controller.getStudent
 router.get('/teachers', controller.getTeachers);
 router.get('/teachersclasses/:id', controller.getTeachersAndClassesForStudent);
 router.get('/calendar/:role/:id', controller.getCalendar);
-
+router.get('/teachersclasses', controller.getAllTeachersAndTheirClasses);
 // router.get('/teachers/assignments/:teacherId', controller.getTeacherAssignments);
 // router.get('/teachers/calendar/:teacherId', controller.getTeacherCalendar);
 // router.get('/students/assignments/:studentId', controller.getStudentAssignments);

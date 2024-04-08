@@ -34,12 +34,14 @@ function PersonEmailCard({
   return (
     <div className="personEmailCard">
       <label htmlFor={`checkbox-${person.email}`}>
-        {person.name}
+        <h3>{person.name}</h3>
+        <p>{Array.isArray(person.class) ? person.class.join(', ') : person.class}</p>
         <input
           type="checkbox"
           id={`checkbox-${person.email}`}
           checked={isChecked}
           onChange={handleCheckboxChange}
+          className="emailCheckbox"
         />
       </label>
     </div>
