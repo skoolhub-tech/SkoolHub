@@ -14,7 +14,7 @@ import Email from './components/Email/Email';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLoginEvent = (boolean) => {
+  const handleLogin = (boolean) => {
     setIsLoggedIn(boolean);
   };
 
@@ -42,7 +42,7 @@ function App() {
             <div className="login-page">
               <h1 className="login-h1">SkoolHub</h1>
               <p className="login-p">Teaching in. Tedious out.</p>
-              <Login handleLoginEvent={handleLoginEvent} isLoggedIn={isLoggedIn} />
+              <Login handleLoginEvent={handleLogin} isLoggedIn={isLoggedIn} />
             </div>
           )}
         </Router>
