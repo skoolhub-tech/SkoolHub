@@ -1,35 +1,26 @@
+/* eslint-disable new-cap */
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { jsPDF } from 'jspdf';
 import axios from 'axios';
 
-function SubmitAssignmentModal({ setSubmitAssignmentModalIsOpen }) {
+function SubmitAssignmentModal({ setSubmitAssignmentModalIsOpen, studentEmail, assignmentId }) {
   const handleFileSubmit = async (file) => {
     const formData = new FormData();
 
-    const submitToServer = (data) => {
-      // INCOMPLETE SECTION!!! COMPLETE AFTER SERVER ENDPOINT/CONTROLLER HAS BEEN BUILT
-      //
-      //
-      // Function to submit the FormData to the server using Axios
-      //
-      // CONSOLE LOG FOR TESTING --- REMOVE BEFORE DEPLOYMENT
-      for (let [key, value] of data.entries()) {
-        console.log(key, value);
-      }
-      // axios.post('YOUR_SERVER_ENDPOINT', data, {
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data',
-      //   },
-      // }).then((response) => {
-      //   console.log('Success:', response);
-      // }).catch((error) => {
-      //   console.error('Error:', error);
-      // });
-      //
-      //
-      // INCOMPLETE SECTION!!! COMPLETE AFTER SERVER ENDPOINT/CONTROLLER HAS BEEN BUILT
+    const submitToServer = (fileData) => { // Use formData directly
+      axios.post(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/submitassignment`, fileData) // Removed the headers object
+        .then((response) => {
+          console.log('Success:', response);
+        }).catch((error) => {
+          console.error('Error:', error);
+        });
     };
+
+    // Preparing formData
+    formData.append('studentEmail', studentEmail);
+    formData.append('assignmentId', assignmentId.toString()); // Ensure assignmentId is a string
 
     if (file.type === 'application/pdf') {
       formData.append('file', file, file.name);
@@ -37,7 +28,7 @@ function SubmitAssignmentModal({ setSubmitAssignmentModalIsOpen }) {
     } else if (file.type.includes('image')) {
       const pdf = new jsPDF();
       const reader = new FileReader();
-      reader.onload = function (e) {
+      reader.onload = (e) => {
         const imgData = e.target.result;
         pdf.addImage(imgData, 'PNG', 0, 0);
         const pdfBlob = pdf.output('blob');
@@ -54,6 +45,7 @@ function SubmitAssignmentModal({ setSubmitAssignmentModalIsOpen }) {
     event.preventDefault();
     const file = event.target.file.files[0];
     handleFileSubmit(file);
+    setSubmitAssignmentModalIsOpen(false);
   };
 
   return (
@@ -71,4 +63,6 @@ export default SubmitAssignmentModal;
 
 SubmitAssignmentModal.propTypes = {
   setSubmitAssignmentModalIsOpen: PropTypes.func.isRequired,
+  studentEmail: PropTypes.string.isRequired,
+  assignmentId: PropTypes.number.isRequired,
 };

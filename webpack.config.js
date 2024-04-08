@@ -52,6 +52,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.css'],
     modules: [
       'node_modules',
+      '/src/tests',
       path.resolve(__dirname, 'src/tests'),
     ],
   },
