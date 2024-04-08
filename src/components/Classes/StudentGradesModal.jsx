@@ -58,7 +58,7 @@ function StudentGradesModal({
         </h2>
         <button type="button" onClick={onClose}>Close</button>
       </div>
-      <div style={{ width: '300px', height: '300px' }}>
+      <div className="grade-chart" style={{ width: '300px', height: '300px' }}>
         <canvas ref={chartRef} />
       </div>
     </div>
