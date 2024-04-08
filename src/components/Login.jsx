@@ -74,7 +74,10 @@ function Login({ handleLoginEvent }) {
         handleLogout();
       } else {
         handleLoginEvent(true);
-        setUserData({ ...userData, email: loginInfo.email });
+        setUserData({
+          ...userData,
+          email: localStorage.getItem('email'),
+        });
       }
     }
   }, []);
@@ -112,7 +115,6 @@ function Login({ handleLoginEvent }) {
     e.preventDefault();
     if (loginInfo.code === loginInfo.enteredCode) {
       handleLoginEvent(true);
-      console.log(loginInfo.email);
       setUserData({ ...userData, email: loginInfo.email });
       const sessionToken = generateSessionToken();
       localStorage.setItem('sessionToken', sessionToken);
