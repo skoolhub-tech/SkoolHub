@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
@@ -13,17 +15,17 @@ function StudentGradesModal({
   useEffect(() => {
     axios.get(`/skoolhub/classes/${classId}/students/${studentId}/grades`)
       .then((response) => {
-        console.log(response.data);
+        const studentGrades = response.data;
         setGrades(response.data);
         // Create chart after grades are fetched and set
         const ctx = chartRef.current.getContext('2d');
         const chart = new Chart(ctx, {
           type: 'line',
           data: {
-            labels: response.data.map((grade) => grade.assignment_id),
+            labels: studentGrades.map((grade) => grade.assignment_id),
             datasets: [{
               label: 'Grades',
-              data: response.data.map((grade) => grade.score),
+              data: studentGrades.map((grade) => grade.score),
               backgroundColor: 'rgba(75, 192, 192, 0.2)',
               borderColor: 'rgba(75, 192, 192, 1)',
               borderWidth: 3,
@@ -52,6 +54,7 @@ function StudentGradesModal({
           Grades for
           {' '}
           {studentName}
+          :
         </h2>
         <button type="button" onClick={onClose}>Close</button>
       </div>

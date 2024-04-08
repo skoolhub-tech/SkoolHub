@@ -3,11 +3,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useUserData } from '../data-providers/UserDataProvider';
 import StudentGradesModal from './StudentGradesModal';
+import './classes.css';
 
 function Classes() {
   const { userData } = useUserData();
   const [classes, setClasses] = useState([]);
   const [selectedClass, setSelectedClass] = useState('');
+  const [selectedClassName, setSelectedClassName] = useState('');
   const [students, setStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -23,7 +25,8 @@ function Classes() {
       });
   }, []);
 
-  const handleClassChange = (classId) => {
+  const handleClassChange = (classId, className) => {
+    setSelectedClassName(className);
     setSelectedClass(classId);
     if (!classId) {
       setStudents([]);
@@ -31,7 +34,6 @@ function Classes() {
     }
     axios.get(`/skoolhub/classes/${classId}/students`)
       .then((response) => {
-        console.log(response.data);
         setStudents(response.data);
       })
       .catch((error) => {
@@ -46,13 +48,16 @@ function Classes() {
   };
 
   return (
-    <div>
+    <div className="classes">
       {!showModal && (
         <>
           <h1>Classes</h1>
           <select
             value={selectedClass}
-            onChange={(e) => handleClassChange(e.target.value)}
+            onChange={(e) => handleClassChange(
+              e.target.value,
+              e.target.options[e.target.selectedIndex].text,
+            )}
           >
             <option value="">Select a class</option>
             {classes.map((classObj) => (
@@ -61,7 +66,7 @@ function Classes() {
           </select>
           {students.length > 0 && (
             <div>
-              <h2>Students</h2>
+              <h2>{selectedClassName}</h2>
               <table>
                 <thead>
                   <tr>
