@@ -7,11 +7,11 @@ function AddStudent({ closeModal, studentsInClass }) {
   useEffect(() => {
     axios.get('/skoolhub/students')
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setStudents(response.data);
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
   }, []);
 

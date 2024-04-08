@@ -12,7 +12,7 @@ function AssignStudentClass() {
   useEffect(() => {
     axios.get('/skoolhub/classes')
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setClasses(response.data);
       })
       .catch((error) => {
@@ -28,7 +28,7 @@ function AssignStudentClass() {
     }
     axios.get(`/skoolhub/classes/${classId}/students`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setStudents(response.data);
       })
       .catch((error) => {
