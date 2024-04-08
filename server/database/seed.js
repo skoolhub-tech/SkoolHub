@@ -289,7 +289,7 @@ const studentsAssignmentsData = [
     student_id: 30, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 30, assignment_id: 6, score: 95, total_points: 100, grade: 'A', completed: true,
+    student_id: 30, assignment_id: 6, score: 95, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
 ];
 
