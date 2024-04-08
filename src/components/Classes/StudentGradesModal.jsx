@@ -26,8 +26,8 @@ function StudentGradesModal({
             datasets: [{
               label: 'Grades',
               data: studentGrades.map((grade) => grade.score),
-              backgroundColor: 'rgba(75, 192, 192, 0.2)',
-              borderColor: 'rgba(75, 192, 192, 1)',
+              backgroundColor: 'rgba(135, 93, 59, 0.2)',
+              borderColor: 'rgba(135, 93, 59, 1)',
               borderWidth: 3,
             }],
           },
@@ -49,13 +49,15 @@ function StudentGradesModal({
 
   return (
     <div>
-      <div>
+      <div className="modal-header">
         <h2>
           Grades for
           {' '}
           {studentName}
           :
         </h2>
+      </div>
+      <div className="modal-btn">
         <button type="button" onClick={onClose}>Close</button>
       </div>
       <div className="grade-chart" style={{ width: '300px', height: '300px' }}>
