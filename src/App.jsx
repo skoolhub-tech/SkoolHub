@@ -10,7 +10,7 @@ import { UserDataProvider } from './components/data-providers/UserDataProvider';
 import Classes from './components/Classes';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
@@ -38,8 +38,10 @@ function App() {
             </>
           ) : (
             <div className="login-page">
-              <h1 className="login-h1">SkoolHub</h1>
-              <p className="login-p">Teaching in. Tedious out.</p>
+              <div>
+                <h1 className="login-h1">SkoolHub</h1>
+                <p className="login-p">Teaching in. Tedious out.</p>
+              </div>
               <Login onLogin={handleLogin} />
             </div>
 
