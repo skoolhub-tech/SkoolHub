@@ -13,7 +13,7 @@ import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = (boolean) => {
     setIsLoggedIn(boolean);
