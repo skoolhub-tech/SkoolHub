@@ -27,7 +27,6 @@ function EmailTeachersView() {
   useEffect(() => {
     axios.get(`/skoolhub/classes/${userData.email}`)
       .then((response) => {
-        console.log(response.data);
         setClasses(response.data);
       })
       .catch((error) => {
@@ -61,7 +60,6 @@ function EmailTeachersView() {
       setEmailModal(false);
     } */
   };
-
   // get students in class set state to list of student Objects
   const handleClassChange = (classObj) => {
     setRecieverEmailList({});
@@ -69,7 +67,7 @@ function EmailTeachersView() {
       setCurrentClass({ name: 'Faculty' });
       Promise.all([
         axios.get('/skoolhub/admin'),
-        axios.get('/skoolhub/teachers'),
+        axios.get('/skoolhub/teachersclasses'),
       ])
         .then(([adminResponse, teachersResponse]) => {
           const adminData = adminResponse.data;
@@ -100,7 +98,7 @@ function EmailTeachersView() {
   };
 
   return (
-    <div>
+    <div className="emailsDiv">
       <h1>Send an Email</h1>
       {emailSent && <p>Email Sent!</p>}
       {errorMessage && <p>{errorMessage}</p>}
