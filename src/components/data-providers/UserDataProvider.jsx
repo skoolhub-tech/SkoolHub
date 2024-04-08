@@ -53,7 +53,37 @@ UserDataProvider.propTypes = {
 
 export const useUserData = () => useContext(Context);
 
-// To access state and methods inside this component,
+// TO ACCESS STATE AND METHODS FROM THIS COMPONENT,
+// ------------------------------------------------
 // import { useUserData } from './path/to/UserDataProvider'
 // then inside your component,
 // const { userData } = useUserData();
+
+// TO SKIP LOGIN AND HAVE USER DATA:
+// --------------------------------
+// REMINDER: DO NOT COMMIT CHANGES TO THIS FILE
+// 1. Set isLoggedIn default value to 'true' in App.jsx, line 15
+// 1. Comment out useEffect on lines 22-39
+// 2. Add hard-coded data in lines 16-19 above
+//    a. For student:
+//        role: 1,
+//        name: 'John Smith'
+//        email:'john.smith@gmail.com'
+//        id: 1,
+//    b. For teacher:
+//        role: 2,
+//        name: 'John Doe'
+//        email:'john.doe@aol.com'
+//        id: 1,
+//    c. For admin:
+//        role: 3,
+//        name: 'John Smith'
+//        email:'jsmith@gmail.com'
+//        id: 1,
+
+// TO LOG IN WITH SEED DATA:
+// 1. Ensure that default state for userData values are all null.
+// 2. Ensure the useEffect is not commented out
+// 3. in Login.jsx - change the email on line 96 to your email
+// 4. Find seed data in seed.js, and enter email/password for the first
+//    or second teacher/student/admin in their respective lists of data.
