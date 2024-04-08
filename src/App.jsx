@@ -40,8 +40,10 @@ function App() {
             </>
           ) : (
             <div className="login-page">
-              <h1 className="login-h1">SkoolHub</h1>
-              <p className="login-p">Teaching in. Tedious out.</p>
+              <div>
+                <h1 className="login-h1">SkoolHub</h1>
+                <p className="login-p">Teaching in. Tedious out.</p>
+              </div>
               <Login handleLoginEvent={handleLogin} isLoggedIn={isLoggedIn} />
             </div>
           )}
