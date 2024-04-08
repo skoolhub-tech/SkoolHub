@@ -18,8 +18,14 @@ function Homepage() {
         Message: 'Error retrieving classes.',
         Error: error,
       }));
+    // get calendar
+    // axios.get(`/skoolhub/calendar/${userData.email}`)
+    //   .then((response) => setAssignments(response.data))
+    //   .catch((error) => console.error({
+    //     Message: 'Error retrieving assignments.',
+    //     Error: error,
+    //   }));
     // get assignments
-    axios.get(``)
   }, []);
 
   return (
