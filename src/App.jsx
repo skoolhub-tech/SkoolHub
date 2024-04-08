@@ -37,7 +37,7 @@ function App() {
               <NavBar />
               <Routes>
                 <Route path="/homepage" element={(<HomepageWithTaskCheck />)} />
-                <Route path="/assignments" element={<h1>Assignments</h1>} />
+                <Route path="/assignments" element={<Assignments />} />
                 <Route path="/events" element={<Task />} />
                 <Route path="/classes" element={<Classes />} />
                 <Route path="/emails" element={<Email />} />
