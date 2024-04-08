@@ -44,11 +44,13 @@ LOGIN PAGE / NAV BAR CSS ========================================
   width: fit-content;
   /* transform: scale(1.5); */
 
+
 }
 .nav-bar {
   column-gap: 5px;
   display: flex;
   flex-direction: row;
+  transform: scale(1.25);
 }
 .login-button, .tab {
   background-color: #CED2BA;
@@ -76,8 +78,9 @@ LOGIN PAGE / NAV BAR CSS ========================================
   flex-direction: column;
   align-items: center;
   row-gap: 5rem;
-  padding-top: 10%;
+  padding-top: 4%;
   /* transform: scale(1.25); */
+  /* padding-bottom: 10%; */
 }
 .tab-active {
   background-color: #875D3B;

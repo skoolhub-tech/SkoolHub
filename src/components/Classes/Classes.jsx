@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useUserData } from '../data-providers/UserDataProvider';
 import StudentGradesModal from './StudentGradesModal';
+import './Classes.css';
 
 function Classes() {
   const { userData } = useUserData();
@@ -60,7 +61,7 @@ function Classes() {
             ))}
           </select>
           {students.length > 0 && (
-            <div>
+            <div className="students-list-container">
               <h2>Students</h2>
               <table>
                 <thead>
