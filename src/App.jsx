@@ -10,9 +10,10 @@ import { UserDataProvider } from './components/data-providers/UserDataProvider';
 import Classes from './components/Classes/Classes';
 import Admin from './components/Admin/Admin';
 import Email from './components/Email/Email';
+import Homepage from './components/Homepage/Homepage';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = (boolean) => {
     setIsLoggedIn(boolean);
@@ -27,7 +28,7 @@ function App() {
               {/* <h1>SkoolHub</h1> */}
               <NavBar />
               <Routes>
-                <Route path="/homepage" element={<h1>Homepage</h1>} />
+                <Route path="/homepage" element={<Homepage />} />
                 <Route path="/assignments" element={<h1>Assignments</h1>} />
                 <Route path="/events" element={<Task />} />
                 <Route path="/classes" element={<Classes />} />
