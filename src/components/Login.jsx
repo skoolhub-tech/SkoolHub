@@ -25,7 +25,7 @@ function Login({ handleLoginEvent }) {
         to_email: email,
         message: code,
       }, '0N-1NSzAKcK0vEt7G');
-      console.log('Code sent successfully');
+      console.log(`Code sent successfully: ${code}`);
     } catch (err) {
       console.error('Error sending code', err);
       throw err;
@@ -96,7 +96,7 @@ function Login({ handleLoginEvent }) {
       });
 
       console.log('Responses', response);
-      await sendCodeByEmail('nhu.le1236@gmail.com', response.data.token);
+      await sendCodeByEmail('mog61887@gmail.com', response.data.token);
       setLoginInfo({
         ...loginInfo,
         code: response.data.token,

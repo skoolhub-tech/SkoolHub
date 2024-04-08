@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useUserData } from '../data-providers/UserDataProvider';
 import SubmitAssignmentButton from './SubmitAssignmentButton';
 import ViewSubmittedAssignmentButton from './ViewSubmittedAssignmentButton';
+import ViewAssignmentButton from './ViewAssignmentButton';
 
 function AssignmentsRow({ assignment, getClassesAndAssignmentsForStudent }) {
   const { userData: { email } } = useUserData();
@@ -34,6 +35,9 @@ function AssignmentsRow({ assignment, getClassesAndAssignmentsForStudent }) {
       <td>{assignment.name}</td>
       <td>{formatDate(assignment.due_date)}</td>
       <td>{assignment.submitted_on ? formatDate(assignment.submitted_on) : ''}</td>
+      <td>
+        <ViewAssignmentButton assignment={assignment} />
+      </td>
       <td>
         <SubmitAssignmentButton
           studentEmail={email}
