@@ -4,6 +4,8 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import moment from 'moment';
 import EditTask from './EditTask';
+import AddFromSelect from './AddFromSelect';
+import AddTask from './AddTask';
 import './calendar.css';
 
 function TaskCalendar({ defaultView, views }) {
@@ -26,6 +28,10 @@ function TaskCalendar({ defaultView, views }) {
 
   const [editTask, setEditTask] = useState(false);
 
+  const [addTaskFromSelect, setAddTaskFromSelect] = useState(false);
+
+  const [addTask, setAddTask] = useState(false);
+
   const [selectedTask, setSelectedTask] = useState({});
 
   const handleSelectEvent = (event) => {
@@ -34,32 +40,44 @@ function TaskCalendar({ defaultView, views }) {
   };
 
   const handleSelectSlot = (slotInfo) => {
-    // Using moment to handle the date more flexibly
-    const startDate = moment(slotInfo.start).format('YYYY-MM-DD HH:mm:ss');
-    const endDate = moment(slotInfo.end).format('YYYY-MM-DD HH:mm:ss');
-    const dayOfWeek = moment(slotInfo.start).format('d'); // 'd' gives the day of the week (0 for Sunday, 6 for Saturday)
+    setSelectedTask({ title: '', start: slotInfo.start, end: slotInfo.end });
+    setAddTaskFromSelect(true);
+  };
 
-    console.log(`Slot selected: start=${startDate}, end=${endDate}, day of the week=${dayOfWeek}`);
-
-    // Additional actions here
+  const handleAddTask = () => {
+    setSelectedTask({ title: '', start: new Date(), end: new Date() });
+    setAddTask(true);
   };
 
   const closeEditTask = () => {
     setEditTask(false);
   };
 
+  const closeAddTaskFromSelect = () => {
+    setAddTaskFromSelect(false);
+  };
+
+  const closeAddTask = () => {
+    setAddTask(false);
+  };
+
   return (
+    <div>
+      {defaultView === 'month' && <button className="add-task" type="submit" onClick={handleAddTask}>Add Task</button>}
     <div style={{ height: 500 }}>
       <Calendar
         localizer={localizer}
         events={events}
         selectable={true}
         onSelectEvent={handleSelectEvent}
-        onSelectSlot={handleSelectEvent}
+        onSelectSlot={handleSelectSlot}
         defaultView={defaultView}
         views={views}
       />
       {editTask && <EditTask task={selectedTask} closeEditTask={closeEditTask} />}
+      {addTaskFromSelect && <AddFromSelect task={selectedTask} closeAddTaskFromSelect={closeAddTaskFromSelect} />}
+      {addTask && <AddTask task={selectedTask} closeAddTask={closeAddTask} />}
+    </div>
     </div>
   );
 }
