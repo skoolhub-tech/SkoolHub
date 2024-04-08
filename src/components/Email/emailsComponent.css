@@ -1,0 +1,26 @@
+.emailsDiv {
+
+}
+.emailsDiv > h1 {
+  text-align: center;
+}
+
+.peopleListBtns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.emailModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #858D6F;
+}

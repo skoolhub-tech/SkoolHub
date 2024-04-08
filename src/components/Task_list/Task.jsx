@@ -9,7 +9,9 @@ function Task() {
         Events & Tasks
         <button className="add-task" type="submit">Add Task</button>
       </h1>
-      <TaskCalendar />
+      <div className="calendar-container">
+        <TaskCalendar />
+      </div>
     </div>
   );
 }
