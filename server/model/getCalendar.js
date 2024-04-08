@@ -9,7 +9,6 @@ module.exports = async (role, id) => {
   } else if (role === '1') {
     table = 'admin_calendar';
   }
-  console.log(table);
   const client = createClient();
   try {
     const query = `SELECT id, name, event_start, event_end, completed FROM ${table} WHERE id = $1`;
