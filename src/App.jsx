@@ -10,12 +10,15 @@ import { UserDataProvider, useUserData } from './components/data-providers/UserD
 import Classes from './components/Classes/Classes';
 import Admin from './components/Admin/Admin';
 import Email from './components/Email/Email';
+import Assignments from './components/Assignments/Assignments';
+import Homepage from './components/Homepage/Homepage';
 
 function HomepageWithTaskCheck() {
   const { userData } = useUserData();
 
   return userData.role === 1 ? <Task /> : <h1>Homepage</h1>;
 }
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

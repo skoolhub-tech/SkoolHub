@@ -66,7 +66,7 @@ export const useUserData = () => useContext(Context);
 // 1. Comment out useEffect on lines 22-39
 // 2. Add hard-coded data in lines 16-19 above
 //    a. For student:
-//        role: 1,
+//        role: 3,
 //        name: 'John Smith'
 //        email:'john.smith@gmail.com'
 //        id: 1,
@@ -76,7 +76,7 @@ export const useUserData = () => useContext(Context);
 //        email:'john.doe@aol.com'
 //        id: 1,
 //    c. For admin:
-//        role: 3,
+//        role: 1,
 //        name: 'John Smith'
 //        email:'jsmith@gmail.com'
 //        id: 1,

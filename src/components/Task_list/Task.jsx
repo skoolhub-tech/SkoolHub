@@ -7,10 +7,9 @@ function Task() {
     <div className="task-container">
       <h1 className="tasks-header">
         Events & Tasks
-        <button className="add-task" type="submit">Add Task</button>
       </h1>
       <div className="calendar-container">
-        <TaskCalendar />
+        <TaskCalendar defaultView="month" views={['month', 'week', 'day', 'agenda']} />
       </div>
     </div>
   );
