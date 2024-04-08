@@ -15,6 +15,11 @@ function Admin() {
     setShowClassesModal(true);
   };
 
+  const exitModal = () => {
+    setShowUsersModal(false);
+    setShowClassesModal(false);
+  };
+
   return (
     <div>
       {/* Your code here */}
@@ -24,16 +29,15 @@ function Admin() {
 
       {/* Users Modal */}
       {showUsersModal && (
-        <CreateUser />
+        <CreateUser exitModal={exitModal} />
       )}
 
       {/* Classes Modal */}
       {showClassesModal && (
-        <CreateClass />
+        <CreateClass exitModal={exitModal} />
       )}
     </div>
   );
 }
-
 
 export default Admin;
