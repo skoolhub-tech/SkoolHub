@@ -80,17 +80,24 @@ function CreateClass({ exitModal }) {
 
       <div>
         <h2>Current Classes</h2>
-        <ul>
-          {classes.map((classObj) => (
-            <li key={classObj.id}>
-              {classObj.name}
-              {' '}
-              -
-              {classObj.teacher_id}
-              <button>DELETE CLASS</button>
-            </li>
-          ))}
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Teacher ID</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {classes.map((classObj) => (
+              <tr key={classObj.id}>
+                <td>{classObj.name}</td>
+                <td>{classObj.teacher_id}</td>
+                <td><button>DELETE CLASS</button></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
     </div>
