@@ -17,6 +17,8 @@
 .task-container {
   background-color: #ABBD9A;
   border: 1px solid #07070aaa;
+  width: 60%;
+  min-height: 70vh;
 }
 
 .edit-task {
