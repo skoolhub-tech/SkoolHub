@@ -6,7 +6,7 @@ import moment from 'moment';
 import EditTask from './EditTask';
 import './calendar.css';
 
-function TaskCalendar() {
+function TaskCalendar({ defaultView, views }) {
   const localizer = momentLocalizer(moment);
 
   const [events, setEvents] = useState([
@@ -56,6 +56,8 @@ function TaskCalendar() {
         selectable={true}
         onSelectEvent={handleSelectEvent}
         onSelectSlot={handleSelectEvent}
+        defaultView={defaultView}
+        views={views}
       />
       {editTask && <EditTask task={selectedTask} closeEditTask={closeEditTask} />}
     </div>
