@@ -46,7 +46,7 @@ function CreateClass() {
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">
-          Name:
+          Class Name:
           <input
             type="text"
             id="name"
@@ -73,7 +73,7 @@ function CreateClass() {
           </select>
         </label>
 
-        <button type="submit">Create</button>
+        <button type="submit">Create Class</button>
       </form>
 
       <div>
