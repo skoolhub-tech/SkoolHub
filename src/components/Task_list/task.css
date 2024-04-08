@@ -19,6 +19,7 @@
   border: 1px solid #07070aaa;
   width: 60%;
   min-height: 70vh;
+  border-radius: 10px;
 }
 
 .edit-task {
