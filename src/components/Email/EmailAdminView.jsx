@@ -24,10 +24,6 @@ function EmailAdminView() {
   const [body, setBody] = useState('');
   const [receiverEmailList, setRecieverEmailList] = useState({});
 
-  // change this to just the teachers classes
- // useEffect(() => {
- // }, []);
-
   // sends email to all selected selected people in class/faculty
   const email = async (e) => {
     e.preventDefault();
