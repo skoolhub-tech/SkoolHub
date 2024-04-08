@@ -13,6 +13,7 @@ const getTeachers = require('./getTeachers');
 const insertUpdateSubmittedAssignment = require('./insertUpdateSubmittedAssignment');
 const login = require('./login');
 const getStudentClassGrades = require('./getStudentClassGrades');
+const getTeachersAndClasses = require('./getTeachersAndClasses');
 
 module.exports = {
   getAdmin,
@@ -30,4 +31,5 @@ module.exports = {
   insertUpdateSubmittedAssignment,
   login,
   getStudentClassGrades,
+  getTeachersAndClasses,
 };
