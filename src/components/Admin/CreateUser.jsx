@@ -75,7 +75,7 @@ function CreateUser({ exitModal }) {
 
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">
-          User Name:
+          Name:
           <input
             type="text"
             id="name"
@@ -99,7 +99,7 @@ function CreateUser({ exitModal }) {
         </label>
 
         <label htmlFor="roles">
-          Teacher:
+          Role:
           <select
             id="roles"
             name="roles"
