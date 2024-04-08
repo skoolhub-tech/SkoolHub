@@ -25,7 +25,6 @@ function AssignmentsPage() {
   return data ? (
     <div>
       <h1>Assignments</h1>
-      <p>DATA: {JSON.stringify(data)}</p>
       <ClassesDropDownMenu
         classes={data}
         setSelectedClass={setSelectedClass}
