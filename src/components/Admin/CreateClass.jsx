@@ -5,7 +5,7 @@ function CreateClass() {
 
   return (
     <div>
-      {/* Your JSX here */}
+      CREATECLASS MODAL
     </div>
   );
 }

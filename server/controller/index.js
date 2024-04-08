@@ -12,6 +12,7 @@ const sendAutoEmail = require('./sendAutoEmail');
 const sendPeerEmail = require('./sendPeerEmail');
 const submitAssignment = require('./submitAssignment');
 const getTeachersAndClassesForStudent = require('./getTeachersAndClassesForStudent');
+const getCalendar = require('./getCalendar');
 
 module.exports = {
   getAdmin,
@@ -28,4 +29,5 @@ module.exports = {
   sendPeerEmail,
   submitAssignment,
   getTeachersAndClassesForStudent,
+  getCalendar,
 };

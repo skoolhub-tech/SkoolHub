@@ -1,0 +1,53 @@
+
+.classes {
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.grade-chart {
+  background-color: #DCCCBB;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  flex-direction: column;
+  row-gap: 5px;
+  width: fit-content;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure the modal backdrop is on top of other content */
+}
+
+.modal-content {
+  background-color: #DCCCBB;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  flex-direction: column;
+  row-gap: 5px;
+  width: fit-content;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px; /* Adjust the gap as needed */
+}

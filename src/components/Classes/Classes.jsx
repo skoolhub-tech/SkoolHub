@@ -3,12 +3,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useUserData } from '../data-providers/UserDataProvider';
 import StudentGradesModal from './StudentGradesModal';
-import './Classes.css';
+import StudentTable from './StudentTable';
+import './classes.css';
 
 function Classes() {
   const { userData } = useUserData();
   const [classes, setClasses] = useState([]);
   const [selectedClass, setSelectedClass] = useState('');
+  const [selectedClassName, setSelectedClassName] = useState('');
   const [students, setStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -24,7 +26,8 @@ function Classes() {
       });
   }, []);
 
-  const handleClassChange = (classId) => {
+  const handleClassChange = (classId, className) => {
+    setSelectedClassName(className);
     setSelectedClass(classId);
     if (!classId) {
       setStudents([]);
@@ -32,7 +35,6 @@ function Classes() {
     }
     axios.get(`/skoolhub/classes/${classId}/students`)
       .then((response) => {
-        console.log(response.data);
         setStudents(response.data);
       })
       .catch((error) => {
@@ -61,7 +63,7 @@ function Classes() {
             ))}
           </select>
           {students.length > 0 && (
-            <div className="students-list-container">
+            <div>
               <h2>Students</h2>
               <table>
                 <thead>
@@ -86,13 +88,15 @@ function Classes() {
         </>
       )}
       {showModal && selectedStudent && (
-        <div>
-          <StudentGradesModal
-            studentName={selectedStudent.name}
-            studentId={selectedStudent.id}
-            classId={selectedClass}
-            onClose={() => setShowModal(false)}
-          />
+        <div className="modal-backdrop">
+          <div className="modal-content">
+            <StudentGradesModal
+              studentName={selectedStudent.name}
+              studentId={selectedStudent.id}
+              classId={selectedClass}
+              onClose={() => setShowModal(false)}
+            />
+          </div>
         </div>
       )}
     </div>

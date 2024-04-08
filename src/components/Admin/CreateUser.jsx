@@ -5,7 +5,7 @@ function CreateUser() {
 
   return (
     <div>
-      {/* JSX content */}
+      CREATE USER MODAL
     </div>
   );
 }
