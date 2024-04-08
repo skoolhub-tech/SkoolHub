@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-function PersonEmailCard({
+function TeacherEmailCard({
   person, receiverEmailList, setRecieverEmailList, isAllSelected,
 }) {
   const [isChecked, setIsChecked] = useState(false);
@@ -34,7 +34,8 @@ function PersonEmailCard({
   return (
     <div className="personEmailCard">
       <label htmlFor={`checkbox-${person.email}`}>
-        {person.name}
+        <span>{person.name}</span>
+        <span>{person.class}</span>
         <input
           type="checkbox"
           id={`checkbox-${person.email}`}
@@ -46,11 +47,11 @@ function PersonEmailCard({
   );
 }
 
-PersonEmailCard.propTypes = {
+TeacherEmailCard.propTypes = {
   person: PropTypes.object.isRequired,
   receiverEmailList: PropTypes.object.isRequired,
   setRecieverEmailList: PropTypes.func.isRequired,
   isAllSelected: PropTypes.bool.isRequired,
 };
 
-export default PersonEmailCard;
+export default TeacherEmailCard;
