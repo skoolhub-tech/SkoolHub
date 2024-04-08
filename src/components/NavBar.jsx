@@ -12,43 +12,43 @@ function NavBar() {
     <div className="nav-bar">
       <button
         type="button"
-        onClick={() => handleNavigation('/skoolhub/homepage')}
-        className={`${location.pathname === '/skoolhub/homepage' ? 'tab-active' : 'tab'}`}
+        onClick={() => handleNavigation('homepage')}
+        className={`${location.pathname === 'homepage' ? 'tab-active' : 'tab'}`}
       >
         Home
       </button>
       <button
         type="button"
-        onClick={() => handleNavigation('/skoolhub/assignments')}
-        className={`${location.pathname === '/skoolhub/assignments' ? 'tab-active' : 'tab'}`}
+        onClick={() => handleNavigation('assignments')}
+        className={`${location.pathname === 'assignments' ? 'tab-active' : 'tab'}`}
       >
         Assignments
       </button>
       <button
         type="button"
-        onClick={() => handleNavigation('/skoolhub/events')}
-        className={`${location.pathname === '/skoolhub/events' ? 'tab-active' : 'tab'}`}
+        onClick={() => handleNavigation('events')}
+        className={`${location.pathname === 'events' ? 'tab-active' : 'tab'}`}
       >
         Events
       </button>
       <button
         type="button"
-        onClick={() => handleNavigation('/skoolhub/classes')}
-        className={`${location.pathname === '/skoolhub/classes' ? 'tab-active' : 'tab'}`}
+        onClick={() => handleNavigation('classes')}
+        className={`${location.pathname === 'classes' ? 'tab-active' : 'tab'}`}
       >
         Classes
       </button>
       <button
         type="button"
-        onClick={() => handleNavigation('/skoolhub/emails')}
-        className={`${location.pathname === '/skoolhub/emails' ? 'tab-active' : 'tab'}`}
+        onClick={() => handleNavigation('emails')}
+        className={`${location.pathname === 'emails' ? 'tab-active' : 'tab'}`}
       >
         Emails
       </button>
       <button
         type="button"
-        onClick={() => handleNavigation('/skoolhub/admin')}
-        className={`${location.pathname === '/skoolhub/admin' ? 'tab-active' : 'tab'}`}
+        onClick={() => handleNavigation('admin')}
+        className={`${location.pathname === 'admin' ? 'tab-active' : 'tab'}`}
       >
         Admin
       </button>
