@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import PersonEmailCard from './PersonEmailCard';
-import TeacherEmailCard from './TeacherEmailCard';
-import { useUserData } from '../data-providers/UserDataProvider';
 
-// list out people in the class / faculty
+// list out people in the given potentialEmailees list
 function PeopleList({
   currentClass, potentialEmailees, receiverEmailList, setRecieverEmailList, setEmailModal,
 }) {
   const [isAllSelected, setIsAllSelected] = useState(false);
-  const { userData } = useUserData();
 
   const handleSelectAllChange = () => {
     const selected = isAllSelected;
@@ -23,17 +20,8 @@ function PeopleList({
         <button type="button" onClick={() => setEmailModal(true)}>Draft Email</button>
       </div>
       <ul className="personCardContainer">
-        {userData.role === 2 && potentialEmailees.map((person) => (
+        {potentialEmailees.map((person) => (
           <PersonEmailCard
-            key={person.email}
-            person={person}
-            receiverEmailList={receiverEmailList}
-            setRecieverEmailList={setRecieverEmailList}
-            isAllSelected={isAllSelected}
-          />
-        ))}
-        {userData.role === 3 && potentialEmailees.map((person) => (
-          <TeacherEmailCard
             key={person.email}
             person={person}
             receiverEmailList={receiverEmailList}
