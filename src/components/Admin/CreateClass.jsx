@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function CreateClass() {
+function CreateClass({ exitModal }) {
   // Your code here
   const [teachers, setTeachers] = useState([]);
   const [classes, setClasses] = useState([]);
@@ -44,6 +44,8 @@ function CreateClass() {
 
   return (
     <div>
+      <button type="button" onClick={exitModal}>X</button>
+
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">
           Class Name:
@@ -81,15 +83,15 @@ function CreateClass() {
         <ul>
           {classes.map((classObj) => (
             <li key={classObj.id}>
-              {classObj.name} -
+              {classObj.name}
+              {' '}
+              -
               {classObj.teacher_id}
               <button>DELETE CLASS</button>
             </li>
           ))}
         </ul>
       </div>
-
-
 
     </div>
   );
