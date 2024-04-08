@@ -80,12 +80,14 @@ const createTableQuery = `
     id SERIAL PRIMARY KEY,
     student_id INT NOT NULL,
     assignment_id INT NOT NULL,
-    score INT NOT NULL,
-    total_points INT NOT NULL,
-    grade VARCHAR(255) NOT NULL,
+    file_path VARCHAR(255) NOT NULL,
+    score INT,
+    total_points INT,
+    grade VARCHAR(255),
     completed BOOLEAN NOT NULL,
     FOREIGN KEY (student_id) REFERENCES students(id),
-    FOREIGN KEY (assignment_id) REFERENCES assignments(id)
+    FOREIGN KEY (assignment_id) REFERENCES assignments(id),
+    UNIQUE (student_id, assignment_id)
   );
 
   CREATE TABLE classes_students (
@@ -111,7 +113,7 @@ const createTableQuery = `
 
 client.connect()
   .then(() => {
-    client.query('DROP TABLE IF EXISTS roles, admin, teachers, teachers_emails, teachers_calendar, classes, assignments, teachers_assignments, students, students_emails, students_calendar, students_assignments, classes_students, credentials CASCADE;');
+    client.query('DROP TABLE IF EXISTS roles, admin, teachers, teachers_emails, teachers_calendar, classes, assignments, teachers_assignments, students, students_emails, students_calendar, students_assignments, classes_students, credentials, admin_credentials, teachers_credentials, students_credentials CASCADE;');
   })
   .then(() => {
     console.log('Connected to Postgres database');

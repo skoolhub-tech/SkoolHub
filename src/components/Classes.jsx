@@ -1,14 +1,16 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useUserData } from './data-providers/UserDataProvider';
 
 function Classes() {
+  const { userData } = useUserData();
   const [classes, setClasses] = useState([]);
   const [selectedClass, setSelectedClass] = useState('');
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    axios.get('/skoolhub/classes')
+    axios.get(`/skoolhub/classes/${userData.email}`)
       .then((response) => {
         console.log(response.data);
         setClasses(response.data);
