@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import AssignStudentClass from './AssignStudentClass';
+import { useUserData } from '../data-providers/UserDataProvider';
 import CreateUser from './CreateUser';
 import CreateClass from './CreateClass';
 
 function Admin() {
+  const { userData } = useUserData();
   const [showUsersModal, setShowUsersModal] = useState(false);
   const [showClassesModal, setShowClassesModal] = useState(false);
 
@@ -15,6 +17,11 @@ function Admin() {
     setShowClassesModal(true);
   };
 
+  const exitModal = () => {
+    setShowUsersModal(false);
+    setShowClassesModal(false);
+  };
+
   return (
     <div>
       {/* Your code here */}
@@ -24,16 +31,15 @@ function Admin() {
 
       {/* Users Modal */}
       {showUsersModal && (
-        <CreateUser />
+        <CreateUser exitModal={exitModal} />
       )}
 
       {/* Classes Modal */}
       {showClassesModal && (
-        <CreateClass />
+        <CreateClass exitModal={exitModal} />
       )}
     </div>
   );
 }
-
 
 export default Admin;
