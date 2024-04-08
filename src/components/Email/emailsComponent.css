@@ -4,12 +4,62 @@
 .emailsDiv > h1 {
   text-align: center;
 }
+/*================= ======================*/
+.peopleListView {
+
+}
 
 .peopleListBtns {
   display: flex;
   justify-content: space-around;
 }
+.emailDropdown {
 
+}
+/*==================== cards container (scrollable) and its children ========================== */
+/* Scroll bar for personCardContainer */
+.personCardContainer::-webkit-scrollbar {
+  width: 8px; /* Adjust width for vertical scrollbar */
+}
+
+.personCardContainer::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+}
+
+.personCardContainer::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scroll thumb */
+}
+
+.personCardContainer::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scroll thumb on hover */
+}
+
+.personCardContainer {
+  justify-content: center;
+  height: 500px;
+  overflow-y: auto;
+}
+
+.personEmailCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  background-color: #858D6F;
+
+}
+.emailCheckbox {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  margin: 0px;
+}
+/* =================   Email 'Modal'  ===================*/
 .emailModal {
   display: flex;
   flex-direction: column;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useUserData } from '../data-providers/UserDataProvider';
 import ClassesDropDownMenu from './ClassesDropDownMenu';
@@ -6,21 +6,21 @@ import AssignmentsRowStudent from './AssignmentsRowStudent';
 
 function AssignmentsPage() {
   const { userData: { email, role } } = useUserData();
-  const [data, setData] = React.useState(null);
-  const [selectedClass, setSelectedClass] = React.useState(null);
+  const [data, setData] = useState(null);
+  const [selectedClass, setSelectedClass] = useState(null);
 
-  async function getClassesAndAssignmentsForStudent() {
+  const getClassesAndAssignmentsForStudent = useCallback(async () => {
     try {
-      const response = await axios.get(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/classesAndAssignments/students?email=${'joshua.king@gmail.com'}`);
+      const response = await axios.get(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/classesAndAssignments/students?email=${email}`);
       setData(response.data);
     } catch (error) {
-      console.error(error);
+      console.log(`Error fetching classes and assignments for student: ${error}`);
     }
-  }
+  }, []);
 
   useEffect(() => {
     getClassesAndAssignmentsForStudent();
-  }, [email]);
+  }, [email, getClassesAndAssignmentsForStudent]);
 
   return data ? (
     <div>
@@ -43,7 +43,11 @@ function AssignmentsPage() {
                 .find((classObj) => classObj.name === selectedClass)
                 .assignments.map((assignment) => (
                   role === 3 ? (
-                    <AssignmentsRowStudent assignment={assignment} />
+                    <AssignmentsRowStudent
+                      key={assignment.id}
+                      assignment={assignment}
+                      getClassesAndAssignmentsForStudent={getClassesAndAssignmentsForStudent}
+                    />
                   ) : null
                 ))}
             </table>
