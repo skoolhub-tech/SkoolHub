@@ -1,7 +1,9 @@
 import React from 'react';
 import AssignStudentClass from './AssignStudentClass';
+import { useUserData } from '../data-providers/UserDataProvider';
 
 function Admin() {
+  const { userData } = useUserData();
   return (
     <div>
       {/* Your code here */}

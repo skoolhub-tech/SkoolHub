@@ -6,13 +6,19 @@ import {
 import Login from './components/Login';
 import NavBar from './components/NavBar';
 import Task from './components/Task_list/Task';
-import { UserDataProvider } from './components/data-providers/UserDataProvider';
+import { UserDataProvider, useUserData } from './components/data-providers/UserDataProvider';
 import Classes from './components/Classes/Classes';
 import Admin from './components/Admin/Admin';
 import Email from './components/Email/Email';
 
+function HomepageWithTaskCheck() {
+  const { userData } = useUserData();
+
+  return userData.role === 1 ? <Task /> : <h1>Homepage</h1>;
+}
+
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = (boolean) => {
     setIsLoggedIn(boolean);
@@ -27,7 +33,7 @@ function App() {
               {/* <h1>SkoolHub</h1> */}
               <NavBar />
               <Routes>
-                <Route path="/homepage" element={<h1>Homepage</h1>} />
+                <Route path="/homepage" element={(<HomepageWithTaskCheck />)} />
                 <Route path="/assignments" element={<h1>Assignments</h1>} />
                 <Route path="/events" element={<Task />} />
                 <Route path="/classes" element={<Classes />} />
