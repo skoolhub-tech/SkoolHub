@@ -17,6 +17,16 @@ const createTableQuery = `
     FOREIGN KEY (role_id) REFERENCES roles(id)
   );
 
+  CREATE TABLE admin_calendar (
+    id SERIAL PRIMARY KEY,
+    admin_id INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    event_start TIMESTAMP NOT NULL,
+    event_end TIMESTAMP NOT NULL,
+    completed BOOLEAN NOT NULL,
+    FOREIGN KEY (admin_id) REFERENCES admin(id)
+  );
+
   CREATE TABLE teachers (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -114,7 +124,7 @@ const createTableQuery = `
 
 client.connect()
   .then(() => {
-    client.query('DROP TABLE IF EXISTS roles, admin, teachers, teachers_emails, teachers_calendar, classes, assignments, teachers_assignments, students, students_emails, students_calendar, students_assignments, classes_students, credentials, admin_credentials, teachers_credentials, students_credentials CASCADE;');
+    client.query('DROP TABLE IF EXISTS roles, admin, admin_calendar, teachers, teachers_emails, teachers_calendar, classes, assignments, teachers_assignments, students, students_emails, students_calendar, students_assignments, classes_students, credentials, admin_credentials, teachers_credentials, students_credentials CASCADE;');
   })
   .then(() => {
     console.log('Connected to Postgres database');
