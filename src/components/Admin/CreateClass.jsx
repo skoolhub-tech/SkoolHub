@@ -9,6 +9,8 @@ function CreateClass({ exitModal }) {
   const [className, setClassName] = useState('');
   const [selectedTeacher, setSelectedTeacher] = useState('');
 
+  const [searchQuery, setSearchQuery] = useState('');
+
   useEffect(() => {
     axios.get('/skoolhub/teachers')
       .then((response) => {
@@ -64,6 +66,10 @@ function CreateClass({ exitModal }) {
       });
   };
 
+  const filteredClasses = classes.filter((classObj) =>
+    classObj.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div>
       <button type="button" onClick={exitModal}>X</button>
@@ -102,6 +108,15 @@ function CreateClass({ exitModal }) {
 
       <div>
         <h2>Current Classes</h2>
+        <label htmlFor="searchBar">
+          Search:
+          <input
+            type="text"
+            id="searchBar"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </label>
         <table>
           <thead>
             <tr>
@@ -111,7 +126,7 @@ function CreateClass({ exitModal }) {
             </tr>
           </thead>
           <tbody>
-            {classes.map((classObj) => (
+            {filteredClasses.map((classObj) => (
               <tr key={classObj.id}>
                 <td>{classObj.name}</td>
                 <td>{classObj.teacher_id}</td>
