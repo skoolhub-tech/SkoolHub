@@ -17,16 +17,22 @@ function TaskCalendar({ defaultView, views }) {
 
   const [events, setEvents] = useState([]);
 
+  const [refresh, setRefresh] = useState(false);
+
   useEffect(() => {
     axios.get(`/skoolhub/calendar/${userData.role}/${userData.id}`)
       .then((response) => {
-        console.log(response.data);
-        setEvents(response.data);
+        let reformattedRes = response.data.map((event) => {
+          event.start = new Date(event.start);
+          event.end = new Date(event.end);
+          return event;
+        });
+        setEvents(reformattedRes);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, [userData.role, userData.id]);
+  }, [userData.role, userData.id, refresh]);
 
   const [editTask, setEditTask] = useState(false);
 
@@ -77,9 +83,9 @@ function TaskCalendar({ defaultView, views }) {
         defaultView={defaultView}
         views={views}
       />
-      {editTask && <EditTask task={selectedTask} closeEditTask={closeEditTask} />}
-      {addTaskFromSelect && <AddFromSelect task={selectedTask} closeAddTaskFromSelect={closeAddTaskFromSelect} />}
-      {addTask && <AddTask task={selectedTask} closeAddTask={closeAddTask} />}
+      {editTask && <EditTask task={selectedTask} closeEditTask={closeEditTask} setEvents={setEvents}/>}
+      {addTaskFromSelect && <AddFromSelect task={selectedTask} closeAddTaskFromSelect={closeAddTaskFromSelect} setEvents={setEvents} refresh={refresh} setRefresh={setRefresh}/>}
+      {addTask && <AddTask task={selectedTask} closeAddTask={closeAddTask} setEvents={setEvents} refresh={refresh} setRefresh={setRefresh}/>}
     </div>
     </div>
   );

@@ -4,7 +4,7 @@ import moment from 'moment';
 import axios from 'axios';
 import { useUserData } from '../data-providers/UserDataProvider';
 
-function AddFromSelect({ task, closeAddTaskFromSelect }) {
+function AddFromSelect({ task, closeAddTaskFromSelect, setEvents, refresh, setRefresh }) {
   const { userData } = useUserData();
 
   const [newTask, setNewTask] = useState({
@@ -29,12 +29,14 @@ function AddFromSelect({ task, closeAddTaskFromSelect }) {
       role: userData.role,
       data: newTask,
     })
-    .then(() => {
-      console.log('Task added');
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      .then(() => {
+        console.log('Task added');
+        setRefresh(!refresh);
+        closeAddTaskFromSelect();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (

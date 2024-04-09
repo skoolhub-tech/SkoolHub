@@ -4,7 +4,7 @@ import moment from 'moment';
 import { useUserData } from '../data-providers/UserDataProvider';
 import axios from 'axios';
 
-function AddTask({ task, closeAddTask }) {
+function AddTask({ task, closeAddTask, setEvents, refresh, setRefresh }) {
   const { userData } = useUserData();
 
   const [newTask, setNewTask] = useState({
@@ -24,11 +24,18 @@ function AddTask({ task, closeAddTask }) {
 
   const handleSave = () => {
     // Handle save action here
-    // console.log(newTask);
+    console.log(newTask);
     axios.post('/skoolhub/submittask', {
       role: userData.role,
       data: newTask,
-    });
+    })
+      .then(() => {
+        setRefresh(!refresh);
+        closeAddTask();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
