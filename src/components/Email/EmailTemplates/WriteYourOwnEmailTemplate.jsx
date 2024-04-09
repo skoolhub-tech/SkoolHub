@@ -7,7 +7,6 @@ function WriteYourOwnEmail({ setSubject, setBody, currentClass, setSelectedTempl
     setSubject('');
     setBody('');
     setSelectedTemplate('No Template Chosen');
-
   };
 
   return (
