@@ -22,7 +22,8 @@
     },
     "extends": [
       "airbnb"
-    ]
+    ],
+    "ignorePatterns": ["main.js"]
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
