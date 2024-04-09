@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { jsPDF } from 'jspdf';
 import axios from 'axios';
+import './submitAssignmentModal.css';
 
 function SubmitAssignmentModal({
   setSubmitAssignmentModalIsOpen,
@@ -44,7 +45,16 @@ function SubmitAssignmentModal({
       const reader = new FileReader();
       reader.onload = (e) => {
         const imgData = e.target.result;
-        pdf.addImage(imgData, 'PNG', 0, 0);
+        // Extract the format from the file type (e.g., "image/jpeg" will extract "JPEG")
+        const format = file.type.split('/')[1].toUpperCase();
+        pdf.addImage(
+          imgData,
+          format,
+          0,
+          0,
+          pdf.internal.pageSize.getWidth(),
+          pdf.internal.pageSize.getHeight(),
+        );
         const pdfBlob = pdf.output('blob');
         formData.append('file', pdfBlob, 'converted.pdf');
         submitToServer(formData);

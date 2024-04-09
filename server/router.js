@@ -33,6 +33,7 @@ router.get('/teachersclasses', controller.getAllTeachersAndTheirClasses);
 router.post('/sendautoemail', controller.sendAutoEmail);
 router.post('/sendemail', controller.sendPeerEmail);
 router.post('/submitassignment', upload.single('file'), controller.submitAssignment);
+router.post('/submittask', controller.submitCalendarTask);
 router.post('/classes/students', controller.createClassStudent);
 // PUT requests
 
