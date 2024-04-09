@@ -13,7 +13,7 @@ function AssignmentsRow({ assignment, dueDate }) {
     <tr>
       <td>{name}</td>
       <td>{dueDate}</td>
-      {userData.role === 3 ? <td>{completedString}</td> : null}
+      {userData.role === 3 ? <td className="center-table">{completedString}</td> : null}
     </tr>
   );
 }

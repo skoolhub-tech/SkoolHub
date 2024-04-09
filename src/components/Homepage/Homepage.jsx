@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
+import './homepage.css';
 
 import { useUserData } from '../data-providers/UserDataProvider';
 import AssignmentsTable from './AssignmentsTable';
@@ -72,30 +73,27 @@ function Homepage() {
   return (
     <div>
       <h1>Homepage</h1>
-      <select value="" onChange={(e) => filterAssignments(e)}>
-        <option value="">Select a class</option>
-        <option value="">All</option>
-        {classes.map((classObj) => (
-          <option key={classObj.id} value={classObj.id}>
-            {classObj.name}
-          </option>
-        ))}
-      </select>
-      {assignments.length > 0 && (
+      <div className="homepage-flex-container">
+        {assignments.length > 0 && (
+          <div className="homepage-assignments-container">
+            <h2>Current Assignments</h2>
+            <AssignmentsTable
+              assignments={assignments}
+              classes={classes}
+              filter={filterAssignments}
+            />
+          </div>
+        )}
         <div>
-          <h2>Current Assignments</h2>
-          <AssignmentsTable assignments={assignments} />
-        </div>
-      )}
-      <h2>Today&apos;s Tasks</h2>
-      <div className="task-container">
-        <div style={{ height: 500 }}>
-          <Calendar
-            localizer={localizer}
-            events={tasks}
-            defaultView="day"
-            views={['day']}
-          />
+          <div className="homepage-calendar-container">
+            <h2>Today&apos;s Tasks</h2>
+            <Calendar
+              localizer={localizer}
+              events={tasks}
+              defaultView="day"
+              views={['day']}
+            />
+          </div>
         </div>
       </div>
     </div>

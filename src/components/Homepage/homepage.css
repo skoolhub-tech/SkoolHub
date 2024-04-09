@@ -1,0 +1,66 @@
+table {
+  box-shadow: none;
+  background-color: inherit;
+}
+
+thead {
+  text-decoration: underline;
+}
+
+.homepage-flex-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.homepage-assignments-container {
+  background-color: #ABBD9A;
+  border: 1px solid #07070aaa;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.homepage-assignments-table {
+  background-color: #DCCCBB;
+  border-radius: 0;
+  padding: 0;
+  border: none;
+  height: 83%;
+  overflow-y: auto;
+}
+
+.homepage-calendar-container {
+  background-color: #ABBD9A;
+  border: 1px solid #07070aaa;
+  height: 500px;
+  min-height: 70vh;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.homepage-class-select {
+  display: block;
+  margin: 25px auto 0px auto;
+  color: inherit;
+  background-color: inherit;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+}
+
+.rbc-calendar {
+  height: 83%;
+}
+
+.left-table {
+  text-align: left;
+}
+
+.right-table {
+  text-align: right;
+}
+
+.center-table {
+  text-align: center;
+}
