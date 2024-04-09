@@ -43,6 +43,19 @@ function AssignmentsPage() {
         classes={data}
         setSelectedClass={setSelectedClass}
       />
+      {viewAssignmentSubmissions && (
+        <>
+          <br />
+          <br />
+          <button
+            type="button"
+            className="back-button"
+            onClick={() => setViewAssignmentSubmissions(null)}
+          >
+            Back
+          </button>
+        </>
+      )}
       <div>
         {selectedClass ? (
           <div>
