@@ -13,30 +13,30 @@ const {
 // Data provider component
 export function UserDataProvider({ children }) {
   const [userData, setUserData] = useState({
-    role: 3,
-    name: 'John Smith',
-    email: 'john.smith@gmail.com',
-    id: 1,
+    role: null,
+    name: null,
+    email: null,
+    id: null,
   });
 
-  // useEffect(() => {
-  //   if (userData.email && !userData.name) {
-  //     axios.get(`/skoolhub/login/role/${userData.email}`)
-  //       .then((response) => {
-  //         const { role_id, name, id } = response.data[0];
-  //         setUserData({
-  //           ...userData,
-  //           role: role_id,
-  //           name,
-  //           id,
-  //         });
-  //       })
-  //       .catch((error) => console.error({
-  //         Message: 'Error retrieving role.',
-  //         Error: error,
-  //       }));
-  //   }
-  // }, [userData.email]);
+  useEffect(() => {
+    if (userData.email && !userData.name) {
+      axios.get(`/skoolhub/login/role/${userData.email}`)
+        .then((response) => {
+          const { role_id, name, id } = response.data[0];
+          setUserData({
+            ...userData,
+            role: role_id,
+            name,
+            id,
+          });
+        })
+        .catch((error) => console.error({
+          Message: 'Error retrieving role.',
+          Error: error,
+        }));
+    }
+  }, [userData.email]);
   // Returns wrapper component for all components
   // Pass state and methods to value prop for access in other components
   return (
