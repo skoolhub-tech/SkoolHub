@@ -1,0 +1,35 @@
+.admin-modal {
+    height: 80vh;
+    overflow: scroll;
+}
+.admin-container {
+    margin-left: 8%;
+}
+.admin-students-list {
+      background-color: #DCCCBB;
+    border-radius: 10px;
+    /* padding: 20px; */
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 1rem;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75 );
+}
+.admin-search-bar {
+    margin-top: 2rem;
+}
+.admin-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.admin-h2 {
+    margin-right: 6rem;
+}
+.admin-create-buttons {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top: 1rem;
+    column-gap: 1rem;
+}

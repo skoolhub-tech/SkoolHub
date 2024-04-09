@@ -25,6 +25,7 @@
   width: 60%;
   min-height: 70vh;
   border-radius: 10px;
+  margin-left: 2rem;
 }
 
 .edit-task {
