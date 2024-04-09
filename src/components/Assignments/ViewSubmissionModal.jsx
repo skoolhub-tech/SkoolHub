@@ -11,24 +11,18 @@ function ViewSubmissionModal({ classId, assignmentId, studentId }) {
   useEffect(() => {
     const fetchAndRenderPDF = async () => {
       try {
-        console.log(`Fetching PDF for class ${classId}, assignment ${assignmentId}, student ${studentId}`);
-        // Use Axios to get the PDF file as a Blob
         const response = await axios.get(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/assignment/?classId=${classId}&assignmentId=${assignmentId}&studentId=${studentId}`, {
           responseType: 'blob',
         });
-        console.log(`Response size: ${response.data.size}`); // Log the Blob size to see if it's fully loaded
 
-        // Create a reader to convert the blob to an ArrayBuffer
         const reader = new FileReader();
         reader.readAsArrayBuffer(response.data);
         reader.onloadend = async () => {
           const arrayBuffer = reader.result;
 
           const pdfDoc = await getDocument({ data: arrayBuffer }).promise;
-          console.log('PDF loaded');
 
           const page = await pdfDoc.getPage(1);
-          console.log('Page loaded');
 
           const viewport = page.getViewport({ scale: 1.5 });
           const canvas = canvasRef.current;
@@ -42,7 +36,6 @@ function ViewSubmissionModal({ classId, assignmentId, studentId }) {
           };
 
           await page.render(renderContext).promise;
-          console.log('Page rendered');
         };
       } catch (error) {
         console.error('Error fetching or rendering the PDF:', error);
