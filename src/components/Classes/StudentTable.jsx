@@ -13,7 +13,7 @@ function StudentTable({ students, handleStudentClick }) {
       <tbody>
         {students.map((student) => (
           <tr key={student.id}>
-            <td>{student.name}</td>
+            <td className="student-name">{student.name}</td>
             <td>
               <button type="button" onClick={() => handleStudentClick(student)}>View Grades</button>
             </td>
