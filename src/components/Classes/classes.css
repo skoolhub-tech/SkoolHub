@@ -48,7 +48,9 @@
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   flex-direction: column;
   row-gap: 5px;
-  width: fit-content;
+  width: auto;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .modal-backdrop {
@@ -81,6 +83,13 @@
 }
 
 .modal-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px; /* Adjust the gap as needed */
+}
+
+.modal-avg {
   display: flex;
   justify-content: center;
   align-items: center;

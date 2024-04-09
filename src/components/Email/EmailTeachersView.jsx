@@ -5,7 +5,6 @@ import sendEmail from '../../utils/sendEmail';
 import EmailModal from './EmailModal';
 import DropDown from './DropDownSelector';
 import PeopleList from './PeopleList';
-import EmailTemplateView from './EmailTemplateView';
 import { useUserData } from '../data-providers/UserDataProvider';
 
 // userData needs to contain id, email, name, and role
@@ -23,9 +22,8 @@ function EmailTeachersView() {
   const [subjectLine, setSubjectLine] = useState('');
   const [body, setBody] = useState('');
   const [receiverEmailList, setRecieverEmailList] = useState({});
-  //if template chosen have option to save its value // into database?
+  // if template chosen have option to save its value // into database?
   const [selectedTemplate, setSelectedTemplate] = useState('writeYourOwnEmail');
-
 
   // change this to just the teachers classes
   useEffect(() => {
@@ -36,7 +34,10 @@ function EmailTeachersView() {
       axios.get(`/skoolhub/classes/${userData.email}`),
     ])
       .then(([adminResponse, teachersResponse, classesResponse]) => {
-        const adminData = adminResponse.data;
+        const adminData = adminResponse.data.map((admin) => ({
+          ...admin,
+          class: 'Admin',
+        }));
         const teachersData = teachersResponse.data.filter(
           (teacher) => teacher.email !== userData.email,
         );
@@ -89,7 +90,10 @@ function EmailTeachersView() {
         axios.get('/skoolhub/teachersclasses'),
       ])
         .then(([adminResponse, teachersResponse]) => {
-          const adminData = adminResponse.data;
+          const adminData = adminResponse.data.map((admin) => ({
+            ...admin,
+            class: 'Admin',
+          }));
           const teachersData = teachersResponse.data.filter(
             (teacher) => teacher.email !== userData.email,
           );
@@ -118,7 +122,7 @@ function EmailTeachersView() {
 
   return (
     <div className="emailsDiv">
-      <h1>Send an Email</h1>
+      <h1>Email</h1>
       {emailSent && <p>Email Sent!</p>}
       {errorMessage && <p>{errorMessage}</p>}
       <DropDown

@@ -19,7 +19,7 @@ LOGIN PAGE / NAV BAR CSS ========================================
 .login-page {
   display: flex;
   justify-content: center;
-  height: 100vh;
+  height: 75vh;
   flex-direction: column;
   position: absolute;
   width: 100vh;
@@ -51,13 +51,19 @@ LOGIN PAGE / NAV BAR CSS ========================================
 
 }
 .nav-bar {
+  width: 6em;
   row-gap: .75rem;
     display: flex;
     flex-direction: column;
-    transform: scale(1.25);
+    transform: scale(1.25) translateX(-70%);
     position: fixed;
     left: 0;
     bottom: 40%;
+    transition: 0.5s ease-in-out
+}
+
+.nav-bar:hover {
+  transform: scale(1.25) translateX(0) /* show on hover */
 }
 .login-button, .tab {
   background-color: #CED2BA;
@@ -82,7 +88,8 @@ LOGIN PAGE / NAV BAR CSS ========================================
   filter: drop-shadow(0 0 2em #707a3e);
 }
 .tab:hover {
-  background-color: #875D3B;
+  color: white;
+  background-color: #858D6F;
   filter: drop-shadow(0 0 2em #707a3e);
 }
 .navbar-container {
@@ -100,7 +107,7 @@ LOGIN PAGE / NAV BAR CSS ========================================
     /* padding-bottom: 10%;*/
 }
 .tab-active {
-  background-color: #875D3B;
+  background-color: #858D6F;
   filter: drop-shadow(0 0 2em #707a3e);
   border-radius: 5px;
   padding: 5px;
@@ -115,6 +122,6 @@ LOGIN PAGE / NAV BAR CSS ========================================
 
 .log-out-bttn {
   position: absolute;
-  top: 4rem;
+  top: 2rem;
   right: 4rem;
 }

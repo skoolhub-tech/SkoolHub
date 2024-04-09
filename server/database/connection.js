@@ -55,7 +55,7 @@ const createTableQuery = `
   CREATE TABLE assignments (
     id SERIAL PRIMARY KEY,
     class_id INT NOT NULL,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(255) UNIQUE NOT NULL,
     due_date TIMESTAMP NOT NULL,
     FOREIGN KEY (class_id) REFERENCES classes(id)
   );

@@ -54,6 +54,8 @@ function EmailStudentsView() {
     console.log(data, 'data');
     console.log('sent to', data.receiverEmail);
     setEmailModal(false);
+    setSubjectLine('');
+    setBody('');
     /*
     const response = await sendEmail(data);
     if (response === 'Email Sent!') {
@@ -67,7 +69,7 @@ function EmailStudentsView() {
 
   return (
     <div className="emailsDiv">
-      <h1>Send an Email</h1>
+      <h1>Email</h1>
       {emailSent && <p>Email Sent!</p>}
       {errorMessage && <p>{errorMessage}</p>}
       {potentialEmailees.length > 0 && (
