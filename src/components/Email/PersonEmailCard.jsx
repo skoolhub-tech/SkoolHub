@@ -5,11 +5,10 @@ function PersonEmailCard({
   person, receiverEmailList, setRecieverEmailList, isAllSelected,
 }) {
   const [isChecked, setIsChecked] = useState(false);
-
   // add email to ReceiverEmailList or remove it based on check event
-  const handleCheckboxChange = (event) => {
-    setIsChecked(event.target.checked);
-    if (event.target.checked) {
+  const handleRowClick = () => {
+    setIsChecked(!isChecked);
+    if (!isChecked) {
       setRecieverEmailList({ ...receiverEmailList, [person.email]: person });
     } else {
       const updatedList = { ...receiverEmailList };
@@ -17,6 +16,7 @@ function PersonEmailCard({
       setRecieverEmailList(updatedList);
     }
   };
+
   // update isChecked and receiverEmailList when isAllSelected changes
   useEffect(() => {
     setIsChecked(isAllSelected);
@@ -32,19 +32,12 @@ function PersonEmailCard({
   }, [isAllSelected]);
 
   return (
-    <div className="personEmailCard">
-      <label htmlFor={`checkbox-${person.email}`}>
-        <h3>{person.name}</h3>
-        <p>{Array.isArray(person.class) ? person.class.join(', ') : person.class}</p>
-        <input
-          type="checkbox"
-          id={`checkbox-${person.email}`}
-          checked={isChecked}
-          onChange={handleCheckboxChange}
-          className="emailCheckbox"
-        />
-      </label>
-    </div>
+    <tr className={`personEmailCard ${isChecked ? 'selectedRow' : ''}`} onClick={handleRowClick}>
+      <td className="td-name">
+        {person.name}
+        {Array.isArray(person.class) ? 'Teacher' : person.class}
+      </td>
+    </tr>
   );
 }
 
