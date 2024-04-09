@@ -16,10 +16,10 @@ function AssignmentsRowTeacher({
       <td>{assignment.name}</td>
       <td>{formatDate(assignment.due_date)}</td>
       <td>
-        <button type="button">Edit Assignment</button>
+        <button type="button" className="edit_assignment_button">Edit Assignment</button>
       </td>
       <td>
-        <button type="button" onClick={handleViewSubmissionsClick}>View Submissions</button>
+        <button type="button" className="view_submissions_button" onClick={handleViewSubmissionsClick}>View Submissions</button>
       </td>
     </tr>
   );
