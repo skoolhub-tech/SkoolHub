@@ -9,9 +9,25 @@ function Homepage() {
   const { email, id, role } = userData;
 
   const [classes, setClasses] = useState([]);
-  const [currentClass, setCurrentClass] = useState('');
   const [assignments, setAssignments] = useState([]);
   const [tasks, setTasks] = useState([]);
+
+  const getCurrentAssignments = (classId) => {
+    let path = `/skoolhub/assignments/current/${role}/${id}`;
+    if (classId) {
+      path += `/?classId=${classId}`;
+    }
+
+    axios.get(path)
+      .then((response) => {
+        console.log(response.data);
+        setAssignments(response.data);
+      })
+      .catch((error) => console.error({
+        Message: 'Error retrieving assignments.',
+        Error: error,
+      }));
+  };
 
   useEffect(() => {
     axios.get(`/skoolhub/classes/${email}`)
@@ -28,21 +44,29 @@ function Homepage() {
         Error: error,
       }));
 
-    axios.get(`/skoolhub/assignments/current/${role}/${id}`)
-      .then((response) => setAssignments(response.data))
-      .catch((error) => console.error({
-        Message: 'Error retrieving assignments.',
-        Error: error,
-      }));
+    getCurrentAssignments();
   }, [userData]);
+
+  const filterAssignments = (event) => {
+    const selectedOption = event.target.options[event.target.selectedIndex];
+
+    if (selectedOption.value) {
+      getCurrentAssignments(selectedOption.value);
+    } else {
+      getCurrentAssignments();
+    }
+  };
 
   return (
     <div>
       <h1>Homepage</h1>
-      <select value={currentClass} onChange={(e) => setCurrentClass(e.target.Value)}>
+      <select value="" onChange={(e) => filterAssignments(e)}>
         <option value="">Select a class</option>
+        <option value="">All</option>
         {classes.map((classObj) => (
-          <option key={classObj.id} value={classObj.id}>{classObj.name}</option>
+          <option key={classObj.id} value={classObj.id}>
+            {classObj.name}
+          </option>
         ))}
       </select>
       {assignments.length > 0 && (
