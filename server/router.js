@@ -37,10 +37,12 @@ router.post('/submitassignment', upload.single('file'), controller.submitAssignm
 router.post('/submittask', controller.submitCalendarTask);
 router.post('/classes/students', controller.createClassStudent);
 router.post('/createUser', controller.createUser);
+router.post('/createClass', controller.createClass);
 // PUT requests
 router.put('/edittask', controller.updateCalendar);
 //DELETE requests
 router.delete('/classes/:classId/students/:studentId', controller.deleteClassStudent);
 router.delete('/deleteUser/:userId/:roleId', controller.deleteUser);
+router.delete('/deleteClass/:classId', controller.deleteClass);
 
 module.exports = router;
