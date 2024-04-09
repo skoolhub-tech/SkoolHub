@@ -39,6 +39,8 @@
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
+  width: 100%;
+    margin-right: 17%;
 }
 
 .grade-chart {
@@ -48,7 +50,9 @@
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   flex-direction: column;
   row-gap: 5px;
-  width: fit-content;
+  width: auto;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .modal-backdrop {
@@ -92,4 +96,10 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px; /* Adjust the gap as needed */
+}
+.student-table-container {
+  width: 100%;
+}
+.grades-button {
+  padding-left: 6%
 }

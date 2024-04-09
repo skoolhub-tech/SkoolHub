@@ -74,8 +74,3 @@ button:hover {
   margin-top: 20px;
   background-color: rgba(255, 0, 0, 0.379);
 }
-
-.exit-button:hover {
-  background-color: #875D3B;
-  filter: drop-shadow(0 0 2em #707a3e);
-}

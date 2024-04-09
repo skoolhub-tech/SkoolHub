@@ -4,10 +4,12 @@ const getAssignmentsForClass = require('./getAssignmentsForClass');
 const getClassIdFromAssignmentId = require('./getClassIdFromAssignmentId');
 const getClassStudents = require('./getClassStudents');
 const getClasses = require('./getClasses');
-const getClassesFromEmail = require('./getClassesFromEmail');
+const getClassesFromStudentEmail = require('./getClassesFromStudentEmail');
+const getClassesFromTeacherEmail = require('./getClassesFromTeacherEmail');
 const getRoleAtLogin = require('./getRoleAtLogin');
 const getStudentIdFromEmail = require('./getStudentIdFromEmail');
 const getStudents = require('./getStudents');
+const getSubmissionsForAssignment = require('./getSubmissionsForAssignment');
 const getSubmittedOnDateForAssignment = require('./getSubmittedOnDateForAssignment');
 const getTeacherClasses = require('./getTeacherClasses');
 const getTeachers = require('./getTeachers');
@@ -24,6 +26,10 @@ const createUser = require('./createUser');
 const getRoles = require('./getRoles');
 const deleteUser = require('./deleteUser');
 const updateCalendar = require('./updateCalendar');
+const createClass = require('./createClass');
+const deleteClass = require('./deleteClass');
+const deleteCalendar = require('./deleteCalendar');
+const getCurrentAssignments = require('./getCurrentAssignments');
 
 module.exports = {
   getAdmin,
@@ -32,10 +38,12 @@ module.exports = {
   getClassIdFromAssignmentId,
   getClassStudents,
   getClasses,
-  getClassesFromEmail,
+  getClassesFromStudentEmail,
+  getClassesFromTeacherEmail,
   getRoleAtLogin,
   getStudentIdFromEmail,
   getStudents,
+  getSubmissionsForAssignment,
   getSubmittedOnDateForAssignment,
   getTeacherClasses,
   getTeachers,
@@ -52,4 +60,8 @@ module.exports = {
   getRoles,
   deleteUser,
   updateCalendar,
+  createClass,
+  deleteClass,
+  deleteCalendar,
+  getCurrentAssignments,
 };

@@ -30,7 +30,7 @@ function ScheduleMeetingEmailTemplate({ setSubject, setBody, currentClass, setSe
 
   return (
     <div className="emailTemplateCard">
-      <p>Schedule Meeting Template</p>
+      <p>Schedule Meeting</p>
       <button type="button" onClick={handleCheckboxChange}>Select</button>
     </div>
   );

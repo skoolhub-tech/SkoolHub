@@ -5,54 +5,30 @@ import PropTypes from 'prop-types';
 import { useUserData } from '../data-providers/UserDataProvider';
 import SubmitAssignmentButton from './SubmitAssignmentButton';
 import ViewSubmittedAssignmentButton from './ViewSubmittedAssignmentButton';
-import ViewAssignmentButton from './ViewAssignmentButton';
+import formatDate from '../../utils/formatDate_Month_D_Y';
 
 function AssignmentsRow({
   assignment,
-  getClassesAndAssignmentsForStudent,
+  getClassesAndAssignments,
   setViewSubmissionModalOpen,
   viewSubmissionModalOpen,
   setAssignmentId,
 }) {
   const { userData: { email } } = useUserData();
 
-  function getOrdinalIndicator(day) {
-    if (day > 3 && day < 21) return 'th';
-    switch (day % 10) {
-      case 1: return 'st';
-      case 2: return 'nd';
-      case 3: return 'rd';
-      default: return 'th';
-    }
-  }
-
-  function formatDate(dateString) {
-    const months = ['January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'];
-    const date = new Date(dateString);
-    const day = date.getDate();
-    const monthIndex = date.getMonth();
-    const year = date.getFullYear();
-
-    return `${months[monthIndex]} ${day}${getOrdinalIndicator(day)}, ${year}`;
-  }
-
   return (
     <tr>
-      <td>{assignment.name}</td>
+      <td className="view-assignment-button">{assignment.name}</td>
       <td>{formatDate(assignment.due_date)}</td>
       <td>{assignment.submitted_on ? formatDate(assignment.submitted_on) : ''}</td>
-      <td>
-        <ViewAssignmentButton assignment={assignment} />
-      </td>
-      <td>
+      <td className="submit-button">
         <SubmitAssignmentButton
           studentEmail={email}
           assignmentId={assignment.id}
-          getClassesAndAssignmentsForStudent={getClassesAndAssignmentsForStudent}
+          getClassesAndAssignments={getClassesAndAssignments}
         />
       </td>
-      <td>
+      <td className="view-submit-button">
         {assignment.submitted_on && (
         <ViewSubmittedAssignmentButton
           assignmentId={assignment.id}
@@ -75,7 +51,7 @@ AssignmentsRow.propTypes = {
     due_date: PropTypes.string,
     submitted_on: PropTypes.string,
   }).isRequired,
-  getClassesAndAssignmentsForStudent: PropTypes.func.isRequired,
+  getClassesAndAssignments: PropTypes.func.isRequired,
   setViewSubmissionModalOpen: PropTypes.func.isRequired,
   viewSubmissionModalOpen: PropTypes.bool.isRequired,
   setAssignmentId: PropTypes.func.isRequired,

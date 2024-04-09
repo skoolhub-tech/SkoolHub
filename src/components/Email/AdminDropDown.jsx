@@ -11,7 +11,6 @@ function AdminDropDown({ views, handleDropdownChange }) {
 
   return (
     <select value={selectedValue} onChange={handleChange} className="emailDropdown">
-      <option value="" disabled>Select Group</option>
       {views.map((view) => (
         <option key={view} value={view}>{view}</option>
       ))}
