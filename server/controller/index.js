@@ -51,4 +51,7 @@ module.exports = {
   getRoles,
   deleteUser,
   updateCalendar,
+  createClass,
+  deleteClass,
+  deleteCalendar,
 };
