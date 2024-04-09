@@ -94,3 +94,8 @@ LOGIN PAGE / NAV BAR CSS ========================================
   transition: background-color 0.5s;
   border: 1px solid #07070aaa;
 }
+
+.log-out-bttn {
+  margin-left: auto;
+  margin-top: -50px;
+}
