@@ -8,16 +8,17 @@ function CreateUser({ exitModal }) {
   const [admins, setAdmins] = useState([]);
   const [roles, setRoles] = useState([]);
   const [selectedRoleFilter, setSelectedRoleFilter] = useState('');
-  console.log('selectedRoleFilter', selectedRoleFilter);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [selectedRole, setSelectedRole] = useState('');
 
+  const [searchQuery, setSearchQuery] = useState('');
+
   useEffect(() => {
     axios.get('/skoolhub/teachers')
       .then((response) => {
-        console.log('TEACHERS', response.data);
+        // console.log('TEACHERS', response.data);
         setTeachers(response.data);
       })
       .catch((error) => {
@@ -26,7 +27,7 @@ function CreateUser({ exitModal }) {
 
     axios.get('/skoolhub/students')
       .then((response) => {
-        console.log('STUDENTS', response.data);
+        // console.log('STUDENTS', response.data);
         setStudents(response.data);
       })
       .catch((error) => {
@@ -35,7 +36,7 @@ function CreateUser({ exitModal }) {
 
     axios.get('/skoolhub/admin')
       .then((response) => {
-        console.log('ADMIN', response.data);
+        // console.log('ADMIN', response.data);
         setAdmins(response.data);
       })
       .catch((error) => {
@@ -44,7 +45,7 @@ function CreateUser({ exitModal }) {
 
     axios.get('/skoolhub/roles')
       .then((response) => {
-        console.log('ROLES', response.data);
+        // console.log('ROLES', response.data);
         setRoles(response.data);
       })
       .catch((error) => {
@@ -72,7 +73,7 @@ function CreateUser({ exitModal }) {
 
     axios.post('/skoolhub/createUser', userData)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setName('');
         setEmail('');
         setSelectedRole('');
@@ -83,14 +84,16 @@ function CreateUser({ exitModal }) {
   };
 
   const users = teachers.concat(students, admins)
-    .filter((user) => (selectedRoleFilter ? user.role_id == selectedRoleFilter : true));
+    .filter((user) => (
+      (selectedRoleFilter ? user.role_id == selectedRoleFilter : true) &&
+      (searchQuery ? user.name.toLowerCase().includes(searchQuery.toLowerCase()) : true)
+    ));
 
-  console.log('users', users);
 
   const handleDeleteClick = (userId, role) => {
     axios.delete(`/skoolhub/deleteUser/${userId}/${role}`)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
       })
       .catch((error) => {
         console.error(error);
@@ -161,6 +164,17 @@ function CreateUser({ exitModal }) {
             ))}
           </select>
         </label>
+
+        <label htmlFor="searchBar">
+          Search:
+          <input
+            type="text"
+            id="searchBar"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </label>
+
         <table>
           <thead>
             <tr>
