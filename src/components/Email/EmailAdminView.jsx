@@ -38,6 +38,8 @@ function EmailAdminView() {
     console.log(data, 'data');
     console.log('sent to', data.receiverEmail);
     setEmailModal(false);
+    setSubjectLine('');
+    setBody('');
     /*
     const response = await sendEmail(data);
     if (response === 'Email Sent!') {

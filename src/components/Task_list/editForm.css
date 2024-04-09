@@ -28,7 +28,7 @@
 
 label {
   margin-bottom: 10px;
-  color: white;
+  color: black;
 }
 
 input {
@@ -51,7 +51,7 @@ button {
 }
 
 button:hover {
-  background-color: #875D3B;
+  background-color: #858D6F;
   filter: drop-shadow(0 0 2em #707a3e);
 }
 

@@ -18,8 +18,16 @@ function Classes() {
   useEffect(() => {
     axios.get(`/skoolhub/classes/${userData.email}`)
       .then((response) => {
-        console.log(response.data);
         setClasses(response.data);
+        setSelectedClass(response.data[0].id);
+        setSelectedClassName(response.data[0].name);
+        axios.get(`/skoolhub/classes/${response.data[0].id}/students`)
+          .then((reply) => {
+            setStudents(reply.data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       })
       .catch((error) => {
         console.error(error);
@@ -53,8 +61,9 @@ function Classes() {
       <div className="class-header">
         <h1>Classes</h1>
       </div>
-      <div className="class-dropdown">
+      <div>
         <select
+          className="class-dropdown"
           value={selectedClass}
           onChange={(e) => handleClassChange(
             e.target.value,

@@ -17,10 +17,14 @@ LOGIN PAGE / NAV BAR CSS ========================================
   justify-content: flex-start;
 }
 .login-page {
-  min-width: 100vh;
-    background-color: #CED2BA;
-    flex-direction: column;
-    padding-top: 3rem;
+  display: flex;
+  justify-content: center;
+  height: 75vh;
+  flex-direction: column;
+  position: absolute;
+  width: 100vh;
+  left: 20%;
+
 }
 .login-h1, .login-form, .login-p, body{
   font-family: "Comfortaa", sans-serif;
@@ -47,10 +51,19 @@ LOGIN PAGE / NAV BAR CSS ========================================
 
 }
 .nav-bar {
-  column-gap: 5px;
-  display: flex;
-  flex-direction: row;
-  transform: scale(1.25);
+  width: 6em;
+  row-gap: .75rem;
+    display: flex;
+    flex-direction: column;
+    transform: scale(1.25) translateX(-70%);
+    position: fixed;
+    left: 0;
+    bottom: 40%;
+    transition: 0.5s ease-in-out
+}
+
+.nav-bar:hover {
+  transform: scale(1.25) translateX(0) /* show on hover */
 }
 .login-button, .tab {
   background-color: #CED2BA;
@@ -63,27 +76,38 @@ LOGIN PAGE / NAV BAR CSS ========================================
   cursor: pointer;
   transition: background-color 0.5s;
   border: 1px solid #07070aaa;
+  color:black;
+  height: 2rem;
   /* filter: drop-shadow(0 0 1em #0d17d9aa); */
+}
+.tab {
+  height: 4rem;;
 }
 .login-button:hover {
   background-color: #acbb5e;
   filter: drop-shadow(0 0 2em #707a3e);
 }
 .tab:hover {
-  background-color: #875D3B;
+  color: white;
+  background-color: #858D6F;
   filter: drop-shadow(0 0 2em #707a3e);
 }
 .navbar-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 5rem;
-  padding-top: 4%;
-  /* transform: scale(1.25); */
-  /* padding-bottom: 10%; */
+    flex-direction: row;
+    /* align-items: center; */
+    /* row-gap: 5rem; */
+    column-gap: 18rem;
+    padding-top: 5%;
+    /* transform: scale(1.25); */
+    /* padding-bottom: 10%; */
+    margin-left: 0rem;
+    justify-content: flex-start;
+    /* transform: scale(1.25); */
+    /* padding-bottom: 10%;*/
 }
 .tab-active {
-  background-color: #875D3B;
+  background-color: #858D6F;
   filter: drop-shadow(0 0 2em #707a3e);
   border-radius: 5px;
   padding: 5px;
@@ -93,6 +117,7 @@ LOGIN PAGE / NAV BAR CSS ========================================
   cursor: pointer;
   transition: background-color 0.5s;
   border: 1px solid #07070aaa;
+  height: 4rem;
 }
 
 .log-out-bttn {

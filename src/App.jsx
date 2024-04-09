@@ -20,11 +20,8 @@ function App() {
 
   const handleLogOut = () => {
     setIsLoggedIn(false);
-    localStorage.removeItem('sessionToken');
-    localStorage.removeItem('email');
-    localStorage.removeItem('date');
-    localStorage.removeItem('role');
-    localStorage.removeItem('id');
+    window.location.href = '/homepage';
+    localStorage.clear();
   };
 
   return (
