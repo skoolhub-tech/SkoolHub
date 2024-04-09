@@ -39,6 +39,8 @@
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
+  width: 100%;
+    margin-right: 17%;
 }
 
 .grade-chart {
@@ -94,4 +96,10 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px; /* Adjust the gap as needed */
+}
+.student-table-container {
+  width: 100%;
+}
+.grades-button {
+  padding-left: 6%
 }

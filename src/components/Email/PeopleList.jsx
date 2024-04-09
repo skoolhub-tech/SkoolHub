@@ -19,8 +19,8 @@ function PeopleList({
         <button type="button" onClick={handleSelectAllChange}>Select All</button>
         <button type="button" onClick={() => setEmailModal(true)}>Draft Email</button>
       </div>
-      <table className="personCardContainer">
-        <tbody>
+      <div className="personCardContainer">
+
           {potentialEmailees.map((person) => (
             <PersonEmailCard
               key={person.email}
@@ -30,8 +30,8 @@ function PeopleList({
               isAllSelected={isAllSelected}
             />
           ))}
-        </tbody>
-      </table>
+
+      </div>
     </div>
   );
 }
