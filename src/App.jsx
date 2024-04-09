@@ -33,6 +33,7 @@ function App() {
         <UserDataProvider>
           {isLoggedIn ? (
             <>
+            <button className="log-out-bttn" type="button" onClick={handleLogOut}>Log out</button>
               <NavBar handleLogOut={handleLogOut} />
               <Routes>
                 <Route path="/homepage" element={<HomepageWithTaskCheck />} />
