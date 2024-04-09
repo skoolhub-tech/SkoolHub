@@ -7,7 +7,7 @@ import SubmitAssignmentModal from './SubmitAssignmentModal';
 function SubmitAssignmentButton({
   studentEmail,
   assignmentId,
-  getClassesAndAssignmentsForStudent,
+  getClassesAndAssignments,
 }) {
   const [submitAssignmentModalIsOpen, setSubmitAssignmentModalIsOpen] = useState(false);
   return (
@@ -18,7 +18,7 @@ function SubmitAssignmentButton({
         setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}
         studentEmail={studentEmail}
         assignmentId={assignmentId}
-        getClassesAndAssignmentsForStudent={getClassesAndAssignmentsForStudent}
+        getClassesAndAssignments={getClassesAndAssignments}
       />
       )}
     </div>
@@ -30,5 +30,5 @@ export default SubmitAssignmentButton;
 SubmitAssignmentButton.propTypes = {
   studentEmail: PropTypes.string.isRequired,
   assignmentId: PropTypes.number.isRequired,
-  getClassesAndAssignmentsForStudent: PropTypes.func.isRequired,
+  getClassesAndAssignments: PropTypes.func.isRequired,
 };

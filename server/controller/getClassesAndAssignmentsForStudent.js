@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
-const { getClassesFromEmail, getAssignmentsForClass, getSubmittedOnDateForAssignment } = require('../model');
+const { getClassesFromStudentEmail, getAssignmentsForClass, getSubmittedOnDateForAssignment } = require('../model');
 
 module.exports = async (req, res) => {
   try {
     const { email } = req.query;
-    const classes = await getClassesFromEmail(email);
+    const classes = await getClassesFromStudentEmail(email);
     const classesWithAssignments = await Promise.all(classes.map(async (classObj) => {
       const assignments = await getAssignmentsForClass(classObj.id);
 

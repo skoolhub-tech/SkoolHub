@@ -2,11 +2,13 @@ const getAdmin = require('./getAdmin');
 const getClassStudents = require('./getClassStudents');
 const getClasses = require('./getClasses');
 const getClassesAndAssignmentsForStudent = require('./getClassesAndAssignmentsForStudent');
+const getClassesAndAssignmentsForTeacher = require('./getClassesAndAssignmentsForTeacher');
 const getRoleAtLogin = require('./getRoleAtLogin');
 const getStudents = require('./getStudents');
 const getTeacherClasses = require('./getTeacherClasses');
 const getTeachers = require('./getTeachers');
-const getSubmittedAssignment = require('./getSubmittedAssignment');
+const getSubmittedAssignmentForStudent = require('./getSubmittedAssignmentForStudent');
+const getSubmittedAssignmentsForTeacher = require('./getSubmittedAssignmentsForTeacher');
 const login = require('./login');
 const getStudentClassGrades = require('./getStudentClassGrades');
 const sendAutoEmail = require('./sendAutoEmail');
@@ -32,11 +34,13 @@ module.exports = {
   getClassStudents,
   getClasses,
   getClassesAndAssignmentsForStudent,
+  getClassesAndAssignmentsForTeacher,
   getRoleAtLogin,
   getStudents,
   getTeacherClasses,
   getTeachers,
-  getSubmittedAssignment,
+  getSubmittedAssignmentForStudent,
+  getSubmittedAssignmentsForTeacher,
   login,
   getStudentClassGrades,
   sendAutoEmail,
