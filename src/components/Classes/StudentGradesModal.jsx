@@ -17,7 +17,6 @@ function StudentGradesModal({
     axios.get(`/skoolhub/classes/${classId}/students/${studentId}/grades`)
       .then((response) => {
         const studentGrades = response.data;
-        console.log(studentGrades);
         setGrades(response.data);
         const totalScore = studentGrades.reduce((acc, grade) => acc + grade.score, 0);
         const average = (totalScore / studentGrades.length).toFixed(2);
