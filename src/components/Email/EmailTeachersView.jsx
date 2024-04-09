@@ -5,6 +5,7 @@ import sendEmail from '../../utils/sendEmail';
 import EmailModal from './EmailModal';
 import DropDown from './DropDownSelector';
 import PeopleList from './PeopleList';
+import EmailTemplateView from './EmailTemplateView';
 import { useUserData } from '../data-providers/UserDataProvider';
 
 // userData needs to contain id, email, name, and role
@@ -22,13 +23,26 @@ function EmailTeachersView() {
   const [subjectLine, setSubjectLine] = useState('');
   const [body, setBody] = useState('');
   const [receiverEmailList, setRecieverEmailList] = useState({});
+  //if template chosen have option to save its value // into database?
+  const [selectedTemplate, setSelectedTemplate] = useState('writeYourOwnEmail');
+
 
   // change this to just the teachers classes
   useEffect(() => {
-    axios.get(`/skoolhub/classes/${userData.email}`)
-      .then((response) => {
-        console.log(response.data);
-        setClasses(response.data);
+    setCurrentClass({ name: 'Faculty' });
+    Promise.all([
+      axios.get('/skoolhub/admin'),
+      axios.get('/skoolhub/teachersclasses'),
+      axios.get(`/skoolhub/classes/${userData.email}`),
+    ])
+      .then(([adminResponse, teachersResponse, classesResponse]) => {
+        const adminData = adminResponse.data;
+        const teachersData = teachersResponse.data.filter(
+          (teacher) => teacher.email !== userData.email,
+        );
+        const combinedData = [...adminData, ...teachersData];
+        setPotentialEmailees(combinedData);
+        setClasses(classesResponse.data);
       })
       .catch((error) => {
         console.error(error);
@@ -49,6 +63,8 @@ function EmailTeachersView() {
     console.log(data, 'data');
     console.log('sent to', data.receiverEmail);
     setEmailModal(false);
+    setSubjectLine('');
+    setBody('');
     /*
     const response = await sendEmail(data);
     if (response === 'Email Sent!') {
@@ -61,15 +77,16 @@ function EmailTeachersView() {
       setEmailModal(false);
     } */
   };
-
   // get students in class set state to list of student Objects
   const handleClassChange = (classObj) => {
+    setSubjectLine('');
+    setBody('');
     setRecieverEmailList({});
     if (classObj === 'Faculty') {
       setCurrentClass({ name: 'Faculty' });
       Promise.all([
         axios.get('/skoolhub/admin'),
-        axios.get('/skoolhub/teachers'),
+        axios.get('/skoolhub/teachersclasses'),
       ])
         .then(([adminResponse, teachersResponse]) => {
           const adminData = adminResponse.data;
@@ -81,8 +98,8 @@ function EmailTeachersView() {
         })
         .catch((error) => {
           console.error(error);
+          setPotentialEmailees([]);
         });
-      setPotentialEmailees([]);
       return;
     }
     setCurrentClass(classObj);
@@ -100,7 +117,7 @@ function EmailTeachersView() {
   };
 
   return (
-    <div>
+    <div className="emailsDiv">
       <h1>Send an Email</h1>
       {emailSent && <p>Email Sent!</p>}
       {errorMessage && <p>{errorMessage}</p>}
@@ -123,6 +140,10 @@ function EmailTeachersView() {
           setMessage={setBody}
           setSubject={setSubjectLine}
           email={email}
+          subject={subjectLine}
+          body={body}
+          currentClass={currentClass}
+          setSelectedTemplate={setSelectedTemplate}
         />
       )}
     </div>

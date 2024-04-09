@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable new-cap */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
@@ -5,22 +6,35 @@ import PropTypes from 'prop-types';
 import { jsPDF } from 'jspdf';
 import axios from 'axios';
 
-function SubmitAssignmentModal({ setSubmitAssignmentModalIsOpen, studentEmail, assignmentId }) {
+function SubmitAssignmentModal({
+  setSubmitAssignmentModalIsOpen,
+  studentEmail,
+  assignmentId,
+  getClassesAndAssignmentsForStudent,
+}) {
   const handleFileSubmit = async (file) => {
     const formData = new FormData();
 
-    const submitToServer = (fileData) => { // Use formData directly
-      axios.post(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/submitassignment`, fileData) // Removed the headers object
+    const submitToServer = (fileData) => {
+      axios.post(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/submitassignment`, fileData)
         .then((response) => {
-          console.log('Success:', response);
+          //
+          //
+          //
+          // REPLACE CONSOLE.LOG WITH MODAL DISPLAYING SUCCESS/ERROR MESSAGE
+          console.log('*MODIFY SubmitAssignmentModal to display success/error message* Success:', response);
+          // REPLACE CONSOLE.LOG WITH MODAL DISPLAYING SUCCESS/ERROR MESSAGE
+          //
+          //
+          //
+          getClassesAndAssignmentsForStudent();
         }).catch((error) => {
           console.error('Error:', error);
         });
     };
 
-    // Preparing formData
     formData.append('studentEmail', studentEmail);
-    formData.append('assignmentId', assignmentId.toString()); // Ensure assignmentId is a string
+    formData.append('assignmentId', assignmentId.toString());
 
     if (file.type === 'application/pdf') {
       formData.append('file', file, file.name);
@@ -65,4 +79,5 @@ SubmitAssignmentModal.propTypes = {
   setSubmitAssignmentModalIsOpen: PropTypes.func.isRequired,
   studentEmail: PropTypes.string.isRequired,
   assignmentId: PropTypes.number.isRequired,
+  getClassesAndAssignmentsForStudent: PropTypes.func.isRequired,
 };

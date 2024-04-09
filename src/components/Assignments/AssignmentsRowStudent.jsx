@@ -1,11 +1,19 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useUserData } from '../data-providers/UserDataProvider';
 import SubmitAssignmentButton from './SubmitAssignmentButton';
 import ViewSubmittedAssignmentButton from './ViewSubmittedAssignmentButton';
+import ViewAssignmentButton from './ViewAssignmentButton';
 
-function AssignmentsRow({ assignment }) {
+function AssignmentsRow({
+  assignment,
+  getClassesAndAssignmentsForStudent,
+  setViewSubmissionModalOpen,
+  viewSubmissionModalOpen,
+  setAssignmentId,
+}) {
   const { userData: { email } } = useUserData();
 
   function getOrdinalIndicator(day) {
@@ -35,11 +43,24 @@ function AssignmentsRow({ assignment }) {
       <td>{formatDate(assignment.due_date)}</td>
       <td>{assignment.submitted_on ? formatDate(assignment.submitted_on) : ''}</td>
       <td>
-        <SubmitAssignmentButton studentEmail={email} assignmentId={assignment.id} />
+        <ViewAssignmentButton assignment={assignment} />
       </td>
       <td>
-        {/* Only render ViewSubmittedAssignmentButton if assignment.submitted_on is not null */}
-        {assignment.submitted_on && <ViewSubmittedAssignmentButton />}
+        <SubmitAssignmentButton
+          studentEmail={email}
+          assignmentId={assignment.id}
+          getClassesAndAssignmentsForStudent={getClassesAndAssignmentsForStudent}
+        />
+      </td>
+      <td>
+        {assignment.submitted_on && (
+        <ViewSubmittedAssignmentButton
+          assignmentId={assignment.id}
+          setAssignmentId={setAssignmentId}
+          setViewSubmissionModalOpen={setViewSubmissionModalOpen}
+          viewSubmissionModalOpen={viewSubmissionModalOpen}
+        />
+        )}
       </td>
     </tr>
   );
@@ -54,4 +75,8 @@ AssignmentsRow.propTypes = {
     due_date: PropTypes.string,
     submitted_on: PropTypes.string,
   }).isRequired,
+  getClassesAndAssignmentsForStudent: PropTypes.func.isRequired,
+  setViewSubmissionModalOpen: PropTypes.func.isRequired,
+  viewSubmissionModalOpen: PropTypes.bool.isRequired,
+  setAssignmentId: PropTypes.func.isRequired,
 };

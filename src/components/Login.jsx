@@ -25,7 +25,15 @@ function Login({ handleLoginEvent }) {
         to_email: email,
         message: code,
       }, '0N-1NSzAKcK0vEt7G');
-      console.log('Code sent successfully');
+      //
+      //
+      //
+      // DELETE ME BEFORE DEPLOYMENT!!!
+      console.log(`Code sent successfully: ${code}`);
+      // DELETE ME BEFORE DEPLOYMENT!!!
+      //
+      //
+      //
     } catch (err) {
       console.error('Error sending code', err);
       throw err;
@@ -36,7 +44,6 @@ function Login({ handleLoginEvent }) {
   const handleLogout = () => {
     localStorage.removeItem('sessionToken');
     localStorage.removeItem('email');
-    localStorage.removeItem('loggedIn');
     localStorage.removeItem('date');
     handleLoginEvent(false);
     setLoginInfo({
@@ -75,7 +82,10 @@ function Login({ handleLoginEvent }) {
         handleLogout();
       } else {
         handleLoginEvent(true);
-        setUserData({ ...userData, email: loginInfo.email });
+        setUserData({
+          ...userData,
+          email: localStorage.getItem('email'),
+        });
       }
     }
   }, []);
@@ -113,7 +123,6 @@ function Login({ handleLoginEvent }) {
     e.preventDefault();
     if (loginInfo.code === loginInfo.enteredCode) {
       handleLoginEvent(true);
-      console.log(loginInfo.email);
       setUserData({ ...userData, email: loginInfo.email });
       const sessionToken = generateSessionToken();
       localStorage.setItem('sessionToken', sessionToken);
@@ -140,7 +149,7 @@ function Login({ handleLoginEvent }) {
           <label htmlFor="code">Code</label>
           <input
             name="enteredCode"
-            type="text"
+            type="password"
             id="code"
             value={loginInfo.enteredCode}
             onChange={handleChange}
@@ -162,7 +171,7 @@ function Login({ handleLoginEvent }) {
         <label htmlFor="password">Password</label>
         <input
           name="password"
-          type="text"
+          type="password"
           id="password"
           value={loginInfo.password}
           onChange={(e) => setLoginInfo({ ...loginInfo, password: e.target.value })}

@@ -17,8 +17,7 @@ function DropDown({ classes, handleClassChange }) {
   };
 
   return (
-    <select value={selectedValue} onChange={handleChange}>
-      <option value="" disabled>Select a Class</option>
+    <select value={selectedValue} onChange={handleChange} className="emailDropdown">
       <option key="Faculty" value="Faculty">Faculty</option>
       {classes.map((classObj) => (
         <option key={classObj.name} value={classObj.id}>{classObj.name}</option>

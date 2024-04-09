@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AddStudent from './AddStudent';
 
@@ -12,7 +11,7 @@ function AssignStudentClass() {
   useEffect(() => {
     axios.get('/skoolhub/classes')
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setClasses(response.data);
       })
       .catch((error) => {
@@ -28,7 +27,7 @@ function AssignStudentClass() {
     }
     axios.get(`/skoolhub/classes/${classId}/students`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setStudents(response.data);
       })
       .catch((error) => {
@@ -36,15 +35,36 @@ function AssignStudentClass() {
       });
   };
 
-  const toggleModal = () => {
-    setShowModal(!showModal);
+  const openModal = () => {
+    if (!selectedClass) {
+      alert('Please select a class');
+      return;
+    }
+    setShowModal(true);
   };
 
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const deleteStudentFromClass = (classId, studentId) => {
+    axios.delete(`/skoolhub/classes/${classId}/students/${studentId}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleRemoveClick = (studentId) => {
+    deleteStudentFromClass(selectedClass, studentId);
+  };
 
   return (
     <div>
       ASSIGN STUDENT CLASS
-      <button type="button" onClick={toggleModal}>Add Student</button>
+      <button type="button" onClick={openModal}>Add Student</button>
 
       <select
         value={selectedClass}
@@ -58,20 +78,30 @@ function AssignStudentClass() {
       {students.length > 0 && (
         <div>
           <h2>Students</h2>
-          <ul>
-            {students.map((student) => (
-              <li key={student.id}>
-                {student.id}-
-                {student.name}-
-                {student.email}
-                <button type="button">Remove</button>
-              </li>
-            ))}
-          </ul>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {students.map((student) => (
+                <tr key={student.id}>
+                  <td>{student.id}</td>
+                  <td>{student.name}</td>
+                  <td>{student.email}</td>
+                  <td><button type="button" onClick={() => handleRemoveClick(student.id)}>Remove</button></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
 
-    {showModal && <AddStudent closeModal={toggleModal} studentsInClass={students} />}
+      {showModal && <AddStudent closeModal={closeModal} studentsInClass={students} selectedClass={selectedClass} />}
 
     </div>
   );

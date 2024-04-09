@@ -4,12 +4,62 @@
 .emailsDiv > h1 {
   text-align: center;
 }
+/*================= container holding current group and select buttons ======================*/
+.peopleListView {
+
+}
 
 .peopleListBtns {
   display: flex;
   justify-content: space-around;
 }
+.emailDropdown {
 
+}
+/*==================== People cards container (scrollable) and its children ========================== */
+/* Scroll bar for personCardContainer */
+.personCardContainer::-webkit-scrollbar {
+  width: 8px; /* Adjust width for vertical scrollbar */
+}
+
+.personCardContainer::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+}
+
+.personCardContainer::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scroll thumb */
+}
+
+.personCardContainer::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scroll thumb on hover */
+}
+
+.personCardContainer {
+  justify-content: center;
+  height: 500px;
+  overflow-y: auto;
+}
+
+.personEmailCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  background-color: #858D6F;
+}
+/* inside person card */
+.emailCheckbox {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  margin: 0px;
+}
+/* =================   Email Modal DIV holds emailform div and template Div ===================*/
 .emailModal {
   display: flex;
   flex-direction: column;
@@ -19,8 +69,56 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 9999;
+  z-index: 1;
   border: 1px solid black;
   border-radius: 10px;
   background-color: #858D6F;
+}
+/*===============Template DIV holds template cards=====================*/
+.emailTemplatesView {
+  display: grid;
+  grid-template-columns: repeat(2, .5fr);
+  grid-gap: 10px;
+}
+.emailTemplateCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #858D6F;
+}
+.emailTemplateCard > button {
+
+}
+/*=================Email Form Div holds emailForm=====================*/
+.emailModalForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.emailModalForm > label {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+.emailModalForm > label > input {
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+}
+.emailModalForm > label > textarea {
+  width: 100%;
+  height: 100px;
+  border-radius: 5px;
+}
+.emailModalForm > button {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  margin: 10px;
 }

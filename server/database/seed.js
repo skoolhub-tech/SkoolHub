@@ -323,6 +323,21 @@ const studentCalendarData = [
   },
 ];
 
+const adminCalendarData = [
+  {
+    name: 'Write student assembly speech', admin_id: 1, event_start: '2024-04-14T10:00:00.000Z', event_end: '2024-04-14T12:00:00.000Z', completed: false,
+  },
+  {
+    name: 'Transfer J. Smith to J. Doe Science class', admin_id: 2, event_start: '2024-04-14T10:00:00.000Z', event_end: '2024-04-14T12:00:00.000Z', completed: false,
+  },
+  {
+    name: 'Add Quimsly Adams to teacher list', admin_id: 1, event_start: '2024-04-14T11:00:00.000Z', event_end: '2024-04-14T12:00:00.000Z', completed: true,
+  },
+  {
+    name: 'Remove R. Veginald from student list', admin_id: 2, event_start: '2024-04-14T13:00:00.000Z', event_end: '2024-04-14T14:00:00.000Z', completed: true,
+  },
+];
+
 const credentialsData = [
   { email: 'jsmith@gmail.com', password: 'vasetime', role_id: 1 },
   { email: 'jane.johnson@skool.edu', password: 'testingblue', role_id: 1 },
@@ -427,6 +442,12 @@ async function seed() {
     studentCalendarData.forEach(async (studentEvent) => {
       await client.query(`
         INSERT INTO students_calendar (name, student_id, event_start, event_end, completed) VALUES ('${studentEvent.name}', ${studentEvent.student_id}, '${studentEvent.event_start}', '${studentEvent.event_end}', ${studentEvent.completed});
+      `);
+    });
+
+    adminCalendarData.forEach(async (adminEvent) => {
+      await client.query(`
+        INSERT INTO admin_calendar (name, admin_id, event_start, event_end, completed) VALUES ('${adminEvent.name}', ${adminEvent.admin_id}, '${adminEvent.event_start}', '${adminEvent.event_end}', ${adminEvent.completed});
       `);
     });
 

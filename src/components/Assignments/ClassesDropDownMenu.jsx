@@ -1,11 +1,13 @@
-// Wrap the selectable items in a container for the hover effect to work correctly
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './classesDropDownMenu.css';
 
 function ClassesDropDownMenu({ classes, setSelectedClass }) {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   function handleSelectClassClick(event) {
     setSelectedClass(event.target.textContent);
+    setIsDropdownOpen(!isDropdownOpen);
   }
 
   function handleKeyPress(event) {
@@ -14,12 +16,20 @@ function ClassesDropDownMenu({ classes, setSelectedClass }) {
     }
   }
 
+  function toggleDropdown() {
+    setIsDropdownOpen(!isDropdownOpen);
+  }
+
   return (
     <div className="classes_dropdown">
-      <button type="button" className="classes_drop_down_menu">
+      <button
+        type="button"
+        className="classes_drop_down_menu"
+        onClick={toggleDropdown}
+      >
         CHOOSE A CLASS
       </button>
-      {classes.map((item) => (
+      {isDropdownOpen && classes.map((item) => (
         <div
           className="select_class_button"
           role="button"
@@ -35,8 +45,6 @@ function ClassesDropDownMenu({ classes, setSelectedClass }) {
   );
 }
 
-export default ClassesDropDownMenu;
-
 ClassesDropDownMenu.propTypes = {
   classes: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
@@ -44,3 +52,5 @@ ClassesDropDownMenu.propTypes = {
   })).isRequired,
   setSelectedClass: PropTypes.func.isRequired,
 };
+
+export default ClassesDropDownMenu;
