@@ -95,7 +95,7 @@ function Login({ handleLoginEvent }) {
       });
 
       console.log('Responses', response);
-      await sendCodeByEmail('mog61887@gmail.com', response.data.token);
+      await sendCodeByEmail('nhu.le1236@gmail.com', response.data.token);
       setLoginInfo({
         ...loginInfo,
         code: response.data.token,
