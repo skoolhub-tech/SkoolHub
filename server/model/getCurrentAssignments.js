@@ -3,7 +3,7 @@ const createClient = require('../database/db');
 module.exports = async (role, userId, classId) => {
   let query;
   if (role === '3') {
-    query = `SELECT assignments.id, assignments.name, assignments.class_id, assignments.due_date
+    query = `SELECT assignments.id, assignments.name, assignments.class_id, assignments.due_date, students_assignments.completed
       FROM students_assignments
       JOIN assignments ON students_assignments.assignment_id = assignments.id
       WHERE students_assignments.student_id = $1 AND
