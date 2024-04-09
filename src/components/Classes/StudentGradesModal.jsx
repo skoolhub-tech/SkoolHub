@@ -26,7 +26,7 @@ function StudentGradesModal({
         const chart = new Chart(ctx, {
           type: 'line',
           data: {
-            labels: studentGrades.map((grade) => grade.assignment_name),
+            labels: studentGrades.map((grade) => grade.name),
             datasets: [{
               label: 'Grade',
               data: studentGrades.map((grade) => grade.score),
