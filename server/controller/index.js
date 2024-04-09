@@ -19,6 +19,7 @@ const submitCalendarTask = require('./submitCalendarTask');
 const createClassStudent = require('./createClassStudent');
 const deleteClassStudent = require('./deleteClassStudent');
 const updateCalendar = require('./updateCalendar');
+const deleteCalendar = require('./deleteCalendar');
 
 module.exports = {
   getAdmin,
@@ -42,4 +43,5 @@ module.exports = {
   createClassStudent,
   deleteClassStudent,
   updateCalendar,
+  deleteCalendar,
 };

@@ -8,11 +8,7 @@ function EditTask({ task, closeEditTask, refresh, setRefresh }) {
   const { userData } = useUserData();
 
   const [editedTask, setEditedTask] = useState({
-    id2: userData.id,
     ...task,
-    start: task.start,
-    end: task.end,
-    completed: task.completed,
   });
 
   const handleChange = (e) => {
@@ -24,6 +20,7 @@ function EditTask({ task, closeEditTask, refresh, setRefresh }) {
   };
 
   const handleSave = () => {
+    console.log(editedTask);
     axios.put('/skoolhub/edittask', {
       role: userData.role,
       data: editedTask,
@@ -38,8 +35,19 @@ function EditTask({ task, closeEditTask, refresh, setRefresh }) {
   };
 
   const handleDelete = () => {
-    // Handle delete action here
-    // console.log("Delete task");
+    axios.delete('/skoolhub/deletetask', {
+      data: {
+        role: userData.role,
+        data: editedTask,
+      },
+    })
+      .then(() => {
+        setRefresh(!refresh);
+        closeEditTask();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
