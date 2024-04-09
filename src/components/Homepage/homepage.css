@@ -7,6 +7,18 @@ thead {
   text-decoration: underline;
 }
 
+th {
+  color: inherit;
+  background-color: inherit;
+  padding: 0;
+}
+
+td {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
 .homepage-flex-container {
   display: flex;
   justify-content: space-between;
