@@ -36,6 +36,7 @@ router.post('/sendemail', controller.sendPeerEmail);
 router.post('/submitassignment', upload.single('file'), controller.submitAssignment);
 router.post('/submittask', controller.submitCalendarTask);
 router.post('/classes/students', controller.createClassStudent);
+router.post('/createUser', controller.createUser);
 // PUT requests
 
 //DELETE requests
