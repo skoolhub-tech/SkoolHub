@@ -39,7 +39,6 @@ function AssignmentsRow({
 
   return (
     <tr>
-      <td>{JSON.stringify(assignment.id)}</td>
       <td>{assignment.name}</td>
       <td>{formatDate(assignment.due_date)}</td>
       <td>{assignment.submitted_on ? formatDate(assignment.submitted_on) : ''}</td>
