@@ -1,12 +1,16 @@
 .emailsDiv {
-
+  margin-left: -93px;
+  width: 72%;
 }
 .emailsDiv > h1 {
   text-align: center;
 }
 /*================= container holding current group and select buttons ======================*/
 .peopleListView {
-
+  border-radius: 8px;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.75);
+  padding-top: 2em;
+  background-color: #DCCCBB;
 }
 
 .peopleListBtns {
@@ -35,7 +39,8 @@
 }
 
 .personCardContainer {
-  justify-content: center;
+  margin-top: 20px;
+  margin-left: -34px;
   height: 500px;
   overflow-y: auto;
 }
@@ -46,8 +51,7 @@
   align-items: center;
   border: 1px solid black;
   border-radius: 10px;
-  padding: 10px;
-  margin: 10px;
+  margin: 17px;
   background-color: #858D6F;
 }
 /* inside person card */
