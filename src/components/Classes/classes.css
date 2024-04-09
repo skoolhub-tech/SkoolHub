@@ -39,8 +39,9 @@
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
-  width: 100%;
-    margin-right: 17%;
+  width: 55%;
+  margin-right: 16%;
+  margin-left: 4%;
 }
 
 .grade-chart {
@@ -101,5 +102,8 @@
   width: 100%;
 }
 .grades-button {
-  padding-left: 6%
+  padding-left: 3%
+}
+.class-list-header {
+  font-size: large;
 }
