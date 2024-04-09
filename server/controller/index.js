@@ -21,6 +21,7 @@ const deleteClassStudent = require('./deleteClassStudent');
 const createUser = require('./createUser');
 const getRoles = require('./getRoles');
 const deleteUser = require('./deleteUser');
+const updateCalendar = require('./updateCalendar');
 
 module.exports = {
   getAdmin,
@@ -46,4 +47,5 @@ module.exports = {
   createUser,
   getRoles,
   deleteUser,
+  updateCalendar,
 };

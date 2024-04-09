@@ -38,7 +38,7 @@ router.post('/submittask', controller.submitCalendarTask);
 router.post('/classes/students', controller.createClassStudent);
 router.post('/createUser', controller.createUser);
 // PUT requests
-
+router.put('/edittask', controller.updateCalendar);
 //DELETE requests
 router.delete('/classes/:classId/students/:studentId', controller.deleteClassStudent);
 router.delete('/deleteUser/:userId/:roleId', controller.deleteUser);
