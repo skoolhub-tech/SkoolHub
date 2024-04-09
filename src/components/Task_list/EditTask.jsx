@@ -9,6 +9,8 @@ function EditTask({ task, closeEditTask, refresh, setRefresh }) {
 
   const [editedTask, setEditedTask] = useState({
     ...task,
+    start: moment.utc(task.start).local().format(),
+    end: moment.utc(task.end).local().format(),
   });
 
   const handleChange = (e) => {
