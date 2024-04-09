@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './styles.css';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Login from './components/Login';
@@ -10,13 +11,6 @@ import Admin from './components/Admin/Admin';
 import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
 import Homepage from './components/Homepage/Homepage';
-
-function HomepageWithTaskCheck() {
-  const { userData } = useUserData();
-
-  return userData.role === 1 ? <Task /> : <Homepage />;
-}
-
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -75,5 +69,10 @@ function RoleBasedRoute({ roles, component }) {
   const { userData } = useUserData();
   return roles.includes(userData.role) ? component : <Navigate to="/homepage" />;
 }
+
+RoleBasedRoute.propTypes = {
+  roles: PropTypes.arrayOf(PropTypes.number).isRequired,
+  component: PropTypes.element.isRequired,
+};
 
 export default App;
