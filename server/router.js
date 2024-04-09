@@ -26,6 +26,7 @@ router.get('/teachersclasses/:id', controller.getTeachersAndClassesForStudent);
 router.get('/calendar/:role/:id', controller.getCalendar);
 router.get('/teachersclasses', controller.getAllTeachersAndTheirClasses);
 router.get('/roles', controller.getRoles);
+router.get('/assignments/current/:role/:userId/', controller.getCurrentAssignments);
 // router.get('/teachers/assignments/:teacherId', controller.getTeacherAssignments);
 // router.get('/teachers/calendar/:teacherId', controller.getTeacherCalendar);
 // router.get('/students/assignments/:studentId', controller.getStudentAssignments);
@@ -42,7 +43,7 @@ router.post('/createUser', controller.createUser);
 router.post('/createClass', controller.createClass);
 // PUT requests
 router.put('/edittask', controller.updateCalendar);
-//DELETE requests
+// DELETE requests
 router.delete('/classes/:classId/students/:studentId', controller.deleteClassStudent);
 router.delete('/deleteUser/:userId/:roleId', controller.deleteUser);
 router.delete('/deleteClass/:classId', controller.deleteClass);
