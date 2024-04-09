@@ -14,6 +14,8 @@ const submitAssignment = require('./submitAssignment');
 const getTeachersAndClassesForStudent = require('./getTeachersAndClassesForStudent');
 const getCalendar = require('./getCalendar');
 
+const submitCalendarTask = require('./submitCalendarTask');
+
 module.exports = {
   getAdmin,
   getClassStudents,
@@ -30,4 +32,6 @@ module.exports = {
   submitAssignment,
   getTeachersAndClassesForStudent,
   getCalendar,
+
+  submitCalendarTask,
 };

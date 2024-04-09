@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './editForm.css';
 import moment from 'moment';
+import axios from 'axios';
+import { useUserData } from '../data-providers/UserDataProvider';
 
 function AddFromSelect({ task, closeAddTaskFromSelect }) {
+  const { userData } = useUserData();
+
   const [newTask, setNewTask] = useState({
+    id: userData.id,
     ...task,
     start: task.start,
     end: task.end,
@@ -19,7 +24,17 @@ function AddFromSelect({ task, closeAddTaskFromSelect }) {
 
   const handleSave = () => {
     // Handle save action here
-    // console.log(newTask);
+    console.log(newTask);
+    axios.post('/skoolhub/submittask', {
+      role: userData.role,
+      data: newTask,
+    })
+    .then(() => {
+      console.log('Task added');
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   };
 
   return (

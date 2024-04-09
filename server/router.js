@@ -32,6 +32,7 @@ router.get('/calendar/:role/:id', controller.getCalendar);
 router.post('/sendautoemail', controller.sendAutoEmail);
 router.post('/sendemail', controller.sendPeerEmail);
 router.post('/submitassignment', upload.single('file'), controller.submitAssignment);
+router.post('/submittask', controller.submitCalendarTask);
 // PUT requests
 
 module.exports = router;
