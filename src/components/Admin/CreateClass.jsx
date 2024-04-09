@@ -71,10 +71,14 @@ function CreateClass({ exitModal }) {
   );
 
   return (
-    <div>
+    <div className="modal-backdrop">
+
+    <div className="modal-content admin-modal">
       <button type="button" onClick={exitModal}>X</button>
 
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+        >
         <label htmlFor="name">
           Class Name:
           <input
@@ -136,6 +140,9 @@ function CreateClass({ exitModal }) {
           </tbody>
         </table>
       </div>
+
+    </div>
+
 
     </div>
   );
