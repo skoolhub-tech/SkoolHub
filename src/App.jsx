@@ -12,7 +12,7 @@ import Assignments from './components/Assignments/Assignments';
 import Homepage from './components/Homepage/Homepage';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = (boolean) => {
     setIsLoggedIn(boolean);
