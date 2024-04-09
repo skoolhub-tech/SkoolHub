@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
 function CreateUser({ exitModal }) {
   // Your code here
   const [teachers, setTeachers] = useState([]);
@@ -16,7 +15,7 @@ function CreateUser({ exitModal }) {
   useEffect(() => {
     axios.get('/skoolhub/teachers')
       .then((response) => {
-        console.log("TEACHERS", response.data);
+        console.log('TEACHERS', response.data);
         setTeachers(response.data);
       })
       .catch((error) => {
@@ -25,7 +24,7 @@ function CreateUser({ exitModal }) {
 
     axios.get('/skoolhub/students')
       .then((response) => {
-        console.log("STUDENTS",response.data);
+        console.log('STUDENTS', response.data);
         setStudents(response.data);
       })
       .catch((error) => {
@@ -34,7 +33,7 @@ function CreateUser({ exitModal }) {
 
     axios.get('/skoolhub/admin')
       .then((response) => {
-        console.log("ADMIN", response.data);
+        console.log('ADMIN', response.data);
         setAdmins(response.data);
       })
       .catch((error) => {
@@ -43,7 +42,7 @@ function CreateUser({ exitModal }) {
 
     axios.get('/skoolhub/roles')
       .then((response) => {
-        console.log("ROLES", response.data);
+        console.log('ROLES', response.data);
         setRoles(response.data);
       })
       .catch((error) => {
@@ -63,7 +62,22 @@ function CreateUser({ exitModal }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // axios post request
+    const userData = {
+      name,
+      email,
+      role: selectedRole,
+    };
+
+    axios.post('/skoolhub/createUser', userData)
+      .then((response) => {
+        console.log(response.data);
+        setName('');
+        setEmail('');
+        setSelectedRole('');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const users = teachers.concat(students, admins);
