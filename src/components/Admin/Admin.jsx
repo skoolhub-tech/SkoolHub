@@ -24,12 +24,13 @@ function Admin() {
   };
 
   return (
-    <div>
+    <div className="admin-container">
       {/* Your code here */}
-      <button type="button" onClick={handleUsersButtonClick}>Users</button>
-      <button type="button" onClick={handleClassesButtonClick}>Classes</button>
+      <div className="admin-create-buttons">
+        <button type="button" onClick={handleUsersButtonClick}>Users</button>
+        <button type="button" onClick={handleClassesButtonClick}>Classes</button>
+      </div>
       <AssignStudentClass />
-
       {/* Users Modal */}
       {showUsersModal && (
         <CreateUser exitModal={exitModal} />
