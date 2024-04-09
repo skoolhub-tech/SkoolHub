@@ -1,5 +1,9 @@
+/* eslint-disable no-console */
 import React from 'react';
 import axios from 'axios';
+import { Calendar, momentLocalizer } from 'react-big-calendar';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import moment from 'moment';
 import { useUserData } from '../data-providers/UserDataProvider';
 
 const { useState, useEffect } = React;
@@ -11,6 +15,8 @@ function Homepage() {
   const [classes, setClasses] = useState([]);
   const [assignments, setAssignments] = useState([]);
   const [tasks, setTasks] = useState([]);
+
+  const localizer = momentLocalizer(moment);
 
   const getCurrentAssignments = (classId) => {
     let path = `/skoolhub/assignments/current/${role}/${id}`;
@@ -37,7 +43,12 @@ function Homepage() {
       }));
 
     axios.get(`/skoolhub/calendar/${role}/${id}`)
-      .then((response) => setTasks(response.data))
+      .then((response) => response.data.map((event) => ({
+        ...event,
+        start: new Date(event.start),
+        end: new Date(event.end),
+      })))
+      .then((formattedEvents) => setTasks(formattedEvents))
       .catch((error) => console.error({
         Message: 'Error retrieving calendar.',
         Error: error,
@@ -78,16 +89,16 @@ function Homepage() {
           </ul>
         </div>
       )}
-      {tasks.length > 0 && (
-        <div>
-          <h2>Today&apos;s Tasks</h2>
-          <ul>
-            {tasks.map((task) => (
-              <li key={task.id}>{task.name}</li>
-            ))}
-          </ul>
+      <div className="task-container">
+        <div style={{ height: 500 }}>
+          <Calendar
+            localizer={localizer}
+            events={tasks}
+            defaultView="day"
+            views={['day']}
+          />
         </div>
-      )}
+      </div>
     </div>
   );
 }
