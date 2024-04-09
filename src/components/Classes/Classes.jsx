@@ -61,8 +61,9 @@ function Classes() {
       <div className="class-header">
         <h1>Classes</h1>
       </div>
-      <div className="class-dropdown">
+      <div>
         <select
+          className="class-dropdown"
           value={selectedClass}
           onChange={(e) => handleClassChange(
             e.target.value,
