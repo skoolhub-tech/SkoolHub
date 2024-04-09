@@ -23,7 +23,7 @@ LOGIN PAGE / NAV BAR CSS ========================================
   flex-direction: column;
   position: absolute;
   width: 100vh;
-  left: 20%;
+  left: 21%;
 
 }
 .login-h1, .login-form, .login-p, body{
