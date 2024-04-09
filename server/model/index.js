@@ -20,6 +20,7 @@ const insertCalendar = require('./insertCalendar');
 const getAllTeachersAndTheirClasses = require('./getAllTeachersAndTheirClasses');
 const createClassStudent = require('./createClassStudent');
 const deleteClassStudent = require('./deleteClassStudent');
+const updateCalendar = require('./updateCalendar');
 
 module.exports = {
   getAdmin,
@@ -44,4 +45,5 @@ module.exports = {
   getAllTeachersAndTheirClasses,
   createClassStudent,
   deleteClassStudent,
+  updateCalendar,
 };

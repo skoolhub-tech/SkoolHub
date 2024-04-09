@@ -36,7 +36,7 @@ router.post('/submitassignment', upload.single('file'), controller.submitAssignm
 router.post('/submittask', controller.submitCalendarTask);
 router.post('/classes/students', controller.createClassStudent);
 // PUT requests
-
+router.put('/edittask', controller.updateCalendar);
 //DELETE requests
 router.delete('/classes/:classId/students/:studentId', controller.deleteClassStudent);
 

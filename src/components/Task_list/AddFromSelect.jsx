@@ -4,7 +4,7 @@ import moment from 'moment';
 import axios from 'axios';
 import { useUserData } from '../data-providers/UserDataProvider';
 
-function AddFromSelect({ task, closeAddTaskFromSelect, setEvents, refresh, setRefresh }) {
+function AddFromSelect({ task, closeAddTaskFromSelect, refresh, setRefresh }) {
   const { userData } = useUserData();
 
   const [newTask, setNewTask] = useState({
