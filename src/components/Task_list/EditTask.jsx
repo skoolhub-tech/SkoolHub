@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './editForm.css';
 import moment from 'moment';
 import { useUserData } from '../data-providers/UserDataProvider';
 
-function EditTask({ task, closeEditTask }) {
+function EditTask({ task, closeEditTask, refresh, setRefresh }) {
   const { userData } = useUserData();
 
   const [editedTask, setEditedTask] = useState({
+    id2: userData.id,
     ...task,
     start: task.start,
     end: task.end,
+    completed: task.completed,
   });
 
   const handleChange = (e) => {
@@ -21,8 +24,17 @@ function EditTask({ task, closeEditTask }) {
   };
 
   const handleSave = () => {
-    // Handle save action here
-    // console.log(editedTask);
+    axios.put('/skoolhub/edittask', {
+      role: userData.role,
+      data: editedTask,
+    })
+      .then(() => {
+        setRefresh(!refresh);
+        closeEditTask();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const handleDelete = () => {
@@ -68,7 +80,19 @@ function EditTask({ task, closeEditTask }) {
             onChange={handleChange}
             disabled={false}
           />
-
+          <label htmlFor="completed">Completed:</label>
+          <input
+            type="checkbox"
+            id="completed"
+            name="completed"
+            checked={editedTask.completed}
+            onChange={() => {
+              setEditedTask((prevTask) => ({
+                ...prevTask,
+                completed: !prevTask.completed,
+              }));
+            }}
+          />
           <button type="button" onClick={handleSave}>Save</button>
           <button className="delete" type="button" onClick={handleDelete}>Delete</button>
         </div>
