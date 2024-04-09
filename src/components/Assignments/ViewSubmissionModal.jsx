@@ -4,8 +4,11 @@ import React, { useEffect, useRef } from 'react';
 import axios from 'axios';
 import { getDocument } from 'pdfjs-dist/webpack.mjs';
 import PropTypes from 'prop-types';
+import './viewSubmissionModal.css';
 
-function ViewSubmissionModal({ classId, assignmentId, studentId }) {
+function ViewSubmissionModal({
+  classId, assignmentId, studentId, onCloseModal,
+}) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -47,21 +50,45 @@ function ViewSubmissionModal({ classId, assignmentId, studentId }) {
     }
   }, [classId, studentId]);
 
+  const handleBackgroundClick = (event) => {
+    if (event.target === event.currentTarget) {
+      onCloseModal();
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Escape' || event.key === 'Enter' || event.key === ' ') {
+      onCloseModal();
+    }
+  };
+
+  useEffect(() => {
+    const modal = document.querySelector('.view_submission_modal');
+    if (modal) {
+      modal.focus();
+    }
+
+    return () => {
+      if (modal) {
+        modal.blur();
+      }
+    };
+  }, []);
+
   return (classId && studentId) ? (
-    <div className="view_submission_modal">
-      <canvas ref={canvasRef} />
+    <div
+      className="view_submission_modal"
+      onClick={handleBackgroundClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-label="View Submission Modal"
+    >
+      <div className="canvas_container">
+        <canvas ref={canvasRef} />
+      </div>
     </div>
-  ) : (
-    <div className="view_submission_modal">
-      <h2>No submission to view</h2>
-      <p>
-        class id:
-        {classId}
-        , student id:
-        {studentId}
-      </p>
-    </div>
-  );
+  ) : null;
 }
 
 export default ViewSubmissionModal;
@@ -70,4 +97,5 @@ ViewSubmissionModal.propTypes = {
   classId: PropTypes.number.isRequired,
   assignmentId: PropTypes.number.isRequired,
   studentId: PropTypes.number.isRequired,
+  onCloseModal: PropTypes.func.isRequired,
 };

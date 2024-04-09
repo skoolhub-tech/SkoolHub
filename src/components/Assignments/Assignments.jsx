@@ -23,6 +23,10 @@ function AssignmentsPage() {
     }
   }, []);
 
+  const handleCloseModal = useCallback(() => {
+    setViewSubmissionModalOpen(false);
+  }, []);
+
   useEffect(() => {
     getClassesAndAssignmentsForStudent();
   }, [email, getClassesAndAssignmentsForStudent]);
@@ -73,6 +77,7 @@ function AssignmentsPage() {
           assignmentId={assignmentId}
           classId={data.find((classObj) => classObj.name === selectedClass).id}
           studentId={id}
+          onCloseModal={handleCloseModal}
         />
       )}
     </div>
