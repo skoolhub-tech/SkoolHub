@@ -23,6 +23,10 @@ function AssignmentsPage() {
     }
   }, []);
 
+  const handleCloseModal = useCallback(() => {
+    setViewSubmissionModalOpen(false);
+  }, []);
+
   useEffect(() => {
     getClassesAndAssignmentsForStudent();
   }, [email, getClassesAndAssignmentsForStudent]);
@@ -39,25 +43,29 @@ function AssignmentsPage() {
           <div>
             <h2>{selectedClass}</h2>
             <table>
-              <tr>
-                <th>Assignment</th>
-                <th>Due Date</th>
-                <th>Submitted On</th>
-              </tr>
-              {data
-                .find((classObj) => classObj.name === selectedClass)
-                .assignments.map((assignment) => (
-                  role === 3 ? (
-                    <AssignmentsRowStudent
-                      key={assignment.id}
-                      assignment={assignment}
-                      getClassesAndAssignmentsForStudent={getClassesAndAssignmentsForStudent}
-                      setViewSubmissionModalOpen={setViewSubmissionModalOpen}
-                      setAssignmentId={setAssignmentId}
-                      viewSubmissionModalOpen={viewSubmissionModalOpen}
-                    />
-                  ) : null
-                ))}
+              <thead>
+                <tr>
+                  <th>Assignment</th>
+                  <th>Due Date</th>
+                  <th>Submitted On</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data
+                  .find((classObj) => classObj.name === selectedClass)
+                  .assignments.map((assignment) => (
+                    role === 3 ? (
+                      <AssignmentsRowStudent
+                        key={assignment.id}
+                        assignment={assignment}
+                        getClassesAndAssignmentsForStudent={getClassesAndAssignmentsForStudent}
+                        setViewSubmissionModalOpen={setViewSubmissionModalOpen}
+                        setAssignmentId={setAssignmentId}
+                        viewSubmissionModalOpen={viewSubmissionModalOpen}
+                      />
+                    ) : null
+                  ))}
+              </tbody>
             </table>
           </div>
         ) : (
@@ -69,6 +77,7 @@ function AssignmentsPage() {
           assignmentId={assignmentId}
           classId={data.find((classObj) => classObj.name === selectedClass).id}
           studentId={id}
+          onCloseModal={handleCloseModal}
         />
       )}
     </div>

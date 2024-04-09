@@ -12,7 +12,6 @@ function ViewSubmittedAssignmentButton(
   },
 ) {
   const handleClick = () => {
-    console.log(`assignment id: ${assignmentId}`);
     setAssignmentId(assignmentId);
     setViewSubmissionModalOpen(!viewSubmissionModalOpen);
   };
