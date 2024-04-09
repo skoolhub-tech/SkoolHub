@@ -41,5 +41,6 @@ router.post('/createUser', controller.createUser);
 
 //DELETE requests
 router.delete('/classes/:classId/students/:studentId', controller.deleteClassStudent);
+router.delete('/deleteUser/:userId/:roleId', controller.deleteUser);
 
 module.exports = router;

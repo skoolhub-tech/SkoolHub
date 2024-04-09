@@ -82,6 +82,16 @@ function CreateUser({ exitModal }) {
 
   const users = teachers.concat(students, admins);
 
+  const handleDeleteClick = (userId, role) => {
+    axios.delete(`/skoolhub/deleteUser/${userId}/${role}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
 
     <div>
@@ -148,7 +158,11 @@ function CreateUser({ exitModal }) {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>{user.role_id}</td>
-                <td><button>DELETE USER</button></td>
+                <td>
+                  <button type="button" onClick={() => handleDeleteClick(user.id, user.role_id)}>
+                    DELETE USER
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
