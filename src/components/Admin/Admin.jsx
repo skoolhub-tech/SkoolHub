@@ -3,6 +3,7 @@ import AssignStudentClass from './AssignStudentClass';
 import { useUserData } from '../data-providers/UserDataProvider';
 import CreateUser from './CreateUser';
 import CreateClass from './CreateClass';
+import './admin.css';
 
 function Admin() {
   const { userData } = useUserData();
