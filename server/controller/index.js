@@ -17,8 +17,16 @@ const submitAssignment = require('./submitAssignment');
 const getTeachersAndClassesForStudent = require('./getTeachersAndClassesForStudent');
 const getAllTeachersAndTheirClasses = require('./getAllTeachersAndTheirClasses');
 const getCalendar = require('./getCalendar');
+const submitCalendarTask = require('./submitCalendarTask');
 const createClassStudent = require('./createClassStudent');
 const deleteClassStudent = require('./deleteClassStudent');
+const createUser = require('./createUser');
+const getRoles = require('./getRoles');
+const deleteUser = require('./deleteUser');
+const updateCalendar = require('./updateCalendar');
+const createClass = require('./createClass');
+const deleteClass = require('./deleteClass');
+const deleteCalendar = require('./deleteCalendar');
 
 module.exports = {
   getAdmin,
@@ -40,6 +48,14 @@ module.exports = {
   getTeachersAndClassesForStudent,
   getAllTeachersAndTheirClasses,
   getCalendar,
+  submitCalendarTask,
   createClassStudent,
   deleteClassStudent,
+  createUser,
+  getRoles,
+  deleteUser,
+  updateCalendar,
+  createClass,
+  deleteClass,
+  deleteCalendar,
 };

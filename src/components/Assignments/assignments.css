@@ -1,0 +1,51 @@
+.assignments-container {
+  border-radius: 1rem;
+  background-color: #DCCCBB;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-top: .1rem;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+h1, h2 {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+table {
+  border-spacing: 2rem;
+    background-color: #CED2BA;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 1rem;
+}
+th {
+  color: white;
+    background-color: #8A997C;
+    padding: 1rem;
+    border-radius: 3px;
+    /* border: solid black; */
+    text-align: center;
+    width: fit-content;
+}
+td {
+  border-left: 2px solid;
+  padding: 1rem;
+  /* border-radius: 5px; */
+  /* border-bottom: 8px #8A997C solid; */
+}
+.view-assignment-button:hover {
+  color: rgb(120, 123, 107);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.submit-button, .view-submit-button {
+  border: none;
+  text-align: center;
+
+}
+.submit-button {
+  border-left: 2px solid;
+}
+.assignment-icon-button, .submitAssignmentButtonButton {
+  transform: scale(1.25);
+}

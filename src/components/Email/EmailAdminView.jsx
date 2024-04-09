@@ -17,13 +17,21 @@ function EmailAdminView() {
   const [emailModal, setEmailModal] = useState(false);
   // View states/data
   const [potentialEmailees, setPotentialEmailees] = useState([]);
-  const views = ['Admin', 'Teachers', 'Students'];
-  const [currentClass, setCurrentClass] = useState({ name: 'select a class' });
+  const views = ['Teachers', 'Students', 'Admin'];
+  const [currentClass, setCurrentClass] = useState({ name: 'Teachers' });
   // email form data
   const [subjectLine, setSubjectLine] = useState('');
   const [body, setBody] = useState('');
   const [receiverEmailList, setRecieverEmailList] = useState({});
-
+  useEffect(() => {
+    axios.get('/skoolhub/teachersclasses')
+      .then((response) => {
+        setPotentialEmailees(response.data);
+      })
+      .catch((error) => {
+        setPotentialEmailees([]);
+      });
+  }, []);
   // sends email to all selected selected people in class/faculty
   const email = async (e) => {
     e.preventDefault();
@@ -60,7 +68,6 @@ function EmailAdminView() {
       setCurrentClass({ name: 'Teachers' });
       axios.get('/skoolhub/teachersclasses')
         .then((response) => {
-          console.log(response.data);
           setPotentialEmailees(response.data);
         })
         .catch((error) => {
@@ -73,7 +80,6 @@ function EmailAdminView() {
       setCurrentClass({ name: 'Students' });
       axios.get('/skoolhub/students')
         .then((response) => {
-          console.log(response.data);
           setPotentialEmailees(response.data);
         })
         .catch((error) => {
@@ -86,7 +92,6 @@ function EmailAdminView() {
       setCurrentClass({ name: 'Admin' });
       axios.get('/skoolhub/admin')
         .then((response) => {
-          console.log(response.data);
           const filteredData = response.data.filter((user) => user.email !== userData.email);
           setPotentialEmailees(filteredData);
         })
@@ -99,7 +104,7 @@ function EmailAdminView() {
 // drop down to select teacher
   return (
     <div className="emailsDiv">
-      <h1>Send an Email</h1>
+      <h1>Email</h1>
       {emailSent && <p>Email Sent!</p>}
       {errorMessage && <p>{errorMessage}</p>}
       <AdminDropDown

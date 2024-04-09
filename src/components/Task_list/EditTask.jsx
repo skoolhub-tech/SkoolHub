@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './editForm.css';
 import moment from 'moment';
+import { useUserData } from '../data-providers/UserDataProvider';
 
-function EditTask({ task, closeEditTask }) {
+function EditTask({ task, closeEditTask, refresh, setRefresh }) {
+  const { userData } = useUserData();
+
   const [editedTask, setEditedTask] = useState({
     ...task,
-    start: task.start,
-    end: task.end,
+    start: moment.utc(task.start).local().format(),
+    end: moment.utc(task.end).local().format(),
   });
 
   const handleChange = (e) => {
@@ -18,13 +22,34 @@ function EditTask({ task, closeEditTask }) {
   };
 
   const handleSave = () => {
-    // Handle save action here
-    // console.log(editedTask);
+    console.log(editedTask);
+    axios.put('/skoolhub/edittask', {
+      role: userData.role,
+      data: editedTask,
+    })
+      .then(() => {
+        setRefresh(!refresh);
+        closeEditTask();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const handleDelete = () => {
-    // Handle delete action here
-    // console.log("Delete task");
+    axios.delete('/skoolhub/deletetask', {
+      data: {
+        role: userData.role,
+        data: editedTask,
+      },
+    })
+      .then(() => {
+        setRefresh(!refresh);
+        closeEditTask();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -65,7 +90,19 @@ function EditTask({ task, closeEditTask }) {
             onChange={handleChange}
             disabled={false}
           />
-
+          <label htmlFor="completed">Completed:</label>
+          <input
+            type="checkbox"
+            id="completed"
+            name="completed"
+            checked={editedTask.completed}
+            onChange={() => {
+              setEditedTask((prevTask) => ({
+                ...prevTask,
+                completed: !prevTask.completed,
+              }));
+            }}
+          />
           <button type="button" onClick={handleSave}>Save</button>
           <button className="delete" type="button" onClick={handleDelete}>Delete</button>
         </div>

@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './editForm.css';
 import moment from 'moment';
+import { useUserData } from '../data-providers/UserDataProvider';
+import axios from 'axios';
 
-function AddTask({ task, closeAddTask }) {
+function AddTask({ task, closeAddTask, refresh, setRefresh }) {
+  const { userData } = useUserData();
+
   const [newTask, setNewTask] = useState({
     ...task,
-    start: task.start,
-    end: task.end,
+    id: userData.id,
+    start: moment.utc(task.start).local().format(),
+    end: moment.utc(task.end).local().format(),
   });
 
   const handleChange = (e) => {
@@ -19,7 +24,18 @@ function AddTask({ task, closeAddTask }) {
 
   const handleSave = () => {
     // Handle save action here
-    // console.log(newTask);
+    console.log(newTask);
+    axios.post('/skoolhub/submittask', {
+      role: userData.role,
+      data: newTask,
+    })
+      .then(() => {
+        setRefresh(!refresh);
+        closeAddTask();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (

@@ -42,9 +42,7 @@ function Login({ handleLoginEvent }) {
 
   // handles logout after period of time
   const handleLogout = () => {
-    localStorage.removeItem('sessionToken');
-    localStorage.removeItem('email');
-    localStorage.removeItem('date');
+    localStorage.clear();
     handleLoginEvent(false);
     setLoginInfo({
       username: '',

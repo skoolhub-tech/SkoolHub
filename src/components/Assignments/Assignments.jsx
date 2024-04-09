@@ -8,6 +8,7 @@ import AssignmentsTableStudent from './AssignmentsTableStudent';
 import AssignmentsTableTeacher from './AssignmentsTableTeacher';
 import ViewSubmissionModal from './ViewSubmissionModal';
 import SubmittedAssignmentsTableTeacher from './SubmittedAssignmentsTableTeacher';
+import './assignments.css';
 
 function AssignmentsPage() {
   const { userData: { email, role, id } } = useUserData();
@@ -36,7 +37,7 @@ function AssignmentsPage() {
   }, [email, getClassesAndAssignments]);
 
   return data ? (
-    <div>
+    <div className="assignments-container">
       <h1>Assignments</h1>
       <ClassesDropDownMenu
         classes={data}

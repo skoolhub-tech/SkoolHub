@@ -10,6 +10,27 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
+.modal-buttons {
+  display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    column-gap: 1rem;
+}
+.submission-input {
+  width: 64%;
+}
+.submission-form {
+  margin-right: -5rem;
+}
+.view-submission-modal-container {
+  position: absolute;
+  background-color: #DCCCBB;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-top: 1%;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
+}
+
 
 .canvas_container {
   max-width: 90%;

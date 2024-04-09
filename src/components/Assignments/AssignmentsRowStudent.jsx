@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { useUserData } from '../data-providers/UserDataProvider';
 import SubmitAssignmentButton from './SubmitAssignmentButton';
 import ViewSubmittedAssignmentButton from './ViewSubmittedAssignmentButton';
-import ViewAssignmentButton from './ViewAssignmentButton';
 import formatDate from '../../utils/formatDate_Month_D_Y';
 
 function AssignmentsRow({
@@ -19,20 +18,17 @@ function AssignmentsRow({
 
   return (
     <tr>
-      <td>{assignment.name}</td>
+      <td className="view-assignment-button">{assignment.name}</td>
       <td>{formatDate(assignment.due_date)}</td>
       <td>{assignment.submitted_on ? formatDate(assignment.submitted_on) : ''}</td>
-      <td>
-        <ViewAssignmentButton assignment={assignment} />
-      </td>
-      <td>
+      <td className="submit-button">
         <SubmitAssignmentButton
           studentEmail={email}
           assignmentId={assignment.id}
           getClassesAndAssignments={getClassesAndAssignments}
         />
       </td>
-      <td>
+      <td className="view-submit-button">
         {assignment.submitted_on && (
         <ViewSubmittedAssignmentButton
           assignmentId={assignment.id}

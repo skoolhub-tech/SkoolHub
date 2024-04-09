@@ -18,6 +18,8 @@ function AssignmentsTableStudent({
           <th>Assignment</th>
           <th>Due Date</th>
           <th>Submitted On</th>
+          <th>Submit Assignment</th>
+          <th>View Submission</th>
         </tr>
       </thead>
       <tbody>
