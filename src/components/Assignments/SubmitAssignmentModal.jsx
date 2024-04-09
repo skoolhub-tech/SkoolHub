@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable new-cap */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';

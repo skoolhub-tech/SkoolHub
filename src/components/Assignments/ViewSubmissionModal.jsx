@@ -1,9 +1,9 @@
+/* eslint-disable no-console */
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useRef } from 'react';
-import axios from 'axios'; // Import Axios
-import { getDocument } from 'pdfjs-dist/pdf';
-import { pdfjs } from 'pdfjs-dist';
-
-pdfjs.GlobalWorkerOptions.workerSrc = '//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.5.3/pdf.worker.min.js';
+import axios from 'axios';
+import { getDocument } from 'pdfjs-dist/webpack.mjs';
+import PropTypes from 'prop-types';
 
 function ViewSubmissionModal({ classId, assignmentId, studentId }) {
   const canvasRef = useRef(null);
@@ -11,10 +11,12 @@ function ViewSubmissionModal({ classId, assignmentId, studentId }) {
   useEffect(() => {
     const fetchAndRenderPDF = async () => {
       try {
+        console.log(`Fetching PDF for class ${classId}, assignment ${assignmentId}, student ${studentId}`);
         // Use Axios to get the PDF file as a Blob
-        const response = await axios.get(`http://${process.env.SERVER_IP}:${process.env.PORT}/assignment/?classId=${classId}&assignmentId=${assignmentId}&studentId=${studentId}`, {
+        const response = await axios.get(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/assignment/?classId=${classId}&assignmentId=${assignmentId}&studentId=${studentId}`, {
           responseType: 'blob',
         });
+        console.log(`Response size: ${response.data.size}`); // Log the Blob size to see if it's fully loaded
 
         // Create a reader to convert the blob to an ArrayBuffer
         const reader = new FileReader();
@@ -56,7 +58,23 @@ function ViewSubmissionModal({ classId, assignmentId, studentId }) {
     <div className="view_submission_modal">
       <canvas ref={canvasRef} />
     </div>
-  ) : null;
+  ) : (
+    <div className="view_submission_modal">
+      <h2>No submission to view</h2>
+      <p>
+        class id:
+        {classId}
+        , student id:
+        {studentId}
+      </p>
+    </div>
+  );
 }
 
 export default ViewSubmissionModal;
+
+ViewSubmissionModal.propTypes = {
+  classId: PropTypes.number.isRequired,
+  assignmentId: PropTypes.number.isRequired,
+  studentId: PropTypes.number.isRequired,
+};

@@ -1,9 +1,9 @@
+/* eslint-disable no-console */
 /* eslint-disable consistent-return */
-const express = require('express');
 const fs = require('fs');
 const path = require('path');
 
-function getSubmittedAssignment(req, res) {
+module.exports = async (req, res) => {
   const { classId, assignmentId, studentId } = req.query;
 
   if (!classId || !assignmentId || !studentId) {
@@ -23,7 +23,9 @@ function getSubmittedAssignment(req, res) {
 
     const pdfStream = fs.createReadStream(pdfPath);
     pdfStream.pipe(res);
+    pdfStream.on('error', (error) => {
+      console.error('Error streaming PDF file:', error);
+      res.status(500).send('Internal server error');
+    });
   });
-}
-
-module.exports = getSubmittedAssignment;
+};
