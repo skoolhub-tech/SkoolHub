@@ -52,7 +52,7 @@ const classesData = [
 ];
 
 const assignmentData = [
-  { name: 'Math Assignment 1', class_id: 1, due_date: '2024-04-15' }, // id: 1
+  { name: 'Math Assignment 1', class_id: 1, due_date: '2024-04-07' }, // id: 1
   { name: 'Science Assignment 1', class_id: 2, due_date: '2024-04-15' }, // id: 2
   { name: 'History Assignment 1', class_id: 3, due_date: '2024-04-15' }, // id: 3
   { name: 'English Assignment 1', class_id: 4, due_date: '2024-04-15' }, // id: 4
@@ -124,9 +124,6 @@ const classesStudentsData = [
 
 const studentsAssignmentsData = [
   {
-    student_id: 1, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
-  },
-  {
     student_id: 1, assignment_id: 5, score: 83, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
@@ -172,7 +169,7 @@ const studentsAssignmentsData = [
     student_id: 4, assignment_id: 16, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-10 00:00:00',
   },
   {
-    student_id: 5, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 5, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-07 00:00:00',
   },
   {
     student_id: 5, assignment_id: 5, score: 83, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
@@ -220,7 +217,7 @@ const studentsAssignmentsData = [
     student_id: 8, assignment_id: 16, score: 81, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 9, assignment_id: 1, score: 70, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 9, assignment_id: 1, score: 70, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-07 00:00:00',
   },
   {
     student_id: 9, assignment_id: 5, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
@@ -268,7 +265,7 @@ const studentsAssignmentsData = [
     student_id: 12, assignment_id: 16, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 13, assignment_id: 1, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 13, assignment_id: 1, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-07 00:00:00',
   },
   {
     student_id: 13, assignment_id: 5, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
@@ -316,9 +313,6 @@ const studentsAssignmentsData = [
     student_id: 16, assignment_id: 16, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 17, assignment_id: 1, score: 91, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
-  },
-  {
     student_id: 17, assignment_id: 5, score: 86, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
@@ -364,7 +358,7 @@ const studentsAssignmentsData = [
     student_id: 20, assignment_id: 16, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 21, assignment_id: 1, score: 97, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 21, assignment_id: 1, score: 97, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-07 00:00:00',
   },
   {
     student_id: 21, assignment_id: 5, score: 86, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
@@ -403,16 +397,13 @@ const studentsAssignmentsData = [
     student_id: 24, assignment_id: 4, score: 84, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 24, assignment_id: 8, score: 77, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
-  },
-  {
     student_id: 24, assignment_id: 12, score: 73, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
     student_id: 24, assignment_id: 16, score: 78, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 25, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 25, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-07 00:00:00',
   },
   {
     student_id: 25, assignment_id: 5, score: 89, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
@@ -457,10 +448,7 @@ const studentsAssignmentsData = [
     student_id: 28, assignment_id: 12, score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 28, assignment_id: 16, score: 99, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
-  },
-  {
-    student_id: 29, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 29, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-07 00:00:00',
   },
   {
     student_id: 29, assignment_id: 5, score: 100, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
