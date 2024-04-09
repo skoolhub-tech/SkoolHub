@@ -17,6 +17,7 @@ function StudentGradesModal({
     axios.get(`/skoolhub/classes/${classId}/students/${studentId}/grades`)
       .then((response) => {
         const studentGrades = response.data;
+        console.log(studentGrades);
         setGrades(response.data);
         const totalScore = studentGrades.reduce((acc, grade) => acc + grade.score, 0);
         const average = (totalScore / studentGrades.length).toFixed(2);
@@ -26,9 +27,9 @@ function StudentGradesModal({
         const chart = new Chart(ctx, {
           type: 'line',
           data: {
-            labels: studentGrades.map((grade) => grade.assignment_id),
+            labels: studentGrades.map((grade) => grade.assignment_name),
             datasets: [{
-              label: 'Grades',
+              label: 'Grade',
               data: studentGrades.map((grade) => grade.score),
               backgroundColor: 'rgba(135, 93, 59, 0.2)',
               borderColor: 'rgba(135, 93, 59, 1)',
@@ -36,6 +37,8 @@ function StudentGradesModal({
             }],
           },
           options: {
+            responsive: true,
+            aspectRatio: 2,
             scales: {
               y: {
                 beginAtZero: true,
@@ -69,7 +72,7 @@ function StudentGradesModal({
         {' '}
         {averageGrade}
       </div>
-      <div className="grade-chart" style={{ width: '300px', height: '300px' }}>
+      <div className="grade-chart" style={{ width: '600px', height: '600px' }}>
         <canvas ref={chartRef} />
       </div>
     </div>
