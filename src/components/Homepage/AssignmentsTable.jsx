@@ -11,12 +11,15 @@ const formatDate = (dateString) => {
 };
 
 function AssignmentsTable({ assignments }) {
+  const { userData } = useUserData();
+
   return (
     <table className="assignments_table_student">
       <thead>
         <tr>
           <th>Assignment</th>
           <th>Due Date</th>
+          {userData.role === 3 ? <th>Completed</th> : null}
         </tr>
       </thead>
       <tbody>
