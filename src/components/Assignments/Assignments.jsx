@@ -43,6 +43,11 @@ function AssignmentsPage() {
         classes={data}
         setSelectedClass={setSelectedClass}
       />
+      {selectedClass && (
+        <button type="button">
+          Create Assignment
+        </button>
+      )}
       {viewAssignmentSubmissions && (
         <>
           <br />
