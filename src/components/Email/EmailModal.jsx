@@ -10,26 +10,30 @@ function EmailModal({
   // update Subject and line of email, send email on submit
   return (
     <div className="emailModal">
-      {userData.role === 2 && (
-        <EmailTemplateView
-          setSelectedTemplate={setSelectedTemplate}
-          currentClass={currentClass}
-          setSubject={setSubject}
-          setBody={setMessage}
-        />
-      )}
-      <form onSubmit={email} className="emailModalForm">
-        <label htmlFor="subject">
-          Subject
-          <input type="text" value={subject} id="subject" name="subject" onChange={(e) => { setSubject(e.target.value); }} required />
-        </label>
-        <label htmlFor="message">
-          Message
-          <textarea id="message" value={body} name="message" onChange={(e) => { setMessage(e.target.value); }} required />
-        </label>
-        <button type="button" onClick={() => setEmailModal(false)}>Close</button>
-        <button type="submit">Send Email</button>
-      </form>
+      <div className="emailModalContent">
+        {userData.role === 2 && (
+          <EmailTemplateView
+            setSelectedTemplate={setSelectedTemplate}
+            currentClass={currentClass}
+            setSubject={setSubject}
+            setBody={setMessage}
+          />
+        )}
+        <form onSubmit={email} className="emailModalForm">
+          <label htmlFor="subject">
+            Subject
+            <input type="text" value={subject} id="subject" name="subject" onChange={(e) => { setSubject(e.target.value); }} required />
+          </label>
+          <label htmlFor="message">
+            Message
+            <textarea id="message" value={body} name="message" onChange={(e) => { setMessage(e.target.value); }} required />
+          </label>
+          <div className="emailModalBtns">
+            <button type="button" className="closeEmailModalBtn" onClick={() => setEmailModal(false)}>Close</button>
+            <button type="submit">Send Email</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

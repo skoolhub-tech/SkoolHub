@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { FaCheckSquare } from 'react-icons/fa';
 import SubmitAssignmentModal from './SubmitAssignmentModal';
 
 function SubmitAssignmentButton({
@@ -11,7 +12,7 @@ function SubmitAssignmentButton({
   const [submitAssignmentModalIsOpen, setSubmitAssignmentModalIsOpen] = useState(false);
   return (
     <div>
-      <button type="button" className="submitAssignmentButtonButton" onClick={() => setSubmitAssignmentModalIsOpen(true)}>Submit Assignment</button>
+      <button type="button" className="submitAssignmentButtonButton" onClick={() => setSubmitAssignmentModalIsOpen(true)}><FaCheckSquare size={15}/></button>
       {submitAssignmentModalIsOpen && (
       <SubmitAssignmentModal
         setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}

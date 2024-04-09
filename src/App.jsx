@@ -21,11 +21,8 @@ function App() {
 
   const handleLogOut = () => {
     setIsLoggedIn(false);
-    localStorage.removeItem('sessionToken');
-    localStorage.removeItem('email');
-    localStorage.removeItem('date');
-    localStorage.removeItem('role');
-    localStorage.removeItem('id');
+    window.location.href = '/homepage';
+    localStorage.clear();
   };
 
   return (
@@ -34,6 +31,7 @@ function App() {
         <UserDataProvider>
           {isLoggedIn ? (
             <>
+            <button className="log-out-bttn" type="button" onClick={handleLogOut}>Log out</button>
               <NavBar handleLogOut={handleLogOut} />
               <Routes>
                 <Route path="/homepage" element={<HomepageWithTaskCheck />} />

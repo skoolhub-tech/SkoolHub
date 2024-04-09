@@ -10,8 +10,8 @@ function AddTask({ task, closeAddTask, refresh, setRefresh }) {
   const [newTask, setNewTask] = useState({
     ...task,
     id: userData.id,
-    start: task.start,
-    end: task.end,
+    start: moment.utc(task.start).local().format(),
+    end: moment.utc(task.end).local().format(),
   });
 
   const handleChange = (e) => {

@@ -21,7 +21,7 @@ function WelcomeEmailTemplate({ setSubject, setBody, currentClass, setSelectedTe
 
   return (
     <div className="emailTemplateCard">
-      <p>Welcome Email Template</p>
+      <p>Welcome Email</p>
       <button type="button" onClick={handleCheckboxChange}>Select</button>
     </div>
   );

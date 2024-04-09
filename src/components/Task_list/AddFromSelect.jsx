@@ -10,8 +10,8 @@ function AddFromSelect({ task, closeAddTaskFromSelect, refresh, setRefresh }) {
   const [newTask, setNewTask] = useState({
     id: userData.id,
     ...task,
-    start: task.start,
-    end: task.end,
+    start: moment.utc(task.start).local().format(),
+    end: moment.utc(task.end).local().format(),
   });
 
   const handleChange = (e) => {
