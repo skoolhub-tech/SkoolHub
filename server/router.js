@@ -33,6 +33,10 @@ router.get('/teachersclasses', controller.getAllTeachersAndTheirClasses);
 router.post('/sendautoemail', controller.sendAutoEmail);
 router.post('/sendemail', controller.sendPeerEmail);
 router.post('/submitassignment', upload.single('file'), controller.submitAssignment);
+router.post('/classes/students', controller.createClassStudent);
 // PUT requests
+
+//DELETE requests
+router.delete('/classes/:classId/students/:studentId', controller.deleteClassStudent);
 
 module.exports = router;
