@@ -54,6 +54,16 @@ function CreateClass({ exitModal }) {
       });
   };
 
+  const handleDeleteClick = (classId) => {
+    axios.delete(`/skoolhub/deleteClass/${classId}`)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <div>
       <button type="button" onClick={exitModal}>X</button>
@@ -105,7 +115,7 @@ function CreateClass({ exitModal }) {
               <tr key={classObj.id}>
                 <td>{classObj.name}</td>
                 <td>{classObj.teacher_id}</td>
-                <td><button>DELETE CLASS</button></td>
+                <td><button type="button" onClick={() => handleDeleteClick(classObj.id)}>DELETE CLASS</button></td>
               </tr>
             ))}
           </tbody>

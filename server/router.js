@@ -43,5 +43,6 @@ router.put('/edittask', controller.updateCalendar);
 //DELETE requests
 router.delete('/classes/:classId/students/:studentId', controller.deleteClassStudent);
 router.delete('/deleteUser/:userId/:roleId', controller.deleteUser);
+router.delete('/deleteClass/:classId', controller.deleteClass);
 
 module.exports = router;
