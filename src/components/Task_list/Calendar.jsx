@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
@@ -22,7 +24,7 @@ function TaskCalendar({ defaultView, views }) {
   useEffect(() => {
     axios.get(`/skoolhub/calendar/${userData.role}/${userData.id}`)
       .then((response) => {
-        let reformattedRes = response.data.map((event) => {
+        const reformattedRes = response.data.map((event) => {
           event.start = new Date(event.start);
           event.end = new Date(event.end);
           return event;
@@ -72,20 +74,52 @@ function TaskCalendar({ defaultView, views }) {
   return (
     <div>
       {defaultView === 'month' && <button className="add-task" type="submit" onClick={handleAddTask}>Add Task</button>}
-    <div style={{ height: 500 }}>
-      <Calendar
-        localizer={localizer}
-        events={events}
-        selectable={true}
-        onSelectEvent={handleSelectEvent}
-        onSelectSlot={handleSelectSlot}
-        defaultView={defaultView}
-        views={views}
-      />
-      {editTask && <EditTask task={selectedTask} closeEditTask={closeEditTask} refresh={refresh} setRefresh={setRefresh}/>}
-      {addTaskFromSelect && <AddFromSelect task={selectedTask} closeAddTaskFromSelect={closeAddTaskFromSelect} refresh={refresh} setRefresh={setRefresh}/>}
-      {addTask && <AddTask task={selectedTask} closeAddTask={closeAddTask} refresh={refresh} setRefresh={setRefresh}/>}
-    </div>
+      <div style={{ height: 500 }}>
+        <Calendar
+          localizer={localizer}
+          events={events}
+          selectable
+          onSelectEvent={handleSelectEvent}
+          onSelectSlot={handleSelectSlot}
+          defaultView={defaultView}
+          views={views}
+          eventPropGetter={(event) => {
+            const eventStyle = {
+              style: {
+                backgroundColor: '#858D6F',
+                border: '1px solid #875D3B',
+                color: '#fff',
+                opacity: event.completed === true ? 0.50 : 1,
+              },
+            };
+            return eventStyle;
+          }}
+        />
+        {editTask && (
+        <EditTask
+          task={selectedTask}
+          closeEditTask={closeEditTask}
+          refresh={refresh}
+          setRefresh={setRefresh}
+        />
+        )}
+        {addTaskFromSelect && (
+          <AddFromSelect
+            task={selectedTask}
+            closeAddTaskFromSelect={closeAddTaskFromSelect}
+            refresh={refresh}
+            setRefresh={setRefresh}
+          />
+        )}
+        {addTask && (
+          <AddTask
+            task={selectedTask}
+            closeAddTask={closeAddTask}
+            refresh={refresh}
+            setRefresh={setRefresh}
+          />
+        )}
+      </div>
     </div>
   );
 }

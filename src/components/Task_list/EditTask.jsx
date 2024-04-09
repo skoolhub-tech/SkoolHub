@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useState } from 'react';
 import axios from 'axios';
 import './editForm.css';
 import moment from 'moment';
 import { useUserData } from '../data-providers/UserDataProvider';
 
-function EditTask({ task, closeEditTask, refresh, setRefresh }) {
+function EditTask({
+  task, closeEditTask, refresh, setRefresh,
+}) {
   const { userData } = useUserData();
 
   const [editedTask, setEditedTask] = useState({
