@@ -39,6 +39,9 @@ function SubmittedAssignmentsTabelTeacher({ assignment }) {
               <td>
                 <button type="button">View Submission</button>
               </td>
+              <td>
+                <button type="button">Grade Submission</button>
+              </td>
             </tr>
           ))}
         </tbody>
