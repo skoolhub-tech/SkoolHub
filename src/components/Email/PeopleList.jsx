@@ -19,17 +19,19 @@ function PeopleList({
         <button type="button" onClick={handleSelectAllChange}>Select All</button>
         <button type="button" onClick={() => setEmailModal(true)}>Draft Email</button>
       </div>
-      <ul className="personCardContainer">
-        {potentialEmailees.map((person) => (
-          <PersonEmailCard
-            key={person.email}
-            person={person}
-            receiverEmailList={receiverEmailList}
-            setRecieverEmailList={setRecieverEmailList}
-            isAllSelected={isAllSelected}
-          />
-        ))}
-      </ul>
+      <table className="personCardContainer">
+        <tbody>
+          {potentialEmailees.map((person) => (
+            <PersonEmailCard
+              key={person.email}
+              person={person}
+              receiverEmailList={receiverEmailList}
+              setRecieverEmailList={setRecieverEmailList}
+              isAllSelected={isAllSelected}
+            />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
