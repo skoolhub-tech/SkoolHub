@@ -47,6 +47,20 @@ function AssignStudentClass() {
     setShowModal(false);
   };
 
+  const deleteStudentFromClass = (classId, studentId) => {
+    axios.delete(`/skoolhub/classes/${classId}/students/${studentId}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleRemoveClick = (studentId) => {
+    deleteStudentFromClass(selectedClass, studentId);
+  };
+
   return (
     <div>
       ASSIGN STUDENT CLASS
@@ -79,7 +93,7 @@ function AssignStudentClass() {
                   <td>{student.id}</td>
                   <td>{student.name}</td>
                   <td>{student.email}</td>
-                  <td><button type="button">Remove</button></td>
+                  <td><button type="button" onClick={() => handleRemoveClick(student.id)}>Remove</button></td>
                 </tr>
               ))}
             </tbody>
@@ -87,7 +101,7 @@ function AssignStudentClass() {
         </div>
       )}
 
-      {showModal && <AddStudent closeModal={closeModal} studentsInClass={students} />}
+      {showModal && <AddStudent closeModal={closeModal} studentsInClass={students} selectedClass={selectedClass} />}
 
     </div>
   );

@@ -14,6 +14,8 @@ const submitAssignment = require('./submitAssignment');
 const getTeachersAndClassesForStudent = require('./getTeachersAndClassesForStudent');
 const getAllTeachersAndTheirClasses = require('./getAllTeachersAndTheirClasses');
 const getCalendar = require('./getCalendar');
+const createClassStudent = require('./createClassStudent');
+const deleteClassStudent = require('./deleteClassStudent');
 
 module.exports = {
   getAdmin,
@@ -32,4 +34,6 @@ module.exports = {
   getTeachersAndClassesForStudent,
   getAllTeachersAndTheirClasses,
   getCalendar,
+  createClassStudent,
+  deleteClassStudent,
 };
