@@ -38,7 +38,7 @@ router.post('/submittask', controller.submitCalendarTask);
 router.post('/classes/students', controller.createClassStudent);
 // PUT requests
 
-//DELETE requests
+// DELETE requests
 router.delete('/classes/:classId/students/:studentId', controller.deleteClassStudent);
 
 module.exports = router;
