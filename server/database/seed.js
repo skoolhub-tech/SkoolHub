@@ -124,352 +124,352 @@ const classesStudentsData = [
 
 const studentsAssignmentsData = [
   {
-    student_id: 1, assignment_id: 5, score: 83, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 1, assignment_id: 5, assignment_name: 'Math Assignment 2', score: 83, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 1, assignment_id: 9, score: 92, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 1, assignment_id: 9, assignment_name: 'Math Exam', score: 92, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 1, assignment_id: 13, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-05-11 00:00:00',
+    student_id: 1, assignment_id: 13, assignment_name: 'Math Group Project', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-05-11 00:00:00',
   },
   {
-    student_id: 2, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 2, assignment_id: 2, assignment_name: 'Science Assignment 1', score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 2, assignment_id: 6, score: 75, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 2, assignment_id: 6, assignment_name: 'Science Assignment 2', score: 75, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 2, assignment_id: 10, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 2, assignment_id: 10, assignment_name: 'Science Exam', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 2, assignment_id: 14, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 2, assignment_id: 14, assignment_name: 'Science Lab Report', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 3, assignment_id: 3, score: 70, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 3, assignment_id: 3, assignment_name: 'History Assignment 1', score: 70, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 3, assignment_id: 7, score: 87, total_points: 100, grade: 'B', completed: false, submitted_on: '2024-04-15 00:00:00',
+    student_id: 3, assignment_id: 7, assignment_name: 'History Assignment 2', score: 87, total_points: 100, grade: 'B', completed: false, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 3, assignment_id: 11, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 3, assignment_id: 11, assignment_name: 'History Exam', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 3, assignment_id: 15, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-05-09 00:00:00',
+    student_id: 3, assignment_id: 15, assignment_name: 'History Research Paper', score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-05-09 00:00:00',
   },
   {
-    student_id: 4, assignment_id: 4, score: 72, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 4, assignment_id: 4, assignment_name: 'English Assignment 1', score: 72, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 4, assignment_id: 8, score: 64, total_points: 100, grade: 'D', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 4, assignment_id: 8, assignment_name: 'English Assignment 2', score: 64, total_points: 100, grade: 'D', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 4, assignment_id: 12, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 4, assignment_id: 12, assignment_name: 'English Exam', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 4, assignment_id: 16, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-10 00:00:00',
+    student_id: 4, assignment_id: 16, assignment_name: 'English Essay', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-10 00:00:00',
   },
   {
-    student_id: 5, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-07 00:00:00',
+    student_id: 5, assignment_id: 1, assignment_name: 'Math Assignment 1', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-07 00:00:00',
   },
   {
-    student_id: 5, assignment_id: 5, score: 83, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 5, assignment_id: 5, assignment_name: 'Math Assignment 2', score: 83, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 5, assignment_id: 9, score: 91, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 5, assignment_id: 9, assignment_name: 'Math Exam', score: 91, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 5, assignment_id: 13, score: 89, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-05-11 00:00:00',
+    student_id: 5, assignment_id: 13, assignment_name: 'Math Group Project', score: 89, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-05-11 00:00:00',
   },
   {
-    student_id: 6, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 6, assignment_id: 2, assignment_name: 'Science Assignment 1', score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 6, assignment_id: 6, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 6, assignment_id: 6, assignment_name: 'Science Assignment 2', score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 6, assignment_id: 10, score: 77, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 6, assignment_id: 10, assignment_name: 'Science Exam', score: 77, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 6, assignment_id: 14, score: 94, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 6, assignment_id: 14, assignment_name: 'Science Lab Report', score: 94, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 7, assignment_id: 3, score: 100, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 7, assignment_id: 3, assignment_name: 'History Assignment 1', score: 100, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 7, assignment_id: 7, score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 7, assignment_id: 7, assignment_name: 'History Assignment 2', score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 7, assignment_id: 11, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 7, assignment_id: 11, assignment_name: 'History Exam', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 7, assignment_id: 15, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 7, assignment_id: 15, assignment_name: 'History Research Paper', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 8, assignment_id: 4, score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 8, assignment_id: 4, assignment_name: 'English Assignment 1', score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 8, assignment_id: 8, score: 77, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 8, assignment_id: 8, assignment_name: 'English Assignment 2', score: 77, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 8, assignment_id: 12, score: 74, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 8, assignment_id: 12, assignment_name: 'English Exam', score: 74, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 8, assignment_id: 16, score: 81, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 8, assignment_id: 16, assignment_name: 'English Essay', score: 81, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 9, assignment_id: 1, score: 70, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-07 00:00:00',
+    student_id: 9, assignment_id: 1, assignment_name: 'Math Assignment 1', score: 70, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-07 00:00:00',
   },
   {
-    student_id: 9, assignment_id: 5, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 9, assignment_id: 5, assignment_name: 'Math Assignment 2', score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 9, assignment_id: 9, score: 81, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 9, assignment_id: 9, assignment_name: 'Math Exam', score: 81, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 9, assignment_id: 13, score: 73, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 9, assignment_id: 13, assignment_name: 'Math Group Project', score: 73, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 10, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 10, assignment_id: 2, assignment_name: 'Science Assignment 1', score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 10, assignment_id: 6, score: 75, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 10, assignment_id: 6, assignment_name: 'Science Assignment 2', score: 75, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 10, assignment_id: 10, score: 86, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 10, assignment_id: 10, assignment_name: 'Science Exam', score: 86, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 10, assignment_id: 14, score: 93, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 10, assignment_id: 14, assignment_name: 'Science Lab Report', score: 93, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 11, assignment_id: 3, score: 65, total_points: 100, grade: 'D', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 11, assignment_id: 3, assignment_name: 'History Assignment 1', score: 65, total_points: 100, grade: 'D', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 11, assignment_id: 7, score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 11, assignment_id: 7, assignment_name: 'History Assignment 2', score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 11, assignment_id: 11, score: 81, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 11, assignment_id: 11, assignment_name: 'History Exam', score: 81, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 11, assignment_id: 15, score: 75, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 11, assignment_id: 15, assignment_name: 'History Research Paper', score: 75, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 12, assignment_id: 4, score: 47, total_points: 100, grade: 'F', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 12, assignment_id: 4, assignment_name: 'English Assignment 1', score: 47, total_points: 100, grade: 'F', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 12, assignment_id: 8, score: 78, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 12, assignment_id: 8, assignment_name: 'English Assignment 2', score: 78, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 12, assignment_id: 12, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 12, assignment_id: 12, assignment_name: 'English Exam', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 12, assignment_id: 16, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 12, assignment_id: 16, assignment_name: 'English Essay', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 13, assignment_id: 1, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-07 00:00:00',
+    student_id: 13, assignment_id: 1, assignment_name: 'Math Assignment 1', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-07 00:00:00',
   },
   {
-    student_id: 13, assignment_id: 5, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 13, assignment_id: 5, assignment_name: 'Math Assignment 2', score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 13, assignment_id: 9, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 13, assignment_id: 9, assignment_name: 'Math Exam', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 13, assignment_id: 13, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 13, assignment_id: 13, assignment_name: 'Math Group Project', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 14, assignment_id: 2, score: 86, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 14, assignment_id: 2, assignment_name: 'Science Assignment 1', score: 86, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 14, assignment_id: 6, score: 94, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 14, assignment_id: 6, assignment_name: 'Science Assignment 2', score: 94, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 14, assignment_id: 10, score: 81, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 14, assignment_id: 10, assignment_name: 'Science Exam', score: 81, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 14, assignment_id: 14, score: 97, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 14, assignment_id: 14, assignment_name: 'Science Lab Report', score: 97, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 15, assignment_id: 3, score: 98, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 15, assignment_id: 3, assignment_name: 'History Assignment 1', score: 98, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 15, assignment_id: 7, score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 15, assignment_id: 7, assignment_name: 'History Assignment 2', score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 15, assignment_id: 11, score: 91, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 15, assignment_id: 11, assignment_name: 'History Exam', score: 91, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 15, assignment_id: 15, score: 99, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 15, assignment_id: 15, assignment_name: 'History Research Paper', score: 99, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 16, assignment_id: 4, score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 16, assignment_id: 4, assignment_name: 'English Assignment 1', score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 16, assignment_id: 8, score: 77, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 16, assignment_id: 8, assignment_name: 'English Assignment 2', score: 77, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 16, assignment_id: 12, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 16, assignment_id: 12, assignment_name: 'English Exam', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 16, assignment_id: 16, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 16, assignment_id: 16, assignment_name: 'English Essay', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 17, assignment_id: 5, score: 86, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 17, assignment_id: 5, assignment_name: 'Math Assignment 2', score: 86, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 17, assignment_id: 9, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 17, assignment_id: 9, assignment_name: 'Math Exam', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 17, assignment_id: 13, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 17, assignment_id: 13, assignment_name: 'Math Group Project', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 18, assignment_id: 2, score: 82, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 18, assignment_id: 2, assignment_name: 'Science Assignment 1', score: 82, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 18, assignment_id: 6, score: 95, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 18, assignment_id: 6, assignment_name: 'Science Assignment 2', score: 95, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 18, assignment_id: 10, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 18, assignment_id: 10, assignment_name: 'Science Exam', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 18, assignment_id: 14, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 18, assignment_id: 14, assignment_name: 'Science Lab Report', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 19, assignment_id: 3, score: 76, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 19, assignment_id: 3, assignment_name: 'Science Assignment 1', score: 76, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 19, assignment_id: 7, score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 19, assignment_id: 7, assignment_name: 'Science Assignment 2', score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 19, assignment_id: 11, score: 67, total_points: 100, grade: 'D', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 19, assignment_id: 11, assignment_name: 'Science Exam', score: 67, total_points: 100, grade: 'D', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 19, assignment_id: 15, score: 72, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 19, assignment_id: 15, assignment_name: 'Science Lab Report', score: 72, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 20, assignment_id: 4, score: 67, total_points: 100, grade: 'D', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 20, assignment_id: 4, assignment_name: 'English Assignment 1', score: 67, total_points: 100, grade: 'D', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 20, assignment_id: 8, score: 77, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 20, assignment_id: 8, assignment_name: 'English Assignment 2', score: 77, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 20, assignment_id: 12, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 20, assignment_id: 12, assignment_name: 'English Exam', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 20, assignment_id: 16, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 20, assignment_id: 16, assignment_name: 'English Essay', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 21, assignment_id: 1, score: 97, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-07 00:00:00',
+    student_id: 21, assignment_id: 1, assignment_name: 'Math Assignment 1', score: 97, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-07 00:00:00',
   },
   {
-    student_id: 21, assignment_id: 5, score: 86, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 21, assignment_id: 5, assignment_name: 'Math Assignment 2', score: 86, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 21, assignment_id: 9, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 21, assignment_id: 9, assignment_name: 'Math Exam', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 21, assignment_id: 13, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 21, assignment_id: 13, assignment_name: 'Math Group Project', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 22, assignment_id: 2, score: 84, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 22, assignment_id: 2, assignment_name: 'Science Assignment 1', score: 84, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 22, assignment_id: 6, score: 95, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 22, assignment_id: 6, assignment_name: 'Science Assignment 2', score: 95, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 22, assignment_id: 10, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 22, assignment_id: 10, assignment_name: 'Science Exam', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 22, assignment_id: 14, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 22, assignment_id: 14, assignment_name: 'Science Lab Report', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 23, assignment_id: 3, score: 99, total_points: 100, grade: 'A', completed: false, submitted_on: '2024-04-15 00:00:00',
+    student_id: 23, assignment_id: 3, assignment_name: 'History Assignment 1', score: 99, total_points: 100, grade: 'A', completed: false, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 23, assignment_id: 7, score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 23, assignment_id: 7, assignment_name: 'History Assignment 2', score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 23, assignment_id: 11, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 23, assignment_id: 11, assignment_name: 'History Exam', score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 23, assignment_id: 15, score: 97, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 23, assignment_id: 15, assignment_name: 'History Research Paper', score: 97, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 24, assignment_id: 4, score: 84, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 24, assignment_id: 4, assignment_name: 'English Assignment 1', score: 84, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 24, assignment_id: 12, score: 73, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 24, assignment_id: 12, assignment_name: 'English Exam', score: 73, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 24, assignment_id: 16, score: 78, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 24, assignment_id: 16, assignment_name: 'English Essay', score: 78, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 25, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-07 00:00:00',
+    student_id: 25, assignment_id: 1, assignment_name: 'Math Assignment 1', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-07 00:00:00',
   },
   {
-    student_id: 25, assignment_id: 5, score: 89, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 25, assignment_id: 5, assignment_name: 'Math Assignment 2', score: 89, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 25, assignment_id: 9, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 25, assignment_id: 9, assignment_name: 'Math Exam', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 25, assignment_id: 13, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 25, assignment_id: 13, assignment_name: 'Math Group Project', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 26, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 26, assignment_id: 2, assignment_name: 'Science Assignment 1', score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 26, assignment_id: 6, score: 93, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 26, assignment_id: 6, assignment_name: 'Science Assignment 2', score: 93, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 26, assignment_id: 10, score: 82, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 26, assignment_id: 10, assignment_name: 'Science Exam', score: 82, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 26, assignment_id: 14, score: 96, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 26, assignment_id: 14, assignment_name: 'Science Lab Report', score: 96, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 27, assignment_id: 3, score: 70, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 27, assignment_id: 3, assignment_name: 'History Assignment 1', score: 70, total_points: 100, grade: 'C', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 27, assignment_id: 7, score: 81, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 27, assignment_id: 7, assignment_name: 'History Assignment 2', score: 81, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 27, assignment_id: 11, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 27, assignment_id: 11, assignment_name: 'History Exam', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 27, assignment_id: 15, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 27, assignment_id: 15, assignment_name: 'History Research Paper', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 28, assignment_id: 4, score: 81, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 28, assignment_id: 4, assignment_name: 'English Assignment 1', score: 81, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 28, assignment_id: 8, score: 92, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 28, assignment_id: 8, assignment_name: 'English Assignment 2', score: 92, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 28, assignment_id: 12, score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 28, assignment_id: 12, assignment_name: 'English Exam', score: 87, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 29, assignment_id: 1, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-07 00:00:00',
+    student_id: 29, assignment_id: 1, assignment_name: 'Math Assignment 1', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-07 00:00:00',
   },
   {
-    student_id: 29, assignment_id: 5, score: 100, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 29, assignment_id: 5, assignment_name: 'Math Assignment 2', score: 100, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 29, assignment_id: 9, score: 96, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 29, assignment_id: 9, assignment_name: 'Math Exam', score: 96, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 29, assignment_id: 13, score: 89, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 29, assignment_id: 13, assignment_name: 'Math Group Project', score: 89, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
   {
-    student_id: 30, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 30, assignment_id: 2, assignment_name: 'Science Assignment 1', score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 30, assignment_id: 6, score: 95, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
+    student_id: 30, assignment_id: 6, assignment_name: 'Science Assignment 2', score: 95, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
   {
-    student_id: 30, assignment_id: 10, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
+    student_id: 30, assignment_id: 10, assignment_name: 'Science Exam', score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-30 00:00:00',
   },
   {
-    student_id: 30, assignment_id: 14, score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
+    student_id: 30, assignment_id: 14, assignment_name: 'Science Lab Report', score: 90, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-05-17 00:00:00',
   },
 ];
 
@@ -609,7 +609,7 @@ async function seed() {
 
     studentsAssignmentsData.forEach(async (studentAssignment) => {
       await client.query(`
-        INSERT INTO students_assignments (student_id, assignment_id, file_path, submitted_on, score, total_points, grade, completed) VALUES (${studentAssignment.student_id}, ${studentAssignment.assignment_id}, 'placeholder', '${studentAssignment.submitted_on}', ${studentAssignment.score}, ${studentAssignment.total_points}, '${studentAssignment.grade}', ${studentAssignment.completed});
+        INSERT INTO students_assignments (student_id, assignment_id, assignment_name, file_path, submitted_on, score, total_points, grade, completed) VALUES (${studentAssignment.student_id}, ${studentAssignment.assignment_id}, '${studentAssignment.assignment_name}', 'placeholder', '${studentAssignment.submitted_on}', ${studentAssignment.score}, ${studentAssignment.total_points}, '${studentAssignment.grade}', ${studentAssignment.completed});
       `);
     });
 
