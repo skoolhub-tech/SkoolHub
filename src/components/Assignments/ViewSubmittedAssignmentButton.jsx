@@ -2,6 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FaMagnifyingGlass } from 'react-icons/fa6';
 
 function ViewSubmittedAssignmentButton(
   {
@@ -18,10 +19,11 @@ function ViewSubmittedAssignmentButton(
 
   return (
     <button
+      className="assignment-icon-button"
       type="button"
       onClick={handleClick}
     >
-      View Submission
+      <FaMagnifyingGlass size={15}/>
     </button>
   );
 }
