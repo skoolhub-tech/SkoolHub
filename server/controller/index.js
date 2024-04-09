@@ -15,6 +15,7 @@ const submitAssignment = require('./submitAssignment');
 const getTeachersAndClassesForStudent = require('./getTeachersAndClassesForStudent');
 const getAllTeachersAndTheirClasses = require('./getAllTeachersAndTheirClasses');
 const getCalendar = require('./getCalendar');
+const getCurrentAssignments = require('./getCurrentAssignments');
 const submitCalendarTask = require('./submitCalendarTask');
 const createClassStudent = require('./createClassStudent');
 const deleteClassStudent = require('./deleteClassStudent');
@@ -44,6 +45,7 @@ module.exports = {
   getTeachersAndClassesForStudent,
   getAllTeachersAndTheirClasses,
   getCalendar,
+  getCurrentAssignments,
   submitCalendarTask,
   createClassStudent,
   deleteClassStudent,
