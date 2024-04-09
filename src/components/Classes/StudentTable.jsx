@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import { FaChartLine } from 'react-icons/fa6';
+import { FaChartLine } from 'react-icons/fa';
 
 function StudentTable({ students, handleStudentClick }) {
   return (
@@ -7,7 +9,7 @@ function StudentTable({ students, handleStudentClick }) {
       <thead>
         <tr>
           <th>Student</th>
-          <th>View Grades</th>
+          <th>Grades</th>
         </tr>
       </thead>
       <tbody>
@@ -15,7 +17,14 @@ function StudentTable({ students, handleStudentClick }) {
           <tr key={student.id}>
             <td className="student-name">{student.name}</td>
             <td>
-              <button type="button" onClick={() => handleStudentClick(student)}>View Grades</button>
+              <button
+                type="button"
+                onClick={() => handleStudentClick(student)}
+                style={{ fontSize: '1.5rem' }}
+                aria-label={`View grades for ${student.name}`}
+              >
+                <FaChartLine />
+              </button>
             </td>
           </tr>
         ))}
