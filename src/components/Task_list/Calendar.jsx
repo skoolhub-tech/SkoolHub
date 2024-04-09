@@ -50,7 +50,6 @@ function TaskCalendar({ defaultView, views }) {
   const handleSelectSlot = (slotInfo) => {
     setSelectedTask({ title: '', start: slotInfo.start, end: slotInfo.end });
     setAddTaskFromSelect(true);
-    console.log(events);
   };
 
   const handleAddTask = () => {
@@ -83,9 +82,9 @@ function TaskCalendar({ defaultView, views }) {
         defaultView={defaultView}
         views={views}
       />
-      {editTask && <EditTask task={selectedTask} closeEditTask={closeEditTask} setEvents={setEvents}/>}
-      {addTaskFromSelect && <AddFromSelect task={selectedTask} closeAddTaskFromSelect={closeAddTaskFromSelect} setEvents={setEvents} refresh={refresh} setRefresh={setRefresh}/>}
-      {addTask && <AddTask task={selectedTask} closeAddTask={closeAddTask} setEvents={setEvents} refresh={refresh} setRefresh={setRefresh}/>}
+      {editTask && <EditTask task={selectedTask} closeEditTask={closeEditTask} refresh={refresh} setRefresh={setRefresh}/>}
+      {addTaskFromSelect && <AddFromSelect task={selectedTask} closeAddTaskFromSelect={closeAddTaskFromSelect} refresh={refresh} setRefresh={setRefresh}/>}
+      {addTask && <AddTask task={selectedTask} closeAddTask={closeAddTask} refresh={refresh} setRefresh={setRefresh}/>}
     </div>
     </div>
   );

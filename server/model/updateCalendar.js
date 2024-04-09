@@ -15,8 +15,9 @@ module.exports = async (role, data) => {
   }
   const client = createClient();
   try {
-    const query = `INSERT INTO ${table} (${roleId}, name, event_start, event_end, completed) VALUES ($1, $2, $3, $4, $5)`;
-    const values = [data.id, data.title, data.start, data.end, false];
+    const query = `UPDATE ${table} SET name = $2, event_start = $3, event_end = $4, completed = $5 WHERE ${roleId} = $1 AND id = $6`;
+    const values = [data.id2, data.title, data.start, data.end, data.completed, data.id];
+    console.log('values:', values);
     await client.connect();
     const { rows } = await client.query(query, values);
     return rows;
