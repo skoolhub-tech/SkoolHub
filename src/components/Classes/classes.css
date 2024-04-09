@@ -86,3 +86,10 @@
   align-items: center;
   margin-bottom: 20px; /* Adjust the gap as needed */
 }
+
+.modal-avg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px; /* Adjust the gap as needed */
+}
