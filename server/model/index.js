@@ -40,11 +40,8 @@ module.exports = {
   getStudentClassGrades,
   getTeachersAndClasses,
   getCalendar,
-<<<<<<< HEAD
   insertCalendar,
-=======
   getAllTeachersAndTheirClasses,
   createClassStudent,
   deleteClassStudent,
->>>>>>> main
 };
