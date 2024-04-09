@@ -5,7 +5,9 @@ import axios from 'axios';
 import { useUserData } from '../data-providers/UserDataProvider';
 import ClassesDropDownMenu from './ClassesDropDownMenu';
 import AssignmentsTableStudent from './AssignmentsTableStudent';
+import AssignmentsTableTeacher from './AssignmentsTableTeacher';
 import ViewSubmissionModal from './ViewSubmissionModal';
+import SubmittedAssignmentsTableTeacher from './SubmittedAssignmentsTableTeacher';
 
 function AssignmentsPage() {
   const { userData: { email, role, id } } = useUserData();
@@ -13,10 +15,12 @@ function AssignmentsPage() {
   const [viewSubmissionModalOpen, setViewSubmissionModalOpen] = useState(false);
   const [selectedClass, setSelectedClass] = useState(null);
   const [assignmentId, setAssignmentId] = useState(null);
+  const [studentId, setStudentId] = useState(null);
+  const [viewAssignmentSubmissions, setViewAssignmentSubmissions] = useState(null);
 
-  const getClassesAndAssignmentsForStudent = useCallback(async () => {
+  const getClassesAndAssignments = useCallback(async () => {
     try {
-      const response = await axios.get(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/classesAndAssignments/students?email=${email}`);
+      const response = await axios.get(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/classesAndAssignments/${role}?email=${email}`);
       setData(response.data);
     } catch (error) {
       console.log(`Error fetching classes and assignments for student: ${error}`);
@@ -28,8 +32,8 @@ function AssignmentsPage() {
   }, []);
 
   useEffect(() => {
-    getClassesAndAssignmentsForStudent();
-  }, [email, getClassesAndAssignmentsForStudent]);
+    getClassesAndAssignments();
+  }, [email, getClassesAndAssignments]);
 
   return data ? (
     <div>
@@ -41,20 +45,48 @@ function AssignmentsPage() {
       <div>
         {selectedClass ? (
           <div>
-            <h2>{selectedClass}</h2>
+            <h2>
+              Class:
+              {' '}
+              {selectedClass}
+            </h2>
             {role === 3 && (
               <AssignmentsTableStudent
                 data={data}
                 selectedClass={selectedClass}
-                getClassesAndAssignmentsForStudent={getClassesAndAssignmentsForStudent}
+                getClassesAndAssignments={getClassesAndAssignments}
                 setViewSubmissionModalOpen={setViewSubmissionModalOpen}
                 setAssignmentId={setAssignmentId}
                 viewSubmissionModalOpen={viewSubmissionModalOpen}
               />
             )}
+            {role === 2 && viewAssignmentSubmissions === null && (
+              <AssignmentsTableTeacher
+                data={data}
+                selectedClass={selectedClass}
+                setStudentId={setStudentId}
+                setViewAssignmentSubmissions={setViewAssignmentSubmissions}
+              />
+            )}
+            {role === 2 && viewAssignmentSubmissions && (
+              <>
+                <h2>
+                  Assignment:
+                  {' '}
+                  {viewAssignmentSubmissions.name}
+                </h2>
+                <SubmittedAssignmentsTableTeacher
+                  assignment={viewAssignmentSubmissions}
+                  setViewAssignmentSubmissions={setViewAssignmentSubmissions}
+                />
+              </>
+            )}
           </div>
         ) : (
-          <div>Select a class to see assignments</div>
+          <div>
+            <br />
+            Select a class to see assignments
+          </div>
         )}
       </div>
       {viewSubmissionModalOpen && assignmentId && (

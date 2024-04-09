@@ -6,7 +6,7 @@ import AssignmentsRowStudent from './AssignmentsRowStudent';
 function AssignmentsTableStudent({
   data,
   selectedClass,
-  getClassesAndAssignmentsForStudent,
+  getClassesAndAssignments,
   setViewSubmissionModalOpen,
   setAssignmentId,
   viewSubmissionModalOpen,
@@ -27,7 +27,7 @@ function AssignmentsTableStudent({
             <AssignmentsRowStudent
               key={assignment.id}
               assignment={assignment}
-              getClassesAndAssignmentsForStudent={getClassesAndAssignmentsForStudent}
+              getClassesAndAssignments={getClassesAndAssignments}
               setViewSubmissionModalOpen={setViewSubmissionModalOpen}
               setAssignmentId={setAssignmentId}
               viewSubmissionModalOpen={viewSubmissionModalOpen}
@@ -43,7 +43,7 @@ export default AssignmentsTableStudent;
 AssignmentsTableStudent.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectedClass: PropTypes.string.isRequired,
-  getClassesAndAssignmentsForStudent: PropTypes.func.isRequired,
+  getClassesAndAssignments: PropTypes.func.isRequired,
   setViewSubmissionModalOpen: PropTypes.func.isRequired,
   setAssignmentId: PropTypes.func.isRequired,
   viewSubmissionModalOpen: PropTypes.bool.isRequired,

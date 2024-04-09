@@ -11,7 +11,7 @@ function SubmitAssignmentModal({
   setSubmitAssignmentModalIsOpen,
   studentEmail,
   assignmentId,
-  getClassesAndAssignmentsForStudent,
+  getClassesAndAssignments,
 }) {
   const handleFileSubmit = async (file) => {
     const formData = new FormData();
@@ -28,7 +28,7 @@ function SubmitAssignmentModal({
           //
           //
           //
-          getClassesAndAssignmentsForStudent();
+          getClassesAndAssignments();
         }).catch((error) => {
           console.error('Error:', error);
         });
@@ -89,5 +89,5 @@ SubmitAssignmentModal.propTypes = {
   setSubmitAssignmentModalIsOpen: PropTypes.func.isRequired,
   studentEmail: PropTypes.string.isRequired,
   assignmentId: PropTypes.number.isRequired,
-  getClassesAndAssignmentsForStudent: PropTypes.func.isRequired,
+  getClassesAndAssignments: PropTypes.func.isRequired,
 };
