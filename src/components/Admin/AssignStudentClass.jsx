@@ -7,6 +7,7 @@ function AssignStudentClass() {
   const [selectedClass, setSelectedClass] = useState('');
   const [students, setStudents] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     axios.get('/skoolhub/classes')
@@ -61,6 +62,11 @@ function AssignStudentClass() {
     deleteStudentFromClass(selectedClass, studentId);
   };
 
+  const filteredStudents = students.filter((student) =>
+  student.name.toLowerCase().includes(searchQuery.toLowerCase())
+);
+
+
   return (
     <div>
       ASSIGN STUDENT CLASS
@@ -75,7 +81,20 @@ function AssignStudentClass() {
           <option key={classObj.id} value={classObj.id}>{classObj.name}</option>
         ))}
       </select>
-      {students.length > 0 && (
+
+      {selectedClass && (
+        <label htmlFor="searchBar">
+          Search:
+          <input
+            type="text"
+            id="searchBar"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </label>
+      )}
+
+      {filteredStudents.length > 0 && (
         <div>
           <h2>Students</h2>
           <table>
@@ -88,7 +107,7 @@ function AssignStudentClass() {
               </tr>
             </thead>
             <tbody>
-              {students.map((student) => (
+              {filteredStudents.map((student) => (
                 <tr key={student.id}>
                   <td>{student.id}</td>
                   <td>{student.name}</td>
