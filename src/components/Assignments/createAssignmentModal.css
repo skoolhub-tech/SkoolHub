@@ -1,0 +1,13 @@
+.create_assignment_modal {
+  position: absolute;
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  width: 50%;
+  margin: 0 auto;
+}

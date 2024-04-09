@@ -8,6 +8,7 @@ import AssignmentsTableStudent from './AssignmentsTableStudent';
 import AssignmentsTableTeacher from './AssignmentsTableTeacher';
 import ViewSubmissionModal from './ViewSubmissionModal';
 import SubmittedAssignmentsTableTeacher from './SubmittedAssignmentsTableTeacher';
+import CreateAssignmentModal from './CreateAssignmentModal';
 import './assignments.css';
 
 function AssignmentsPage() {
@@ -18,6 +19,7 @@ function AssignmentsPage() {
   const [assignmentId, setAssignmentId] = useState(null);
   const [studentId, setStudentId] = useState(null);
   const [viewAssignmentSubmissions, setViewAssignmentSubmissions] = useState(null);
+  const [createAssignmentModalOpen, setCreateAssignmentModalOpen] = useState(false);
 
   const getClassesAndAssignments = useCallback(async () => {
     try {
@@ -44,9 +46,15 @@ function AssignmentsPage() {
         setSelectedClass={setSelectedClass}
       />
       {selectedClass && (
-        <button type="button" className="create_assignment_button">
+        <button type="button" className="create_assignment_button" onClick={() => setCreateAssignmentModalOpen(true)}>
           Create Assignment
         </button>
+      )}
+      {createAssignmentModalOpen && (
+        <CreateAssignmentModal
+          classObj={data.find((classObj) => classObj.name === selectedClass)}
+          closeModal={() => setCreateAssignmentModalOpen(false)}
+        />
       )}
       {viewAssignmentSubmissions && (
         <>
@@ -84,6 +92,7 @@ function AssignmentsPage() {
                 data={data}
                 selectedClass={selectedClass}
                 setStudentId={setStudentId}
+                setAssignmentId={setAssignmentId}
                 setViewAssignmentSubmissions={setViewAssignmentSubmissions}
               />
             )}
