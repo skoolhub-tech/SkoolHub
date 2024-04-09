@@ -25,7 +25,15 @@ function Login({ handleLoginEvent }) {
         to_email: email,
         message: code,
       }, '0N-1NSzAKcK0vEt7G');
-      console.log('Code sent successfully');
+      //
+      //
+      //
+      // DELETE ME BEFORE DEPLOYMENT!!!
+      console.log(`Code sent successfully: ${code}`);
+      // DELETE ME BEFORE DEPLOYMENT!!!
+      //
+      //
+      //
     } catch (err) {
       console.error('Error sending code', err);
       throw err;

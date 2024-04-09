@@ -47,7 +47,7 @@ LOGIN PAGE / NAV BAR CSS ========================================
 
 }
 .nav-bar {
-  column-gap: 5px;
+  column-gap: .75rem;
   display: flex;
   flex-direction: row;
   transform: scale(1.25);
@@ -63,6 +63,7 @@ LOGIN PAGE / NAV BAR CSS ========================================
   cursor: pointer;
   transition: background-color 0.5s;
   border: 1px solid #07070aaa;
+  color:black
   /* filter: drop-shadow(0 0 1em #0d17d9aa); */
 }
 .login-button:hover {
@@ -96,6 +97,7 @@ LOGIN PAGE / NAV BAR CSS ========================================
 }
 
 .log-out-bttn {
-  margin-left: auto;
-  margin-top: -50px;
+  position: absolute;
+  top: 4rem;
+  right: 4rem;
 }

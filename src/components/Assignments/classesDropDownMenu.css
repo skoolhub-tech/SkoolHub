@@ -1,9 +1,10 @@
 .select_class_button {
-  display: none;
   background-color: white;
   padding: 10px;
   width: 136.297px;
   border-radius: 5px;
+  position: absolute;
+  display: block;
 }
 
 .select_class_button:hover {
@@ -12,7 +13,4 @@
   padding: 10px;
 }
 
-.classes_dropdown:hover .select_class_button {
-  display: block;
-  position: absolute;
-}
+

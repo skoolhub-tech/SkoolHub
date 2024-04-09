@@ -1,11 +1,19 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useUserData } from '../data-providers/UserDataProvider';
 import SubmitAssignmentButton from './SubmitAssignmentButton';
 import ViewSubmittedAssignmentButton from './ViewSubmittedAssignmentButton';
+import ViewAssignmentButton from './ViewAssignmentButton';
 
-function AssignmentsRow({ assignment, getClassesAndAssignmentsForStudent }) {
+function AssignmentsRow({
+  assignment,
+  getClassesAndAssignmentsForStudent,
+  setViewSubmissionModalOpen,
+  viewSubmissionModalOpen,
+  setAssignmentId,
+}) {
   const { userData: { email } } = useUserData();
 
   function getOrdinalIndicator(day) {
@@ -35,6 +43,9 @@ function AssignmentsRow({ assignment, getClassesAndAssignmentsForStudent }) {
       <td>{formatDate(assignment.due_date)}</td>
       <td>{assignment.submitted_on ? formatDate(assignment.submitted_on) : ''}</td>
       <td>
+        <ViewAssignmentButton assignment={assignment} />
+      </td>
+      <td>
         <SubmitAssignmentButton
           studentEmail={email}
           assignmentId={assignment.id}
@@ -42,7 +53,14 @@ function AssignmentsRow({ assignment, getClassesAndAssignmentsForStudent }) {
         />
       </td>
       <td>
-        {assignment.submitted_on && <ViewSubmittedAssignmentButton />}
+        {assignment.submitted_on && (
+        <ViewSubmittedAssignmentButton
+          assignmentId={assignment.id}
+          setAssignmentId={setAssignmentId}
+          setViewSubmissionModalOpen={setViewSubmissionModalOpen}
+          viewSubmissionModalOpen={viewSubmissionModalOpen}
+        />
+        )}
       </td>
     </tr>
   );
@@ -58,4 +76,7 @@ AssignmentsRow.propTypes = {
     submitted_on: PropTypes.string,
   }).isRequired,
   getClassesAndAssignmentsForStudent: PropTypes.func.isRequired,
+  setViewSubmissionModalOpen: PropTypes.func.isRequired,
+  viewSubmissionModalOpen: PropTypes.bool.isRequired,
+  setAssignmentId: PropTypes.func.isRequired,
 };
