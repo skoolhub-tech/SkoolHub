@@ -5,7 +5,9 @@
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.75);
 }
 .emailsDiv > h1 {
-  text-align: center;
+  display: flex;
+  color: white;
+  justify-content: center;
 }
 
 .emailDropdown {
@@ -50,35 +52,30 @@
 .personCardContainer::-webkit-scrollbar-thumb:hover {
   background: #555; /* Color of the scroll thumb on hover */
 }
-/*table*/
+
 .personCardContainer {
-  width: 100%;
-  margin-top: 5px;
-}
-.personCardContainer tbody {
-  gap: 3px;
-  height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 600px;
+  margin-top: 25px;
   overflow: auto;
-}
-.personCardContainer tr {
-  border-radius: 10px;
-  border: 1px solid black;
-
-}
-.personCardContainer td {
-  text-align: center;
-  padding: 10px;
-  margin: 0;
-  border-radius: 5px;
+  max-height: 400px;
 }
 
-
-/* 3 tds inside 1 tr */
 .personEmailCard {
-  background-color: #FFFFFF; /* Set the background color of the rows */
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 5px;
+  transition: background-color 0.3s ease;
 }
+
 .selectedRow {
   background-color: #e0e6c0;
+  transition: background-color 0.3s ease;
 }
 /* =================   Email Modal DIV holds emailform div and template Div ===================*/
 .emailModal {

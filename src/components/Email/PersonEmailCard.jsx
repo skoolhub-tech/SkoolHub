@@ -32,12 +32,13 @@ function PersonEmailCard({
   }, [isAllSelected]);
 
   return (
-    <tr className={`personEmailCard ${isChecked ? 'selectedRow' : ''}`} onClick={handleRowClick}>
-      <td className="td-name">
-        {person.name}
-        {Array.isArray(person.class) ? 'Teacher' : person.class}
-      </td>
-    </tr>
+    <div className={`personEmailCard ${isChecked ? 'selectedRow' : ''}`} onClick={handleRowClick}>
+
+          <p>{person.name}</p>
+          <p>{Array.isArray(person.class) ? 'Teacher' : person.class}</p>
+
+
+    </div>
   );
 }
 
