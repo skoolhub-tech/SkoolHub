@@ -6,6 +6,7 @@ const getRoleAtLogin = require('./getRoleAtLogin');
 const getStudents = require('./getStudents');
 const getTeacherClasses = require('./getTeacherClasses');
 const getTeachers = require('./getTeachers');
+const getSubmittedAssignment = require('./getSubmittedAssignment');
 const login = require('./login');
 const getStudentClassGrades = require('./getStudentClassGrades');
 const sendAutoEmail = require('./sendAutoEmail');
@@ -15,6 +16,9 @@ const getTeachersAndClassesForStudent = require('./getTeachersAndClassesForStude
 const getAllTeachersAndTheirClasses = require('./getAllTeachersAndTheirClasses');
 const getCalendar = require('./getCalendar');
 const getCurrentAssignments = require('./getCurrentAssignments');
+const submitCalendarTask = require('./submitCalendarTask');
+const createClassStudent = require('./createClassStudent');
+const deleteClassStudent = require('./deleteClassStudent');
 
 module.exports = {
   getAdmin,
@@ -25,6 +29,7 @@ module.exports = {
   getStudents,
   getTeacherClasses,
   getTeachers,
+  getSubmittedAssignment,
   login,
   getStudentClassGrades,
   sendAutoEmail,
@@ -34,4 +39,7 @@ module.exports = {
   getAllTeachersAndTheirClasses,
   getCalendar,
   getCurrentAssignments,
+  submitCalendarTask,
+  createClassStudent,
+  deleteClassStudent,
 };

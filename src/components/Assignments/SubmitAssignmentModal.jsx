@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable new-cap */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
@@ -17,7 +18,15 @@ function SubmitAssignmentModal({
     const submitToServer = (fileData) => {
       axios.post(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/submitassignment`, fileData)
         .then((response) => {
+          //
+          //
+          //
+          // REPLACE CONSOLE.LOG WITH MODAL DISPLAYING SUCCESS/ERROR MESSAGE
           console.log('*MODIFY SubmitAssignmentModal to display success/error message* Success:', response);
+          // REPLACE CONSOLE.LOG WITH MODAL DISPLAYING SUCCESS/ERROR MESSAGE
+          //
+          //
+          //
           getClassesAndAssignmentsForStudent();
         }).catch((error) => {
           console.error('Error:', error);

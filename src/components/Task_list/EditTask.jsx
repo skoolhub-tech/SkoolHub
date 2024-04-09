@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './editForm.css';
 import moment from 'moment';
+import { useUserData } from '../data-providers/UserDataProvider';
 
 function EditTask({ task, closeEditTask }) {
+  const { userData } = useUserData();
+
   const [editedTask, setEditedTask] = useState({
     ...task,
     start: task.start,

@@ -20,7 +20,6 @@ function Homepage() {
 
     axios.get(path)
       .then((response) => {
-        console.log(response.data);
         setAssignments(response.data);
       })
       .catch((error) => console.error({
