@@ -3,9 +3,14 @@
   justify-content: flex-end;
   align-items: center;
   margin-left: auto;
-  background-color: #858D6F;
+  color: black;
+  background-color: #CED2BA;
   transition: background-color 0.5s;
 
+}
+
+.add-task:hover {
+  color: white;
 }
 
 .tasks-header {
