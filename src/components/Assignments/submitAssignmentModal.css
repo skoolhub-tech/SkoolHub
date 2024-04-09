@@ -1,0 +1,11 @@
+.submit_assignment_modal {
+  position: absolute;
+  background-color: grey;
+  border-radius: 5px;
+  filter: drop-shadow(0 0 2em #707a3e);
+  color: white;
+}
+
+.submit_assignment_modal * {
+  margin: 0;
+}

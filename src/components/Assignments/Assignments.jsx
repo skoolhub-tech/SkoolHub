@@ -4,8 +4,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useUserData } from '../data-providers/UserDataProvider';
 import ClassesDropDownMenu from './ClassesDropDownMenu';
-import AssignmentsRowStudent from './AssignmentsRowStudent';
+import AssignmentsTableStudent from './AssignmentsTableStudent';
 import ViewSubmissionModal from './ViewSubmissionModal';
+import './assignments.css';
 
 function AssignmentsPage() {
   const { userData: { email, role, id } } = useUserData();
@@ -32,7 +33,7 @@ function AssignmentsPage() {
   }, [email, getClassesAndAssignmentsForStudent]);
 
   return data ? (
-    <div>
+    <div className="assignments-container">
       <h1>Assignments</h1>
       <ClassesDropDownMenu
         classes={data}
@@ -42,31 +43,16 @@ function AssignmentsPage() {
         {selectedClass ? (
           <div>
             <h2>{selectedClass}</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th>Assignment</th>
-                  <th>Due Date</th>
-                  <th>Submitted On</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data
-                  .find((classObj) => classObj.name === selectedClass)
-                  .assignments.map((assignment) => (
-                    role === 3 ? (
-                      <AssignmentsRowStudent
-                        key={assignment.id}
-                        assignment={assignment}
-                        getClassesAndAssignmentsForStudent={getClassesAndAssignmentsForStudent}
-                        setViewSubmissionModalOpen={setViewSubmissionModalOpen}
-                        setAssignmentId={setAssignmentId}
-                        viewSubmissionModalOpen={viewSubmissionModalOpen}
-                      />
-                    ) : null
-                  ))}
-              </tbody>
-            </table>
+            {role === 3 && (
+              <AssignmentsTableStudent
+                data={data}
+                selectedClass={selectedClass}
+                getClassesAndAssignmentsForStudent={getClassesAndAssignmentsForStudent}
+                setViewSubmissionModalOpen={setViewSubmissionModalOpen}
+                setAssignmentId={setAssignmentId}
+                viewSubmissionModalOpen={viewSubmissionModalOpen}
+              />
+            )}
           </div>
         ) : (
           <div>Select a class to see assignments</div>
