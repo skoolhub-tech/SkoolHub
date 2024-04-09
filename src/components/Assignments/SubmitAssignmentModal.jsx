@@ -73,11 +73,13 @@ function SubmitAssignmentModal({
   };
 
   return (
-    <div className="submit_assignment_modal">
-      <form onSubmit={handleSubmit}>
-        <input type="file" name="file" accept=".png, .pdf" required />
-        <button type="submit">Upload</button>
-        <button type="button" onClick={() => setSubmitAssignmentModalIsOpen(false)}>Close</button>
+    <div className="view-submission-modal-container" style={{ position: 'absolute' }}>
+      <form className="submission-form" onSubmit={handleSubmit}>
+        <input className="submission-input" type="file" name="file" accept=".png, .pdf" required />
+        <div className="modal-buttons">
+          <button type="submit">Upload</button>
+          <button type="button" onClick={() => setSubmitAssignmentModalIsOpen(false)}>Close</button>
+        </div>
       </form>
     </div>
   );
