@@ -90,7 +90,6 @@ const createTableQuery = `
     id SERIAL PRIMARY KEY,
     student_id INT NOT NULL,
     assignment_id INT NOT NULL,
-    assignment_name VARCHAR(255) NOT NULL,
     file_path VARCHAR(255) NOT NULL,
     submitted_on TIMESTAMP NOT NULL,
     score INT,
@@ -99,7 +98,6 @@ const createTableQuery = `
     completed BOOLEAN NOT NULL,
     FOREIGN KEY (student_id) REFERENCES students(id),
     FOREIGN KEY (assignment_id) REFERENCES assignments(id),
-    FOREIGN KEY (assignment_name) REFERENCES assignments(name),
     UNIQUE (student_id, assignment_id)
   );
 
