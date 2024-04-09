@@ -10,6 +10,7 @@ function StudentGradesModal({
   studentName, studentId, classId, onClose,
 }) {
   const [grades, setGrades] = useState([]);
+  const [averageGrade, setAverageGrade] = useState(0);
   const chartRef = useRef(null);
 
   useEffect(() => {
@@ -17,6 +18,9 @@ function StudentGradesModal({
       .then((response) => {
         const studentGrades = response.data;
         setGrades(response.data);
+        const totalScore = studentGrades.reduce((acc, grade) => acc + grade.score, 0);
+        const average = (totalScore / studentGrades.length).toFixed(2);
+        setAverageGrade(average);
         // Create chart after grades are fetched and set
         const ctx = chartRef.current.getContext('2d');
         const chart = new Chart(ctx, {
@@ -59,6 +63,11 @@ function StudentGradesModal({
       </div>
       <div className="modal-btn">
         <button type="button" onClick={onClose}>Close</button>
+      </div>
+      <div className="modal-avg">
+        Average:
+        {' '}
+        {averageGrade}
       </div>
       <div className="grade-chart" style={{ width: '300px', height: '300px' }}>
         <canvas ref={chartRef} />
