@@ -140,7 +140,7 @@
     /* flagging as an important bit of css */
 
     .navbar-container .rbc-calendar {
-      transform: scale(0.8);
+      /* transform: scale(0.8); */
     }
 
     .rbc-month-view {

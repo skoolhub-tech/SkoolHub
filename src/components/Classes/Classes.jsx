@@ -18,8 +18,16 @@ function Classes() {
   useEffect(() => {
     axios.get(`/skoolhub/classes/${userData.email}`)
       .then((response) => {
-        console.log(response.data);
         setClasses(response.data);
+        setSelectedClass(response.data[0].id);
+        setSelectedClassName(response.data[0].name);
+        axios.get(`/skoolhub/classes/${response.data[0].id}/students`)
+          .then((reply) => {
+            setStudents(reply.data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       })
       .catch((error) => {
         console.error(error);
@@ -68,14 +76,14 @@ function Classes() {
         </select>
       </div>
       {students.length > 0 && (
-      <>
-        <div className="selected-class-header">
-          <h2>{selectedClassName}</h2>
+      <div className="selected-class">
+        <div>
+          <h2 className="selected-class-header">{selectedClassName}</h2>
         </div>
         <div className="student-table">
           <StudentTable students={students} handleStudentClick={handleStudentClick} />
         </div>
-      </>
+      </div>
       )}
       {showModal && selectedStudent && (
         <div className="modal-backdrop">
