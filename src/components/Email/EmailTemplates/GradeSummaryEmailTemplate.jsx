@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useUserData } from '../../data-providers/UserDataProvider';
 
-function GradeSummaryEmailTemplate({ setSubject, setBody, currentClass, setSelectedTemplate, setTemplateView }) {
+function GradeSummaryEmailTemplate({ setSubject, setBody, currentClass, setSelectedTemplate }) {
   const { userData } = useUserData();
-  const [isChecked, setChecked] = useState(false);
 
   const handleCheckboxChange = () => {
     setSubject(templateData.subject);
@@ -28,8 +27,8 @@ function GradeSummaryEmailTemplate({ setSubject, setBody, currentClass, setSelec
   };
 
   return (
-    <div className="gradeSummaryEmailTemplate, emailTemplateCard">
-      <p>Grade Summary Email Template</p>
+    <div className="emailTemplateCard">
+      <p>Grade Summary Template</p>
       <button type="button" onClick={handleCheckboxChange}>Select</button>
     </div>
   );

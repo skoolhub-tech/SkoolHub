@@ -24,7 +24,6 @@ function EmailTeachersView() {
   const [body, setBody] = useState('');
   const [receiverEmailList, setRecieverEmailList] = useState({});
   //if template chosen have option to save its value // into database?
-  const [templateView, setTemplateView] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState('writeYourOwnEmail');
 
 
@@ -144,9 +143,7 @@ function EmailTeachersView() {
           subject={subjectLine}
           body={body}
           currentClass={currentClass}
-          setTemplateView={setTemplateView}
           setSelectedTemplate={setSelectedTemplate}
-          templateView={templateView}
         />
       )}
     </div>

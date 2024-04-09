@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useUserData } from '../../data-providers/UserDataProvider';
 
-function ScheduleMeetingEmailTemplate({ setSubject, setBody, currentClass, setSelectedTemplate, setTemplateView }) {
+function ScheduleMeetingEmailTemplate({ setSubject, setBody, currentClass, setSelectedTemplate, }) {
   const { userData } = useUserData();
-  const [isChecked, setChecked] = useState(false);
 
   const handleCheckboxChange = () => {
-      setSubject(templateData.subject);
-      setBody(templateData.body);
-      setSelectedTemplate('Schedule Meeting Template Chosen');
+    setSubject(templateData.subject);
+    setBody(templateData.body);
+    setSelectedTemplate('Schedule Meeting Template Chosen');
   };
+
   const templateData = {
     subject: `Schedule Meeting for ${currentClass.name}`,
     body: `Dear [Recipient's Name],
@@ -29,8 +29,8 @@ function ScheduleMeetingEmailTemplate({ setSubject, setBody, currentClass, setSe
   };
 
   return (
-    <div className="scheduleMeetingEmailTemplate, emailTemplateCard">
-      <p>Schedule Meeting Email Template</p>
+    <div className="emailTemplateCard">
+      <p>Schedule Meeting Template</p>
       <button type="button" onClick={handleCheckboxChange}>Select</button>
     </div>
   );

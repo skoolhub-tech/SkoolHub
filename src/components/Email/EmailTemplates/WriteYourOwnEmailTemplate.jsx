@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function WriteYourOwnEmail({ setSubject, setBody, currentClass, setSelectedTemplate, setTemplateView }) {
-  const [isChecked, setChecked] = useState(false);
-
+function WriteYourOwnEmail({
+  setSubject,
+  setBody,
+  setSelectedTemplate,
+}) {
   const handleCheckboxChange = () => {
     setSubject('');
     setBody('');
@@ -10,8 +12,8 @@ function WriteYourOwnEmail({ setSubject, setBody, currentClass, setSelectedTempl
   };
 
   return (
-    <div className="writeYourOwnEmail, emailTemplateCard">
-      <p>Write Your Own Email</p>
+    <div className="emailTemplateCard">
+      <p>Write Your Own</p>
       <button type="button" onClick={handleCheckboxChange}>Select</button>
     </div>
   );

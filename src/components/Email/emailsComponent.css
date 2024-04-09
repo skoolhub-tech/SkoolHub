@@ -16,7 +16,7 @@
 .emailDropdown {
 
 }
-/*==================== cards container (scrollable) and its children ========================== */
+/*==================== People cards container (scrollable) and its children ========================== */
 /* Scroll bar for personCardContainer */
 .personCardContainer::-webkit-scrollbar {
   width: 8px; /* Adjust width for vertical scrollbar */
@@ -49,8 +49,8 @@
   padding: 10px;
   margin: 10px;
   background-color: #858D6F;
-
 }
+/* inside person card */
 .emailCheckbox {
   width: 20px;
   height: 20px;

@@ -4,7 +4,7 @@ import { useUserData } from '../data-providers/UserDataProvider';
 import PropTypes from 'prop-types';
 
 function EmailModal({
-  setMessage, setSubject, email, setEmailModal, subject, body, setTemplateView, setSelectedTemplate, currentClass,
+  setMessage, setSubject, email, setEmailModal, subject, body, setSelectedTemplate, currentClass,
 }) {
   const { userData } = useUserData();
   // update Subject and line of email, send email on submit
