@@ -20,6 +20,7 @@ module.exports = async (
     ON CONFLICT (student_id, assignment_id)
     DO UPDATE SET
       file_path = EXCLUDED.file_path,
+      submitted_on = EXCLUDED.submitted_on,
       score = EXCLUDED.score,
       total_points = EXCLUDED.total_points,
       grade = EXCLUDED.grade,
