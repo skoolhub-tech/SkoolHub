@@ -45,7 +45,7 @@ function AssignmentsPage() {
         classes={data}
         setSelectedClass={setSelectedClass}
       />
-      {selectedClass && (
+      {selectedClass && !viewAssignmentSubmissions && (
         <button type="button" className="create_assignment_button" onClick={() => setCreateAssignmentModalOpen(true)}>
           Create Assignment
         </button>

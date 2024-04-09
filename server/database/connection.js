@@ -57,6 +57,7 @@ const createTableQuery = `
     class_id INT NOT NULL,
     name VARCHAR(255) UNIQUE NOT NULL,
     due_date TIMESTAMP NOT NULL,
+    instructions TEXT,
     FOREIGN KEY (class_id) REFERENCES classes(id)
   );
 
