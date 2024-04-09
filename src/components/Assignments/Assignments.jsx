@@ -44,7 +44,7 @@ function AssignmentsPage() {
         setSelectedClass={setSelectedClass}
       />
       {selectedClass && (
-        <button type="button">
+        <button type="button" className="create_assignment_button">
           Create Assignment
         </button>
       )}
@@ -54,7 +54,7 @@ function AssignmentsPage() {
           <br />
           <button
             type="button"
-            className="back-button"
+            className="back_button"
             onClick={() => setViewAssignmentSubmissions(null)}
           >
             Back
