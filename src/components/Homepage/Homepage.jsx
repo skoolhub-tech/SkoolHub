@@ -4,7 +4,9 @@ import axios from 'axios';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
+
 import { useUserData } from '../data-providers/UserDataProvider';
+import AssignmentsTable from './AssignmentsTable';
 
 const { useState, useEffect } = React;
 
@@ -81,14 +83,11 @@ function Homepage() {
       </select>
       {assignments.length > 0 && (
         <div>
-          <h2>Assignments</h2>
-          <ul>
-            {assignments.map((assignment) => (
-              <li key={assignment.id}>{assignment.name}</li>
-            ))}
-          </ul>
+          <h2>Current Assignments</h2>
+          <AssignmentsTable assignments={assignments} />
         </div>
       )}
+      <h2>Today&apos;s Tasks</h2>
       <div className="task-container">
         <div style={{ height: 500 }}>
           <Calendar
