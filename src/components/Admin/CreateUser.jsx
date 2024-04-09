@@ -7,6 +7,8 @@ function CreateUser({ exitModal }) {
   const [students, setStudents] = useState([]);
   const [admins, setAdmins] = useState([]);
   const [roles, setRoles] = useState([]);
+  const [selectedRoleFilter, setSelectedRoleFilter] = useState('');
+  console.log('selectedRoleFilter', selectedRoleFilter);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -80,7 +82,10 @@ function CreateUser({ exitModal }) {
       });
   };
 
-  const users = teachers.concat(students, admins);
+  const users = teachers.concat(students, admins)
+    .filter((user) => (selectedRoleFilter ? user.role_id == selectedRoleFilter : true));
+
+  console.log('users', users);
 
   const handleDeleteClick = (userId, role) => {
     axios.delete(`/skoolhub/deleteUser/${userId}/${role}`)
@@ -143,6 +148,19 @@ function CreateUser({ exitModal }) {
 
       <div>
         <h2>Current Users</h2>
+        <label htmlFor="roleFilter">
+          Filter by Role:
+          <select
+            id="roleFilter"
+            value={selectedRoleFilter}
+            onChange={(e) => setSelectedRoleFilter(e.target.value)}
+          >
+            <option value="">All Roles</option>
+            {roles.map((role) => (
+              <option key={role.id} value={role.id}>{role.role}</option>
+            ))}
+          </select>
+        </label>
         <table>
           <thead>
             <tr>
@@ -157,7 +175,13 @@ function CreateUser({ exitModal }) {
               <tr key={user.email}>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>{user.role_id}</td>
+                <td>
+                  {
+                    roles.find((role) => role.id === user.role_id)
+                      ? roles.find((role) => role.id === user.role_id).role
+                      : 'Role not found'
+                  }
+                </td>
                 <td>
                   <button type="button" onClick={() => handleDeleteClick(user.id, user.role_id)}>
                     DELETE USER
