@@ -39,7 +39,19 @@ function CreateClass({ exitModal }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // axios post request
+    const classData = {
+      className,
+      teacherId: selectedTeacher,
+    };
+    axios.post('/skoolhub/createClass', classData)
+      .then((response) => {
+        console.log(response.data);
+        setClassName('');
+        setSelectedTeacher('');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
