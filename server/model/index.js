@@ -17,6 +17,8 @@ const getStudentClassGrades = require('./getStudentClassGrades');
 const getTeachersAndClasses = require('./getTeachersAndClasses');
 const getCalendar = require('./getCalendar');
 const getAllTeachersAndTheirClasses = require('./getAllTeachersAndTheirClasses');
+const createClassStudent = require('./createClassStudent');
+const deleteClassStudent = require('./deleteClassStudent');
 
 module.exports = {
   getAdmin,
@@ -38,4 +40,6 @@ module.exports = {
   getTeachersAndClasses,
   getCalendar,
   getAllTeachersAndTheirClasses,
+  createClassStudent,
+  deleteClassStudent,
 };
