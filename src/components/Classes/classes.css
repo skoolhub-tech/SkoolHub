@@ -2,12 +2,23 @@
   background-color: #858D6F;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.75);
+}
+.class-dropdown {
+  transform: scale(1.05);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.class-header {
+  color: white;
+  display: flex;
+  justify-content: center;
 }
 .student-name {
   padding-right: 15rem;
     background-color: white;
     border-radius: 5px;
+    padding-left: 1rem;
 }
 .selected-class {
   border-radius: 10px;
@@ -16,6 +27,7 @@
   padding-right: 1rem;
   padding-bottom: 1rem;
   padding-top: .1rem;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
 .selected-class-header {
   display: flex;
