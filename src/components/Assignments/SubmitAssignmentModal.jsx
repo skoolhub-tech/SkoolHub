@@ -17,7 +17,7 @@ function SubmitAssignmentModal({
     const formData = new FormData();
 
     const submitToServer = (fileData) => {
-      axios.post(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/submitassignment`, fileData)
+      axios.post('/skoolhub/submitassignment', fileData)
         .then((response) => {
           //
           //
@@ -45,7 +45,6 @@ function SubmitAssignmentModal({
       const reader = new FileReader();
       reader.onload = (e) => {
         const imgData = e.target.result;
-        // Extract the format from the file type (e.g., "image/jpeg" will extract "JPEG")
         const format = file.type.split('/')[1].toUpperCase();
         pdf.addImage(
           imgData,

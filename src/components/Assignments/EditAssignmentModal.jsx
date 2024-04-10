@@ -58,7 +58,7 @@ function EditAssignmentModal({
             Instructions:
             <textarea
               id="instructions"
-              value={instructions}
+              value={instructions || ''}
               onChange={(e) => setInstructions(e.target.value)}
             />
           </label>

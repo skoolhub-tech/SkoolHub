@@ -1,7 +1,8 @@
 /* eslint-disable react/forbid-prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AssignmentsRowTeacher from './AssignmentsRowTeacher';
+import EditAssignmentModal from './EditAssignmentModal';
 
 function AssignmentsTableTeacher({
   data,
@@ -9,6 +10,9 @@ function AssignmentsTableTeacher({
   setAssignmentId,
   setViewAssignmentSubmissions,
 }) {
+  const [editSubmissionModalIsOpen, setEditSubmissionModalIsOpen] = useState(false);
+  const [assignmentToView, setAssignmentToEdit] = useState(null);
+
   return (
     <div>
       <table className="assignments_table_teacher">
@@ -29,10 +33,18 @@ function AssignmentsTableTeacher({
                 assignment={assignment}
                 setAssignmentId={setAssignmentId}
                 setViewAssignmentSubmissions={setViewAssignmentSubmissions}
+                setEditSubmissionModalIsOpen={setEditSubmissionModalIsOpen}
+                setAssignmentToEdit={setAssignmentToEdit}
               />
             ))}
         </tbody>
       </table>
+      {editSubmissionModalIsOpen && (
+      <EditAssignmentModal
+        assignment={assignmentToView}
+        setEditSubmissionModalIsOpen={setEditSubmissionModalIsOpen}
+      />
+      )}
     </div>
   );
 }

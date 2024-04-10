@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import { FaBookOpen } from 'react-icons/fa';
-import GradeSubmissionModal from './GradeSubmissionModal';
 import formatDate from '../../utils/formatDate_Month_D_Y';
 
 function SubmittedAssignmentsRow({
@@ -11,12 +10,18 @@ function SubmittedAssignmentsRow({
   setStudentId,
   setViewSubmissionModalOpen,
   setAssignmentId,
+  setGradeSubmissionModalOpen,
+  setSubmissionToGrade,
 }) {
-  const [gradeSubmissionModalOpen, setGradeSubmissionModalOpen] = useState(false);
   function handleViewSubmissionClick() {
     setAssignmentId(submission.submission_id);
     setStudentId(submission.student_id);
     setViewSubmissionModalOpen(true);
+  }
+
+  function handleGradeSubmissionClick() {
+    setSubmissionToGrade(submission);
+    setGradeSubmissionModalOpen(true);
   }
 
   return (
@@ -28,14 +33,8 @@ function SubmittedAssignmentsRow({
         <button type="button" onClick={handleViewSubmissionClick}><FaMagnifyingGlass size={15} /></button>
       </td>
       <td className="grade_submission">
-        <button type="button" onClick={setGradeSubmissionModalOpen}><FaBookOpen size={15} /></button>
+        <button type="button" onClick={handleGradeSubmissionClick}><FaBookOpen size={15} /></button>
       </td>
-      {gradeSubmissionModalOpen && (
-      <GradeSubmissionModal
-        submission={submission}
-        setGradeSubmissionModalOpen={setGradeSubmissionModalOpen}
-      />
-      )}
     </tr>
   );
 }
@@ -53,4 +52,6 @@ SubmittedAssignmentsRow.propTypes = {
   setStudentId: PropTypes.func.isRequired,
   setViewSubmissionModalOpen: PropTypes.func.isRequired,
   setAssignmentId: PropTypes.func.isRequired,
+  setGradeSubmissionModalOpen: PropTypes.func.isRequired,
+  setSubmissionToGrade: PropTypes.func.isRequired,
 };
