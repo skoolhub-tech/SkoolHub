@@ -17,7 +17,7 @@ function SubmitAssignmentModal({
     const formData = new FormData();
 
     const submitToServer = (fileData) => {
-      axios.post(`http://skoolhub/submitassignment`, fileData)
+      axios.post(`skoolhub/submitassignment`, fileData)
         .then((response) => {
           //
           //
