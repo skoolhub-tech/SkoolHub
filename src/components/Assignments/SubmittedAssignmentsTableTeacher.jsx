@@ -64,6 +64,8 @@ export default SubmittedAssignmentsTabelTeacher;
 SubmittedAssignmentsTabelTeacher.propTypes = {
   assignment: PropTypes.shape({
     id: PropTypes.number,
+    name: PropTypes.string,
+    due_date: PropTypes.string,
   }).isRequired,
   setStudentId: PropTypes.func.isRequired,
   setViewSubmissionModalOpen: PropTypes.func.isRequired,
