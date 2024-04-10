@@ -12,9 +12,8 @@ function WriteYourOwnEmail({
   };
 
   return (
-    <div className="emailTemplateCard">
+    <div className="emailTemplateCard" onClick={handleCheckboxChange}>
       <p>Write Your Own</p>
-      <button type="button" onClick={handleCheckboxChange}>Select</button>
     </div>
   );
 }

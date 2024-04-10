@@ -32,7 +32,7 @@ function AssignmentsTable({
           </option>
         ))}
       </select>
-      <table>
+      <table className="HP-assignments-table">
         <thead>
           <tr>
             <th className="left-table">Assignment</th>
