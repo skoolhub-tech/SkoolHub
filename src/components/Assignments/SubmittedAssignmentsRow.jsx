@@ -26,6 +26,9 @@ function SubmittedAssignmentsRow({
       <td className="view_submission">
         <button type="button"  onClick={handleViewSubmissionClick}><FaMagnifyingGlass size={15}/></button>
       </td>
+      <td className="grade_submission">
+        <button type="button"  onClick={setGradeSubmissionModalOpen}><FaBookOpen size={15}/></button>
+      </td>
       {gradeSubmissionModalOpen && (
       <GradeSubmissionModal
         submission={submission}
