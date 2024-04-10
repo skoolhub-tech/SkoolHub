@@ -29,7 +29,7 @@ function AddStudent({ closeModal, studentsInClass, selectedClass, fetchStudentsI
   const AddStudentToClass = (classId, studentId) => {
     axios.post('/skoolhub/classes/students', { classId, studentId })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         fetchStudentsInClass(classId);
         setRefresh(!refresh);
       })
