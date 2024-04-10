@@ -12,9 +12,8 @@ module.exports = async (role, userId, classId) => {
       ORDER BY assignments.due_date;`;
   } else if (role === '2') {
     query = `SELECT assignments.id, assignments.name, assignments.class_id, assignments.due_date
-      FROM teachers_assignments
-      JOIN assignments ON teachers_assignments.assignment_id = assignments.id
-      WHERE teachers_assignments.teacher_id = $1 AND assignments.due_date >= CURRENT_DATE
+      FROM assignments
+      WHERE assignments.teacher_id = $1 AND assignments.due_date >= CURRENT_DATE
       ${classId ? 'AND assignments.class_id = $2' : ''}
       ORDER BY assignments.due_date;`;
   }
