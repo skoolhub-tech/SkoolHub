@@ -23,7 +23,7 @@ function AssignmentsRowTeacher({
         <td>{assignment.name}</td>
         <td>{formatDate(assignment.due_date)}</td>
         <td className="edit_assignment_button">
-          <button type="button" ><FaEdit/ onClick={() => setEditSubmissionModalIsOpen(true)}></button>
+          <button type="button" onClick={() => setEditSubmissionModalIsOpen(true)}><FaEdit/></button>
         </td>
         <td className="view_submissions_button">
           <button type="button" onClick={handleViewSubmissionsClick}><FaMagnifyingGlass size={15}/></button>
