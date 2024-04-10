@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './styles.css';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Route, Routes, Navigate,
+} from 'react-router-dom';
 import Login from './components/Login';
 import NavBar from './components/NavBar';
 import Task from './components/Task_list/Task';
@@ -11,7 +13,7 @@ import Admin from './components/Admin/Admin';
 import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
 import Homepage from './components/Homepage/Homepage';
-
+import logo from '../photos/skoolhublogo.png';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
@@ -31,7 +33,8 @@ function App() {
         <UserDataProvider>
           {isLoggedIn ? (
             <>
-            <button className="log-out-bttn" type="button" onClick={handleLogOut}>Log out</button>
+              <img src={logo} alt="logo" className="login-logo" />
+              <button className="log-out-bttn" type="button" onClick={handleLogOut}>Log out</button>
               <NavBar handleLogOut={handleLogOut} />
               <Routes>
                 <Route path="/homepage" element={<HomepageWithTaskCheck />} />

@@ -51,6 +51,7 @@ LOGIN PAGE / NAV BAR CSS ========================================
 
 }
 .nav-bar {
+  z-index: 99;
   width: 6em;
   row-gap: .75rem;
     display: flex;
@@ -58,7 +59,7 @@ LOGIN PAGE / NAV BAR CSS ========================================
     transform: scale(1.25) translateX(-70%);
     position: fixed;
     left: 0;
-    bottom: 40%;
+    bottom: 36%;
     transition: 0.5s ease-in-out
 }
 
@@ -121,7 +122,28 @@ LOGIN PAGE / NAV BAR CSS ========================================
 }
 
 .log-out-bttn {
+  color: black;
   position: absolute;
   top: 2rem;
   right: 4rem;
 }
+
+
+.login-label {
+  padding-left: 0px;
+}
+
+
+.page-turned {
+  transform: rotateY(180deg);
+  transition: transform 1s ease;
+}
+.login-logo {
+  transform: scale(.45);
+    position: fixed;
+    top: -10rem;
+    left: -8rem;
+}
+
+
+

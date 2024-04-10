@@ -24,6 +24,7 @@ function Login({ handleLoginEvent }) {
       await emailjs.send('service_3kyf5ip', 'template_nlg4cus', {
         to_email: email,
         message: code,
+        subject: 'Here is your code to login to SkoolHub',
       }, 'lANtIwYBJdwYhxvdz');
       //
       //
@@ -144,7 +145,7 @@ function Login({ handleLoginEvent }) {
     if (loginInfo.submitted) {
       return (
         <form className="login-form" onSubmit={handleCodeVerification}>
-          <label htmlFor="code">Code</label>
+          <label className="login-label" htmlFor="code">Code</label>
           <input
             name="enteredCode"
             type="password"
@@ -158,7 +159,7 @@ function Login({ handleLoginEvent }) {
     }
     return (
       <form className="login-form" onSubmit={handleLogin}>
-        <label htmlFor="email">Email</label>
+        <label className="login-label" htmlFor="email">Email</label>
         <input
           name="email"
           type="text"
@@ -166,7 +167,7 @@ function Login({ handleLoginEvent }) {
           value={loginInfo.email}
           onChange={(e) => setLoginInfo({ ...loginInfo, email: e.target.value })}
         />
-        <label htmlFor="password">Password</label>
+        <label className="login-label" htmlFor="password">Password</label>
         <input
           name="password"
           type="password"

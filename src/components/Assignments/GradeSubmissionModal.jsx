@@ -36,7 +36,7 @@ function GradeSubmissionModal({ setGradeSubmissionModalOpen }) {
           <label htmlFor="score">%Score: </label>
           <input type="text" id="score" name="score" value={score} onChange={(e) => setScore(e.target.value)} />
           <br />
-          <label htmlFor="total_points">Total Points: (X / Y) </label>
+          <label htmlFor="total_points">Total Points: </label>
           <input type="text" id="total_points" name="total_points" value={totalPoints} onChange={(e) => setTotalPoints(e.target.value)} />
           <br />
           <label htmlFor="grade">Grade: </label>
@@ -46,7 +46,7 @@ function GradeSubmissionModal({ setGradeSubmissionModalOpen }) {
           <textarea id="feedback" name="feedback" value={feedback} onChange={(e) => setFeedback(e.target.value)} />
           <br />
           <br />
-          <button type="submit">Submit Grade</button>
+          <button className="grade-sub-modal-bttn" type="submit">Submit Grade</button>
           <br />
           <br />
         </form>
