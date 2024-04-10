@@ -17,7 +17,11 @@
 
   .rbc-event:hover {
     background-color: #6E7659 !important;
-}
+  }
+
+  .rbc-agenda-event-cell:hover {
+    background-color: #6E7659 !important;
+  }
 
     .rbc-calendar {
       background-color: #DCCCBB;

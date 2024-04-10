@@ -77,6 +77,7 @@ function TaskCalendar({ defaultView, views }) {
       <div style={{ height: 500 }}>
         <Calendar
           localizer={localizer}
+          defaultDate={new Date()}
           events={events}
           selectable
           onSelectEvent={handleSelectEvent}
