@@ -48,9 +48,6 @@ function CreateAssignmentModal({ classObj, closeModal, getClassesAndAssignments 
 
   return (
     <div className="create_assignment_modal">
-      <p>
-        class id: {classObj.id}
-      </p>
       <button type="button" className="close_modal" onClick={closeModal}>X</button>
       <h1>Create Assignment</h1>
       <form className="create_assignment_form" onSubmit={handleSubmit}>
