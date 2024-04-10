@@ -20,7 +20,7 @@ function EmailTeachersView() {
   const [potentialEmailees, setPotentialEmailees] = useState([]);
   const [classes, setClasses] = useState([]);
   const [currentClass, setCurrentClass] = useState({ name: 'select a class' });
-  const [threshold, setThreshold] = useState('');
+  const [threshold, setThreshold] = useState(100);
   // email form data
   const [subjectLine, setSubjectLine] = useState('');
   const [body, setBody] = useState('');
@@ -75,7 +75,6 @@ function EmailTeachersView() {
     setEmailModal(false);
     setSubjectLine('');
     setBody('');
-    showEmailSentTimer();
     /*
     const response = await sendEmail(data);
     if (response === 'Email Sent!') {
@@ -177,7 +176,6 @@ function EmailTeachersView() {
           setOpenThreshold={setOpenThreshold}
         />
       )}
-      {emailSent && <EmailNotify />}
     </div>
   );
 }

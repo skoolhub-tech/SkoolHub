@@ -48,7 +48,11 @@ PeopleList.propTypes = {
   receiverEmailList: PropTypes.shape({}).isRequired,
   setRecieverEmailList: PropTypes.func.isRequired,
   setEmailModal: PropTypes.func.isRequired,
-  setOpenThreshold: PropTypes.func.isRequired,
+  setOpenThreshold: PropTypes.func,
+};
+
+PeopleList.defaultProps = {
+  setOpenThreshold: () => {},
 };
 
 export default PeopleList;

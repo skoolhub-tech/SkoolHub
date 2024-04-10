@@ -229,11 +229,11 @@
 
 .emailNotifyModalContent {
   background-color: transparent;
-  position: fixed;
+  position: absolute;
   text-align: center;
   row-gap: 5px;
-  top: 360px;
-  left: 900px;
+  top: 19rem;
+  left: 46rem;
   width: fit-content;
   color: #ABBD9A;
 }

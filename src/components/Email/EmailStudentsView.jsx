@@ -4,6 +4,7 @@ import './emailsComponent.css';
 import sendEmail from '../../utils/sendEmail';
 import EmailModal from './EmailModal';
 import PeopleList from './PeopleList';
+import EmailNotify from './EmailNotify';
 import { useUserData } from '../data-providers/UserDataProvider';
 
 // userData needs to contain id, email, name, and role
@@ -40,6 +41,13 @@ function EmailStudentsView() {
       });
   }, []);
 
+  function showEmailSentTimer() {
+    setEmailSent(true);
+    setTimeout(() => {
+      setEmailSent(false);
+    }, 2000);
+  }
+
   // sends email to all selected teachers
   const email = async (e) => {
     e.preventDefault();
@@ -71,7 +79,6 @@ function EmailStudentsView() {
     <div className="emailsDiv">
       <div className="emailsDiv-without-modal">
         <h1>Email</h1>
-        {emailSent && <p>Email Sent!</p>}
         {errorMessage && <p>{errorMessage}</p>}
         {potentialEmailees.length > 0 && (
           <PeopleList
@@ -89,6 +96,9 @@ function EmailStudentsView() {
           setMessage={setBody}
           setSubject={setSubjectLine}
           email={email}
+          subject={subjectLine}
+          body={body}
+          emailSent={emailSent}
         />
       )}
     </div>
