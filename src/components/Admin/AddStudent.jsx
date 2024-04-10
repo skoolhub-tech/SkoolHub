@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function AddStudent({ closeModal, studentsInClass, selectedClass }) {
+function AddStudent({ closeModal, studentsInClass, selectedClass, fetchStudentsInClass }) {
   const [students, setStudents] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [refresh, setRefresh] = useState(false);
 
   const fetchStudents = () => {
     axios.get('/skoolhub/students')
@@ -29,10 +30,13 @@ function AddStudent({ closeModal, studentsInClass, selectedClass }) {
     axios.post('/skoolhub/classes/students', { classId, studentId })
       .then((response) => {
         console.log(response);
+        fetchStudentsInClass(classId);
+        setRefresh(!refresh);
       })
       .catch((error) => {
         console.error(error);
       });
+
   };
 
   const handleAddClick = (studentId) => {

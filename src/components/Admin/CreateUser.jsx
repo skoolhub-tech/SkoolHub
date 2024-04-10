@@ -15,7 +15,7 @@ function CreateUser({ exitModal }) {
 
   const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
+  const getUsers = () => {
     axios.get('/skoolhub/teachers')
       .then((response) => {
         // console.log('TEACHERS', response.data);
@@ -42,7 +42,10 @@ function CreateUser({ exitModal }) {
       .catch((error) => {
         console.error(error);
       });
+  }
 
+  useEffect(() => {
+    getUsers();
     axios.get('/skoolhub/roles')
       .then((response) => {
         // console.log('ROLES', response.data);
@@ -77,6 +80,7 @@ function CreateUser({ exitModal }) {
         setName('');
         setEmail('');
         setSelectedRole('');
+        getUsers();
       })
       .catch((error) => {
         console.error(error);
@@ -93,6 +97,7 @@ function CreateUser({ exitModal }) {
     axios.delete(`/skoolhub/deleteUser/${userId}/${role}`)
       .then((response) => {
         // console.log(response);
+        getUsers();
       })
       .catch((error) => {
         console.error(error);

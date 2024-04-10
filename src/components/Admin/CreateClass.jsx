@@ -11,6 +11,16 @@ function CreateClass({ exitModal }) {
 
   const [searchQuery, setSearchQuery] = useState('');
 
+  const getClasses = () => {
+    axios.get('/skoolhub/classes')
+      .then((response) => {
+        // console.log(response.data);
+        setClasses(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
   useEffect(() => {
     axios.get('/skoolhub/teachers')
       .then((response) => {
@@ -20,15 +30,7 @@ function CreateClass({ exitModal }) {
       .catch((error) => {
         console.error(error);
       });
-
-    axios.get('/skoolhub/classes')
-      .then((response) => {
-        // console.log(response.data);
-        setClasses(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    getClasses();
   }, []);
 
   const handleTeacherChange = (e) => {
@@ -50,6 +52,7 @@ function CreateClass({ exitModal }) {
         console.log(response.data);
         setClassName('');
         setSelectedTeacher('');
+        getClasses();
       })
       .catch((error) => {
         console.error(error);
@@ -60,6 +63,7 @@ function CreateClass({ exitModal }) {
     axios.delete(`/skoolhub/deleteClass/${classId}`)
       .then((response) => {
         console.log(response.data);
+        getClasses();
       })
       .catch((error) => {
         console.error(error);
