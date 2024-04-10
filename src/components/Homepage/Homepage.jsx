@@ -16,6 +16,7 @@ function Homepage() {
   const { email, id, role } = userData;
 
   const [classes, setClasses] = useState([]);
+  const [selectedClass, setSelectedClass] = useState('');
   const [assignments, setAssignments] = useState([]);
   const [tasks, setTasks] = useState([]);
 
@@ -38,7 +39,7 @@ function Homepage() {
   };
 
   useEffect(() => {
-    axios.get(`/skoolhub/classes/${email}`)
+    axios.get(`/skoolhub/user/classes/${email}`)
       .then((response) => setClasses(response.data))
       .catch((error) => console.error({
         Message: 'Error retrieving classes.',
@@ -62,8 +63,10 @@ function Homepage() {
 
   const filterAssignments = (event) => {
     const selectedOption = event.target.options[event.target.selectedIndex];
+    console.log(selectedOption.text);
+    setSelectedClass(selectedOption.value);
 
-    if (selectedOption.value) {
+    if (selectedOption.value !== 'All Classes') {
       getCurrentAssignments(selectedOption.value);
     } else {
       getCurrentAssignments();
@@ -80,6 +83,7 @@ function Homepage() {
             <AssignmentsTable
               assignments={assignments}
               classes={classes}
+              selectedClass={selectedClass}
               filter={filterAssignments}
             />
           </div>
