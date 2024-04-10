@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import './editForm.css';
 import moment from 'moment';
+import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useUserData } from '../data-providers/UserDataProvider';
 
@@ -46,7 +47,13 @@ function AddFromSelect({
 
   return (
     <div className="modal">
-      <div className="modal-content">
+      <motion.div
+        className="modal-content"
+        initial={{ opacity: 0, scale: 0.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        exit={{ scale: 0.5 }}
+      >
         <button type="button" className="exit-button" onClick={closeAddTaskFromSelect}>Cancel</button>
         <h2 className="edit-task">Add Task</h2>
         <div className="floating-form">
@@ -86,7 +93,7 @@ function AddFromSelect({
 
           <button type="button" onClick={handleSave}>Save</button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

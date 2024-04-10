@@ -3,8 +3,9 @@
 import React, { useState } from 'react';
 import './editForm.css';
 import moment from 'moment';
-import { useUserData } from '../data-providers/UserDataProvider';
+import { motion } from 'framer-motion';
 import axios from 'axios';
+import { useUserData } from '../data-providers/UserDataProvider';
 
 function AddTask({
   task, closeAddTask, refresh, setRefresh,
@@ -45,8 +46,13 @@ function AddTask({
 
   return (
     <div className="modal">
-      {/* Modal */}
-      <div className="add-task-modal-content">
+      <motion.div
+        className="add-task-modal-content"
+        initial={{ opacity: 0, scale: 0.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        exit={{ scale: 0.5 }}
+      >
         <button type="button" className="exit-button" onClick={closeAddTask}>Cancel</button>
         <h2 className="edit-task">Add Task</h2>
         <div className="floating-form">
@@ -86,7 +92,7 @@ function AddTask({
 
           <button type="button" onClick={handleSave}>Save</button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
