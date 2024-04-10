@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
@@ -22,8 +23,7 @@ function GradeSubmissionModal({ setGradeSubmissionModalOpen }) {
 
   return (
     <>
-      <label htmlFor="grade_submission_modal_overlay" className="grade_submission_modal_overlay">Modal Overlay</label>
-      <button
+      <div
         className="grade_submission_modal_overlay"
         onClick={() => setGradeSubmissionModalOpen(false)}
         onKeyPress={handleOverlayKeypress}
