@@ -18,4 +18,9 @@ function AdminDropDown({ views, handleDropdownChange }) {
   );
 }
 
+AdminDropDown.propTypes = {
+  views: PropTypes.arrayOf(PropTypes.string).isRequired,
+  handleDropdownChange: PropTypes.func.isRequired,
+};
+
 export default AdminDropDown;

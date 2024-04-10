@@ -33,18 +33,15 @@ function PersonEmailCard({
 
   return (
     <div className={`personEmailCard ${isChecked ? 'selectedRow' : ''}`} onClick={handleRowClick}>
-
-          <p>{person.name}</p>
-          <p>{Array.isArray(person.class) ? 'Teacher' : person.class}</p>
-
-
+      <p>{person.name}</p>
+      <p>{Array.isArray(person.class) ? 'Teacher' : person.class}</p>
     </div>
   );
 }
 
 PersonEmailCard.propTypes = {
-  person: PropTypes.object.isRequired,
-  receiverEmailList: PropTypes.object.isRequired,
+  person: PropTypes.shape({}).isRequired,
+  receiverEmailList: PropTypes.shape({}).isRequired,
   setRecieverEmailList: PropTypes.func.isRequired,
   isAllSelected: PropTypes.bool.isRequired,
 };

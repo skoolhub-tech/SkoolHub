@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import PersonEmailCard from './PersonEmailCard';
-import ThresholdInput from './ThresholdInput';
 import { useUserData } from '../data-providers/UserDataProvider';
 // list out people in the given potentialEmailees list
 function PeopleList({
-  currentClass, potentialEmailees, receiverEmailList, setRecieverEmailList, setEmailModal, setOpenThreshold,
+  currentClass,
+  potentialEmailees,
+  receiverEmailList,
+  setRecieverEmailList,
+  setEmailModal,
+  setOpenThreshold,
 }) {
   const [isAllSelected, setIsAllSelected] = useState(false);
   const { userData } = useUserData();
@@ -39,31 +43,12 @@ function PeopleList({
 }
 
 PeopleList.propTypes = {
-  currentClass: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-  }),
-  potentialEmailees: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    email: PropTypes.string,
-  })),
-  receiverEmailList: PropTypes.objectOf(PropTypes.shape({
-    name: PropTypes.string,
-    email: PropTypes.string,
-  })),
+  currentClass: PropTypes.shape({}).isRequired,
+  potentialEmailees: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  receiverEmailList: PropTypes.shape({}).isRequired,
   setRecieverEmailList: PropTypes.func.isRequired,
-};
-
-PeopleList.defaultProps = {
-  potentialEmailees: [],
-};
-
-PeopleList.defaultProps = {
-  currentClass: {},
-};
-
-PeopleList.defaultProps = {
-  receiverEmailList: {},
+  setEmailModal: PropTypes.func.isRequired,
+  setOpenThreshold: PropTypes.func.isRequired,
 };
 
 export default PeopleList;
