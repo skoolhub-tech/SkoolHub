@@ -1,3 +1,4 @@
+const createAssignment = require('./createAssignment');
 const getAdmin = require('./getAdmin');
 const getClassStudents = require('./getClassStudents');
 const getClasses = require('./getClasses');
@@ -30,6 +31,7 @@ const deleteClass = require('./deleteClass');
 const deleteCalendar = require('./deleteCalendar');
 
 module.exports = {
+  createAssignment,
   getAdmin,
   getClassStudents,
   getClasses,

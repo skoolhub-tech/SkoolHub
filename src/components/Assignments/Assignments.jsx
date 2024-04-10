@@ -23,10 +23,10 @@ function AssignmentsPage() {
 
   const getClassesAndAssignments = useCallback(async () => {
     try {
-      const response = await axios.get(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/classesAndAssignments/${role}?email=${email}`);
+      const response = await axios.get(`/skoolhub/classesAndAssignments/${role}?email=${email}`);
       setData(response.data);
     } catch (error) {
-      console.log(`Error fetching classes and assignments for student: ${error}`);
+      console.log(`Error fetching classes and assignments: ${error}`);
     }
   }, []);
 
@@ -45,7 +45,7 @@ function AssignmentsPage() {
         classes={data}
         setSelectedClass={setSelectedClass}
       />
-      {selectedClass && !viewAssignmentSubmissions && (
+      {selectedClass && !viewAssignmentSubmissions && role === 2 && (
         <button type="button" className="create_assignment_button" onClick={() => setCreateAssignmentModalOpen(true)}>
           Create Assignment
         </button>
@@ -54,6 +54,7 @@ function AssignmentsPage() {
         <CreateAssignmentModal
           classObj={data.find((classObj) => classObj.name === selectedClass)}
           closeModal={() => setCreateAssignmentModalOpen(false)}
+          getClassesAndAssignments={getClassesAndAssignments}
         />
       )}
       {viewAssignmentSubmissions && (
