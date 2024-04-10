@@ -3,15 +3,20 @@ const createClient = require('../database/db');
 module.exports = async (role, userId, classId) => {
   let query;
   if (role === '3') {
-    query = `SELECT assignments.id, assignments.name, assignments.class_id, assignments.due_date, students_assignments.completed
-      FROM students_assignments
-      JOIN assignments ON students_assignments.assignment_id = assignments.id
-      WHERE students_assignments.student_id = $1 AND
-      (assignments.due_date >= CURRENT_DATE OR students_assignments.completed = false)
-      ${classId ? 'AND assignments.class_id = $2' : ''}
-      ORDER BY assignments.due_date;`;
+    query = `
+      SELECT a.id AS assignment_id, a.name AS assignment_name, a.due_date,
+        CASE
+          WHEN sa.assignment_id IS NULL THEN FALSE
+          ELSE TRUE
+        END AS is_completed
+      FROM students s
+      JOIN classes_students cs ON s.id = cs.student_id
+      JOIN assignments a ON cs.class_id = a.class_id
+      LEFT JOIN students_assignments sa ON a.id = sa.assignment_id AND s.id = sa.student_id
+      WHERE s.id = $1 ${classId ? 'AND a.class_id = $2' : ''};`;
   } else if (role === '2') {
-    query = `SELECT assignments.id, assignments.name, assignments.class_id, assignments.due_date
+    query = `
+      SELECT assignments.id, assignments.name, assignments.class_id, assignments.due_date
       FROM assignments
       WHERE assignments.teacher_id = $1 AND assignments.due_date >= CURRENT_DATE
       ${classId ? 'AND assignments.class_id = $2' : ''}

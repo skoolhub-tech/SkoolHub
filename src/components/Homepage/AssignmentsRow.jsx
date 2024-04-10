@@ -1,19 +1,37 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { format, parseISO } from 'date-fns';
 
 import { useUserData } from '../data-providers/UserDataProvider';
 
+const formatDate = (dateString) => {
+  const date = parseISO(dateString);
+  return format(date, 'MM/dd/yy');
+};
+
 function AssignmentsRow({ assignment, dueDate }) {
   const { userData } = useUserData();
-  const { name, completed } = assignment;
-  const completedString = completed ? '✓' : 'X';
+  const { assignment_name, is_completed } = assignment;
+  const completedString = is_completed ? '✓' : 'X';
+
+  let completedIndicator;
+  console.log(dueDate, ' ', new Date(dueDate));
+  if (!is_completed && new Date(dueDate) < new Date()) {
+    completedIndicator = (
+      <p className="overdue-assignment">OVERDUE</p>
+    );
+  } else if (!is_completed) {
+    completedIndicator = 'X';
+  } else if (is_completed) {
+    completedIndicator = '✓';
+  }
 
   return (
     <tr>
-      <td>{name}</td>
-      <td>{dueDate}</td>
-      {userData.role === 3 ? <td className="center-table">{completedString}</td> : null}
+      <td>{assignment_name}</td>
+      <td>{formatDate(dueDate)}</td>
+      {userData.role === 3 ? <td className="center-table">{completedIndicator}</td> : null}
     </tr>
   );
 }

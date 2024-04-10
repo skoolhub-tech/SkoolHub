@@ -1,29 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { format, parseISO } from 'date-fns';
 
 import { useUserData } from '../data-providers/UserDataProvider';
 import AssignmentsRow from './AssignmentsRow';
 
-const formatDate = (dateString) => {
-  const date = parseISO(dateString);
-  return format(date, 'MM/dd/yy');
-};
 
-function AssignmentsTable({ assignments, classes, filter }) {
+
+function AssignmentsTable({
+  assignments,
+  classes,
+  selectedClass,
+  filter,
+}) {
   const { userData } = useUserData();
 
   return (
     <div className="homepage-assignments-table">
       <select
         className="homepage-class-select"
-        value=""
+        value={selectedClass}
         onChange={(e) => filter(e)}
       >
-        <option value="">All Classes</option>
+        <option value="All Classes">All Classes</option>
         {classes.map((classObj) => (
-          <option key={classObj.id} value={classObj.id}>
-            {classObj.name}
+          <option key={classObj.class_id} value={classObj.class_id}>
+            {classObj.class_name}
           </option>
         ))}
       </select>
@@ -38,8 +39,8 @@ function AssignmentsTable({ assignments, classes, filter }) {
         <tbody>
           {assignments.map((assignment) => (
             <AssignmentsRow
-              key={assignment.id}
-              dueDate={formatDate(assignment.due_date)}
+              key={assignment.name}
+              dueDate={assignment.due_date}
               assignment={assignment}
             />
           ))}

@@ -31,6 +31,7 @@ const deleteClass = require('./deleteClass');
 const deleteCalendar = require('./deleteCalendar');
 const getClassThreshold = require('./getClassThreshold');
 const updateThreshold = require('./updateThreshold');
+const getUserClasses = require('./getUserClasses');
 
 module.exports = {
   createAssignment,
@@ -66,4 +67,5 @@ module.exports = {
   deleteCalendar,
   getClassThreshold,
   updateThreshold,
+  getUserClasses,
 };

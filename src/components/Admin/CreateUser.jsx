@@ -15,7 +15,7 @@ function CreateUser({ exitModal }) {
 
   const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
+  const getUsers = () => {
     axios.get('/skoolhub/teachers')
       .then((response) => {
         // console.log('TEACHERS', response.data);
@@ -42,7 +42,10 @@ function CreateUser({ exitModal }) {
       .catch((error) => {
         console.error(error);
       });
+  }
 
+  useEffect(() => {
+    getUsers();
     axios.get('/skoolhub/roles')
       .then((response) => {
         // console.log('ROLES', response.data);
@@ -77,6 +80,7 @@ function CreateUser({ exitModal }) {
         setName('');
         setEmail('');
         setSelectedRole('');
+        getUsers();
       })
       .catch((error) => {
         console.error(error);
@@ -93,6 +97,7 @@ function CreateUser({ exitModal }) {
     axios.delete(`/skoolhub/deleteUser/${userId}/${role}`)
       .then((response) => {
         // console.log(response);
+        getUsers();
       })
       .catch((error) => {
         console.error(error);
@@ -107,8 +112,9 @@ function CreateUser({ exitModal }) {
       <div className="admin-form">
 
         <form onSubmit={handleSubmit}>
+        <h2>Create User</h2>
           <label htmlFor="name">
-            Name:
+            Name: {" "}
             <input
               type="text"
               id="name"
@@ -120,7 +126,7 @@ function CreateUser({ exitModal }) {
           </label>
 
           <label htmlFor="email">
-            Email:
+            Email: {" "}
             <input
               type="email"
               id="email"
@@ -132,7 +138,7 @@ function CreateUser({ exitModal }) {
           </label>
 
           <label htmlFor="roles">
-            Role:
+            Role: {" "}
             <select
               id="roles"
               name="roles"
@@ -154,7 +160,7 @@ function CreateUser({ exitModal }) {
         <div>
           <h2>Current Users</h2>
           <label htmlFor="roleFilter">
-            Filter by Role:
+            Filter by Role: {" "}
             <select
               id="roleFilter"
               value={selectedRoleFilter}
@@ -168,7 +174,7 @@ function CreateUser({ exitModal }) {
           </label>
 
           <label htmlFor="searchBar">
-            Search:
+            Search: {" "}
             <input
               type="text"
               id="searchBar"
@@ -177,7 +183,7 @@ function CreateUser({ exitModal }) {
             />
           </label>
 
-          <table>
+          <table className="admin-add-student-table">
             <thead>
               <tr>
                 <th>Name</th>
