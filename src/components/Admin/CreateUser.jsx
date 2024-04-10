@@ -139,6 +139,7 @@ function CreateUser({ exitModal }) {
           <label htmlFor="roles">
             Role:
             <select
+              className="admin-dropdown"
               id="roles"
               name="roles"
               value={selectedRole}
@@ -161,6 +162,7 @@ function CreateUser({ exitModal }) {
           <label htmlFor="roleFilter">
             Filter by Role:
             <select
+              className="admin-dropdown"
               id="roleFilter"
               value={selectedRoleFilter}
               onChange={(e) => setSelectedRoleFilter(e.target.value)}
@@ -182,7 +184,7 @@ function CreateUser({ exitModal }) {
             />
           </label>
 
-          <table>
+          <table className="admin-add-student-table">
             <thead>
               <tr>
                 <th>Name</th>

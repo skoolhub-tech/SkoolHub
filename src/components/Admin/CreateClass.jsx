@@ -97,6 +97,7 @@ function CreateClass({ exitModal }) {
             <label htmlFor="teacher">
               Teacher:
               <select
+                className="admin-dropdown"
                 id="teacher"
                 name="teacher"
                 value={selectedTeacher}
@@ -115,7 +116,7 @@ function CreateClass({ exitModal }) {
 
         </div>
 
-        <div>
+        <div >
           <h2>Current Classes</h2>
           <label htmlFor="searchBar">
             Search:
@@ -126,7 +127,7 @@ function CreateClass({ exitModal }) {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </label>
-          <table>
+          <table className="admin-add-student-table">
             <thead>
               <tr>
                 <th>Name</th>
