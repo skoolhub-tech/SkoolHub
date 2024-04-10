@@ -13,7 +13,7 @@ import Admin from './components/Admin/Admin';
 import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
 import Homepage from './components/Homepage/Homepage';
-import logo from './skoolhublogo.png';
+import logo from '../photos/skoolhublogo.png';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
