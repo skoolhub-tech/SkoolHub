@@ -112,8 +112,9 @@ function CreateUser({ exitModal }) {
       <div className="admin-form">
 
         <form onSubmit={handleSubmit}>
+        <h2>Create User</h2>
           <label htmlFor="name">
-            Name:
+            Name: {" "}
             <input
               type="text"
               id="name"
@@ -125,7 +126,7 @@ function CreateUser({ exitModal }) {
           </label>
 
           <label htmlFor="email">
-            Email:
+            Email: {" "}
             <input
               type="email"
               id="email"
@@ -137,9 +138,8 @@ function CreateUser({ exitModal }) {
           </label>
 
           <label htmlFor="roles">
-            Role:
+            Role: {" "}
             <select
-              className="admin-dropdown"
               id="roles"
               name="roles"
               value={selectedRole}
@@ -160,9 +160,8 @@ function CreateUser({ exitModal }) {
         <div>
           <h2>Current Users</h2>
           <label htmlFor="roleFilter">
-            Filter by Role:
+            Filter by Role: {" "}
             <select
-              className="admin-dropdown"
               id="roleFilter"
               value={selectedRoleFilter}
               onChange={(e) => setSelectedRoleFilter(e.target.value)}
@@ -175,7 +174,7 @@ function CreateUser({ exitModal }) {
           </label>
 
           <label htmlFor="searchBar">
-            Search:
+            Search: {" "}
             <input
               type="text"
               id="searchBar"

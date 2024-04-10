@@ -82,8 +82,9 @@ function CreateClass({ exitModal }) {
           <form
             onSubmit={handleSubmit}
           >
+            <h2>Create Class</h2>
             <label htmlFor="name">
-              Class Name:
+              Class Name: {" "}
               <input
                 type="text"
                 id="name"
@@ -95,16 +96,15 @@ function CreateClass({ exitModal }) {
             </label>
 
             <label htmlFor="teacher">
-              Teacher:
+              Teacher: {" "}
               <select
-                className="admin-dropdown"
                 id="teacher"
                 name="teacher"
                 value={selectedTeacher}
                 onChange={handleTeacherChange}
                 required
               >
-                <option value="">Select a teacher</option>
+                <option value="">Select a teacher {" "}</option>
                 {teachers.map((teacher) => (
                   <option key={teacher.id} value={teacher.id}>{teacher.name}</option>
                 ))}
@@ -119,7 +119,7 @@ function CreateClass({ exitModal }) {
         <div >
           <h2>Current Classes</h2>
           <label htmlFor="searchBar">
-            Search:
+            Search Class: {" "}
             <input
               type="text"
               id="searchBar"

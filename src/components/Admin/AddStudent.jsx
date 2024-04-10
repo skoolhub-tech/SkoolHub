@@ -51,7 +51,7 @@ function AddStudent({ closeModal, studentsInClass, selectedClass, fetchStudentsI
         <h2>Students</h2>
 
         <label htmlFor="searchBar">
-          Search:
+          Search: {" "}
           <input
             type="text"
             id="searchBar"

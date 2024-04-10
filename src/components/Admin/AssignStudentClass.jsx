@@ -105,7 +105,7 @@ function AssignStudentClass() {
                   className="admin-search-bar"
                   htmlFor="searchBar"
                 >
-                  Search:
+                  Search: {" "}
                   <input
                     type="text"
                     id="searchBar"
