@@ -35,8 +35,18 @@ function AssignmentsPage() {
   }, []);
 
   useEffect(() => {
+    if (data) setSelectedClass(data[0].name);
+  }, [data]);
+
+  useEffect(() => {
     getClassesAndAssignments();
   }, [email, getClassesAndAssignments]);
+
+  useEffect(() => {
+    if (role === 3) {
+      setStudentId(id);
+    }
+  }, [role, id]);
 
   return data ? (
     <div className="assignments-container">
@@ -92,7 +102,6 @@ function AssignmentsPage() {
               <AssignmentsTableTeacher
                 data={data}
                 selectedClass={selectedClass}
-                setStudentId={setStudentId}
                 setAssignmentId={setAssignmentId}
                 setViewAssignmentSubmissions={setViewAssignmentSubmissions}
               />
@@ -107,6 +116,9 @@ function AssignmentsPage() {
                 <SubmittedAssignmentsTableTeacher
                   assignment={viewAssignmentSubmissions}
                   setViewAssignmentSubmissions={setViewAssignmentSubmissions}
+                  setStudentId={setStudentId}
+                  setViewSubmissionModalOpen={setViewSubmissionModalOpen}
+                  setAssignmentId={setAssignmentId}
                 />
               </>
             )}
@@ -118,11 +130,11 @@ function AssignmentsPage() {
           </div>
         )}
       </div>
-      {viewSubmissionModalOpen && assignmentId && (
+      {viewSubmissionModalOpen && assignmentId && studentId && (
         <ViewSubmissionModal
           assignmentId={assignmentId}
           classId={data.find((classObj) => classObj.name === selectedClass).id}
-          studentId={id}
+          studentId={studentId}
           onCloseModal={handleCloseModal}
         />
       )}

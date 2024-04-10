@@ -18,7 +18,7 @@ router.get('/classesAndAssignments/3', controller.getClassesAndAssignmentsForStu
 router.get('/login', controller.login);
 router.get('/login/role/:email', controller.getRoleAtLogin);
 router.get('/students', controller.getStudents);
-router.get('/assignment', controller.getSubmittedAssignmentForStudent);
+router.get('/assignment', controller.getSubmittedAssignment);
 router.get('/assignments/submissions', controller.getSubmittedAssignmentsForTeacher);
 router.get('/classes/:classId/students/:studentId/grades', controller.getStudentClassGrades);
 router.get('/teachers', controller.getTeachers);
