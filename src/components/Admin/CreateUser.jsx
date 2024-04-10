@@ -157,31 +157,32 @@ function CreateUser({ exitModal }) {
         </form>
 
         </div>
-        <div>
+        <div className="admin-create-users">
           <h2>Current Users</h2>
-          <label htmlFor="roleFilter">
-            Filter by Role: {" "}
-            <select
-              id="roleFilter"
-              value={selectedRoleFilter}
-              onChange={(e) => setSelectedRoleFilter(e.target.value)}
-            >
-              <option value="">All Roles</option>
-              {roles.map((role) => (
-                <option key={role.id} value={role.id}>{role.role}</option>
-              ))}
-            </select>
-          </label>
-
-          <label htmlFor="searchBar">
-            Search: {" "}
-            <input
-              type="text"
-              id="searchBar"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </label>
+          <div className="">
+            <label htmlFor="searchBar">
+              Search:
+              <input
+                type="text"
+                id="searchBar"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </label>
+            <label htmlFor="roleFilter">
+              Filter:
+              <select
+                id="roleFilter"
+                value={selectedRoleFilter}
+                onChange={(e) => setSelectedRoleFilter(e.target.value)}
+              >
+                <option value="">All Roles</option>
+                {roles.map((role) => (
+                  <option key={role.id} value={role.id}>{role.role}</option>
+                ))}
+              </select>
+            </label>
+          </div>
 
           <table className="admin-add-student-table">
             <thead>

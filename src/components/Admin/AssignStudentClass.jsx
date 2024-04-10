@@ -55,7 +55,7 @@ function AssignStudentClass() {
   const deleteStudentFromClass = (classId, studentId) => {
     axios.delete(`/skoolhub/classes/${classId}/students/${studentId}`)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         fetchStudentsInClass(classId);
       })
       .catch((error) => {

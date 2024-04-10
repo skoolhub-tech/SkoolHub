@@ -14,7 +14,7 @@ import Homepage from './components/Homepage/Homepage';
 import SwitchUser from './components/SwitchUser';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const handleLogin = (boolean) => {
     setIsLoggedIn(boolean);

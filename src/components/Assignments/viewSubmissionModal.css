@@ -24,11 +24,12 @@
 }
 .view-submission-modal-container {
   position: absolute;
-  background-color: #DCCCBB;
+  background-color: #CED2BA;
   border-radius: 5px;
   padding: 1rem;
   margin-top: 1%;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.75);
+  z-index:9999;
 }
 
 
