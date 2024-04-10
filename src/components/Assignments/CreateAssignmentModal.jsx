@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/forbid-prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -47,7 +48,8 @@ function CreateAssignmentModal({ classObj, closeModal, getClassesAndAssignments 
   }
 
   return (
-    <div className="create-assignment-modal-background">
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div className="create-assignment-modal-background" onClick={() => closeModal()}>
       <div className="create_assignment_modal">
         <h1>Create Assignment</h1>
         <form className="create_assignment_form" onSubmit={handleSubmit}>
