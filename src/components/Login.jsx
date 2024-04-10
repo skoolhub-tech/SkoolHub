@@ -24,6 +24,7 @@ function Login({ handleLoginEvent }) {
       await emailjs.send('service_3kyf5ip', 'template_nlg4cus', {
         to_email: email,
         message: code,
+        subject: 'Here is your code to login to SkoolHub',
       }, 'lANtIwYBJdwYhxvdz');
       //
       //
