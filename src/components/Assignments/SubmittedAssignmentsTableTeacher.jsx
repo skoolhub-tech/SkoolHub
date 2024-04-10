@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import SubmittedAssignmentsRow from './SubmittedAssignmentsRow';
+import GradeSubmissionModal from './GradeSubmissionModal';
 import fomratDate from '../../utils/formatDate_Month_D_Y';
 
 function SubmittedAssignmentsTabelTeacher({
@@ -11,6 +12,8 @@ function SubmittedAssignmentsTabelTeacher({
   setAssignmentId,
 }) {
   const [submissions, setSubmissions] = useState([]);
+  const [gradeSubmissionModalOpen, setGradeSubmissionModalOpen] = useState(false);
+  const [submissionToGrade, setSubmissionToGrade] = useState(null);
 
   const getSubmissions = async () => {
     try {
@@ -51,10 +54,18 @@ function SubmittedAssignmentsTabelTeacher({
               setStudentId={setStudentId}
               setViewSubmissionModalOpen={setViewSubmissionModalOpen}
               setAssignmentId={setAssignmentId}
+              setGradeSubmissionModalOpen={setGradeSubmissionModalOpen}
+              setSubmissionToGrade={setSubmissionToGrade}
             />
           ))}
         </tbody>
       </table>
+      {gradeSubmissionModalOpen && (
+      <GradeSubmissionModal
+        submission={submissionToGrade}
+        setGradeSubmissionModalOpen={setGradeSubmissionModalOpen}
+      />
+      )}
     </div>
   );
 }
