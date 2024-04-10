@@ -37,10 +37,10 @@ function SubmittedAssignmentsTabelTeacher({ assignment }) {
               <td>{formatDate(submission.submitted_on)}</td>
               <td>{submission.grade}</td>
               <td>
-                <button type="button">View Submission</button>
+                <button className="view_submission" type="button">View Submission</button>
               </td>
               <td>
-                <button type="button">Grade Submission</button>
+                <button className="grade_submission" type="button">Grade Submission</button>
               </td>
             </tr>
           ))}
