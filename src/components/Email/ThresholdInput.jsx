@@ -9,6 +9,7 @@ function ThresholdInput({ currentClass, setThreshold, threshold, setOpenThreshol
   }, [threshold]);
 
   const handleSetThreshold = () => {
+    setOpenThreshold(false);
     axios.put('skoolhub/updateThreshold', {
       newThreshold: inputValue,
       classId: currentClass.id,

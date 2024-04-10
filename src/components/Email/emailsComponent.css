@@ -177,13 +177,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 .thresholdButton {
   padding: 5px;
+  display: block;
+  margin: auto;
 }
 .thresholdInput {
-  width: 35px;
+  width: 48px;
   margin-bottom: 0px;
   height: 7px;
   border: none;
@@ -193,6 +194,10 @@
   text-align: center;
 }
 .percent {
+}
+.infoCloseBtn {
+  background-color: rgb(164 7 7 / 50%);
+
 }
 
 .thresholdDiv {
