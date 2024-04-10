@@ -97,3 +97,11 @@ td {
     margin-right: 1rem;
     margin-top: 1rem;
 }
+
+.overdue-assignment {
+  background-color: darkred;
+  border-radius: 1rem;
+  color: white;
+  margin: 5px;
+  font-size: 12px;
+}

@@ -65,6 +65,14 @@ LOGIN PAGE / NAV BAR CSS ========================================
 .nav-bar:hover {
   transform: scale(1.25) translateX(0) /* show on hover */
 }
+
+.nav-bar button:hover {
+  transform: scale(1.1);
+}
+.nav-bar button:active {
+  transform: scale(0.9);
+}
+
 .login-button, .tab {
   background-color: #CED2BA;
   border: none;
