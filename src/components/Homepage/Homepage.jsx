@@ -77,9 +77,7 @@ function Homepage() {
 
   return (
     <div className="homepage-container">
-      <h1>
-        Welcome back, {userData.name}
-      </h1>
+      <h1>{`Welcome back, ${name}`}</h1>
       <div className="homepage-flex-container">
         {assignments.length > 0 && (
           <div className="homepage-assignments-container">
