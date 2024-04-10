@@ -5,12 +5,21 @@
   border-radius: 5px;
   position: absolute;
   display: block;
+  margin-left: 1rem;
+
 }
 
 .select_class_button:hover {
   background-color: black;
   color: white;
   padding: 10px;
+  margin-left: 1rem;
+
 }
+.classes_drop_down_menu {
+  margin-left: 1rem;
+  background-color: #8A997C;
+}
+
 
 

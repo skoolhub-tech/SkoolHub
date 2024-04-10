@@ -21,7 +21,7 @@ function ClassesDropDownMenu({ classes, setSelectedClass }) {
   }
 
   return (
-    <div className="classes_dropdown">
+    <div>
       <button
         type="button"
         className="classes_drop_down_menu"

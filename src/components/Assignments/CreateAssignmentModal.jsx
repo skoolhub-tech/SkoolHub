@@ -30,38 +30,40 @@ function CreateAssignmentModal({ classObj, closeModal }) {
   }
 
   return (
-    <div className="create_assignment_modal">
-      <h1>Create Assignment</h1>
-      <form className="create_assignment_form" onSubmit={handleSubmit}>
-        <label htmlFor="assignmentName">
-          Assignment Name:
-          <input
-            type="text"
-            id="assignmentName"
-            placeholder="Enter Assignment Name"
-            onChange={handleAssignmentNameChange}
-          />
-        </label>
-        <label htmlFor="dueDate">
-          Due Date:
-          <input
-            type="date"
-            id="dueDate"
-            placeholder="YYYY-MM-DD"
-            onChange={handleDueDateChange}
-          />
-        </label>
-        <label htmlFor="instructions">
-          Instructions:
-          <textarea
-            id="instructions"
-            placeholder="Enter Assignment Instructions"
-            onChange={handleInstructionsChange}
-          />
-        </label>
-        <br />
-        <button type="submit">Create Assignment</button>
-      </form>
+    <div className="create-assignment-modal-background">
+      <div className="create_assignment_modal">
+        <h1>Create Assignment</h1>
+        <form className="create_assignment_form" onSubmit={handleSubmit}>
+          <label className="create-assignment-label" htmlFor="assignmentName">
+            Assignment Name:
+            <input
+              type="text"
+              id="assignmentName"
+              placeholder="Enter Assignment Name"
+              onChange={handleAssignmentNameChange}
+            />
+          </label>
+          <label className="create-assignment-label" htmlFor="dueDate">
+            Due Date:
+            <input
+              type="date"
+              id="dueDate"
+              placeholder="YYYY-MM-DD"
+              onChange={handleDueDateChange}
+            />
+          </label>
+          <label className="create-assignment-label" htmlFor="instructions">
+            Instructions:
+            <textarea
+              id="instructions"
+              placeholder="Enter Assignment Instructions"
+              onChange={handleInstructionsChange}
+            />
+          </label>
+          <br />
+          <button type="submit">Create Assignment</button>
+        </form>
+      </div>
     </div>
   );
 }
