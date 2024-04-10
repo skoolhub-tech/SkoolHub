@@ -8,7 +8,7 @@ const getRoleAtLogin = require('./getRoleAtLogin');
 const getStudents = require('./getStudents');
 const getTeacherClasses = require('./getTeacherClasses');
 const getTeachers = require('./getTeachers');
-const getSubmittedAssignmentForStudent = require('./getSubmittedAssignmentForStudent');
+const getSubmittedAssignment = require('./getSubmittedAssignment');
 const getSubmittedAssignmentsForTeacher = require('./getSubmittedAssignmentsForTeacher');
 const login = require('./login');
 const getStudentClassGrades = require('./getStudentClassGrades');
@@ -41,7 +41,7 @@ module.exports = {
   getStudents,
   getTeacherClasses,
   getTeachers,
-  getSubmittedAssignmentForStudent,
+  getSubmittedAssignment,
   getSubmittedAssignmentsForTeacher,
   login,
   getStudentClassGrades,
