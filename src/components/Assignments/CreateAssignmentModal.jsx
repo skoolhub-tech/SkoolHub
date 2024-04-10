@@ -25,7 +25,7 @@ function CreateAssignmentModal({ classObj, closeModal, getClassesAndAssignments 
 
   function handleSubmit(event) {
     event.preventDefault();
-    axios.post(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/assignments`, {
+    axios.post('/skoolhub/assignments', {
       assignment: {
         classId: classObj.id,
         name: assignmentName,
