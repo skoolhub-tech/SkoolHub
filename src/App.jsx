@@ -11,6 +11,7 @@ import Admin from './components/Admin/Admin';
 import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
 import Homepage from './components/Homepage/Homepage';
+import SwitchUser from './components/SwitchUser';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -31,7 +32,8 @@ function App() {
         <UserDataProvider>
           {isLoggedIn ? (
             <>
-            <button className="log-out-bttn" type="button" onClick={handleLogOut}>Log out</button>
+              <SwitchUser />
+              <button className="log-out-bttn" type="button" onClick={handleLogOut}>Log out</button>
               <NavBar handleLogOut={handleLogOut} />
               <Routes>
                 <Route path="/homepage" element={<HomepageWithTaskCheck />} />

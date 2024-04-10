@@ -61,9 +61,7 @@ function Login({ handleLoginEvent }) {
 
   useEffect(() => {
     const sessionToken = localStorage.getItem('sessionToken');
-    // const localLoggedIn = localStorage.getItem('loggedIn');
-    // const localEmail = localStorage.getItem('email');
-    // const date = localStorage.getItem('date');
+
     if (!sessionToken) {
       handleLoginEvent(false);
       setUserData({
@@ -126,6 +124,7 @@ function Login({ handleLoginEvent }) {
       localStorage.setItem('sessionToken', sessionToken);
       localStorage.setItem('date', Date.now());
       localStorage.setItem('email', loginInfo.email);
+      localStorage.setItem('demoLogin', true);
       localStorage.setItem('role', loginInfo.role);
       localStorage.setItem('id', loginInfo.id);
     } else {

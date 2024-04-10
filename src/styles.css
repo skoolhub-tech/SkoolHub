@@ -125,3 +125,10 @@ LOGIN PAGE / NAV BAR CSS ========================================
   top: 2rem;
   right: 4rem;
 }
+
+.switch-bttn {
+  background-color: darkred;
+  position: absolute;
+  top: 2rem;
+  right: 10rem;
+}
