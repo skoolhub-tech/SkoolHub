@@ -51,6 +51,7 @@ LOGIN PAGE / NAV BAR CSS ========================================
 
 }
 .nav-bar {
+  z-index: 99;
   width: 6em;
   row-gap: .75rem;
     display: flex;
