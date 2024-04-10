@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import { useUserData } from '../data-providers/UserDataProvider';
 import AssignmentsRow from './AssignmentsRow';
@@ -20,7 +21,7 @@ function AssignmentsTable({
         onChange={(e) => filter(e)}
       >
         <option value="All Classes">All Classes</option>
-        {classes.map((classObj) => (
+        {classes.length > 0 && classes.map((classObj) => (
           <option key={classObj.class_id} value={classObj.class_id}>
             {classObj.class_name}
           </option>
@@ -35,9 +36,9 @@ function AssignmentsTable({
           </tr>
         </thead>
         <tbody>
-          {assignments.map((assignment) => (
+          {assignments.length > 0 && assignments.map((assignment) => (
             <AssignmentsRow
-              key={assignment.name}
+              key={assignment.assignment_id}
               dueDate={assignment.due_date}
               assignment={assignment}
             />
@@ -47,25 +48,5 @@ function AssignmentsTable({
     </div>
   );
 }
-
-AssignmentsTable.propTypes = {
-  assignments: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      class_id: PropTypes.number.isRequired,
-      due_date: PropTypes.string.isRequired,
-      completed: PropTypes.bool.isRequired,
-    }),
-  ).isRequired,
-  classes: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  filter: PropTypes.func.isRequired,
-  selectedClass: PropTypes.string.isRequired,
-};
 
 export default AssignmentsTable;

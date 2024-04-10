@@ -36,10 +36,14 @@ function AssignmentsRow({ assignment, dueDate }) {
 
 AssignmentsRow.propTypes = {
   assignment: PropTypes.shape({
-    assignment_name: PropTypes.string.isRequired,
+    assignment_name: PropTypes.string,
     is_completed: PropTypes.bool,
   }).isRequired,
-  dueDate: PropTypes.string.isRequired,
+  dueDate: PropTypes.string,
+};
+
+AssignmentsRow.defaultProps = {
+  dueDate: '',
 };
 
 export default AssignmentsRow;
