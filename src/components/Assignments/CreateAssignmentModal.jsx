@@ -60,7 +60,7 @@ function CreateAssignmentModal({
     <div
       className="create-assignment-modal-background"
       role="button"
-      tabIndex={0} // Add tabIndex attribute with value 0
+      tabIndex={0}
       onClick={closeModal}
       onKeyPress={handleCloseModalKeypress}
     >
