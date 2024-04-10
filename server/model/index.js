@@ -1,3 +1,4 @@
+const createAssignment = require('./createAssignment');
 const getAdmin = require('./getAdmin');
 const getAssignmentDueDate = require('./getAssignmentDueDate');
 const getAssignmentsForClass = require('./getAssignmentsForClass');
@@ -32,8 +33,10 @@ const deleteCalendar = require('./deleteCalendar');
 const getCurrentAssignments = require('./getCurrentAssignments');
 const getClassThreshold = require('./getClassThreshold');
 const updateThreshold = require('./updateThreshold');
+const getUserClasses = require('./getUserClasses');
 
 module.exports = {
+  createAssignment,
   getAdmin,
   getAssignmentDueDate,
   getAssignmentsForClass,
@@ -68,4 +71,5 @@ module.exports = {
   getCurrentAssignments,
   getClassThreshold,
   updateThreshold,
+  getUserClasses,
 };

@@ -39,6 +39,8 @@ td {
   border: none;
   height: 83%;
   overflow-y: auto;
+  border-top: 1px solid;
+
 }
 
 .homepage-calendar-container {
@@ -59,10 +61,13 @@ td {
   font-size: 16px;
   font-weight: bold;
   border: none;
+  border-bottom: 2px solid;
+  padding: 1%;
 }
 
 .rbc-calendar {
   height: 83%;
+  border-top: 1px solid;
 }
 
 .left-table {
@@ -75,4 +80,20 @@ td {
 
 .center-table {
   text-align: center;
+}
+.homepage-container {
+  transform: scale(1.1);
+}
+.rbc-btn-group {
+  border-radius: 5px;
+    background-color: #ABBD9A;
+    border: 1px solid;
+    transform: scale(.85);
+}
+.HP-assignments-table {
+  background-color: #CED2BA;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
 }

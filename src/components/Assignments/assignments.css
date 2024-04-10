@@ -1,11 +1,12 @@
 .assignments-container {
   border-radius: 1rem;
-  background-color: #DCCCBB;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 1rem;
-  padding-top: .1rem;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    background-color: #ABBD9A;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    padding-top: .1rem;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    margin-top: 1rem;
+    border: 1px solid;
 }
 h1, h2 {
   display: flex;
@@ -48,4 +49,22 @@ td {
 }
 .assignment-icon-button, .submitAssignmentButtonButton {
   transform: scale(1.25);
+}
+.assignments_table_student {
+  padding-top: 1%;
+    border-spacing: 2rem;
+    background-color: #DCCCBB;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 1rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+.create_assignment_button {
+  margin-left: 1rem;
+  background-color: #8A997C;
+}
+.classes-dropdown-create-assignment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

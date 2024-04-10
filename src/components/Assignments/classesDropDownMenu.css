@@ -1,16 +1,38 @@
+.classes_dropdown {
+  position: relative;
+  display: inline-block;
+}
+
 .select_class_button {
   background-color: white;
   padding: 10px;
-  width: 136.297px;
+  width: 100%;
   border-radius: 5px;
-  position: absolute;
   display: block;
+  margin-left: 1rem;
+
+  box-sizing: border-box; /* Ensures padding is included in the width */
 }
 
 .select_class_button:hover {
   background-color: black;
   color: white;
   padding: 10px;
+  margin-left: 1rem;
+
+}
+.classes_drop_down_menu {
+  margin-left: 1rem;
+  background-color: #8A997C;
 }
 
 
+.dropdown_open {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 136.297px; /* Adjusted to match the button width if needed */
+  background: white;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  z-index: 1000;
+}

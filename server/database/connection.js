@@ -55,18 +55,13 @@ const createTableQuery = `
 
   CREATE TABLE assignments (
     id SERIAL PRIMARY KEY,
+    teacher_id INT NOT NULL,
     class_id INT NOT NULL,
     name VARCHAR(255) UNIQUE NOT NULL,
     due_date TIMESTAMP NOT NULL,
-    FOREIGN KEY (class_id) REFERENCES classes(id)
-  );
-
-  CREATE TABLE teachers_assignments (
-    id SERIAL PRIMARY KEY,
-    teacher_id INT NOT NULL,
-    assignment_id INT NOT NULL,
+    instructions TEXT,
     FOREIGN KEY (teacher_id) REFERENCES teachers(id),
-    FOREIGN KEY (assignment_id) REFERENCES assignments(id)
+    FOREIGN KEY (class_id) REFERENCES classes(id)
   );
 
   CREATE TABLE students (

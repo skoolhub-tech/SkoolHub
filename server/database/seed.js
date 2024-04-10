@@ -52,41 +52,22 @@ const classesData = [
 ];
 
 const assignmentData = [
-  { name: 'Math Assignment 1', class_id: 1, due_date: '2024-04-07' }, // id: 1
-  { name: 'Science Assignment 1', class_id: 2, due_date: '2024-04-15' }, // id: 2
-  { name: 'History Assignment 1', class_id: 3, due_date: '2024-04-15' }, // id: 3
-  { name: 'English Assignment 1', class_id: 4, due_date: '2024-04-15' }, // id: 4
-  { name: 'Math Assignment 2', class_id: 1, due_date: '2024-04-22' }, // id: 5
-  { name: 'Science Assignment 2', class_id: 2, due_date: '2024-04-22' }, // id: 6
-  { name: 'History Assignment 2', class_id: 3, due_date: '2024-04-22' }, // id: 7
-  { name: 'English Assignment 2', class_id: 4, due_date: '2024-04-22' }, // id: 8
-  { name: 'Math Exam', class_id: 1, due_date: '2024-04-30' }, // id: 9
-  { name: 'Science Exam', class_id: 2, due_date: '2024-04-30' }, // id: 10
-  { name: 'History Exam', class_id: 3, due_date: '2024-04-30' }, // id: 11
-  { name: 'English Exam', class_id: 4, due_date: '2024-04-30' }, // id: 12
-  { name: 'Math Group Project', class_id: 1, due_date: '2024-05-11' }, // id: 13
-  { name: 'Science Lab Report', class_id: 2, due_date: '2024-05-17' }, // id: 14
-  { name: 'History Research Paper', class_id: 3, due_date: '2024-05-09' }, // id: 15
-  { name: 'English Essay', class_id: 4, due_date: '2024-05-10' }, // id: 16
-];
-
-const teacherAssignmentData = [
-  { teacher_id: 1, assignment_id: 1 },
-  { teacher_id: 2, assignment_id: 2 },
-  { teacher_id: 1, assignment_id: 3 },
-  { teacher_id: 2, assignment_id: 4 },
-  { teacher_id: 1, assignment_id: 5 },
-  { teacher_id: 2, assignment_id: 6 },
-  { teacher_id: 1, assignment_id: 7 },
-  { teacher_id: 2, assignment_id: 8 },
-  { teacher_id: 1, assignment_id: 9 },
-  { teacher_id: 2, assignment_id: 10 },
-  { teacher_id: 1, assignment_id: 11 },
-  { teacher_id: 2, assignment_id: 12 },
-  { teacher_id: 1, assignment_id: 13 },
-  { teacher_id: 2, assignment_id: 14 },
-  { teacher_id: 1, assignment_id: 15 },
-  { teacher_id: 2, assignment_id: 16 },
+  { name: 'Math Assignment 1', class_id: 1, due_date: '2024-04-07', teacher_id: 1 }, // id: 1
+  { name: 'Science Assignment 1', class_id: 2, due_date: '2024-04-15', teacher_id: 2 }, // id: 2
+  { name: 'History Assignment 1', class_id: 3, due_date: '2024-04-15', teacher_id: 1 }, // id: 3
+  { name: 'English Assignment 1', class_id: 4, due_date: '2024-04-15', teacher_id: 2 }, // id: 4
+  { name: 'Math Assignment 2', class_id: 1, due_date: '2024-04-22', teacher_id: 1 }, // id: 5
+  { name: 'Science Assignment 2', class_id: 2, due_date: '2024-04-22', teacher_id: 2 }, // id: 6
+  { name: 'History Assignment 2', class_id: 3, due_date: '2024-04-22', teacher_id: 1 }, // id: 7
+  { name: 'English Assignment 2', class_id: 4, due_date: '2024-04-22', teacher_id: 2 }, // id: 8
+  { name: 'Math Exam', class_id: 1, due_date: '2024-04-30', teacher_id: 1 }, // id: 9
+  { name: 'Science Exam', class_id: 2, due_date: '2024-04-30', teacher_id: 2 }, // id: 10
+  { name: 'History Exam', class_id: 3, due_date: '2024-04-30', teacher_id: 1 }, // id: 11
+  { name: 'English Exam', class_id: 4, due_date: '2024-04-30', teacher_id: 2 }, // id: 12
+  { name: 'Math Group Project', class_id: 1, due_date: '2024-05-11', teacher_id: 1 }, // id: 13
+  { name: 'Science Lab Report', class_id: 2, due_date: '2024-05-17', teacher_id: 2 }, // id: 14
+  { name: 'History Research Paper', class_id: 3, due_date: '2024-05-09', teacher_id: 1 }, // id: 15
+  { name: 'English Essay', class_id: 4, due_date: '2024-05-10', teacher_id: 2 }, // id: 16
 ];
 
 const classesStudentsData = [
@@ -591,13 +572,7 @@ async function seed() {
 
     assignmentData.forEach(async (assignment) => {
       await client.query(`
-        INSERT INTO assignments (name, class_id, due_date) VALUES ('${assignment.name}', ${assignment.class_id}, '${assignment.due_date}');
-      `);
-    });
-
-    teacherAssignmentData.forEach(async (teacherAssignment) => {
-      await client.query(`
-        INSERT INTO teachers_assignments (teacher_id, assignment_id) VALUES (${teacherAssignment.teacher_id}, ${teacherAssignment.assignment_id});
+        INSERT INTO assignments (name, class_id, due_date, teacher_id) VALUES ('${assignment.name}', ${assignment.class_id}, '${assignment.due_date}', ${assignment.teacher_id});
       `);
     });
 
