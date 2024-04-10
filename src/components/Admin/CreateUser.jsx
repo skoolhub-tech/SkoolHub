@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 function CreateUser({ exitModal }) {
   // Your code here
@@ -107,7 +108,13 @@ function CreateUser({ exitModal }) {
   return (
     <div className="modal-backdrop">
 
-      <div className="modal-content admin-modal">
+      <motion.div
+        className="modal-content admin-modal"
+        initial={{ opacity: 0, scale: 0.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        exit={{ scale: 0.5 }}
+        >
         <button type="button" onClick={exitModal}>X</button>
       <div className="admin-form">
 
@@ -215,7 +222,7 @@ function CreateUser({ exitModal }) {
             </tbody>
           </table>
         </div>
-      </div>
+      </motion.div>
 
     </div>
   );
