@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { format, parseISO } from 'date-fns';
 
 import { useUserData } from '../data-providers/UserDataProvider';
 import AssignmentsRow from './AssignmentsRow';
 
-const formatDate = (dateString) => {
-  const date = parseISO(dateString);
-  return format(date, 'MM/dd/yy');
-};
+
 
 function AssignmentsTable({
   assignments,
@@ -44,7 +40,7 @@ function AssignmentsTable({
           {assignments.map((assignment) => (
             <AssignmentsRow
               key={assignment.name}
-              dueDate={formatDate(assignment.due_date)}
+              dueDate={assignment.due_date}
               assignment={assignment}
             />
           ))}

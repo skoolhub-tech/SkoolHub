@@ -72,6 +72,7 @@ const assignmentData = [
 
 const classesStudentsData = [
   { class_id: 1, student_id: 1 },
+  { class_id: 2, student_id: 1 },
   { class_id: 2, student_id: 2 },
   { class_id: 3, student_id: 3 },
   { class_id: 4, student_id: 4 },
@@ -109,9 +110,6 @@ const studentsAssignmentsData = [
   },
   {
     student_id: 1, assignment_id: 9, score: 92, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-30 00:00:00',
-  },
-  {
-    student_id: 1, assignment_id: 13, score: 85, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-05-11 00:00:00',
   },
   {
     student_id: 2, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
