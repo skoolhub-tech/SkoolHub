@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
@@ -24,10 +25,10 @@ function SubmittedAssignmentsRow({
       <td>{formatDate(submission.submitted_on)}</td>
       <td className="submission-grade">{submission.grade}</td>
       <td className="view_submission">
-        <button type="button"  onClick={handleViewSubmissionClick}><FaMagnifyingGlass size={15}/></button>
+        <button type="button" onClick={handleViewSubmissionClick}><FaMagnifyingGlass size={15} /></button>
       </td>
       <td className="grade_submission">
-        <button type="button"  onClick={setGradeSubmissionModalOpen}><FaBookOpen size={15}/></button>
+        <button type="button" onClick={setGradeSubmissionModalOpen}><FaBookOpen size={15} /></button>
       </td>
       {gradeSubmissionModalOpen && (
       <GradeSubmissionModal
