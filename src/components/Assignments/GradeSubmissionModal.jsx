@@ -2,7 +2,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
+import { FaBookOpen } from 'react-icons/fa';
 import './gradeSubmissionModal.css';
+
 
 function GradeSubmissionModal({ setGradeSubmissionModalOpen }) {
   const [grade, setGrade] = useState('');
