@@ -49,7 +49,7 @@ function CreateClass({ exitModal }) {
     };
     axios.post('/skoolhub/createClass', classData)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setClassName('');
         setSelectedTeacher('');
         getClasses();
@@ -62,7 +62,7 @@ function CreateClass({ exitModal }) {
   const handleDeleteClick = (classId) => {
     axios.delete(`/skoolhub/deleteClass/${classId}`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         getClasses();
       })
       .catch((error) => {
