@@ -20,12 +20,7 @@ function AssignStudentClass() {
       });
   }, []);
 
-  const handleClassChange = (classId) => {
-    setSelectedClass(classId);
-    if (!classId) {
-      setStudents([]);
-      return;
-    }
+  const fetchStudentsInClass = (classId) => {
     axios.get(`/skoolhub/classes/${classId}/students`)
       .then((response) => {
         // console.log(response.data);
@@ -34,6 +29,15 @@ function AssignStudentClass() {
       .catch((error) => {
         console.error(error);
       });
+  };
+
+  const handleClassChange = (classId) => {
+    setSelectedClass(classId);
+    if (!classId) {
+      setStudents([]);
+      return;
+    }
+    fetchStudentsInClass(classId);
   };
 
   const openModal = () => {
@@ -52,6 +56,7 @@ function AssignStudentClass() {
     axios.delete(`/skoolhub/classes/${classId}/students/${studentId}`)
       .then((response) => {
         console.log(response);
+        fetchStudentsInClass(classId);
       })
       .catch((error) => {
         console.error(error);
@@ -100,7 +105,7 @@ function AssignStudentClass() {
                   className="admin-search-bar"
                   htmlFor="searchBar"
                 >
-                  Search:
+                  Search: {" "}
                   <input
                     type="text"
                     id="searchBar"
@@ -138,7 +143,7 @@ function AssignStudentClass() {
         </div>
       )}
 
-      {showModal && <AddStudent closeModal={closeModal} studentsInClass={students} selectedClass={selectedClass} />}
+      {showModal && <AddStudent closeModal={closeModal} studentsInClass={students} selectedClass={selectedClass} fetchStudentsInClass={fetchStudentsInClass}/>}
 
     </div>
   );
