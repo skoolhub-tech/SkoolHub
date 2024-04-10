@@ -6,8 +6,8 @@ import { useUserData } from '../data-providers/UserDataProvider';
 
 function AssignmentsRow({ assignment, dueDate }) {
   const { userData } = useUserData();
-  const { name, completed } = assignment;
-  const completedString = completed ? '✓' : 'X';
+  const { name, is_completed } = assignment;
+  const completedString = is_completed ? '✓' : 'X';
 
   return (
     <tr>
