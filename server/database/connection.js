@@ -49,6 +49,7 @@ const createTableQuery = `
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     teacher_id INT NOT NULL,
+    threshold INT,
     FOREIGN KEY (teacher_id) REFERENCES teachers(id)
   );
 

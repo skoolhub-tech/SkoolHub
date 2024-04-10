@@ -45,10 +45,10 @@ const studentsData = [
 ];
 
 const classesData = [
-  { name: 'Math', teacher_id: 1 },
-  { name: 'Science', teacher_id: 2 },
-  { name: 'History', teacher_id: 1 },
-  { name: 'English', teacher_id: 2 },
+  { name: 'Math', teacher_id: 1, threshold: 100 },
+  { name: 'Science', teacher_id: 2, threshold: 100 },
+  { name: 'History', teacher_id: 1, threshold: 100 },
+  { name: 'English', teacher_id: 2, threshold: 100 },
 ];
 
 const assignmentData = [
@@ -585,7 +585,7 @@ async function seed() {
 
     classesData.forEach(async (classData) => {
       await client.query(`
-        INSERT INTO classes (name, teacher_id) VALUES ('${classData.name}', ${classData.teacher_id});
+        INSERT INTO classes (name, teacher_id, threshold) VALUES ('${classData.name}', ${classData.teacher_id}, ${classData.threshold});
       `);
     });
 
