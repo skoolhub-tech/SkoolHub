@@ -77,7 +77,9 @@ function TaskCalendar({ defaultView, views }) {
       <div style={{ height: 500 }}>
         <Calendar
           localizer={localizer}
+          defaultDate={new Date()}
           events={events}
+          scrollToTime={moment().startOf('hour').toDate()}
           selectable
           onSelectEvent={handleSelectEvent}
           onSelectSlot={handleSelectSlot}
