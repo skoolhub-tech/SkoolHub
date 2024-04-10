@@ -138,6 +138,10 @@
   background-color: #858D6F;
   transition: background-color 0.3s ease;
   cursor: pointer;
+  transform: scale(1.1);
+}
+.emailTemplateCard:active {
+  transform: scale(0.9);
 }
 /*=================Email Form Div holds emailForm=====================*/
 .emailModalForm {
