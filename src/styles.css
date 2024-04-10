@@ -132,3 +132,11 @@ LOGIN PAGE / NAV BAR CSS ========================================
   padding-left: 0px;
 }
 
+
+.page-turned {
+  transform: rotateY(180deg);
+  transition: transform 1s ease;
+}
+
+
+

@@ -144,7 +144,7 @@ function Login({ handleLoginEvent }) {
     if (loginInfo.submitted) {
       return (
         <form className="login-form" onSubmit={handleCodeVerification}>
-          <label className="login-label" htmlFor="code">Code</label>
+          <label htmlFor="code">Code</label>
           <input
             name="enteredCode"
             type="password"
@@ -158,7 +158,7 @@ function Login({ handleLoginEvent }) {
     }
     return (
       <form className="login-form" onSubmit={handleLogin}>
-        <label className="login-label" htmlFor="email">Email</label>
+        <label htmlFor="email">Email</label>
         <input
           name="email"
           type="text"
@@ -166,7 +166,7 @@ function Login({ handleLoginEvent }) {
           value={loginInfo.email}
           onChange={(e) => setLoginInfo({ ...loginInfo, email: e.target.value })}
         />
-        <label className="login-label" htmlFor="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           name="password"
           type="password"
