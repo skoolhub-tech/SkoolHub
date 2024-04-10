@@ -89,4 +89,5 @@ export default CreateAssignmentModal;
 CreateAssignmentModal.propTypes = {
   classObj: PropTypes.object.isRequired,
   closeModal: PropTypes.func.isRequired,
+  getClassesAndAssignments: PropTypes.func.isRequired,
 };
