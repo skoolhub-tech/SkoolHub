@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 
-function ThresholdInput({ currentClass, setThreshold, threshold, setOpenThreshold }) {
+function ThresholdInput({
+  currentClass, setThreshold, threshold, setOpenThreshold,
+}) {
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
@@ -51,5 +54,12 @@ function ThresholdInput({ currentClass, setThreshold, threshold, setOpenThreshol
     </div>
   );
 }
+
+ThresholdInput.propTypes = {
+  currentClass: PropTypes.shape({}).isRequired,
+  setThreshold: PropTypes.func.isRequired,
+  threshold: PropTypes.number.isRequired,
+  setOpenThreshold: PropTypes.func.isRequired,
+};
 
 export default ThresholdInput;
