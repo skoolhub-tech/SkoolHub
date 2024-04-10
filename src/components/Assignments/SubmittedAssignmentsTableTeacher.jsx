@@ -39,6 +39,8 @@ function SubmittedAssignmentsTabelTeacher({
             <th>Student Name</th>
             <th>Submitted On</th>
             <th>Grade</th>
+            <th>View Submission</th>
+            <th>Grade Submission</th>
           </tr>
         </thead>
         <tbody>

@@ -1,6 +1,9 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/forbid-prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { FaEdit } from 'react-icons/fa';
+import { FaMagnifyingGlass } from 'react-icons/fa6';
 import EditAssignmentModal from './EditAssignmentModal';
 import formatDate from '../../utils/formatDate_Month_D_Y';
 
@@ -19,11 +22,11 @@ function AssignmentsRowTeacher({
       <tr>
         <td>{assignment.name}</td>
         <td>{formatDate(assignment.due_date)}</td>
-        <td>
-          <button type="button" className="edit_assignment_button" onClick={() => setEditSubmissionModalIsOpen(true)}>Edit Assignment</button>
+        <td className="edit_assignment_button">
+          <button type="button" ><FaEdit/ onClick={() => setEditSubmissionModalIsOpen(true)}></button>
         </td>
-        <td>
-          <button type="button" className="view_submissions_button" onClick={handleViewSubmissionsClick}>View Submissions</button>
+        <td className="view_submissions_button">
+          <button type="button" onClick={handleViewSubmissionsClick}><FaMagnifyingGlass size={15}/></button>
         </td>
       </tr>
       {editSubmissionModalIsOpen && (
