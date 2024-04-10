@@ -51,17 +51,19 @@ function AssignmentsPage() {
   return data ? (
     <div className="assignments-container">
       <h1>Assignments</h1>
-      {viewAssignmentSubmissions === null && (
-      <ClassesDropDownMenu
-        classes={data}
-        setSelectedClass={setSelectedClass}
-      />
-      )}
-      {selectedClass && !viewAssignmentSubmissions && role === 2 && (
+      <div className="classes-dropdown-create-assignment">
+        {viewAssignmentSubmissions === null && (
+        <ClassesDropDownMenu
+          classes={data}
+          setSelectedClass={setSelectedClass}
+        />
+        )}
+        {selectedClass && !viewAssignmentSubmissions && role === 2 && (
         <button type="button" className="create_assignment_button" onClick={() => setCreateAssignmentModalOpen(true)}>
           Create Assignment
         </button>
-      )}
+        )}
+      </div>
       {createAssignmentModalOpen && (
         <CreateAssignmentModal
           classObj={data.find((classObj) => classObj.name === selectedClass)}
@@ -84,7 +86,7 @@ function AssignmentsPage() {
       )}
       <div>
         {selectedClass ? (
-          <div>
+          <div className="assignments_table_student">
             <h2>
               Class:
               {' '}
