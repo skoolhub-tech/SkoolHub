@@ -10,8 +10,8 @@ function SwitchUser() {
     if (role === 1) {
       newUser = {
         role: 2,
-        name: 'null',
-        email: 'john.doe@aol.com',
+        name: 'Duck',
+        email: 'stevenn.kkim@gmail.com',
         id: 1,
       };
     } else if (role === 2) {
