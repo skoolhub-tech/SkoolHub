@@ -76,6 +76,7 @@ function CreateClass({ exitModal }) {
     <div className="modal-content admin-modal">
       <button type="button" onClick={exitModal}>X</button>
 
+    <div className="admin-form">
       <form
         onSubmit={handleSubmit}
         >
@@ -109,6 +110,8 @@ function CreateClass({ exitModal }) {
 
         <button type="submit">Create Class</button>
       </form>
+
+      </div>
 
       <div>
         <h2>Current Classes</h2>

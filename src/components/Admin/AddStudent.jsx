@@ -59,7 +59,7 @@ function AddStudent({ closeModal, studentsInClass, selectedClass }) {
         <table>
           <thead>
             <tr>
-              <th>ID</th>
+              {/* <th>ID</th> */}
               <th>Name</th>
               <th>Email</th>
               <th>Action</th>
@@ -68,7 +68,7 @@ function AddStudent({ closeModal, studentsInClass, selectedClass }) {
           <tbody>
             {filteredStudents.map((student) => (
               <tr key={student.id}>
-                <td>{student.id}</td>
+                {/* <td>{student.id}</td> */}
                 <td>{student.name}</td>
                 <td>{student.email}</td>
                 <td><button type="button" onClick={() => handleAddClick(student.id)}>ADD</button></td>
