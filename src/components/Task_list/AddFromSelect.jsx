@@ -27,8 +27,6 @@ function AddFromSelect({
   };
 
   const handleSave = () => {
-    // Handle save action here
-    console.log(newTask);
     axios.post('/skoolhub/submittask', {
       role: userData.role,
       data: newTask,
