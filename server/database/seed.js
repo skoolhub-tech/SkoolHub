@@ -7,7 +7,7 @@ const adminData = [
 ];
 
 const teachersData = [
-  { name: 'John Doe', email: 'john.doe@aol.com' },
+  { name: 'Duck', email: 'stevenn.kkim@gmail.com' },
   { name: 'Jane Doe', email: 'jane.doe@hotmail.com' },
 ];
 
@@ -105,12 +105,6 @@ const classesStudentsData = [
 ];
 
 const studentsAssignmentsData = [
-  {
-    student_id: 1, assignment_id: 5, score: 83, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
-  },
-  {
-    student_id: 1, assignment_id: 9, score: 92, total_points: 100, grade: 'A', completed: true, submitted_on: '2024-04-30 00:00:00',
-  },
   {
     student_id: 2, assignment_id: 2, score: 80, total_points: 100, grade: 'B', completed: true, submitted_on: '2024-04-15 00:00:00',
   },
@@ -500,7 +494,7 @@ const adminCalendarData = [
 const credentialsData = [
   { email: 'jsmith@gmail.com', password: 'vasetime', role_id: 1 },
   { email: 'jane.johnson@skool.edu', password: 'testingblue', role_id: 1 },
-  { email: 'john.doe@aol.com', password: 'passworda;lkdfja', role_id: 2 },
+  { email: 'stevenn.kkim@gmail.com', password: 'skoolhubdemo', role_id: 2 },
   { email: 'jane.doe@hotmail.com', password: 'password123', role_id: 2 },
   { email: 'john.smith@gmail.com', password: 'password', role_id: 3 },
   { email: 'jane.johnson@gmail.com', password: 'test', role_id: 3 },
