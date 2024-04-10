@@ -29,9 +29,8 @@ function ScheduleMeetingEmailTemplate({ setSubject, setBody, currentClass, setSe
   };
 
   return (
-    <div className="emailTemplateCard">
+    <div className="emailTemplateCard" onClick={handleCheckboxChange}>
       <p>Schedule Meeting</p>
-      <button type="button" onClick={handleCheckboxChange}>Select</button>
     </div>
   );
 }

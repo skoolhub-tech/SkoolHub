@@ -11,14 +11,14 @@
   z-index: 999;
 }
 
-.modal-content {
+.calendar-modal-content {
   background-color: #858D6F; /* Set the background color to ABBD9A */
   padding: 20px;
   width: 40%;
   height: auto;
   border-radius: 5px;
   border: 1px solid #07070aaa;
-
+  transform: scale(1.2);
 }
 
 .floating-form {

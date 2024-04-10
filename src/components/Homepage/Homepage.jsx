@@ -13,7 +13,9 @@ const { useState, useEffect } = React;
 
 function Homepage() {
   const { userData } = useUserData();
-  const { email, id, role } = userData;
+  const {
+    email, id, role, name,
+  } = userData;
 
   const [classes, setClasses] = useState([]);
   const [assignments, setAssignments] = useState([]);
@@ -72,7 +74,9 @@ function Homepage() {
 
   return (
     <div className="homepage-container">
-      <h1>Homepage</h1>
+      <h1>
+        Welcome back, {userData.name}
+      </h1>
       <div className="homepage-flex-container">
         {assignments.length > 0 && (
           <div className="homepage-assignments-container">
