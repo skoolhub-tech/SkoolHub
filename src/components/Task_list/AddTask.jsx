@@ -27,8 +27,6 @@ function AddTask({
   };
 
   const handleSave = () => {
-    // Handle save action here
-    console.log(newTask);
     axios.post('/skoolhub/submittask', {
       role: userData.role,
       data: newTask,
@@ -45,7 +43,7 @@ function AddTask({
   return (
     <div className="modal">
       {/* Modal */}
-      <div className="modal-content">
+      <div className="add-task-modal-content">
         <button type="button" className="exit-button" onClick={closeAddTask}>Cancel</button>
         <h2 className="edit-task">Add Task</h2>
         <div className="floating-form">

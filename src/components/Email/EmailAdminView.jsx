@@ -104,22 +104,24 @@ function EmailAdminView() {
 // drop down to select teacher
   return (
     <div className="emailsDiv">
-      <h1>Email</h1>
-      {emailSent && <p>Email Sent!</p>}
-      {errorMessage && <p>{errorMessage}</p>}
-      <AdminDropDown
-        views={views}
-        handleDropdownChange={handleDropdownChange}
-      />
-      {potentialEmailees.length > 0 && (
-        <PeopleList
-          currentClass={currentClass}
-          potentialEmailees={potentialEmailees}
-          receiverEmailList={receiverEmailList}
-          setRecieverEmailList={setRecieverEmailList}
-          setEmailModal={setEmailModal}
+      <div className="emailsDiv-without-modal">
+        <h1>Email</h1>
+        {emailSent && <p>Email Sent!</p>}
+        {errorMessage && <p>{errorMessage}</p>}
+        <AdminDropDown
+          views={views}
+          handleDropdownChange={handleDropdownChange}
         />
-      )}
+        {potentialEmailees.length > 0 && (
+          <PeopleList
+            currentClass={currentClass}
+            potentialEmailees={potentialEmailees}
+            receiverEmailList={receiverEmailList}
+            setRecieverEmailList={setRecieverEmailList}
+            setEmailModal={setEmailModal}
+          />
+        )}
+      </div>
       {emailModal && (
         <EmailModal
           setEmailModal={setEmailModal}
