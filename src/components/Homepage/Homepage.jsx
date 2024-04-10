@@ -93,6 +93,7 @@ function Homepage() {
             <h2>Today&apos;s Tasks</h2>
             <Calendar
               localizer={localizer}
+              scrollToTime={moment().startOf('hour').toDate()}
               events={tasks}
               defaultView="day"
               views={['day']}

@@ -79,6 +79,7 @@ function TaskCalendar({ defaultView, views }) {
           localizer={localizer}
           defaultDate={new Date()}
           events={events}
+          scrollToTime={moment().startOf('hour').toDate()}
           selectable
           onSelectEvent={handleSelectEvent}
           onSelectSlot={handleSelectSlot}
