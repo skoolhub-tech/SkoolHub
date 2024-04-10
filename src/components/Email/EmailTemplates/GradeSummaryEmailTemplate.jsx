@@ -27,9 +27,8 @@ function GradeSummaryEmailTemplate({ setSubject, setBody, currentClass, setSelec
   };
 
   return (
-    <div className="emailTemplateCard">
+    <div className="emailTemplateCard" onClick={handleCheckboxChange}>
       <p>Grade Summary</p>
-      <button type="button" onClick={handleCheckboxChange}>Select</button>
     </div>
   );
 }

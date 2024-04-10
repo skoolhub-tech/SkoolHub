@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import formatDate from '../../utils/formatDate_Month_D_Y';
+import SubmittedAssignmentsRow from './SubmittedAssignmentsRow';
 
-function SubmittedAssignmentsTabelTeacher({ assignment }) {
+function SubmittedAssignmentsTabelTeacher({
+  assignment,
+  setStudentId,
+  setViewSubmissionModalOpen,
+  setAssignmentId,
+}) {
   const [submissions, setSubmissions] = useState([]);
 
   const getSubmissions = async () => {
     try {
-      const response = await axios.get(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/assignments/submissions/?id=${assignment.id}`);
+      const response = await axios.get(`/skoolhub/assignments/submissions/?id=${assignment.id}`);
       setSubmissions(response.data);
     } catch (error) {
       console.error('Error fetching submissions:', error);
@@ -21,7 +26,7 @@ function SubmittedAssignmentsTabelTeacher({ assignment }) {
 
   return (
     <div>
-      <h1>View Submitted Assignments</h1>
+      <h1>Submitted Assignments</h1>
       <table>
         <thead>
           <tr>
@@ -32,17 +37,13 @@ function SubmittedAssignmentsTabelTeacher({ assignment }) {
         </thead>
         <tbody>
           {submissions.map((submission) => (
-            <tr key={submission.submission_id}>
-              <td>{submission.student_name}</td>
-              <td>{formatDate(submission.submitted_on)}</td>
-              <td>{submission.grade}</td>
-              <td>
-                <button className="view_submission" type="button">View Submission</button>
-              </td>
-              <td>
-                <button className="grade_submission" type="button">Grade Submission</button>
-              </td>
-            </tr>
+            <SubmittedAssignmentsRow
+              key={submission.submission_id}
+              submission={submission}
+              setStudentId={setStudentId}
+              setViewSubmissionModalOpen={setViewSubmissionModalOpen}
+              setAssignmentId={setAssignmentId}
+            />
           ))}
         </tbody>
       </table>
@@ -55,7 +56,8 @@ export default SubmittedAssignmentsTabelTeacher;
 SubmittedAssignmentsTabelTeacher.propTypes = {
   assignment: PropTypes.shape({
     id: PropTypes.number,
-    name: PropTypes.string,
-    due_date: PropTypes.string,
   }).isRequired,
+  setStudentId: PropTypes.func.isRequired,
+  setViewSubmissionModalOpen: PropTypes.func.isRequired,
+  setAssignmentId: PropTypes.func.isRequired,
 };

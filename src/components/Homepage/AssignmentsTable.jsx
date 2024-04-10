@@ -10,24 +10,29 @@ const formatDate = (dateString) => {
   return format(date, 'MM/dd/yy');
 };
 
-function AssignmentsTable({ assignments, classes, filter }) {
+function AssignmentsTable({
+  assignments,
+  classes,
+  selectedClass,
+  filter,
+}) {
   const { userData } = useUserData();
 
   return (
     <div className="homepage-assignments-table">
       <select
         className="homepage-class-select"
-        value=""
+        value={selectedClass}
         onChange={(e) => filter(e)}
       >
-        <option value="">All Classes</option>
+        <option value="All Classes">All Classes</option>
         {classes.map((classObj) => (
-          <option key={classObj.id} value={classObj.id}>
-            {classObj.name}
+          <option key={classObj.class_id} value={classObj.class_id}>
+            {classObj.class_name}
           </option>
         ))}
       </select>
-      <table>
+      <table className="HP-assignments-table">
         <thead>
           <tr>
             <th className="left-table">Assignment</th>
@@ -38,7 +43,7 @@ function AssignmentsTable({ assignments, classes, filter }) {
         <tbody>
           {assignments.map((assignment) => (
             <AssignmentsRow
-              key={assignment.id}
+              key={assignment.name}
               dueDate={formatDate(assignment.due_date)}
               assignment={assignment}
             />

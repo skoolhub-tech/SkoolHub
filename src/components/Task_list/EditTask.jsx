@@ -26,7 +26,6 @@ function EditTask({
   };
 
   const handleSave = () => {
-    console.log(editedTask);
     axios.put('/skoolhub/edittask', {
       role: userData.role,
       data: editedTask,
@@ -59,7 +58,7 @@ function EditTask({
   return (
     <div className="modal">
       {/* Modal */}
-      <div className="modal-content">
+      <div className="calendar-modal-content">
         <button type="button" className="exit-button" onClick={closeEditTask}>Cancel</button>
         <h2 className="edit-task">Edit Task</h2>
         <div className="floating-form">

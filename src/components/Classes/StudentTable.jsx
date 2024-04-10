@@ -6,7 +6,7 @@ import { FaChartLine } from 'react-icons/fa';
 function StudentTable({ students, handleStudentClick }) {
   return (
     <table className="student-table-container">
-      <thead>
+      <thead className="class-list-header">
         <tr>
           <th>Student</th>
           <th>Grades</th>

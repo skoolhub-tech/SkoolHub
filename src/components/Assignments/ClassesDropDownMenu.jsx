@@ -10,9 +10,10 @@ function ClassesDropDownMenu({ classes, setSelectedClass }) {
     setIsDropdownOpen(!isDropdownOpen);
   }
 
-  function handleKeyPress(event) {
+  function handleKeyDown(event) {
     if (event.key === 'Enter') {
       setSelectedClass(event.target.textContent);
+      setIsDropdownOpen(!isDropdownOpen);
     }
   }
 
@@ -21,7 +22,7 @@ function ClassesDropDownMenu({ classes, setSelectedClass }) {
   }
 
   return (
-    <div className="classes_dropdown">
+    <div>
       <button
         type="button"
         className="classes_drop_down_menu"
@@ -35,7 +36,7 @@ function ClassesDropDownMenu({ classes, setSelectedClass }) {
           role="button"
           key={item.id}
           onClick={handleSelectClassClick}
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyDown}
           tabIndex={0}
         >
           {item.name}

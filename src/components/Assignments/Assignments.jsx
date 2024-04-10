@@ -8,6 +8,7 @@ import AssignmentsTableStudent from './AssignmentsTableStudent';
 import AssignmentsTableTeacher from './AssignmentsTableTeacher';
 import ViewSubmissionModal from './ViewSubmissionModal';
 import SubmittedAssignmentsTableTeacher from './SubmittedAssignmentsTableTeacher';
+import CreateAssignmentModal from './CreateAssignmentModal';
 import './assignments.css';
 
 function AssignmentsPage() {
@@ -18,13 +19,14 @@ function AssignmentsPage() {
   const [assignmentId, setAssignmentId] = useState(null);
   const [studentId, setStudentId] = useState(null);
   const [viewAssignmentSubmissions, setViewAssignmentSubmissions] = useState(null);
+  const [createAssignmentModalOpen, setCreateAssignmentModalOpen] = useState(false);
 
   const getClassesAndAssignments = useCallback(async () => {
     try {
-      const response = await axios.get(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/classesAndAssignments/${role}?email=${email}`);
+      const response = await axios.get(`/skoolhub/classesAndAssignments/${role}?email=${email}`);
       setData(response.data);
     } catch (error) {
-      console.log(`Error fetching classes and assignments for student: ${error}`);
+      console.log(`Error fetching classes and assignments: ${error}`);
     }
   }, []);
 
@@ -33,20 +35,41 @@ function AssignmentsPage() {
   }, []);
 
   useEffect(() => {
+    if (data) setSelectedClass(data[0].name);
+  }, [data]);
+
+  useEffect(() => {
     getClassesAndAssignments();
   }, [email, getClassesAndAssignments]);
+
+  useEffect(() => {
+    if (role === 3) {
+      setStudentId(id);
+    }
+  }, [role, id]);
 
   return data ? (
     <div className="assignments-container">
       <h1>Assignments</h1>
-      <ClassesDropDownMenu
-        classes={data}
-        setSelectedClass={setSelectedClass}
-      />
-      {selectedClass && (
-        <button type="button" className="create_assignment_button">
+      <div className="classes-dropdown-create-assignment">
+        {viewAssignmentSubmissions === null && (
+        <ClassesDropDownMenu
+          classes={data}
+          setSelectedClass={setSelectedClass}
+        />
+        )}
+        {selectedClass && !viewAssignmentSubmissions && role === 2 && (
+        <button type="button" className="create_assignment_button" onClick={() => setCreateAssignmentModalOpen(true)}>
           Create Assignment
         </button>
+        )}
+      </div>
+      {createAssignmentModalOpen && (
+        <CreateAssignmentModal
+          classObj={data.find((classObj) => classObj.name === selectedClass)}
+          closeModal={() => setCreateAssignmentModalOpen(false)}
+          getClassesAndAssignments={getClassesAndAssignments}
+        />
       )}
       {viewAssignmentSubmissions && (
         <>
@@ -63,7 +86,7 @@ function AssignmentsPage() {
       )}
       <div>
         {selectedClass ? (
-          <div>
+          <div className="assignments_table_student">
             <h2>
               Class:
               {' '}
@@ -83,7 +106,7 @@ function AssignmentsPage() {
               <AssignmentsTableTeacher
                 data={data}
                 selectedClass={selectedClass}
-                setStudentId={setStudentId}
+                setAssignmentId={setAssignmentId}
                 setViewAssignmentSubmissions={setViewAssignmentSubmissions}
               />
             )}
@@ -97,6 +120,9 @@ function AssignmentsPage() {
                 <SubmittedAssignmentsTableTeacher
                   assignment={viewAssignmentSubmissions}
                   setViewAssignmentSubmissions={setViewAssignmentSubmissions}
+                  setStudentId={setStudentId}
+                  setViewSubmissionModalOpen={setViewSubmissionModalOpen}
+                  setAssignmentId={setAssignmentId}
                 />
               </>
             )}
@@ -108,11 +134,11 @@ function AssignmentsPage() {
           </div>
         )}
       </div>
-      {viewSubmissionModalOpen && assignmentId && (
+      {viewSubmissionModalOpen && assignmentId && studentId && (
         <ViewSubmissionModal
           assignmentId={assignmentId}
           classId={data.find((classObj) => classObj.name === selectedClass).id}
-          studentId={id}
+          studentId={studentId}
           onCloseModal={handleCloseModal}
         />
       )}

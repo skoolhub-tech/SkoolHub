@@ -12,7 +12,7 @@ function AssignmentsTableStudent({
   viewSubmissionModalOpen,
 }) {
   return (
-    <table className="assignments_table_student">
+    <table>
       <thead>
         <tr>
           <th>Assignment</th>
