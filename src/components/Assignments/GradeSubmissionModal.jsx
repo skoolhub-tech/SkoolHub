@@ -22,10 +22,9 @@ function GradeSubmissionModal({ setGradeSubmissionModalOpen }) {
 
   return (
     <>
-      <label htmlFor="modal-overlay" className="modal-overlay-label">Modal Overlay</label>
+      <label htmlFor="grade_submission_modal_overlay" className="grade_submission_modal_overlay">Modal Overlay</label>
       <button
-        id="modal-overlay"
-        className="modal-overlay"
+        className="grade_submission_modal_overlay"
         onClick={() => setGradeSubmissionModalOpen(false)}
         onKeyPress={handleOverlayKeypress}
         type="button"
