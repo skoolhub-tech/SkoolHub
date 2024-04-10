@@ -14,7 +14,7 @@ function ViewSubmissionModal({
   useEffect(() => {
     const fetchAndRenderPDF = async () => {
       try {
-        const response = await axios.get(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/assignment/?classId=${classId}&assignmentId=${assignmentId}&studentId=${studentId}`, {
+        const response = await axios.get(`/skoolhub/assignment/?classId=${classId}&assignmentId=${assignmentId}&studentId=${studentId}`, {
           responseType: 'blob',
         });
 
