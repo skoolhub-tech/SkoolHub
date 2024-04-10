@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import GradeSubmissionModal from './GradeSubmissionModal';
 import formatDate from '../../utils/formatDate_Month_D_Y';
 
 function SubmittedAssignmentsRow({
@@ -8,6 +9,7 @@ function SubmittedAssignmentsRow({
   setViewSubmissionModalOpen,
   setAssignmentId,
 }) {
+  const [gradeSubmissionModalOpen, setGradeSubmissionModalOpen] = useState(false);
   function handleViewSubmissionClick() {
     setAssignmentId(submission.submission_id);
     setStudentId(submission.student_id);
@@ -15,17 +17,25 @@ function SubmittedAssignmentsRow({
   }
 
   return (
-    <tr className="submitted_assignment_row">
-      <td>{submission.student_name}</td>
-      <td>{formatDate(submission.submitted_on)}</td>
-      <td>{submission.grade}</td>
-      <td>
-        <button type="button" className="view_submission" onClick={handleViewSubmissionClick}>View Submission</button>
-      </td>
-      <td>
-        <button className="grade_submission" type="button">Grade Submission</button>
-      </td>
-    </tr>
+    <>
+      <tr className="submitted_assignment_row">
+        <td>{submission.student_name}</td>
+        <td>{formatDate(submission.submitted_on)}</td>
+        <td>{submission.grade}</td>
+        <td>
+          <button type="button" className="view_submission" onClick={handleViewSubmissionClick}>View Submission</button>
+        </td>
+        <td>
+          <button className="grade_submission" type="button" onClick={setGradeSubmissionModalOpen}>Grade Submission</button>
+        </td>
+      </tr>
+      {gradeSubmissionModalOpen && (
+      <GradeSubmissionModal
+        submission={submission}
+        setGradeSubmissionModalOpen={setGradeSubmissionModalOpen}
+      />
+      )}
+    </>
   );
 }
 
