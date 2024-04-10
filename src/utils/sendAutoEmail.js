@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-async function autoEmail(inputs) {
+// an input object with the following properties needed
+async function sendAutoEmail(inputs) {
   const data = {
     class_name: inputs.class,
     grade_threshold: inputs.gradeThreshold,
@@ -9,12 +10,14 @@ async function autoEmail(inputs) {
     to_email: inputs.studentEmail,
     message: inputs.message,
   };
+  return('auto email sent to', data.to_email);
+  /*
   try {
     await axios.post('/skoolhub/sendautoemail', data);
     return 'Auto Email Sent!';
   } catch (error) {
     return error.message;
-  }
+  }*/
 }
 
-export default autoEmail;
+export default sendAutoEmail;
