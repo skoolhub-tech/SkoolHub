@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import SubmittedAssignmentsRow from './SubmittedAssignmentsRow';
+import fomratDate from '../../utils/formatDate_Month_D_Y';
 
 function SubmittedAssignmentsTabelTeacher({
   assignment,
@@ -27,12 +28,17 @@ function SubmittedAssignmentsTabelTeacher({
   return (
     <div>
       <h1>Submitted Assignments</h1>
+      <h2>{assignment.name}</h2>
+      <h2>
+        Due Date:
+        {fomratDate(assignment.due_date)}
+      </h2>
       <table>
         <thead>
           <tr>
             <th>Student Name</th>
-            <th>Grade</th>
             <th>Submitted On</th>
+            <th>Grade</th>
           </tr>
         </thead>
         <tbody>
