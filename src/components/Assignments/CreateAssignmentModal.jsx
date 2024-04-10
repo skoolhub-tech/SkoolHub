@@ -1,12 +1,15 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
+import { useUserData } from '../data-providers/UserDataProvider';
 import './createAssignmentModal.css';
 
-function CreateAssignmentModal({ classObj, closeModal }) {
+function CreateAssignmentModal({ classObj, closeModal, getClassesAndAssignments }) {
   const [assignmentName, setAssignmentName] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [instructions, setInstructions] = useState('');
+  const { userData: { id, role } } = useUserData();
 
   function handleAssignmentNameChange(event) {
     setAssignmentName(event.target.value);
@@ -22,15 +25,30 @@ function CreateAssignmentModal({ classObj, closeModal }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    closeModal();
-    console.log('Class:', classObj.name);
-    console.log('Assignment Name:', assignmentName);
-    console.log('Due Date:', dueDate);
-    console.log('Instructions:', instructions);
+    axios.post('/skoolhub/assignments', {
+      assignment: {
+        classId: classObj.id,
+        name: assignmentName,
+        dueDate: new Date(dueDate),
+        instructions,
+        teacherId: id,
+      },
+      role,
+    })
+      .then(() => {
+        getClassesAndAssignments();
+      })
+      .catch((error) => {
+        console.log(`Error creating assignment: ${error}`);
+      })
+      .finally(() => {
+        closeModal();
+      });
   }
 
   return (
     <div className="create_assignment_modal">
+      <button type="button" className="close_modal" onClick={closeModal}>X</button>
       <h1>Create Assignment</h1>
       <form className="create_assignment_form" onSubmit={handleSubmit}>
         <label htmlFor="assignmentName">

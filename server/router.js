@@ -34,6 +34,7 @@ router.get('/assignments/current/:role/:userId/', controller.getCurrentAssignmen
 // router.get('/assignments/:classId', controller.getAssignments);
 
 // POST requests
+router.post('/assignments', controller.createAssignment);
 router.post('/sendautoemail', controller.sendAutoEmail);
 router.post('/sendemail', controller.sendPeerEmail);
 router.post('/submitassignment', upload.single('file'), controller.submitAssignment);

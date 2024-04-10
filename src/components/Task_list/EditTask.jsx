@@ -26,7 +26,6 @@ function EditTask({
   };
 
   const handleSave = () => {
-    console.log(editedTask);
     axios.put('/skoolhub/edittask', {
       role: userData.role,
       data: editedTask,
