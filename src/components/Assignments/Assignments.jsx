@@ -71,8 +71,6 @@ function AssignmentsPage() {
       )}
       {viewAssignmentSubmissions && (
         <>
-          <br />
-          <br />
           <button
             type="button"
             className="back_button"
@@ -80,6 +78,8 @@ function AssignmentsPage() {
           >
             Back
           </button>
+          <br />
+          <br />
         </>
       )}
       <div>
