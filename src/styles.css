@@ -113,7 +113,14 @@ LOGIN PAGE / NAV BAR CSS ========================================
 }
 
 .log-out-bttn {
+  color: black;
   position: absolute;
   top: 2rem;
   right: 4rem;
 }
+
+
+.login-label {
+  padding-left: 0px;
+}
+
