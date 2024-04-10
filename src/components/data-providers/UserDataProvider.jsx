@@ -67,18 +67,18 @@ export const useUserData = () => useContext(Context);
 // 2. Add hard-coded data in lines 16-19 above
 //    a. For student:
 //        role: 3,
-//        name: 'John Smith'
-//        email:'john.smith@gmail.com'
+//        name: 'John Smith',
+//        email: 'john.smith@gmail.com',
 //        id: 1,
 //    b. For teacher:
 //        role: 2,
-//        name: 'John Doe'
-//        email:'john.doe@aol.com'
+//        name: 'John Doe',
+//        email: 'john.doe@aol.com',
 //        id: 1,
 //    c. For admin:
 //        role: 1,
-//        name: 'John Smith'
-//        email:'jsmith@gmail.com'
+//        name: 'John Smith',
+//        email: 'jsmith@gmail.com',
 //        id: 1,
 
 // TO LOG IN WITH SEED DATA:

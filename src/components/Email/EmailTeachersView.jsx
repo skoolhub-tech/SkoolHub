@@ -6,7 +6,7 @@ import EmailModal from './EmailModal';
 import DropDown from './DropDownSelector';
 import PeopleList from './PeopleList';
 import { useUserData } from '../data-providers/UserDataProvider';
-
+import ThresholdInput from './ThresholdInput';
 // userData needs to contain id, email, name, and role
 function EmailTeachersView() {
   const { userData } = useUserData();
@@ -14,10 +14,12 @@ function EmailTeachersView() {
   const [emailSent, setEmailSent] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [emailModal, setEmailModal] = useState(false);
+  const [openThreshold, setOpenThreshold] = useState(false);
   // View states/data
   const [potentialEmailees, setPotentialEmailees] = useState([]);
   const [classes, setClasses] = useState([]);
   const [currentClass, setCurrentClass] = useState({ name: 'select a class' });
+  const [threshold, setThreshold] = useState('');
   // email form data
   const [subjectLine, setSubjectLine] = useState('');
   const [body, setBody] = useState('');
@@ -111,9 +113,13 @@ function EmailTeachersView() {
       setPotentialEmailees([]);
       return;
     }
-    axios.get(`/skoolhub/classes/${classObj.id}/students`)
-      .then((response) => {
+    Promise.all([
+      axios.get(`/skoolhub/classes/${classObj.id}/students`),
+      axios.get(`/skoolhub/classes/${classObj.id}/threshold`),
+    ])
+      .then(([response, thresholdResponse]) => {
         setPotentialEmailees(response.data);
+        setThreshold(thresholdResponse.data[0].threshold);
       })
       .catch((error) => {
         console.error(error);
@@ -122,22 +128,27 @@ function EmailTeachersView() {
 
   return (
     <div className="emailsDiv">
-      <h1>Email</h1>
-      {emailSent && <p>Email Sent!</p>}
-      {errorMessage && <p>{errorMessage}</p>}
-      <DropDown
-        classes={classes}
-        handleClassChange={handleClassChange}
-      />
-      {potentialEmailees.length > 0 && (
-        <PeopleList
-          currentClass={currentClass}
-          potentialEmailees={potentialEmailees}
-          receiverEmailList={receiverEmailList}
-          setRecieverEmailList={setRecieverEmailList}
-          setEmailModal={setEmailModal}
+      <div className="emailsDiv-without-modal">
+        <h1>Email</h1>
+        {emailSent && <p>Email Sent!</p>}
+        {errorMessage && <p>{errorMessage}</p>}
+        <DropDown
+          classes={classes}
+          handleClassChange={handleClassChange}
         />
-      )}
+        {potentialEmailees.length > 0 && (
+          <PeopleList
+            currentClass={currentClass}
+            potentialEmailees={potentialEmailees}
+            receiverEmailList={receiverEmailList}
+            setRecieverEmailList={setRecieverEmailList}
+            setEmailModal={setEmailModal}
+            threshold={threshold}
+          setThreshold={setThreshold}
+          setOpenThreshold={setOpenThreshold}
+        />
+        )}
+      </div>
       {emailModal && (
         <EmailModal
           setEmailModal={setEmailModal}
@@ -148,6 +159,14 @@ function EmailTeachersView() {
           body={body}
           currentClass={currentClass}
           setSelectedTemplate={setSelectedTemplate}
+        />
+      )}
+      {openThreshold && (
+        <ThresholdInput
+          currentClass={currentClass}
+          setThreshold={setThreshold}
+          threshold={threshold}
+          setOpenThreshold={setOpenThreshold}
         />
       )}
     </div>

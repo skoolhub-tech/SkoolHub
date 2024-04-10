@@ -2,18 +2,17 @@
     height: 80vh;
     overflow: scroll;
 }
-.admin-container {
-    margin-left: 8%;
-}
 .admin-students-list {
-      background-color: #DCCCBB;
+    background-color: #ABBD9A;
     border-radius: 10px;
     /* padding: 20px; */
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 2rem;
+    padding-right: 2rem;
     margin-top: 1rem;
+    padding-bottom: 1rem;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75 );
 }
+
 .admin-search-bar {
     margin-top: 2rem;
 }
@@ -34,10 +33,27 @@
 }
 
 .admin-dropdown {
-    max-width: fit-content;
+    /* max-width: fit-content; */
+    transform: scale(1.2);
+    margin-top: 1rem;
+    border-radius: 5px;
 }
 
 .admin-form {
-  border: 1px solid black;
-  border-radius: 5px;
+  background-color: #CED2BA;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  padding: 20px;
+}
+.admin-table {
+    background-color: #DCCCBB;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+}
+.admin-add-student-table {
+    background-color: #CED2BA;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+}
+.add-student-button {
+    background-color: #858D6F;
+
 }

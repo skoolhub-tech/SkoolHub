@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function AddStudent({ closeModal, studentsInClass, selectedClass }) {
+function AddStudent({ closeModal, studentsInClass, selectedClass, fetchStudentsInClass }) {
   const [students, setStudents] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [refresh, setRefresh] = useState(false);
 
   const fetchStudents = () => {
     axios.get('/skoolhub/students')
@@ -29,10 +30,13 @@ function AddStudent({ closeModal, studentsInClass, selectedClass }) {
     axios.post('/skoolhub/classes/students', { classId, studentId })
       .then((response) => {
         console.log(response);
+        fetchStudentsInClass(classId);
+        setRefresh(!refresh);
       })
       .catch((error) => {
         console.error(error);
       });
+
   };
 
   const handleAddClick = (studentId) => {
@@ -47,7 +51,7 @@ function AddStudent({ closeModal, studentsInClass, selectedClass }) {
         <h2>Students</h2>
 
         <label htmlFor="searchBar">
-          Search:
+          Search: {" "}
           <input
             type="text"
             id="searchBar"
@@ -56,7 +60,7 @@ function AddStudent({ closeModal, studentsInClass, selectedClass }) {
           />
         </label>
 
-        <table>
+        <table className="admin-add-student-table">
           <thead>
             <tr>
               {/* <th>ID</th> */}
