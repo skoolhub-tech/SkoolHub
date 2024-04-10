@@ -18,7 +18,7 @@ router.get('/classesAndAssignments/3', controller.getClassesAndAssignmentsForStu
 router.get('/login', controller.login);
 router.get('/login/role/:email', controller.getRoleAtLogin);
 router.get('/students', controller.getStudents);
-router.get('/assignment', controller.getSubmittedAssignmentForStudent);
+router.get('/assignment', controller.getSubmittedAssignment);
 router.get('/assignments/submissions', controller.getSubmittedAssignmentsForTeacher);
 router.get('/classes/:classId/students/:studentId/grades', controller.getStudentClassGrades);
 router.get('/teachers', controller.getTeachers);
@@ -27,6 +27,7 @@ router.get('/calendar/:role/:id', controller.getCalendar);
 router.get('/teachersclasses', controller.getAllTeachersAndTheirClasses);
 router.get('/roles', controller.getRoles);
 router.get('/assignments/current/:role/:userId/', controller.getCurrentAssignments);
+router.get('/classes/:classId/threshold', controller.getClassThreshold);
 // router.get('/teachers/assignments/:teacherId', controller.getTeacherAssignments);
 // router.get('/teachers/calendar/:teacherId', controller.getTeacherCalendar);
 // router.get('/students/assignments/:studentId', controller.getStudentAssignments);
@@ -44,6 +45,7 @@ router.post('/createUser', controller.createUser);
 router.post('/createClass', controller.createClass);
 // PUT requests
 router.put('/edittask', controller.updateCalendar);
+router.put('/updateThreshold', controller.updateThreshold);
 // DELETE requests
 router.delete('/classes/:classId/students/:studentId', controller.deleteClassStudent);
 router.delete('/deleteUser/:userId/:roleId', controller.deleteUser);

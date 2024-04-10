@@ -60,7 +60,7 @@ function AddStudent({ closeModal, studentsInClass, selectedClass, fetchStudentsI
           />
         </label>
 
-        <table>
+        <table className="admin-add-student-table">
           <thead>
             <tr>
               {/* <th>ID</th> */}

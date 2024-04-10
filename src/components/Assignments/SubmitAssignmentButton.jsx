@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -12,7 +13,7 @@ function SubmitAssignmentButton({
   const [submitAssignmentModalIsOpen, setSubmitAssignmentModalIsOpen] = useState(false);
   return (
     <div>
-      <button type="button" className="submitAssignmentButtonButton" onClick={() => setSubmitAssignmentModalIsOpen(true)}><FaCheckSquare size={15}/></button>
+      <button type="button" className="submitAssignmentButtonButton" onClick={() => setSubmitAssignmentModalIsOpen(true)}><FaCheckSquare size={15} /></button>
       {submitAssignmentModalIsOpen && (
       <SubmitAssignmentModal
         setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}

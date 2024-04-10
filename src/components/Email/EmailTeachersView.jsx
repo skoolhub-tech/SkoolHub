@@ -122,22 +122,24 @@ function EmailTeachersView() {
 
   return (
     <div className="emailsDiv">
-      <h1>Email</h1>
-      {emailSent && <p>Email Sent!</p>}
-      {errorMessage && <p>{errorMessage}</p>}
-      <DropDown
-        classes={classes}
-        handleClassChange={handleClassChange}
-      />
-      {potentialEmailees.length > 0 && (
-        <PeopleList
-          currentClass={currentClass}
-          potentialEmailees={potentialEmailees}
-          receiverEmailList={receiverEmailList}
-          setRecieverEmailList={setRecieverEmailList}
-          setEmailModal={setEmailModal}
+      <div className="emailsDiv-without-modal">
+        <h1>Email</h1>
+        {emailSent && <p>Email Sent!</p>}
+        {errorMessage && <p>{errorMessage}</p>}
+        <DropDown
+          classes={classes}
+          handleClassChange={handleClassChange}
         />
-      )}
+        {potentialEmailees.length > 0 && (
+          <PeopleList
+            currentClass={currentClass}
+            potentialEmailees={potentialEmailees}
+            receiverEmailList={receiverEmailList}
+            setRecieverEmailList={setRecieverEmailList}
+            setEmailModal={setEmailModal}
+          />
+        )}
+      </div>
       {emailModal && (
         <EmailModal
           setEmailModal={setEmailModal}
