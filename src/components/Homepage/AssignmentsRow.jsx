@@ -13,10 +13,8 @@ const formatDate = (dateString) => {
 function AssignmentsRow({ assignment, dueDate }) {
   const { userData } = useUserData();
   const { assignment_name, is_completed } = assignment;
-  const completedString = is_completed ? '✓' : 'X';
 
   let completedIndicator;
-  console.log(dueDate, ' ', new Date(dueDate));
   if (!is_completed && new Date(dueDate) < new Date()) {
     completedIndicator = (
       <p className="overdue-assignment">OVERDUE</p>
@@ -38,9 +36,8 @@ function AssignmentsRow({ assignment, dueDate }) {
 
 AssignmentsRow.propTypes = {
   assignment: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    due_date: PropTypes.string.isRequired,
-    completed: PropTypes.bool.isRequired, // Fix the prop type
+    assignment_name: PropTypes.string.isRequired,
+    is_completed: PropTypes.bool,
   }).isRequired,
   dueDate: PropTypes.string.isRequired,
 };

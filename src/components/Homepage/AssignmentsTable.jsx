@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { useUserData } from '../data-providers/UserDataProvider';
 import AssignmentsRow from './AssignmentsRow';
 
-
-
 function AssignmentsTable({
   assignments,
   classes,
@@ -67,6 +65,7 @@ AssignmentsTable.propTypes = {
     }),
   ).isRequired,
   filter: PropTypes.func.isRequired,
+  selectedClass: PropTypes.string.isRequired,
 };
 
 export default AssignmentsTable;
