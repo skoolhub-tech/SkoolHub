@@ -5,8 +5,8 @@ import { FaChartLine } from 'react-icons/fa';
 
 function StudentTable({ students, handleStudentClick }) {
   return (
-    <table>
-      <thead>
+    <table className="student-table-container">
+      <thead className="class-list-header">
         <tr>
           <th>Student</th>
           <th>Grades</th>
@@ -16,7 +16,7 @@ function StudentTable({ students, handleStudentClick }) {
         {students.map((student) => (
           <tr key={student.id}>
             <td className="student-name">{student.name}</td>
-            <td>
+            <td className="grades-button">
               <button
                 type="button"
                 onClick={() => handleStudentClick(student)}

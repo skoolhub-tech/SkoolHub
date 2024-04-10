@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useState } from 'react';
 import axios from 'axios';
 import './editForm.css';
 import moment from 'moment';
 import { useUserData } from '../data-providers/UserDataProvider';
 
-function EditTask({ task, closeEditTask, refresh, setRefresh }) {
+function EditTask({
+  task, closeEditTask, refresh, setRefresh,
+}) {
   const { userData } = useUserData();
 
   const [editedTask, setEditedTask] = useState({
-    id2: userData.id,
     ...task,
-    start: task.start,
-    end: task.end,
-    completed: task.completed,
+    start: moment.utc(task.start).local().format(),
+    end: moment.utc(task.end).local().format(),
   });
 
   const handleChange = (e) => {
@@ -24,6 +26,7 @@ function EditTask({ task, closeEditTask, refresh, setRefresh }) {
   };
 
   const handleSave = () => {
+    console.log(editedTask);
     axios.put('/skoolhub/edittask', {
       role: userData.role,
       data: editedTask,
@@ -38,8 +41,19 @@ function EditTask({ task, closeEditTask, refresh, setRefresh }) {
   };
 
   const handleDelete = () => {
-    // Handle delete action here
-    // console.log("Delete task");
+    axios.delete('/skoolhub/deletetask', {
+      data: {
+        role: userData.role,
+        data: editedTask,
+      },
+    })
+      .then(() => {
+        setRefresh(!refresh);
+        closeEditTask();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (

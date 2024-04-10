@@ -3,9 +3,14 @@
   justify-content: flex-end;
   align-items: center;
   margin-left: auto;
-  background-color: #858D6F;
+  color: black;
+  background-color: #CED2BA;
   transition: background-color 0.5s;
 
+}
+
+.add-task:hover {
+  color: white;
 }
 
 .tasks-header {
@@ -20,7 +25,10 @@
   width: 60%;
   min-height: 70vh;
   border-radius: 10px;
+  margin-left: 2rem;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
 }
+
 
 .edit-task {
   text-align: center;
