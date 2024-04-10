@@ -17,7 +17,7 @@ function SubmitAssignmentModal({
     const formData = new FormData();
 
     const submitToServer = (fileData) => {
-      axios.post(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/submitassignment`, fileData)
+      axios.post(`http://skoolhub/submitassignment`, fileData)
         .then((response) => {
           //
           //
