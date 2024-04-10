@@ -1,6 +1,7 @@
 import React from 'react';
 import EmailTemplateView from './EmailTemplateView';
 import { useUserData } from '../data-providers/UserDataProvider';
+import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 
 function EmailModal({
@@ -10,6 +11,13 @@ function EmailModal({
   // update Subject and line of email, send email on submit
   return (
     <div className="emailModal">
+      <motion.div
+            className="modal-content"
+            initial={{ opacity: 0, scale: 0.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            exit={{ scale: 0.5 }}
+          >
       <div className="emailModalContent">
         {userData.role === 2 && (
           <EmailTemplateView
@@ -34,6 +42,7 @@ function EmailModal({
           </div>
         </form>
       </div>
+      </motion.div>
     </div>
   );
 }

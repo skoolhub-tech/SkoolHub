@@ -53,6 +53,13 @@ function EmailTeachersView() {
       });
   }, []);
 
+  function showEmailSentTimer() {
+    setEmailSent(true);
+    setTimeout(() => {
+      setEmailSent(false);
+    }, 2000);
+  }
+
   // sends email to all selected selected people in receiver email list
   const email = async (e) => {
     e.preventDefault();
@@ -68,7 +75,7 @@ function EmailTeachersView() {
     setEmailModal(false);
     setSubjectLine('');
     setBody('');
-    setEmailSent(true);
+    showEmailSentTimer();
     /*
     const response = await sendEmail(data);
     if (response === 'Email Sent!') {
