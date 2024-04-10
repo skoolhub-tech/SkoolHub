@@ -104,6 +104,7 @@ function CreateUser({ exitModal }) {
 
       <div className="modal-content admin-modal">
         <button type="button" onClick={exitModal}>X</button>
+      <div className="admin-form">
 
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">
@@ -149,6 +150,7 @@ function CreateUser({ exitModal }) {
           <button type="submit">Create User</button>
         </form>
 
+        </div>
         <div>
           <h2>Current Users</h2>
           <label htmlFor="roleFilter">

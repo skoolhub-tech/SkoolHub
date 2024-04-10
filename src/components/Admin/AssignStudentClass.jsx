@@ -62,31 +62,44 @@ function AssignStudentClass() {
     deleteStudentFromClass(selectedClass, studentId);
   };
 
-  const filteredStudents = students.filter((student) =>
-  student.name.toLowerCase().includes(searchQuery.toLowerCase())
-);
+  const filteredStudents = students.filter(
+    (student) => student.name.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
 
+  function getSelectedClassName() {
+    const selectedClassObj = classes.find((classObj) => classObj.id == selectedClass);
+    if (selectedClassObj) {
+      return selectedClassObj.name;
+    }
+    return '';
+  }
 
   return (
     <div>
-      <div className="admin-dropdown-searchbar">
-        <select
-          value={selectedClass}
-          onChange={(e) => handleClassChange(e.target.value)}
-        >
-          <option value="">Select a class</option>
-          {classes.map((classObj) => (
-            <option key={classObj.id} value={classObj.id}>{classObj.name}</option>
-          ))}
-        </select>
-      </div>
 
-      {filteredStudents.length > 0 && (
+      {true && (
         <div className="admin-students-list">
           <div>
             <div className="admin-header">
-              {selectedClass && (
-                <label className="admin-search-bar" htmlFor="searchBar">
+              <div
+                className="admin-dropdown"
+              >
+                <select
+                  value={selectedClass}
+                  onChange={(e) => handleClassChange(e.target.value)}
+                >
+                  <option value="">Select a class</option>
+                  {classes.map((classObj) => (
+                    <option key={classObj.id} value={classObj.id}>{classObj.name}</option>
+                  ))}
+                </select>
+              </div>
+
+              {true && (
+                <label
+                  className="admin-search-bar"
+                  htmlFor="searchBar"
+                >
                   Search:
                   <input
                     type="text"
@@ -96,13 +109,15 @@ function AssignStudentClass() {
                   />
                 </label>
               )}
-              <h2 className="admin-h2">Students</h2>
+              <h2 className="admin-h2">
+                {selectedClass !== '' ? getSelectedClassName() : ''}
+              </h2>
               <button type="button" onClick={openModal}>Add Student</button>
             </div>
             <table>
               <thead>
                 <tr>
-                  <th>ID</th>
+                  {/* <th>ID</th> */}
                   <th>Name</th>
                   <th>Email</th>
                   <th>Action</th>
@@ -111,7 +126,7 @@ function AssignStudentClass() {
               <tbody>
                 {filteredStudents.map((student) => (
                   <tr key={student.id}>
-                    <td>{student.id}</td>
+                    {/* <td>{student.id}</td> */}
                     <td>{student.name}</td>
                     <td>{student.email}</td>
                     <td><button type="button" onClick={() => handleRemoveClick(student.id)}>Remove</button></td>
