@@ -13,6 +13,7 @@ function ClassesDropDownMenu({ classes, setSelectedClass }) {
   function handleKeyPress(event) {
     if (event.key === 'Enter') {
       setSelectedClass(event.target.textContent);
+      setIsDropdownOpen(!isDropdownOpen);
     }
   }
 

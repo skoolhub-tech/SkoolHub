@@ -8,7 +8,7 @@ function SubmittedAssignmentsTabelTeacher({ assignment }) {
 
   const getSubmissions = async () => {
     try {
-      const response = await axios.get(`http://${process.env.SERVER_IP}:${process.env.PORT}/skoolhub/assignments/submissions/?id=${assignment.id}`);
+      const response = await axios.get(`/skoolhub/assignments/submissions/?id=${assignment.id}`);
       setSubmissions(response.data);
     } catch (error) {
       console.error('Error fetching submissions:', error);
