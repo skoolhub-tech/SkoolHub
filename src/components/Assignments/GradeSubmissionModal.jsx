@@ -2,9 +2,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
-import { FaBookOpen } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 import './gradeSubmissionModal.css';
-
 
 function GradeSubmissionModal({ setGradeSubmissionModalOpen }) {
   const [grade, setGrade] = useState('');
@@ -30,7 +29,6 @@ function GradeSubmissionModal({ setGradeSubmissionModalOpen }) {
         onClick={() => setGradeSubmissionModalOpen(false)}
         onKeyPress={handleOverlayKeypress}
         type="button"
-        tabIndex={0}
       />
       <div className="grade_submission_modal">
         <h2>Grade Submission</h2>
@@ -58,3 +56,7 @@ function GradeSubmissionModal({ setGradeSubmissionModalOpen }) {
 }
 
 export default GradeSubmissionModal;
+
+GradeSubmissionModal.propTypes = {
+  setGradeSubmissionModalOpen: PropTypes.func.isRequired,
+};

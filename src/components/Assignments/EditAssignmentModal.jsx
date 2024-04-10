@@ -29,10 +29,12 @@ function EditAssignmentModal({
         onClick={() => setEditSubmissionModalIsOpen(false)}
         onKeyPress={handleOverlayKeypress}
         type="button"
-        tabIndex={0}
       />
       <div className="edit_assignment_modal">
-        <h2>Edit Assignment: {assignment.name}</h2>
+        <h2>
+          Edit Assignment:
+          {assignment.name}
+        </h2>
         <form onSubmit={handleSubmitEdit}>
           <label htmlFor="assignmentName">
             Assignment Name:
@@ -68,3 +70,13 @@ function EditAssignmentModal({
 }
 
 export default EditAssignmentModal;
+
+EditAssignmentModal.propTypes = {
+  assignment: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    due_date: PropTypes.string,
+    instructions: PropTypes.string,
+  }).isRequired,
+  setEditSubmissionModalIsOpen: PropTypes.func.isRequired,
+};
