@@ -50,7 +50,7 @@ function EditAssignmentModal({
             <input
               type="date"
               id="dueDate"
-              value={dueDate}
+              value={dueDate.slice(0, 10)}
               onChange={(e) => setDueDate(e.target.value)}
             />
           </label>
