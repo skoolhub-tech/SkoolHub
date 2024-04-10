@@ -52,10 +52,12 @@ function AssignmentsPage() {
     <div className="assignments-container">
       <h1>Assignments</h1>
       <div className="classes-dropdown-create-assignment">
+        {viewAssignmentSubmissions === null && (
         <ClassesDropDownMenu
           classes={data}
           setSelectedClass={setSelectedClass}
         />
+        )}
         {selectedClass && !viewAssignmentSubmissions && role === 2 && (
         <button type="button" className="create_assignment_button" onClick={() => setCreateAssignmentModalOpen(true)}>
           Create Assignment

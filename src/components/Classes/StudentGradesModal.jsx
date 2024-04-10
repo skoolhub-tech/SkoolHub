@@ -19,7 +19,8 @@ function StudentGradesModal({
         const studentGrades = response.data;
         setGrades(response.data);
         const totalScore = studentGrades.reduce((acc, grade) => acc + grade.score, 0);
-        const average = (totalScore / studentGrades.length).toFixed(2);
+        const totalPossible = studentGrades.reduce((acc, grade) => acc + grade.total_points, 0);
+        const average = ((totalScore / totalPossible) * 100).toFixed(2);
         setAverageGrade(average);
         // Create chart after grades are fetched and set
         const ctx = chartRef.current.getContext('2d');

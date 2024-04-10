@@ -1,6 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 import { useUserData } from '../data-providers/UserDataProvider';
 import StudentGradesModal from './StudentGradesModal';
 import StudentTable from './StudentTable';
@@ -88,14 +90,20 @@ function Classes() {
       )}
       {showModal && selectedStudent && (
         <div className="modal-backdrop">
-          <div className="modal-content">
+          <motion.div
+            className="modal-content"
+            initial={{ opacity: 0, scale: 0.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            exit={{ scale: 0.5 }}
+          >
             <StudentGradesModal
               studentName={selectedStudent.name}
               studentId={selectedStudent.id}
               classId={selectedClass}
               onClose={() => setShowModal(false)}
             />
-          </div>
+          </motion.div>
         </div>
       )}
     </div>

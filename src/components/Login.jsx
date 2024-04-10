@@ -21,10 +21,10 @@ function Login({ handleLoginEvent }) {
 
   const sendCodeByEmail = async (email, code) => {
     try {
-      await emailjs.send('service_haho0x7', 'template_t837vcp', {
+      await emailjs.send('service_3kyf5ip', 'template_nlg4cus', {
         to_email: email,
         message: code,
-      }, '0N-1NSzAKcK0vEt7G');
+      }, 'lANtIwYBJdwYhxvdz');
       //
       //
       //

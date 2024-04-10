@@ -18,6 +18,7 @@ function Homepage() {
   } = userData;
 
   const [classes, setClasses] = useState([]);
+  const [selectedClass, setSelectedClass] = useState('');
   const [assignments, setAssignments] = useState([]);
   const [tasks, setTasks] = useState([]);
 
@@ -40,7 +41,7 @@ function Homepage() {
   };
 
   useEffect(() => {
-    axios.get(`/skoolhub/classes/${email}`)
+    axios.get(`/skoolhub/user/classes/${email}`)
       .then((response) => setClasses(response.data))
       .catch((error) => console.error({
         Message: 'Error retrieving classes.',
@@ -64,8 +65,10 @@ function Homepage() {
 
   const filterAssignments = (event) => {
     const selectedOption = event.target.options[event.target.selectedIndex];
+    console.log(selectedOption.text);
+    setSelectedClass(selectedOption.value);
 
-    if (selectedOption.value) {
+    if (selectedOption.value !== 'All Classes') {
       getCurrentAssignments(selectedOption.value);
     } else {
       getCurrentAssignments();
@@ -74,9 +77,7 @@ function Homepage() {
 
   return (
     <div className="homepage-container">
-      <h1>
-        Welcome back, {userData.name}
-      </h1>
+      <h1>{`Welcome back, ${name}`}</h1>
       <div className="homepage-flex-container">
         {assignments.length > 0 && (
           <div className="homepage-assignments-container">
@@ -84,6 +85,7 @@ function Homepage() {
             <AssignmentsTable
               assignments={assignments}
               classes={classes}
+              selectedClass={selectedClass}
               filter={filterAssignments}
             />
           </div>
@@ -93,6 +95,7 @@ function Homepage() {
             <h2>Today&apos;s Tasks</h2>
             <Calendar
               localizer={localizer}
+              scrollToTime={moment().startOf('hour').toDate()}
               events={tasks}
               defaultView="day"
               views={['day']}
