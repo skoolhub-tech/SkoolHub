@@ -29,7 +29,15 @@
 .admin-create-buttons {
     display: flex;
     justify-content: flex-end;
-    position: relative;
     top: 1rem;
     column-gap: 1rem;
+}
+
+.admin-dropdown {
+    max-width: fit-content;
+}
+
+.admin-form {
+  border: 1px solid black;
+  border-radius: 5px;
 }
