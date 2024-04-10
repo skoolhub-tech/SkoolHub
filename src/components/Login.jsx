@@ -99,7 +99,7 @@ function Login({ handleLoginEvent }) {
       });
 
       console.log('Responses', response);
-      await sendCodeByEmail('notmyemail@fake.com', response.data.token);
+      await sendCodeByEmail(loginInfo.email, response.data.token);
       setLoginInfo({
         ...loginInfo,
         code: response.data.token,

@@ -13,7 +13,7 @@ const teachersData = [
 
 const studentsData = [
   { name: 'John Smith', email: 'john.smith@gmail.com' },
-  { name: 'Jane Johnson', email: 'jane.johnson@gmail.com' },
+  { name: 'Jane Johnson', email: 'jr.tankersley@gmail.com' },
   { name: 'Michael Brown', email: 'michael.brown@gmail.com' },
   { name: 'Emily Davis', email: 'emily.davis@gmail.com' },
   { name: 'William Miller', email: 'william.miller@gmail.com' },
@@ -493,7 +493,7 @@ const adminCalendarData = [
 
 const credentialsData = [
   { email: 'jsmith@gmail.com', password: 'vasetime', role_id: 1 },
-  { email: 'jane.johnson@skool.edu', password: 'testingblue', role_id: 1 },
+  { email: 'jr.tankersley@gmail.com', password: 'testingblue', role_id: 1 },
   { email: 'stevenn.kkim@gmail.com', password: 'skoolhubdemo', role_id: 2 },
   { email: 'jane.doe@hotmail.com', password: 'password123', role_id: 2 },
   { email: 'john.smith@gmail.com', password: 'password', role_id: 3 },
