@@ -27,6 +27,9 @@ function AddTask({
   };
 
   const handleSave = () => {
+    if (!newTask.title) {
+      return;
+    }
     axios.post('/skoolhub/submittask', {
       role: userData.role,
       data: newTask,
@@ -52,6 +55,8 @@ function AddTask({
             type="text"
             id="title"
             name="title"
+            required
+            placeholder="A title is required"
             value={newTask.title}
             onChange={handleChange}
             disabled={false}

@@ -26,6 +26,9 @@ function EditTask({
   };
 
   const handleSave = () => {
+    if (!editedTask.title) {
+      return;
+    }
     axios.put('/skoolhub/edittask', {
       role: userData.role,
       data: editedTask,
@@ -67,6 +70,8 @@ function EditTask({
             type="text"
             id="title"
             name="title"
+            required
+            placeholder="A title is required"
             value={editedTask.title}
             onChange={handleChange}
             disabled={false}

@@ -27,6 +27,9 @@ function AddFromSelect({
   };
 
   const handleSave = () => {
+    if (!newTask.title) {
+      return;
+    }
     axios.post('/skoolhub/submittask', {
       role: userData.role,
       data: newTask,
@@ -52,6 +55,8 @@ function AddFromSelect({
             type="text"
             id="title"
             name="title"
+            placeholder="A title is required"
+            required
             value={newTask.title}
             onChange={handleChange}
             disabled={false}
