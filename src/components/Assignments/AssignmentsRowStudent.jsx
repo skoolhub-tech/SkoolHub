@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useUserData } from '../data-providers/UserDataProvider';
+// eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
 import SubmitAssignmentButton from './SubmitAssignmentButton';
 import ViewSubmittedAssignmentButton from './ViewSubmittedAssignmentButton';
 import formatDate from '../../utils/formatDate_Month_D_Y';
@@ -44,6 +45,7 @@ function AssignmentsRow({
           setAssignmentId={setAssignmentId}
           setViewSubmissionModalOpen={setViewSubmissionModalOpen}
           viewSubmissionModalOpen={viewSubmissionModalOpen}
+          setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}
         />
         )}
       </td>

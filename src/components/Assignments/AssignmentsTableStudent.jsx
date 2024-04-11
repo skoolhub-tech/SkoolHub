@@ -11,9 +11,10 @@ function AssignmentsTableStudent({
   setViewSubmissionModalOpen,
   setAssignmentId,
   viewSubmissionModalOpen,
+  submitAssignmentModalIsOpen,
+  setSubmitAssignmentModalIsOpen,
 }) {
   const [assignmentToView, setAssignmentToView] = useState(null);
-  const [submitAssignmentModalIsOpen, setSubmitAssignmentModalIsOpen] = useState(false);
   const [assignmentToSubmit, setAssignmentToSubmit] = useState(null);
   return (
     <>
@@ -60,10 +61,12 @@ function AssignmentsTableStudent({
 export default AssignmentsTableStudent;
 
 AssignmentsTableStudent.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.array.isRequired,
   selectedClass: PropTypes.string.isRequired,
   getClassesAndAssignments: PropTypes.func.isRequired,
   setViewSubmissionModalOpen: PropTypes.func.isRequired,
   setAssignmentId: PropTypes.func.isRequired,
   viewSubmissionModalOpen: PropTypes.bool.isRequired,
+  submitAssignmentModalIsOpen: PropTypes.bool.isRequired,
+  setSubmitAssignmentModalIsOpen: PropTypes.func.isRequired,
 };

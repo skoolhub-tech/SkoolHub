@@ -20,6 +20,7 @@ function AssignmentsPage() {
   const [studentId, setStudentId] = useState(null);
   const [viewAssignmentSubmissions, setViewAssignmentSubmissions] = useState(null);
   const [createAssignmentModalOpen, setCreateAssignmentModalOpen] = useState(false);
+  const [submitAssignmentModalIsOpen, setSubmitAssignmentModalIsOpen] = useState(false);
 
   const getClassesAndAssignments = useCallback(async () => {
     try {
@@ -56,6 +57,7 @@ function AssignmentsPage() {
         <ClassesDropDownMenu
           classes={data}
           setSelectedClass={setSelectedClass}
+          setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}
         />
         )}
         {selectedClass && !viewAssignmentSubmissions && role === 2 && (
@@ -100,6 +102,8 @@ function AssignmentsPage() {
                 setViewSubmissionModalOpen={setViewSubmissionModalOpen}
                 setAssignmentId={setAssignmentId}
                 viewSubmissionModalOpen={viewSubmissionModalOpen}
+                submitAssignmentModalIsOpen={submitAssignmentModalIsOpen}
+                setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}
               />
             )}
             {role === 2 && viewAssignmentSubmissions === null && (
