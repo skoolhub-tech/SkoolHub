@@ -27,7 +27,7 @@ function showNotificationTimer() {
   <Notify
     message={message}
     color={color}
-    icon={<MdOutlineMarkEmailRead />}
+    icon={icon}
   />
 )}
 */
