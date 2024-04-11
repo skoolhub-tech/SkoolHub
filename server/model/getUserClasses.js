@@ -24,7 +24,6 @@ module.exports = async (email) => {
     const values = [email];
     await client.connect();
     const { rows } = await client.query(query, values);
-    console.log(rows);
     return rows;
   } catch (error) {
     console.error(error);

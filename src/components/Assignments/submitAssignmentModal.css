@@ -9,3 +9,7 @@
 .submit_assignment_modal * {
   margin: 0;
 }
+.submission-input {
+  width: 65%;
+  margin-right: 28%;
+}

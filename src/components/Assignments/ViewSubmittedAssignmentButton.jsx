@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
@@ -23,7 +24,7 @@ function ViewSubmittedAssignmentButton(
       type="button"
       onClick={handleClick}
     >
-      <FaMagnifyingGlass size={15}/>
+      <FaMagnifyingGlass size={15} />
     </button>
   );
 }

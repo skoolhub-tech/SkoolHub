@@ -68,3 +68,14 @@ td {
   flex-direction: row;
   justify-content: space-between;
 }
+.back_button {
+  margin-left: 91%;
+}
+.edit_assignment_button, .view_submission {
+  display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.view_submissions_button, .grade_submission, .submission-grade {
+  padding-left:6%;
+}
