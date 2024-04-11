@@ -70,7 +70,6 @@ function Homepage() {
 
   const filterAssignments = (event) => {
     const selectedOption = event.target.options[event.target.selectedIndex];
-    console.log(selectedOption.text);
     setSelectedClass(selectedOption.value);
 
     if (selectedOption.value !== 'All Classes') {
