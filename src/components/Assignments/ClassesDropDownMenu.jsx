@@ -1,47 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './classesDropDownMenu.css';
 
 function ClassesDropDownMenu({ classes, setSelectedClass }) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  function handleSelectClassClick(event) {
-    setSelectedClass(event.target.textContent);
-    setIsDropdownOpen(!isDropdownOpen);
-  }
-
-  function handleKeyDown(event) {
-    if (event.key === 'Enter') {
-      setSelectedClass(event.target.textContent);
-      setIsDropdownOpen(!isDropdownOpen);
-    }
-  }
-
-  function toggleDropdown() {
-    setIsDropdownOpen(!isDropdownOpen);
-  }
-
   return (
     <div>
-      <button
+      <select
         type="button"
         className="classes_drop_down_menu"
-        onClick={toggleDropdown}
+        onChange={(e) => setSelectedClass(e.target.value)}
       >
-        CHOOSE A CLASS
-      </button>
-      {isDropdownOpen && classes.map((item) => (
-        <div
-          className="select_class_button"
-          role="button"
-          key={item.id}
-          onClick={handleSelectClassClick}
-          onKeyDown={handleKeyDown}
-          tabIndex={0}
-        >
-          {item.name}
-        </div>
-      ))}
+        <option value="">Choose a Class</option>
+        {classes.map((item) => (
+          <option
+            className="select_class_button"
+            key={item.id}
+            tabIndex={0}
+          >
+            {item.name}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }

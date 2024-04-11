@@ -13,9 +13,10 @@
 }
 
 .emailDropdown {
-  transform: scale(1.05);
-  border-radius: 10px;
+  transform: scale(1.15);
+  border-radius: 5px;
   margin-bottom: 1rem;
+  margin-left: 1%;
 }
 /*================= container holding current group and select buttons ======================*/
 .peopleListView {

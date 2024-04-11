@@ -14,9 +14,10 @@ import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
 import Homepage from './components/Homepage/Homepage';
 import LandingPage from './components/LandingPage';
-import logo from '../photos/skoolhublogo.png';
+import logo from '../photos/skoolhub2-no-background.png';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [loginButtonClicked, setLoginButtonClicked] = useState(false);
 
   const handleLogin = (boolean) => {
     setIsLoggedIn(boolean);
@@ -28,6 +29,7 @@ function App() {
     localStorage.clear();
   };
 
+
   return (
     <div className="navbar-container">
       <Router>
@@ -35,8 +37,13 @@ function App() {
           <LandingPage />
           {/* {isLoggedIn ? (
             <>
-              <img src={logo} alt="logo" className="login-logo" />
-              <button className="log-out-bttn" type="button" onClick={handleLogOut}>Log out</button>
+              <div className="after-login-logo-slogan">
+                <img src={logo} alt="logo" className="after-login-logo" />
+                <div className="after-slogan">
+                  <h3 className="after-welcome-message-one">Skoolhub</h3>
+                  <h4 className="after-welcome-message-two">Teaching In. Tedious Out.</h4>
+                </div>
+              </div>
               <NavBar handleLogOut={handleLogOut} />
               <Routes>
                 <Route path="/homepage" element={<HomepageWithTaskCheck />} />
@@ -50,9 +57,12 @@ function App() {
             </>
           ) : (
             <div className="login-page">
-              <div>
-                <h1 className="login-h1">SkoolHub</h1>
-                <p className="login-p">Teaching in. Tedious out.</p>
+              <div className="login-logo-slogan">
+                <img src={logo} alt="logo" className="login-logo" />
+                <div className="slogan">
+                  <h3 className="welcome-message-one">Skoolhub</h3>
+                  <h4 className="welcome-message-two">Teaching In. Tedious Out.</h4>
+                </div>
               </div>
               <Login handleLoginEvent={handleLogin} isLoggedIn={isLoggedIn} />
             </div>
