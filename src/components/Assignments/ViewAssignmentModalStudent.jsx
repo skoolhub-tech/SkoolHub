@@ -31,22 +31,27 @@ function ViewAssignmentModalStudent({ assignment, setAssignmentToView }) {
         <h1>{assignment.name}</h1>
         <p>
           Assigned By:
+          {' '}
           {assignment.teacher_name}
         </p>
         <p>
           Instructions:
+          {' '}
           {assignment.instructions}
         </p>
         <p>
           Grade:
+          {' '}
           {assignment.grade || 'Not Graded'}
         </p>
         <p>
           Score:
+          {' '}
           {assignment.score || 'Not Scored'}
         </p>
         <p>
           Total Points:
+          {' '}
           {assignment.total_points || 'Not Scored'}
         </p>
       </div>
