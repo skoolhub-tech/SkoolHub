@@ -59,7 +59,12 @@ function Classes() {
   };
 
   return (
-    <div className="classes">
+    <motion.div
+      className="classes"
+      initial={{ x: '100%' }}
+      animate={{ x: '0%' }}
+      transition={{ ease: 'easeInOut', duration: 0.7 }}
+    >
       <div className="class-header">
         <h1>Classes</h1>
       </div>
@@ -106,7 +111,7 @@ function Classes() {
           </motion.div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
 

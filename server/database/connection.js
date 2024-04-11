@@ -91,6 +91,7 @@ const createTableQuery = `
     score INT,
     total_points INT,
     grade VARCHAR(255),
+    feedback TEXT,
     completed BOOLEAN NOT NULL,
     FOREIGN KEY (student_id) REFERENCES students(id),
     FOREIGN KEY (assignment_id) REFERENCES assignments(id),

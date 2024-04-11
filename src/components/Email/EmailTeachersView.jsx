@@ -5,8 +5,9 @@ import sendEmail from '../../utils/sendEmail';
 import EmailModal from './EmailModal';
 import DropDown from './DropDownSelector';
 import PeopleList from './PeopleList';
-import { useUserData } from '../data-providers/UserDataProvider';
 import ThresholdInput from './ThresholdInput';
+import EmailNotify from './EmailNotify';
+import { useUserData } from '../data-providers/UserDataProvider';
 // userData needs to contain id, email, name, and role
 function EmailTeachersView() {
   const { userData } = useUserData();
@@ -19,7 +20,7 @@ function EmailTeachersView() {
   const [potentialEmailees, setPotentialEmailees] = useState([]);
   const [classes, setClasses] = useState([]);
   const [currentClass, setCurrentClass] = useState({ name: 'select a class' });
-  const [threshold, setThreshold] = useState('');
+  const [threshold, setThreshold] = useState(100);
   // email form data
   const [subjectLine, setSubjectLine] = useState('');
   const [body, setBody] = useState('');
@@ -52,7 +53,14 @@ function EmailTeachersView() {
       });
   }, []);
 
-  // sends email to all selected selected people in class/faculty
+  function showEmailSentTimer() {
+    setEmailSent(true);
+    setTimeout(() => {
+      setEmailSent(false);
+    }, 2000);
+  }
+
+  // sends email to all selected selected people in receiver email list
   const email = async (e) => {
     e.preventDefault();
     const emailList = Object.keys(receiverEmailList).join(', ');
@@ -63,7 +71,6 @@ function EmailTeachersView() {
       senderEmail: userData.email,
       receiverEmail: emailList,
     };
-    console.log(data, 'data');
     console.log('sent to', data.receiverEmail);
     setEmailModal(false);
     setSubjectLine('');
@@ -82,6 +89,7 @@ function EmailTeachersView() {
   };
   // get students in class set state to list of student Objects
   const handleClassChange = (classObj) => {
+    setEmailSent(false);
     setSubjectLine('');
     setBody('');
     setRecieverEmailList({});
@@ -130,7 +138,6 @@ function EmailTeachersView() {
     <div className="emailsDiv">
       <div className="emailsDiv-without-modal">
         <h1>Email</h1>
-        {emailSent && <p>Email Sent!</p>}
         {errorMessage && <p>{errorMessage}</p>}
         <DropDown
           classes={classes}
@@ -144,9 +151,9 @@ function EmailTeachersView() {
             setRecieverEmailList={setRecieverEmailList}
             setEmailModal={setEmailModal}
             threshold={threshold}
-          setThreshold={setThreshold}
-          setOpenThreshold={setOpenThreshold}
-        />
+            setThreshold={setThreshold}
+            setOpenThreshold={setOpenThreshold}
+          />
         )}
       </div>
       {emailModal && (

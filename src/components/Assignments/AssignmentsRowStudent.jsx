@@ -13,12 +13,13 @@ function AssignmentsRow({
   setViewSubmissionModalOpen,
   viewSubmissionModalOpen,
   setAssignmentId,
+  setAssignmentToView,
 }) {
   const { userData: { email } } = useUserData();
 
   return (
     <tr>
-      <td className="view-assignment-button">{assignment.name}</td>
+      <td className="view-assignment-button" onClick={() => setAssignmentToView(assignment)}>{assignment.name}</td>
       <td>{formatDate(assignment.due_date)}</td>
       <td>{assignment.submitted_on ? formatDate(assignment.submitted_on) : ''}</td>
       <td className="submit-button">
@@ -55,4 +56,5 @@ AssignmentsRow.propTypes = {
   setViewSubmissionModalOpen: PropTypes.func.isRequired,
   viewSubmissionModalOpen: PropTypes.bool.isRequired,
   setAssignmentId: PropTypes.func.isRequired,
+  setAssignmentToView: PropTypes.func.isRequired,
 };

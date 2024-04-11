@@ -11,7 +11,7 @@ const getRoleAtLogin = require('./getRoleAtLogin');
 const getStudentIdFromEmail = require('./getStudentIdFromEmail');
 const getStudents = require('./getStudents');
 const getSubmissionsForAssignment = require('./getSubmissionsForAssignment');
-const getSubmittedOnDateForAssignment = require('./getSubmittedOnDateForAssignment');
+const getSubmittedAssignmentInfo = require('./getSubmittedAssignmentInfo');
 const getTeacherClasses = require('./getTeacherClasses');
 const getTeachers = require('./getTeachers');
 const insertUpdateSubmittedAssignment = require('./insertUpdateSubmittedAssignment');
@@ -32,6 +32,8 @@ const deleteClass = require('./deleteClass');
 const deleteCalendar = require('./deleteCalendar');
 const getCurrentAssignments = require('./getCurrentAssignments');
 const getClassThreshold = require('./getClassThreshold');
+const updateAssignment = require('./updateAssignment');
+const updateSubmissionGrade = require('./updateSubmissionGrade');
 const updateThreshold = require('./updateThreshold');
 const getUserClasses = require('./getUserClasses');
 
@@ -49,7 +51,7 @@ module.exports = {
   getStudentIdFromEmail,
   getStudents,
   getSubmissionsForAssignment,
-  getSubmittedOnDateForAssignment,
+  getSubmittedAssignmentInfo,
   getTeacherClasses,
   getTeachers,
   insertUpdateSubmittedAssignment,
@@ -70,6 +72,8 @@ module.exports = {
   deleteCalendar,
   getCurrentAssignments,
   getClassThreshold,
+  updateAssignment,
+  updateSubmissionGrade,
   updateThreshold,
   getUserClasses,
 };
