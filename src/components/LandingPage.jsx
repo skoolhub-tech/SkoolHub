@@ -1,4 +1,9 @@
 import React from 'react';
+import snipp1 from '../../photos/snip1.gif';
+import snipp2 from '../../photos/snipp2.gif';
+import snipp3 from '../../photos/snipp3.gif';
+import snipp4 from '../../photos/snipp4.gif';
+import skoolhublogo from '../../photos/skoolhublogo.png';
 
 function LandingPage() {
   return (
@@ -7,12 +12,16 @@ function LandingPage() {
         <h1>Welcome to SkoolHub</h1>
         <button>Login</button>
       </div>
+      <div className="starting-page">
+        <img className="logo-landing" src={skoolhublogo}></img>
+      </div>
       <div className="snipp-container1">
         <div className="snipp-text1">
-          <p>In an era where education is both a passport to opportunity and a pathway to innovation, our web-based education management system is designed to revolutionize the teaching and learning experience. </p>
+          <p className="typing-animation">In an era where education is both a passport to opportunity and a pathway to innovation, our web-based education management system is designed to revolutionize the teaching and learning experience. </p>
         </div>
         <div className="snipp1">
-          <p>Seamless, Easy-to-use 2FA login interface</p>
+          {/* <p>Seamless, Easy-to-use 2FA login interface</p> */}
+          <img className="snipp-img" src={snipp1} alt="snipp1" />
         </div>
       </div>
       <div className="snipp-container2">
@@ -23,7 +32,8 @@ function LandingPage() {
           </p>
         </div>
         <div className="snipp2">
-          <p>Giving assignments to students with just a touch of a button...</p>
+          <img className="snipp-img" src={snipp2} alt="snipp2" />
+          {/* <p>Giving assignments to students with just a touch of a button...</p> */}
         </div>
       </div>
       <div className="snipp-container3">
@@ -31,7 +41,8 @@ function LandingPage() {
         <p>Our platform streamlines administrative tasks, enhances classroom interaction, and provides actionable insights into student performance, all through an intuitive, user-friendly interface.</p>
         </div>
         <div className="snipp3">
-          <p>Full administrative control with a friendly user-interface...</p>
+        <img className="snipp-img" src={snipp3} alt="snipp2" />
+          {/* <p>Full administrative control with a friendly user-interface...</p> */}
         </div>
       </div>
       <div className="snipp-container4">
@@ -45,7 +56,8 @@ function LandingPage() {
         </p>
         </div>
         <div className="snipp4">
-          <p>intuitive caledar design for users to create personal task lists...</p>
+        <img className="snipp-img" src={snipp4} alt="snipp2" />
+          {/* <p>intuitive caledar design for users to create personal task lists...</p> */}
         </div>
       </div>
     </div>

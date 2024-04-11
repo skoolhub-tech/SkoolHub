@@ -5,6 +5,7 @@ import sendEmail from '../../utils/sendEmail';
 import EmailModal from './EmailModal';
 import AdminDropDown from './AdminDropDown';
 import PeopleList from './PeopleList';
+import EmailNotify from './EmailNotify';
 import { useUserData } from '../data-providers/UserDataProvider';
 // all teachers, all students, and all admin
 // need drop down to be teachers, students, admin
@@ -32,6 +33,13 @@ function EmailAdminView() {
         setPotentialEmailees([]);
       });
   }, []);
+
+  function showEmailSentTimer() {
+    setEmailSent(true);
+    setTimeout(() => {
+      setEmailSent(false);
+    }, 2000);
+  }
   // sends email to all selected selected people in class/faculty
   const email = async (e) => {
     e.preventDefault();
@@ -106,7 +114,6 @@ function EmailAdminView() {
     <div className="emailsDiv">
       <div className="emailsDiv-without-modal">
         <h1>Email</h1>
-        {emailSent && <p>Email Sent!</p>}
         {errorMessage && <p>{errorMessage}</p>}
         <AdminDropDown
           views={views}
@@ -127,6 +134,8 @@ function EmailAdminView() {
           setEmailModal={setEmailModal}
           setMessage={setBody}
           setSubject={setSubjectLine}
+          subject={subjectLine}
+          body={body}
           email={email}
         />
       )}

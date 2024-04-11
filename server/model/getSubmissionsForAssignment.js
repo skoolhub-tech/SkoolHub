@@ -8,6 +8,7 @@ module.exports = async (assignmentId) => {
     students.name AS student_name,
     students.email AS student_email,
     students.id AS student_id,
+    assignments.id AS assignment_id,
     students_assignments.submitted_on,
     students_assignments.score,
     students_assignments.total_points,
@@ -16,6 +17,7 @@ module.exports = async (assignmentId) => {
     students_assignments.file_path
     FROM students_assignments
     JOIN students ON students.id = students_assignments.student_id
+    JOIN assignments ON assignments.id = students_assignments.assignment_id
     WHERE students_assignments.assignment_id = $1;`;
     const values = [assignmentId];
     await client.connect();

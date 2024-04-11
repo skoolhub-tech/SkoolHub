@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './styles.css';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Route, Routes, Navigate,
+} from 'react-router-dom';
 import Login from './components/Login';
 import NavBar from './components/NavBar';
 import Task from './components/Task_list/Task';
@@ -12,10 +14,9 @@ import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
 import Homepage from './components/Homepage/Homepage';
 import LandingPage from './components/LandingPage';
-import './LandingPage.css';
-
+import logo from '../photos/skoolhublogo.png';
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const handleLogin = (boolean) => {
     setIsLoggedIn(boolean);
@@ -32,9 +33,10 @@ function App() {
       <Router>
         <UserDataProvider>
           <LandingPage />
-          {isLoggedIn ? (
+          {/* {isLoggedIn ? (
             <>
-            <button className="log-out-bttn" type="button" onClick={handleLogOut}>Log out</button>
+              <img src={logo} alt="logo" className="login-logo" />
+              <button className="log-out-bttn" type="button" onClick={handleLogOut}>Log out</button>
               <NavBar handleLogOut={handleLogOut} />
               <Routes>
                 <Route path="/homepage" element={<HomepageWithTaskCheck />} />
@@ -54,7 +56,7 @@ function App() {
               </div>
               <Login handleLoginEvent={handleLogin} isLoggedIn={isLoggedIn} />
             </div>
-          )}
+          )} */}
         </UserDataProvider>
       </Router>
     </div>

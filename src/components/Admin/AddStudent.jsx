@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
-function AddStudent({ closeModal, studentsInClass, selectedClass, fetchStudentsInClass }) {
+function AddStudent({
+  closeModal, studentsInClass, selectedClass, fetchStudentsInClass,
+}) {
   const [students, setStudents] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [refresh, setRefresh] = useState(false);
@@ -36,7 +39,6 @@ function AddStudent({ closeModal, studentsInClass, selectedClass, fetchStudentsI
       .catch((error) => {
         console.error(error);
       });
-
   };
 
   const handleAddClick = (studentId) => {
@@ -46,12 +48,20 @@ function AddStudent({ closeModal, studentsInClass, selectedClass, fetchStudentsI
   return (
     <div className="modal-backdrop">
 
-      <div className="modal-content admin-modal">
+      <motion.div
+        className="modal-content admin-modal"
+        initial={{ opacity: 0, scale: 0.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        exit={{ scale: 0.5 }}
+      >
         <button type="button" onClick={closeModal}>X</button>
         <h2>Students</h2>
 
         <label htmlFor="searchBar">
-          Search: {" "}
+          Search:
+          {' '}
+          {' '}
           <input
             type="text"
             id="searchBar"
@@ -80,7 +90,7 @@ function AddStudent({ closeModal, studentsInClass, selectedClass, fetchStudentsI
             ))}
           </tbody>
         </table>
-      </div>
+      </motion.div>
 
     </div>
   );
