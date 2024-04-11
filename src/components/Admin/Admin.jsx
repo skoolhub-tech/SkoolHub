@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import AssignStudentClass from './AssignStudentClass';
-import { useUserData } from '../data-providers/UserDataProvider';
 import CreateUser from './CreateUser';
 import CreateClass from './CreateClass';
 import './admin.css';
 
 function Admin() {
-  const { userData } = useUserData();
   const [showUsersModal, setShowUsersModal] = useState(false);
   const [showClassesModal, setShowClassesModal] = useState(false);
 
@@ -26,26 +24,22 @@ function Admin() {
 
   return (
     <motion.div
-      className="admin-container"
+      className="admin-motiondiv"
       initial={{ x: '100%' }}
       animate={{ x: '0%' }}
       transition={{ ease: 'easeInOut', duration: 0.7 }}
     >
-      {/* Your code here */}
-      <div className="admin-create-buttons">
-        <button type="button" onClick={handleUsersButtonClick}>Users</button>
-        <button type="button" onClick={handleClassesButtonClick}>Classes</button>
-      </div>
-      <AssignStudentClass />
-      {/* Users Modal */}
-      {showUsersModal && (
-        <CreateUser exitModal={exitModal} />
-      )}
+      <div className="admin-container">
+        <div className="admin-create-buttons">
+          <button type="button" onClick={handleUsersButtonClick}>Users</button>
+          <button type="button" onClick={handleClassesButtonClick}>Classes</button>
+        </div>
+        <AssignStudentClass />
+        {showUsersModal && <CreateUser exitModal={exitModal} />}
+        {showClassesModal && <CreateClass exitModal={exitModal} />}
 
-      {/* Classes Modal */}
-      {showClassesModal && (
-        <CreateClass exitModal={exitModal} />
-      )}
+      </div>
+
     </motion.div>
   );
 }
