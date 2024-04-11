@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, lazy } from 'react';
 import PropTypes from 'prop-types';
 import './styles.css';
 import {
@@ -12,13 +12,18 @@ import Classes from './components/Classes/Classes';
 import Admin from './components/Admin/Admin';
 import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
-import Homepage from './components/Homepage/Homepage';
+import BusAnimation from './animations/BusAnimation';
 import logo from '../photos/skoolhublogo.png';
+
+const HomepageWithTaskCheck = lazy(() => import('./components/HomepageWithTaskCheck'));
+
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [animationComplete, setAnimationComplete] = useState(true);
 
   const handleLogin = (boolean) => {
     setIsLoggedIn(boolean);
+    setAnimationComplete(false);
   };
 
   const handleLogOut = () => {
@@ -37,7 +42,17 @@ function App() {
               <button className="log-out-bttn" type="button" onClick={handleLogOut}>Log out</button>
               <NavBar handleLogOut={handleLogOut} />
               <Routes>
-                <Route path="/homepage" element={<HomepageWithTaskCheck />} />
+                <Route
+                  path="/homepage"
+                  element={(
+                    <div>
+                      {!animationComplete && (
+                        <BusAnimation onComplete={() => setAnimationComplete(true)} />
+                      )}
+                      {animationComplete && <HomepageWithTaskCheck />}
+                    </div>
+                  )}
+                />
                 <Route path="/assignments" element={<RoleBasedRoute roles={[2, 3]} component={<Assignments />} />} />
                 <Route path="/events" element={<Task />} />
                 <Route path="/classes" element={<RoleBasedRoute roles={[2]} component={<Classes />} />} />
@@ -61,10 +76,10 @@ function App() {
   );
 }
 
-function HomepageWithTaskCheck() {
-  const { userData } = useUserData();
-  return userData.role === 1 ? <Task /> : <Homepage />;
-}
+// function HomepageWithTaskCheck() {
+//   const { userData } = useUserData();
+//   return userData.role === 1 ? <Task /> : <Homepage />;
+// }
 
 function RoleBasedRoute({ roles, component }) {
   const { userData } = useUserData();
