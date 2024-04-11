@@ -16,7 +16,7 @@ module.exports = async (role, userId, classId) => {
       WHERE s.id = $1 ${classId ? 'AND a.class_id = $2' : ''};`;
   } else if (role === '2') {
     query = `
-      SELECT assignments.id, assignments.name AS assignment_name, assignments.class_id, assignments.due_date
+      SELECT assignments.id AS assignment_id, assignments.name AS assignment_name, assignments.class_id, assignments.due_date
       FROM assignments
       WHERE assignments.teacher_id = $1 AND assignments.due_date >= CURRENT_DATE
       ${classId ? 'AND assignments.class_id = $2' : ''}
