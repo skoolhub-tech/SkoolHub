@@ -24,18 +24,22 @@ function Admin() {
 
   return (
     <motion.div
-      className="admin-container"
+      className="admin-motiondiv"
       initial={{ x: '100%' }}
       animate={{ x: '0%' }}
       transition={{ ease: 'easeInOut', duration: 0.7 }}
     >
-      <div className="admin-create-buttons">
-        <button type="button" onClick={handleUsersButtonClick}>Users</button>
-        <button type="button" onClick={handleClassesButtonClick}>Classes</button>
+      <div className="admin-container">
+        <div className="admin-create-buttons">
+          <button type="button" onClick={handleUsersButtonClick}>Users</button>
+          <button type="button" onClick={handleClassesButtonClick}>Classes</button>
+        </div>
+        <AssignStudentClass />
+        {showUsersModal && <CreateUser exitModal={exitModal} />}
+        {showClassesModal && <CreateClass exitModal={exitModal} />}
+
       </div>
-      <AssignStudentClass />
-      {showUsersModal && <CreateUser exitModal={exitModal} />}
-      {showClassesModal && <CreateClass exitModal={exitModal} />}
+
     </motion.div>
   );
 }

@@ -81,3 +81,18 @@
     top: -2rem;
     left: -7.2rem;
 }
+
+.admin-container {
+    display: inline-block;
+    margin-top: 50px;
+}
+
+.admin-motiondiv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
