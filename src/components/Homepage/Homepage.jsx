@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import './homepage.css';
 import React from 'react';
 import axios from 'axios';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
-import './homepage.css';
+import { Calendar, momentLocalizer } from 'react-big-calendar';
 
 import { useUserData } from '../data-providers/UserDataProvider';
 import AssignmentsTable from './AssignmentsTable';
@@ -14,7 +14,10 @@ const { useState, useEffect } = React;
 function Homepage() {
   const { userData } = useUserData();
   const {
-    email, id, role, name,
+    email,
+    id,
+    role,
+    name,
   } = userData;
 
   const [classes, setClasses] = useState([]);
@@ -61,7 +64,8 @@ function Homepage() {
       }));
 
     getCurrentAssignments();
-  }, [userData]);
+    // TODO test login on .role dependency
+  }, [userData.role]);
 
   const filterAssignments = (event) => {
     const selectedOption = event.target.options[event.target.selectedIndex];
