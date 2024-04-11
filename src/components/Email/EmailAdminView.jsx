@@ -110,31 +110,33 @@ function EmailAdminView() {
         });
     }
   };
-// drop down to select teacher
+
   return (
-    <motion.div
-      className="emailsDiv"
-      initial={{ x: '100%' }}
-      animate={{ x: '0%' }}
-      transition={{ ease: 'easeInOut', duration: 0.7 }}
-    >
-      <div className="emailsDiv-without-modal">
-        <h1>Email</h1>
-        {errorMessage && <p>{errorMessage}</p>}
-        <AdminDropDown
-          views={views}
-          handleDropdownChange={handleDropdownChange}
-        />
-        {potentialEmailees.length > 0 && (
-          <PeopleList
-            currentClass={currentClass}
-            potentialEmailees={potentialEmailees}
-            receiverEmailList={receiverEmailList}
-            setRecieverEmailList={setRecieverEmailList}
-            setEmailModal={setEmailModal}
+    <>
+      <motion.div
+        className="emailsDiv"
+        initial={{ x: '100%' }}
+        animate={{ x: '0%' }}
+        transition={{ ease: 'easeInOut', duration: 0.7 }}
+      >
+        <div className="emailsDiv-without-modal">
+          <h1>Email</h1>
+          {errorMessage && <p>{errorMessage}</p>}
+          <AdminDropDown
+            views={views}
+            handleDropdownChange={handleDropdownChange}
           />
-        )}
-      </div>
+          {potentialEmailees.length > 0 && (
+            <PeopleList
+              currentClass={currentClass}
+              potentialEmailees={potentialEmailees}
+              receiverEmailList={receiverEmailList}
+              setRecieverEmailList={setRecieverEmailList}
+              setEmailModal={setEmailModal}
+            />
+          )}
+        </div>
+      </motion.div>
       {emailModal && (
         <EmailModal
           setEmailModal={setEmailModal}
@@ -145,7 +147,7 @@ function EmailAdminView() {
           email={email}
         />
       )}
-    </motion.div>
+    </>
   );
 }
 
