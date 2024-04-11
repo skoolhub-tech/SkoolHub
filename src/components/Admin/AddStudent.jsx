@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
-function AddStudent({ closeModal, studentsInClass, selectedClass, fetchStudentsInClass }) {
+function AddStudent({
+  closeModal, studentsInClass, selectedClass, fetchStudentsInClass,
+}) {
   const [students, setStudents] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [refresh, setRefresh] = useState(false);
@@ -9,10 +13,10 @@ function AddStudent({ closeModal, studentsInClass, selectedClass, fetchStudentsI
   const fetchStudents = () => {
     axios.get('/skoolhub/students')
       .then((response) => {
-        // console.log(response.data);
         setStudents(response.data);
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.error(error);
       });
   };
@@ -28,15 +32,14 @@ function AddStudent({ closeModal, studentsInClass, selectedClass, fetchStudentsI
 
   const AddStudentToClass = (classId, studentId) => {
     axios.post('/skoolhub/classes/students', { classId, studentId })
-      .then((response) => {
-        // console.log(response);
+      .then(() => {
         fetchStudentsInClass(classId);
         setRefresh(!refresh);
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.error(error);
       });
-
   };
 
   const handleAddClick = (studentId) => {
@@ -46,12 +49,20 @@ function AddStudent({ closeModal, studentsInClass, selectedClass, fetchStudentsI
   return (
     <div className="modal-backdrop">
 
-      <div className="modal-content admin-modal">
+      <motion.div
+        className="modal-content admin-modal"
+        initial={{ opacity: 0, scale: 0.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        exit={{ scale: 0.5 }}
+      >
         <button type="button" onClick={closeModal}>X</button>
         <h2>Students</h2>
 
         <label htmlFor="searchBar">
-          Search: {" "}
+          Search:
+          {' '}
+          {' '}
           <input
             type="text"
             id="searchBar"
@@ -63,7 +74,6 @@ function AddStudent({ closeModal, studentsInClass, selectedClass, fetchStudentsI
         <table className="admin-add-student-table">
           <thead>
             <tr>
-              {/* <th>ID</th> */}
               <th>Name</th>
               <th>Email</th>
               <th>Action</th>
@@ -72,7 +82,6 @@ function AddStudent({ closeModal, studentsInClass, selectedClass, fetchStudentsI
           <tbody>
             {filteredStudents.map((student) => (
               <tr key={student.id}>
-                {/* <td>{student.id}</td> */}
                 <td>{student.name}</td>
                 <td>{student.email}</td>
                 <td><button type="button" onClick={() => handleAddClick(student.id)}>ADD</button></td>
@@ -80,10 +89,21 @@ function AddStudent({ closeModal, studentsInClass, selectedClass, fetchStudentsI
             ))}
           </tbody>
         </table>
-      </div>
+      </motion.div>
 
     </div>
   );
 }
 
 export default AddStudent;
+
+AddStudent.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  studentsInClass: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  })).isRequired,
+  selectedClass: PropTypes.string.isRequired,
+  fetchStudentsInClass: PropTypes.func.isRequired,
+};

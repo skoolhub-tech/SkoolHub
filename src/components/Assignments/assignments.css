@@ -1,12 +1,13 @@
 .assignments-container {
   border-radius: 1rem;
-    background-color: #ABBD9A;
-    padding-right: 1rem;
-    padding-bottom: 1rem;
-    padding-top: .1rem;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-    margin-top: 1rem;
-    border: 1px solid;
+  background-color: #ABBD9A;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-top: .1rem;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  margin-top: 1rem;
+  border: 1px solid;
+  display: inline-block;
 }
 h1, h2 {
   display: flex;
@@ -78,4 +79,14 @@ td {
 }
 .view_submissions_button, .grade_submission, .submission-grade {
   padding-left:6%;
+}
+.assignments_motion_div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -35,6 +35,9 @@ router.get('/user/classes/:email', controller.getUserClasses);
 // router.get('/students/assignments/:assignmentId', controller.getAssignmentStudents);
 // router.get('/assignments/:classId', controller.getAssignments);
 
+// PATCH requests
+router.patch('/assignments/submissions', controller.gradeAssignment);
+
 // POST requests
 router.post('/assignments', controller.createAssignment);
 router.post('/sendautoemail', controller.sendAutoEmail);
@@ -45,6 +48,7 @@ router.post('/classes/students', controller.createClassStudent);
 router.post('/createUser', controller.createUser);
 router.post('/createClass', controller.createClass);
 // PUT requests
+router.put('/assignments', controller.updateAssignment);
 router.put('/edittask', controller.updateCalendar);
 router.put('/updateThreshold', controller.updateThreshold);
 // DELETE requests

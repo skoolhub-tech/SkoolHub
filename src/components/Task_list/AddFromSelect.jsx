@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import './editForm.css';
 import moment from 'moment';
+import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useUserData } from '../data-providers/UserDataProvider';
 
@@ -11,11 +12,17 @@ function AddFromSelect({
 }) {
   const { userData } = useUserData();
 
+  const currentHour = moment().startOf('hour');
+  const nextHour = moment().startOf('hour').add(1, 'hour');
+
+  const updatedStart = moment(task.start).startOf('day').hour(currentHour.hour());
+  const updatedEnd = moment(task.start).startOf('day').hour(nextHour.hour());
+
   const [newTask, setNewTask] = useState({
     id: userData.id,
     ...task,
-    start: moment.utc(task.start).local().format(),
-    end: moment.utc(task.end).local().format(),
+    start: updatedStart.utc().local().format(),
+    end: updatedEnd.utc().local().format(),
   });
 
   const handleChange = (e) => {
@@ -27,6 +34,9 @@ function AddFromSelect({
   };
 
   const handleSave = () => {
+    if (!newTask.title) {
+      return;
+    }
     axios.post('/skoolhub/submittask', {
       role: userData.role,
       data: newTask,
@@ -43,7 +53,13 @@ function AddFromSelect({
 
   return (
     <div className="modal">
-      <div className="modal-content">
+      <motion.div
+        className="modal-content"
+        initial={{ opacity: 0, scale: 0.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        exit={{ scale: 0.5 }}
+      >
         <button type="button" className="exit-button" onClick={closeAddTaskFromSelect}>Cancel</button>
         <h2 className="edit-task">Add Task</h2>
         <div className="floating-form">
@@ -52,6 +68,8 @@ function AddFromSelect({
             type="text"
             id="title"
             name="title"
+            placeholder="A title is required"
+            required
             value={newTask.title}
             onChange={handleChange}
             disabled={false}
@@ -81,7 +99,7 @@ function AddFromSelect({
 
           <button type="button" onClick={handleSave}>Save</button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

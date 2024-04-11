@@ -5,7 +5,11 @@ import axios from 'axios';
 import { useUserData } from '../data-providers/UserDataProvider';
 import './createAssignmentModal.css';
 
-function CreateAssignmentModal({ classObj, closeModal, getClassesAndAssignments }) {
+function CreateAssignmentModal({
+  classObj,
+  closeModal,
+  getClassesAndAssignments,
+}) {
   const [assignmentName, setAssignmentName] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [instructions, setInstructions] = useState('');
@@ -46,8 +50,20 @@ function CreateAssignmentModal({ classObj, closeModal, getClassesAndAssignments 
       });
   }
 
+  function handleCloseModalKeypress(event) {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  }
+
   return (
-    <div className="create-assignment-modal-background">
+    <div
+      className="create-assignment-modal-background"
+      role="button"
+      tabIndex={0}
+      onClick={closeModal}
+      onKeyPress={handleCloseModalKeypress}
+    >
       <div className="create_assignment_modal">
         <h1>Create Assignment</h1>
         <form className="create_assignment_form" onSubmit={handleSubmit}>

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './editForm.css';
 import moment from 'moment';
+import { motion } from 'framer-motion';
 import { useUserData } from '../data-providers/UserDataProvider';
 
 function EditTask({
@@ -26,6 +27,9 @@ function EditTask({
   };
 
   const handleSave = () => {
+    if (!editedTask.title) {
+      return;
+    }
     axios.put('/skoolhub/edittask', {
       role: userData.role,
       data: editedTask,
@@ -57,8 +61,13 @@ function EditTask({
 
   return (
     <div className="modal">
-      {/* Modal */}
-      <div className="calendar-modal-content">
+      <motion.div
+        className="calendar-modal-content"
+        initial={{ opacity: 0, scale: 0.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        exit={{ scale: 0.5 }}
+      >
         <button type="button" className="exit-button" onClick={closeEditTask}>Cancel</button>
         <h2 className="edit-task">Edit Task</h2>
         <div className="floating-form">
@@ -67,6 +76,8 @@ function EditTask({
             type="text"
             id="title"
             name="title"
+            required
+            placeholder="A title is required"
             value={editedTask.title}
             onChange={handleChange}
             disabled={false}
@@ -109,7 +120,7 @@ function EditTask({
           <button type="button" onClick={handleSave}>Save</button>
           <button className="delete" type="button" onClick={handleDelete}>Delete</button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

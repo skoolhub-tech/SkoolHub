@@ -9,6 +9,7 @@ function AssignmentsTableTeacher({
   selectedClass,
   setAssignmentId,
   setViewAssignmentSubmissions,
+  getClassesAndAssignments,
 }) {
   const [editSubmissionModalIsOpen, setEditSubmissionModalIsOpen] = useState(false);
   const [assignmentToView, setAssignmentToEdit] = useState(null);
@@ -43,6 +44,7 @@ function AssignmentsTableTeacher({
       <EditAssignmentModal
         assignment={assignmentToView}
         setEditSubmissionModalIsOpen={setEditSubmissionModalIsOpen}
+        getClassesAndAssignments={getClassesAndAssignments}
       />
       )}
     </div>
@@ -56,4 +58,5 @@ AssignmentsTableTeacher.propTypes = {
   selectedClass: PropTypes.string.isRequired,
   setAssignmentId: PropTypes.func.isRequired,
   setViewAssignmentSubmissions: PropTypes.func.isRequired,
+  getClassesAndAssignments: PropTypes.func.isRequired,
 };
