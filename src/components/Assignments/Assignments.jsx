@@ -89,11 +89,6 @@ function AssignmentsPage() {
         <div>
           {selectedClass ? (
             <div className="assignments_table_student">
-              <h2>
-                Class:
-                {' '}
-                {selectedClass}
-              </h2>
               {role === 3 && (
                 <AssignmentsTableStudent
                   data={data}
@@ -118,22 +113,15 @@ function AssignmentsPage() {
                 />
               )}
               {role === 2 && viewAssignmentSubmissions && (
-                <>
-                  <h2>
-                    Assignment:
-                    {' '}
-                    {viewAssignmentSubmissions.name}
-                  </h2>
-                  <SubmittedAssignmentsTableTeacher
-                    assignment={viewAssignmentSubmissions}
-                    setViewAssignmentSubmissions={setViewAssignmentSubmissions}
-                    setStudentId={setStudentId}
-                    setViewSubmissionModalOpen={setViewSubmissionModalOpen}
-                    setAssignmentId={setAssignmentId}
-                    studentId={studentId}
-                    classObjForEmail={classObjForEmail}
-                  />
-                </>
+                <SubmittedAssignmentsTableTeacher
+                  assignment={viewAssignmentSubmissions}
+                  setViewAssignmentSubmissions={setViewAssignmentSubmissions}
+                  setStudentId={setStudentId}
+                  setViewSubmissionModalOpen={setViewSubmissionModalOpen}
+                  setAssignmentId={setAssignmentId}
+                  studentId={studentId}
+                  classObjForEmail={classObjForEmail}
+                />
               )}
             </div>
           ) : (
