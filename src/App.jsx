@@ -14,6 +14,7 @@ import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
 import BusAnimation from './animations/BusAnimation';
 import HomepageWithTaskCheck from './components/HomepageWithTaskCheck';
+import LandingPage from './components/LandingPage';
 import logo from '../photos/skoolhub2-no-background.png';
 
 function App() {
@@ -31,10 +32,12 @@ function App() {
     localStorage.clear();
   };
 
+
   return (
     <div className="navbar-container">
       <Router>
         <UserDataProvider>
+          <LandingPage />
           {isLoggedIn ? (
             <>
               <div className="after-login-logo-slogan">
