@@ -1,37 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
 function CreateClass({ exitModal }) {
-  // Your code here
   const [teachers, setTeachers] = useState([]);
   const [classes, setClasses] = useState([]);
-
   const [className, setClassName] = useState('');
   const [selectedTeacher, setSelectedTeacher] = useState('');
-
   const [searchQuery, setSearchQuery] = useState('');
 
   const getClasses = () => {
     axios.get('/skoolhub/classes')
       .then((response) => {
-        // console.log(response.data);
         setClasses(response.data);
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.error(error);
       });
   };
-  useEffect(() => {
+
+  const fetchTeachers = () => {
     axios.get('/skoolhub/teachers')
       .then((response) => {
-        // console.log(response.data);
         setTeachers(response.data);
       })
       .catch((error) => {
+      // eslint-disable-next-line no-console
         console.error(error);
       });
     getClasses();
+  };
+
+  useEffect(() => {
+    fetchTeachers();
   }, []);
 
   const handleTeacherChange = (e) => {
@@ -49,29 +52,31 @@ function CreateClass({ exitModal }) {
       teacherId: selectedTeacher,
     };
     axios.post('/skoolhub/createClass', classData)
-      .then((response) => {
-        // console.log(response.data);
+      .then(() => {
         setClassName('');
         setSelectedTeacher('');
         getClasses();
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.error(error);
       });
   };
 
   const handleDeleteClick = (classId) => {
     axios.delete(`/skoolhub/deleteClass/${classId}`)
-      .then((response) => {
-        // console.log(response.data);
+      .then(() => {
         getClasses();
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.error(error);
       });
   };
 
-  const filteredClasses = classes.filter((classObj) => classObj.name.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredClasses = classes.filter(
+    (classObj) => classObj.name.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
 
   return (
     <div className="modal-backdrop">
@@ -153,7 +158,9 @@ function CreateClass({ exitModal }) {
             </thead>
             <tbody>
               {filteredClasses.map((classObj) => {
-                const teacher = teachers.find((teacher) => teacher.id === classObj.teacher_id);
+                const teacher = teachers.find(
+                  (eachTeacher) => eachTeacher.id === classObj.teacher_id,
+                );
                 return (
                   <tr key={classObj.id}>
                     <td>{classObj.name}</td>
@@ -173,3 +180,7 @@ function CreateClass({ exitModal }) {
 }
 
 export default CreateClass;
+
+CreateClass.propTypes = {
+  exitModal: PropTypes.func.isRequired,
+};
