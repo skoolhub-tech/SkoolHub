@@ -28,7 +28,7 @@ function AssignmentsPage() {
     } catch (error) {
       console.log(`Error fetching classes and assignments: ${error}`);
     }
-  }, []);
+  }, [role, email]);
 
   const handleCloseModal = useCallback(() => {
     setViewSubmissionModalOpen(false);
@@ -108,6 +108,7 @@ function AssignmentsPage() {
                 selectedClass={selectedClass}
                 setAssignmentId={setAssignmentId}
                 setViewAssignmentSubmissions={setViewAssignmentSubmissions}
+                getClassesAndAssignments={getClassesAndAssignments}
               />
             )}
             {role === 2 && viewAssignmentSubmissions && (

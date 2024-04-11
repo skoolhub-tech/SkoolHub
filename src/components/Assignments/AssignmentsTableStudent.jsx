@@ -1,7 +1,8 @@
 /* eslint-disable react/forbid-prop-types */
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
 import AssignmentsRowStudent from './AssignmentsRowStudent';
+import ViewAssignmentModalStudent from './ViewAssignmentModalStudent';
 
 function AssignmentsTableStudent({
   data,
@@ -11,32 +12,42 @@ function AssignmentsTableStudent({
   setAssignmentId,
   viewSubmissionModalOpen,
 }) {
+  const [assignmentToView, setAssignmentToView] = useState(null);
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Assignment</th>
-          <th>Due Date</th>
-          <th>Submitted On</th>
-          <th>Submit Assignment</th>
-          <th>View Submission</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data
-          .find((classObj) => classObj.name === selectedClass)
-          .assignments.map((assignment) => (
-            <AssignmentsRowStudent
-              key={assignment.id}
-              assignment={assignment}
-              getClassesAndAssignments={getClassesAndAssignments}
-              setViewSubmissionModalOpen={setViewSubmissionModalOpen}
-              setAssignmentId={setAssignmentId}
-              viewSubmissionModalOpen={viewSubmissionModalOpen}
-            />
-          ))}
-      </tbody>
-    </table>
+    <>
+      <table>
+        <thead>
+          <tr>
+            <th>Assignment</th>
+            <th>Due Date</th>
+            <th>Submitted On</th>
+            <th>Submit Assignment</th>
+            <th>View Submission</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data
+            .find((classObj) => classObj.name === selectedClass)
+            .assignments.map((assignment) => (
+              <AssignmentsRowStudent
+                key={assignment.id}
+                assignment={assignment}
+                getClassesAndAssignments={getClassesAndAssignments}
+                setViewSubmissionModalOpen={setViewSubmissionModalOpen}
+                setAssignmentId={setAssignmentId}
+                viewSubmissionModalOpen={viewSubmissionModalOpen}
+                setAssignmentToView={setAssignmentToView}
+              />
+            ))}
+        </tbody>
+      </table>
+      {assignmentToView && (
+      <ViewAssignmentModalStudent
+        assignment={assignmentToView}
+        setAssignmentToView={setAssignmentToView}
+      />
+      )}
+    </>
   );
 }
 

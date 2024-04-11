@@ -56,7 +56,7 @@ function ViewSubmissionModal({
     }
   };
 
-  const handleKeyDown = (event) => {
+  const handleKeyPress = (event) => {
     if (event.key === 'Escape' || event.key === 'Enter' || event.key === ' ') {
       onCloseModal();
     }
@@ -79,7 +79,7 @@ function ViewSubmissionModal({
     <div
       className="view_submission_modal"
       onClick={handleBackgroundClick}
-      onKeyDown={handleKeyDown}
+      onKeyPress={handleKeyPress}
       role="button"
       tabIndex={0}
       aria-label="View Submission Modal"

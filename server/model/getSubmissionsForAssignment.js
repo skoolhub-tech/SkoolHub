@@ -14,11 +14,13 @@ module.exports = async (assignmentId) => {
     students_assignments.total_points,
     students_assignments.grade,
     students_assignments.id AS submission_id,
-    students_assignments.file_path
+    students_assignments.file_path,
+    students_assignments.feedback
     FROM students_assignments
     JOIN students ON students.id = students_assignments.student_id
     JOIN assignments ON assignments.id = students_assignments.assignment_id
-    WHERE students_assignments.assignment_id = $1;`;
+    WHERE students_assignments.assignment_id = $1
+    ORDER BY students.name`;
     const values = [assignmentId];
     await client.connect();
     const { rows } = await client.query(query, values);

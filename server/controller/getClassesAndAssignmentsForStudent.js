@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const { getClassesFromStudentEmail, getAssignmentsForClass, getSubmittedOnDateForAssignment } = require('../model');
+const { getClassesFromStudentEmail, getAssignmentsForClass, getSubmittedAssignmentInfo } = require('../model');
 
 module.exports = async (req, res) => {
   try {
@@ -8,12 +8,12 @@ module.exports = async (req, res) => {
     const classesWithAssignments = await Promise.all(classes.map(async (classObj) => {
       const assignments = await getAssignmentsForClass(classObj.id);
 
-      const assignmentsWithSubmittedOn = await Promise.all(assignments.map(async (assignment) => {
-        const submittedOn = (await getSubmittedOnDateForAssignment(assignment.id, email))[0]?.submitted_on || null;
-        return { ...assignment, submitted_on: submittedOn };
+      const assignmentsWithInfo = await Promise.all(assignments.map(async (assignment) => {
+        const info = (await getSubmittedAssignmentInfo(assignment.id, email))[0] || null;
+        return { ...assignment, ...info };
       }));
 
-      return { ...classObj, assignments: assignmentsWithSubmittedOn };
+      return { ...classObj, assignments: assignmentsWithInfo };
     }));
 
     res.status(200).send(classesWithAssignments);
