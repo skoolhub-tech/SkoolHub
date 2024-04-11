@@ -17,7 +17,7 @@ import HomepageWithTaskCheck from './components/HomepageWithTaskCheck';
 import logo from '../photos/skoolhub2-no-background.png';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [animationComplete, setAnimationComplete] = useState(true);
 
   const handleLogin = (boolean) => {

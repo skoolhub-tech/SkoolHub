@@ -19,7 +19,7 @@ function ClassesDropDownMenu({
         }}
         onMouseDown={() => setSubmitAssignmentModalIsOpen(false)}
       >
-        <option value="">Choose a Class</option>
+        <option value="" disabled>Choose a Class</option>
         {classes.map((item) => (
           <option
             className="select_class_button"
