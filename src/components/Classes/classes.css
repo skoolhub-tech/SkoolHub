@@ -30,19 +30,34 @@
   padding-bottom: 1rem;
   padding-top: .1rem;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  height: auto;
 }
 .selected-class-header {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
+
+.classes-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
 .classes {
   font-family: "Comfortaa", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
-  width: 55%;
-
+  width: 55vw;
+  display: inline-block;
+  position: relative;
+  margin-top: 21rem;
 }
 
 .grade-chart {
@@ -61,8 +76,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
   display: flex;
   justify-content: center;
@@ -100,7 +115,7 @@
   margin-bottom: 20px; /* Adjust the gap as needed */
 }
 .student-table-container {
-  width: 100%;
+  width: 80vh;
 }
 .grades-button {
   padding-left: 3%
