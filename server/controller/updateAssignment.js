@@ -1,4 +1,4 @@
-const { createAssignment } = require('../model');
+const { updateAssignment } = require('../model');
 
 module.exports = async (req, res) => {
   const { assignment, role } = req.body;
@@ -7,10 +7,10 @@ module.exports = async (req, res) => {
     return;
   }
   try {
-    const result = await createAssignment(assignment);
-    res.status(201).send(result);
+    const result = await updateAssignment(assignment);
+    res.status(200).send(result);
   } catch (err) {
     console.error('Error creating assignment: ', err);
-    res.status(500).send(`Error creating assignment: ${err.message}`);
+    res.status(500).send(`Error updating assignment: ${err.message}`);
   }
 };

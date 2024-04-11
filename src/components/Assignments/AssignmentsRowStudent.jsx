@@ -13,12 +13,17 @@ function AssignmentsRow({
   setViewSubmissionModalOpen,
   viewSubmissionModalOpen,
   setAssignmentId,
+  setAssignmentToView,
+  submitAssignmentModalIsOpen,
+  setSubmitAssignmentModalIsOpen,
+  assignmentToSubmit,
+  setAssignmentToSubmit,
 }) {
   const { userData: { email } } = useUserData();
 
   return (
     <tr>
-      <td className="view-assignment-button">{assignment.name}</td>
+      <td className="view-assignment-button" onClick={() => setAssignmentToView(assignment)}>{assignment.name}</td>
       <td>{formatDate(assignment.due_date)}</td>
       <td>{assignment.submitted_on ? formatDate(assignment.submitted_on) : ''}</td>
       <td className="submit-button">
@@ -26,6 +31,10 @@ function AssignmentsRow({
           studentEmail={email}
           assignmentId={assignment.id}
           getClassesAndAssignments={getClassesAndAssignments}
+          submitAssignmentModalIsOpen={submitAssignmentModalIsOpen}
+          setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}
+          assignmentToSubmit={assignmentToSubmit}
+          setAssignmentToSubmit={setAssignmentToSubmit}
         />
       </td>
       <td className="view-submit-button">
@@ -42,8 +51,6 @@ function AssignmentsRow({
   );
 }
 
-export default AssignmentsRow;
-
 AssignmentsRow.propTypes = {
   assignment: PropTypes.shape({
     id: PropTypes.number,
@@ -55,4 +62,20 @@ AssignmentsRow.propTypes = {
   setViewSubmissionModalOpen: PropTypes.func.isRequired,
   viewSubmissionModalOpen: PropTypes.bool.isRequired,
   setAssignmentId: PropTypes.func.isRequired,
+  setAssignmentToView: PropTypes.func.isRequired,
+  submitAssignmentModalIsOpen: PropTypes.bool.isRequired,
+  setSubmitAssignmentModalIsOpen: PropTypes.func.isRequired,
+  assignmentToSubmit: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    due_date: PropTypes.string,
+    submitted_on: PropTypes.string,
+  }),
+  setAssignmentToSubmit: PropTypes.func.isRequired,
 };
+
+AssignmentsRow.defaultProps = {
+  assignmentToSubmit: null,
+};
+
+export default AssignmentsRow;

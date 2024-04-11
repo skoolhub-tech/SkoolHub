@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import SubmittedAssignmentsRow from './SubmittedAssignmentsRow';
@@ -15,14 +15,14 @@ function SubmittedAssignmentsTabelTeacher({
   const [gradeSubmissionModalOpen, setGradeSubmissionModalOpen] = useState(false);
   const [submissionToGrade, setSubmissionToGrade] = useState(null);
 
-  const getSubmissions = async () => {
+  const getSubmissions = useCallback(async () => {
     try {
       const response = await axios.get(`/skoolhub/assignments/submissions/?id=${assignment.id}`);
       setSubmissions(response.data);
     } catch (error) {
       console.error('Error fetching submissions:', error);
     }
-  };
+  }, [assignment.id]);
 
   useEffect(() => {
     getSubmissions();
@@ -64,6 +64,7 @@ function SubmittedAssignmentsTabelTeacher({
       <GradeSubmissionModal
         submission={submissionToGrade}
         setGradeSubmissionModalOpen={setGradeSubmissionModalOpen}
+        getSubmissions={getSubmissions}
       />
       )}
     </div>
