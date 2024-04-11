@@ -21,6 +21,7 @@ function AssignmentsPage() {
   const [studentId, setStudentId] = useState(null);
   const [viewAssignmentSubmissions, setViewAssignmentSubmissions] = useState(null);
   const [createAssignmentModalOpen, setCreateAssignmentModalOpen] = useState(false);
+  const [submitAssignmentModalIsOpen, setSubmitAssignmentModalIsOpen] = useState(false);
 
   const getClassesAndAssignments = useCallback(async () => {
     try {
@@ -51,104 +52,111 @@ function AssignmentsPage() {
 
   return data ? (
     <motion.div
-      className="assignments-container"
+      className="assignments_motion_div"
       initial={{ x: '100%' }}
       animate={{ x: '0%' }}
       transition={{ ease: 'easeInOut', duration: 0.7 }}
     >
-      <h1>Assignments</h1>
-      <div className="classes-dropdown-create-assignment">
-        {viewAssignmentSubmissions === null && (
-        <ClassesDropDownMenu
-          classes={data}
-          setSelectedClass={setSelectedClass}
-        />
-        )}
-        {selectedClass && !viewAssignmentSubmissions && role === 2 && (
-        <button type="button" className="create_assignment_button" onClick={() => setCreateAssignmentModalOpen(true)}>
-          Create Assignment
-        </button>
-        )}
-      </div>
-      {createAssignmentModalOpen && (
-        <CreateAssignmentModal
-          classObj={data.find((classObj) => classObj.name === selectedClass)}
-          closeModal={() => setCreateAssignmentModalOpen(false)}
-          getClassesAndAssignments={getClassesAndAssignments}
-        />
-      )}
-      {viewAssignmentSubmissions && (
-        <>
-          <button
-            type="button"
-            className="back_button"
-            onClick={() => setViewAssignmentSubmissions(null)}
-          >
-            Back
+      <div
+        className="assignments-container"
+      >
+        <h1>Assignments</h1>
+        <div className="classes-dropdown-create-assignment">
+          {viewAssignmentSubmissions === null && (
+          <ClassesDropDownMenu
+            classes={data}
+            setSelectedClass={setSelectedClass}
+            setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}
+          />
+          )}
+          {selectedClass && !viewAssignmentSubmissions && role === 2 && (
+          <button type="button" className="create_assignment_button" onClick={() => setCreateAssignmentModalOpen(true)}>
+            Create Assignment
           </button>
-          <br />
-          <br />
-        </>
-      )}
-      <div>
-        {selectedClass ? (
-          <div className="assignments_table_student">
-            <h2>
-              Class:
-              {' '}
-              {selectedClass}
-            </h2>
-            {role === 3 && (
-              <AssignmentsTableStudent
-                data={data}
-                selectedClass={selectedClass}
-                getClassesAndAssignments={getClassesAndAssignments}
-                setViewSubmissionModalOpen={setViewSubmissionModalOpen}
-                setAssignmentId={setAssignmentId}
-                viewSubmissionModalOpen={viewSubmissionModalOpen}
-              />
-            )}
-            {role === 2 && viewAssignmentSubmissions === null && (
-              <AssignmentsTableTeacher
-                data={data}
-                selectedClass={selectedClass}
-                setAssignmentId={setAssignmentId}
-                setViewAssignmentSubmissions={setViewAssignmentSubmissions}
-                getClassesAndAssignments={getClassesAndAssignments}
-              />
-            )}
-            {role === 2 && viewAssignmentSubmissions && (
-              <>
-                <h2>
-                  Assignment:
-                  {' '}
-                  {viewAssignmentSubmissions.name}
-                </h2>
-                <SubmittedAssignmentsTableTeacher
-                  assignment={viewAssignmentSubmissions}
-                  setViewAssignmentSubmissions={setViewAssignmentSubmissions}
-                  setStudentId={setStudentId}
+          )}
+        </div>
+        {createAssignmentModalOpen && (
+          <CreateAssignmentModal
+            classObj={data.find((classObj) => classObj.name === selectedClass)}
+            closeModal={() => setCreateAssignmentModalOpen(false)}
+            getClassesAndAssignments={getClassesAndAssignments}
+          />
+        )}
+        {viewAssignmentSubmissions && (
+          <>
+            <button
+              type="button"
+              className="back_button"
+              onClick={() => setViewAssignmentSubmissions(null)}
+            >
+              Back
+            </button>
+            <br />
+            <br />
+          </>
+        )}
+        <div>
+          {selectedClass ? (
+            <div className="assignments_table_student">
+              <h2>
+                Class:
+                {' '}
+                {selectedClass}
+              </h2>
+              {role === 3 && (
+                <AssignmentsTableStudent
+                  data={data}
+                  selectedClass={selectedClass}
+                  getClassesAndAssignments={getClassesAndAssignments}
                   setViewSubmissionModalOpen={setViewSubmissionModalOpen}
                   setAssignmentId={setAssignmentId}
+                  viewSubmissionModalOpen={viewSubmissionModalOpen}
+                  submitAssignmentModalIsOpen={submitAssignmentModalIsOpen}
+                  setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}
                 />
-              </>
-            )}
-          </div>
-        ) : (
-          <div>
-            <br />
-            Select a class to see assignments
-          </div>
+              )}
+              {role === 2 && viewAssignmentSubmissions === null && (
+                <AssignmentsTableTeacher
+                  data={data}
+                  selectedClass={selectedClass}
+                  setAssignmentId={setAssignmentId}
+                  setViewAssignmentSubmissions={setViewAssignmentSubmissions}
+                  getClassesAndAssignments={getClassesAndAssignments}
+                />
+              )}
+              {role === 2 && viewAssignmentSubmissions && (
+                <>
+                  <h2>
+                    Assignment:
+                    {' '}
+                    {viewAssignmentSubmissions.name}
+                  </h2>
+                  <SubmittedAssignmentsTableTeacher
+                    assignment={viewAssignmentSubmissions}
+                    setViewAssignmentSubmissions={setViewAssignmentSubmissions}
+                    setStudentId={setStudentId}
+                    setViewSubmissionModalOpen={setViewSubmissionModalOpen}
+                    setAssignmentId={setAssignmentId}
+                  />
+                </>
+              )}
+            </div>
+          ) : (
+            <div>
+              <br />
+              Select a class to see assignments
+            </div>
+          )}
+        </div>
+        {viewSubmissionModalOpen && assignmentId && studentId && (
+          <ViewSubmissionModal
+            assignmentId={assignmentId}
+            classId={data.find((classObj) => classObj.name === selectedClass).id}
+            studentId={studentId}
+            onCloseModal={handleCloseModal}
+          />
         )}
       </div>
-      {viewSubmissionModalOpen && assignmentId && studentId && (
-        <ViewSubmissionModal
-          assignmentId={assignmentId}
-          classId={data.find((classObj) => classObj.name === selectedClass).id}
-          studentId={studentId}
-          onCloseModal={handleCloseModal}
-        />
-      )}
     </motion.div>
   ) : (
     <div>Loading...</div>
