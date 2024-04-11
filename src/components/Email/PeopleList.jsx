@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import PersonEmailCard from './PersonEmailCard';
 import { useUserData } from '../data-providers/UserDataProvider';
+
 // list out people in the given potentialEmailees list
 function PeopleList({
   currentClass,
@@ -21,7 +22,7 @@ function PeopleList({
     <div className="peopleListView">
       <h2>{currentClass.name}</h2>
       <div className="peopleListBtns">
-        <button type="button" onClick={handleSelectAllChange}>Select All</button>
+        <button type="button" onClick={handleSelectAllChange}>{isAllSelected ? 'Deselect All' : 'Select All'}</button>
         {userData.role === 2 && currentClass.name !== 'Faculty' && (
           <button type="button" onClick={() => setOpenThreshold(true)}>Threshold</button>
         )}

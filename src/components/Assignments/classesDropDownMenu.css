@@ -22,8 +22,9 @@
 
 }
 .classes_drop_down_menu {
-  margin-left: 1rem;
-  background-color: #8A997C;
+  margin-left: 2rem;
+    margin-top: 1rem;
+    font-size: medium;
 }
 
 
