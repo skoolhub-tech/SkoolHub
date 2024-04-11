@@ -34,6 +34,7 @@ ClassesDropDownMenu.propTypes = {
     name: PropTypes.string,
   })).isRequired,
   setSelectedClass: PropTypes.func.isRequired,
+  setClassObjForEmail: PropTypes.func.isRequired,
 };
 
 export default ClassesDropDownMenu;

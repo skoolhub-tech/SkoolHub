@@ -86,4 +86,8 @@ SubmittedAssignmentsTabelTeacher.propTypes = {
   setStudentId: PropTypes.func.isRequired,
   setViewSubmissionModalOpen: PropTypes.func.isRequired,
   setAssignmentId: PropTypes.func.isRequired,
+  studentId: PropTypes.number.isRequired,
+  classObjForEmail: PropTypes.shape({
+    id: PropTypes.number,
+  }).isRequired,
 };
