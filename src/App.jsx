@@ -1,4 +1,4 @@
-import React, { useState, lazy } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './styles.css';
 import {
@@ -13,9 +13,8 @@ import Admin from './components/Admin/Admin';
 import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
 import BusAnimation from './animations/BusAnimation';
+import HomepageWithTaskCheck from './components/HomepageWithTaskCheck';
 import logo from '../photos/skoolhublogo.png';
-
-const HomepageWithTaskCheck = lazy(() => import('./components/HomepageWithTaskCheck'));
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
