@@ -13,6 +13,11 @@
   border-radius: 5px;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
+}
+
+.grade_submission_modal * {
+  width: 90%;
 }
 
 .grade_submission_modal_overlay {
