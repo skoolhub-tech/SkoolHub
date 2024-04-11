@@ -3,6 +3,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import './emailsComponent.css';
 import sendEmail from '../../utils/sendEmail';
+import { MdOutlineMarkEmailRead } from "react-icons/md";
 import EmailModal from './EmailModal';
 import PeopleList from './PeopleList';
 import Notify from '../Notify';
@@ -62,7 +63,6 @@ function EmailStudentsView() {
       senderEmail: userData.email,
       receiverEmail: emailList,
     };
-    console.log('Email sent to', data.receiverEmail);
     setEmailModal(false);
     setColor(0);
     setMessage('Email Sent!');

@@ -75,7 +75,6 @@ function EmailTeachersView() {
       senderEmail: userData.email,
       receiverEmail: emailList,
     };
-    console.log('Email sent to', data.receiverEmail);
     setEmailModal(false);
     setColor(0);
     setMessage('Email Sent!');
