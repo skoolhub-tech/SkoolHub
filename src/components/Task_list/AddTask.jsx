@@ -18,7 +18,7 @@ function AddTask({
     start: moment.utc().local().startOf('hour').add(Math.ceil(moment().minute() / 30) * 30, 'minutes')
       .format(),
     end: moment.utc().local().startOf('hour').add(Math.ceil(moment().minute() / 30) * 30, 'minutes')
-      .add(30, 'minutes')
+      .add(1, 'hour')
       .format(),
   });
 
