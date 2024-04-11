@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import EmailTemplateView from './EmailTemplateView';
 import { useUserData } from '../data-providers/UserDataProvider';
-import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
 function EmailModal({
   setMessage, setSubject, email, setEmailModal, subject, body, setSelectedTemplate, currentClass,
@@ -10,7 +11,13 @@ function EmailModal({
   // update Subject and line of email, send email on submit
   return (
     <div className="emailModal">
-      <div className="emailModalContent">
+      <motion.div
+        className="emailModalContent"
+        initial={{ opacity: 0, scale: 0.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        exit={{ scale: 0.5 }}
+      >
         {userData.role === 2 && (
           <EmailTemplateView
             setSelectedTemplate={setSelectedTemplate}
@@ -33,7 +40,7 @@ function EmailModal({
             <button type="submit">Send Email</button>
           </div>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 }
@@ -43,6 +50,15 @@ EmailModal.propTypes = {
   setSubject: PropTypes.func.isRequired,
   email: PropTypes.func.isRequired,
   setEmailModal: PropTypes.func.isRequired,
+  subject: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  setSelectedTemplate: PropTypes.func,
+  currentClass: PropTypes.shape({}),
+};
+
+EmailModal.defaultProps = {
+  setSelectedTemplate: () => {},
+  currentClass: {},
 };
 
 export default EmailModal;

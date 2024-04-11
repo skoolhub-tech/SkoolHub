@@ -14,7 +14,7 @@ function SubmittedAssignmentsRow({
   setSubmissionToGrade,
 }) {
   function handleViewSubmissionClick() {
-    setAssignmentId(submission.submission_id);
+    setAssignmentId(submission.assignment_id);
     setStudentId(submission.student_id);
     setViewSubmissionModalOpen(true);
   }
@@ -46,8 +46,8 @@ SubmittedAssignmentsRow.propTypes = {
     student_name: PropTypes.string,
     submitted_on: PropTypes.string,
     grade: PropTypes.string,
-    submission_id: PropTypes.number,
     student_id: PropTypes.number,
+    assignment_id: PropTypes.number,
   }).isRequired,
   setStudentId: PropTypes.func.isRequired,
   setViewSubmissionModalOpen: PropTypes.func.isRequired,

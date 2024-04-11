@@ -15,7 +15,7 @@ import Assignments from './components/Assignments/Assignments';
 import Homepage from './components/Homepage/Homepage';
 import logo from '../photos/skoolhub2-no-background.png';
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const handleLogin = (boolean) => {
     setIsLoggedIn(boolean);

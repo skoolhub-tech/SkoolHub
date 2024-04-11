@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 import './emailsComponent.css';
 import sendEmail from '../../utils/sendEmail';
 import EmailModal from './EmailModal';
 import PeopleList from './PeopleList';
+import EmailNotify from './EmailNotify';
 import { useUserData } from '../data-providers/UserDataProvider';
 
 // userData needs to contain id, email, name, and role
@@ -40,6 +42,13 @@ function EmailStudentsView() {
       });
   }, []);
 
+  function showEmailSentTimer() {
+    setEmailSent(true);
+    setTimeout(() => {
+      setEmailSent(false);
+    }, 2000);
+  }
+
   // sends email to all selected teachers
   const email = async (e) => {
     e.preventDefault();
@@ -68,10 +77,14 @@ function EmailStudentsView() {
   };
 
   return (
-    <div className="emailsDiv">
+    <motion.div
+      className="emailsDiv"
+      initial={{ x: '100%' }}
+      animate={{ x: '0%' }}
+      transition={{ ease: 'easeInOut', duration: 0.7 }}
+    >
       <div className="emailsDiv-without-modal">
         <h1>Email</h1>
-        {emailSent && <p>Email Sent!</p>}
         {errorMessage && <p>{errorMessage}</p>}
         {potentialEmailees.length > 0 && (
           <PeopleList
@@ -89,9 +102,12 @@ function EmailStudentsView() {
           setMessage={setBody}
           setSubject={setSubjectLine}
           email={email}
+          subject={subjectLine}
+          body={body}
+          emailSent={emailSent}
         />
       )}
-    </div>
+    </motion.div>
   );
 }
 

@@ -27,6 +27,7 @@ function DropDown({ classes, handleClassChange }) {
 }
 
 DropDown.propTypes = {
+  classes: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   handleClassChange: PropTypes.func.isRequired,
 };
 

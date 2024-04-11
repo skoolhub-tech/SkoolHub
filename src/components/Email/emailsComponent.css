@@ -226,3 +226,15 @@
   width: inherit;
   max-width: 800px;
 }
+/*=================Emails Notify=====================*/
+
+.emailNotifyModalContent {
+  background-color: transparent;
+  position: absolute;
+  text-align: center;
+  row-gap: 5px;
+  top: 19rem;
+  left: 46rem;
+  width: fit-content;
+  color: #ABBD9A;
+}

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 import './emailsComponent.css';
 import sendEmail from '../../utils/sendEmail';
 import EmailModal from './EmailModal';
 import AdminDropDown from './AdminDropDown';
 import PeopleList from './PeopleList';
+import EmailNotify from './EmailNotify';
 import { useUserData } from '../data-providers/UserDataProvider';
 // all teachers, all students, and all admin
 // need drop down to be teachers, students, admin
@@ -32,6 +34,13 @@ function EmailAdminView() {
         setPotentialEmailees([]);
       });
   }, []);
+
+  function showEmailSentTimer() {
+    setEmailSent(true);
+    setTimeout(() => {
+      setEmailSent(false);
+    }, 2000);
+  }
   // sends email to all selected selected people in class/faculty
   const email = async (e) => {
     e.preventDefault();
@@ -103,10 +112,14 @@ function EmailAdminView() {
   };
 // drop down to select teacher
   return (
-    <div className="emailsDiv">
+    <motion.div
+      className="emailsDiv"
+      initial={{ x: '100%' }}
+      animate={{ x: '0%' }}
+      transition={{ ease: 'easeInOut', duration: 0.7 }}
+    >
       <div className="emailsDiv-without-modal">
         <h1>Email</h1>
-        {emailSent && <p>Email Sent!</p>}
         {errorMessage && <p>{errorMessage}</p>}
         <AdminDropDown
           views={views}
@@ -127,10 +140,12 @@ function EmailAdminView() {
           setEmailModal={setEmailModal}
           setMessage={setBody}
           setSubject={setSubjectLine}
+          subject={subjectLine}
+          body={body}
           email={email}
         />
       )}
-    </div>
+    </motion.div>
   );
 }
 
