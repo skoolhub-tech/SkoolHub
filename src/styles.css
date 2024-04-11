@@ -23,7 +23,7 @@ LOGIN PAGE / NAV BAR CSS ========================================
   flex-direction: column;
   position: absolute;
   width: 100vh;
-  left: 21%;
+
 
 }
 .login-h1, .login-form, .login-p, body{
@@ -38,7 +38,7 @@ LOGIN PAGE / NAV BAR CSS ========================================
   top: -20px;
 }
 
-.login-form , .nav-bar{
+.login-form , .nav-bar, .teacher-nav-bar, .student-nav-bar{
   background-color: #ABBD9A;
   border-radius: 10px;
   padding: 20px;
@@ -62,15 +62,39 @@ LOGIN PAGE / NAV BAR CSS ========================================
     bottom: 36%;
     transition: 0.5s ease-in-out
 }
+.teacher-nav-bar {
+  z-index: 99;
+  width: 6em;
+  row-gap: .75rem;
+    display: flex;
+    flex-direction: column;
+    transform: scale(1.25) translateX(-70%);
+    position: fixed;
+    left: 0;
+    bottom: 25%;
+    transition: 0.5s ease-in-out
+}
+.student-nav-bar {
+  z-index: 99;
+  width: 6em;
+  row-gap: .75rem;
+    display: flex;
+    flex-direction: column;
+    transform: scale(1.25) translateX(-70%);
+    position: fixed;
+    left: 0;
+    bottom: 27%;
+    transition: 0.5s ease-in-out
+}
 
-.nav-bar:hover {
+.nav-bar:hover, .teacher-nav-bar:hover, .student-nav-bar:hover {
   transform: scale(1.25) translateX(0) /* show on hover */
 }
 
-.nav-bar button:hover {
+.nav-bar button:hover, .teacher-nav-bar button:hover, .student-nav-bar button:hover {
   transform: scale(1.1);
 }
-.nav-bar button:active {
+.nav-bar button:active, .teacher-nav-bar button:active, .student-nav-bar button:active{
   transform: scale(0.9);
 }
 
@@ -123,9 +147,9 @@ LOGIN PAGE / NAV BAR CSS ========================================
 
 .log-out-bttn {
   color: black;
-  position: absolute;
+  /* position: absolute;
   top: 2rem;
-  right: 4rem;
+  right: 4rem; */
 }
 
 
@@ -138,12 +162,67 @@ LOGIN PAGE / NAV BAR CSS ========================================
   transform: rotateY(180deg);
   transition: transform 1s ease;
 }
-.login-logo {
-  transform: scale(.45);
+.after-login-logo {
+  transform: scale(.2);
     position: fixed;
-    top: -10rem;
-    left: -8rem;
+    top: -13rem;
+    left: -13rem;
+    z-index: -1;
 }
 
-
-
+.login-logo {
+  transform: scale(.2);
+    position: fixed;
+    top: -10rem;
+}
+.login-logo-slogan {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -4rem;
+    position: relative;
+    top: 3rem;
+}
+.slogan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+.after-slogan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  position: fixed;
+  top: 7rem;
+  left: 3rem;
+}
+.welcome-message-one {
+  font-size: xx-large;
+}
+.welcome-message-two {
+  position: relative;
+    top: -3rem;
+}
+.after-login-logo-slogan {
+  position: relative;
+    top: 3rem;
+    left: -7rem;
+  z-index:-1;
+}
+.after-welcome-message-one {
+  font-size: x-large;
+    position: relative;
+    top: -1rem;
+}
+.after-welcome-message-two {
+  font-size: small;
+  position: relative;
+  top: -55px;
+  left: 5px;
+}
+select {
+  transform: scale(1.2);
+  border-radius: 5px;
+}

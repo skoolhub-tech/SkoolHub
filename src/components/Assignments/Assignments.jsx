@@ -2,6 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 import { useUserData } from '../data-providers/UserDataProvider';
 import ClassesDropDownMenu from './ClassesDropDownMenu';
 import AssignmentsTableStudent from './AssignmentsTableStudent';
@@ -50,7 +51,12 @@ function AssignmentsPage() {
   }, [role, id]);
 
   return data ? (
-    <div className="assignments-container">
+    <motion.div
+      className="assignments-container"
+      initial={{ x: '100%' }}
+      animate={{ x: '0%' }}
+      transition={{ ease: 'easeInOut', duration: 0.7 }}
+    >
       <h1>Assignments</h1>
       <div className="classes-dropdown-create-assignment">
         {viewAssignmentSubmissions === null && (
@@ -147,7 +153,7 @@ function AssignmentsPage() {
           onCloseModal={handleCloseModal}
         />
       )}
-    </div>
+    </motion.div>
   ) : (
     <div>Loading...</div>
   );

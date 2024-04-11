@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import './homepage.css';
 import React from 'react';
 import axios from 'axios';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
-import './homepage.css';
+import { Calendar, momentLocalizer } from 'react-big-calendar';
 
 import { useUserData } from '../data-providers/UserDataProvider';
 import AssignmentsTable from './AssignmentsTable';
@@ -14,7 +14,10 @@ const { useState, useEffect } = React;
 function Homepage() {
   const { userData } = useUserData();
   const {
-    email, id, role, name,
+    email,
+    id,
+    role,
+    name,
   } = userData;
 
   const [classes, setClasses] = useState([]);
@@ -41,31 +44,32 @@ function Homepage() {
   };
 
   useEffect(() => {
-    axios.get(`/skoolhub/user/classes/${email}`)
-      .then((response) => setClasses(response.data))
-      .catch((error) => console.error({
-        Message: 'Error retrieving classes.',
-        Error: error,
-      }));
+    if (role === 2 || role === 3) {
+      axios.get(`/skoolhub/user/classes/${email}`)
+        .then((response) => setClasses(response.data))
+        .catch((error) => console.error({
+          Message: 'Error retrieving classes.',
+          Error: error,
+        }));
 
-    axios.get(`/skoolhub/calendar/${role}/${id}`)
-      .then((response) => response.data.map((event) => ({
-        ...event,
-        start: new Date(event.start),
-        end: new Date(event.end),
-      })))
-      .then((formattedEvents) => setTasks(formattedEvents))
-      .catch((error) => console.error({
-        Message: 'Error retrieving calendar.',
-        Error: error,
-      }));
+      axios.get(`/skoolhub/calendar/${role}/${id}`)
+        .then((response) => response.data.map((event) => ({
+          ...event,
+          start: new Date(event.start),
+          end: new Date(event.end),
+        })))
+        .then((formattedEvents) => setTasks(formattedEvents))
+        .catch((error) => console.error({
+          Message: 'Error retrieving calendar.',
+          Error: error,
+        }));
 
-    getCurrentAssignments();
-  }, [userData]);
+      getCurrentAssignments();
+    }
+  }, [userData.role]);
 
   const filterAssignments = (event) => {
     const selectedOption = event.target.options[event.target.selectedIndex];
-    console.log(selectedOption.text);
     setSelectedClass(selectedOption.value);
 
     if (selectedOption.value !== 'All Classes') {
@@ -78,6 +82,7 @@ function Homepage() {
   return (
     <div className="homepage-container">
       <h1>{`Welcome back, ${name}`}</h1>
+      {tasks.length > 0 && (
       <div className="homepage-flex-container">
         {assignments.length > 0 && (
           <div className="homepage-assignments-container">
@@ -103,6 +108,7 @@ function Homepage() {
           </div>
         </div>
       </div>
+      )}
     </div>
   );
 }
