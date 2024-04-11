@@ -60,57 +60,61 @@ function Classes() {
 
   return (
     <motion.div
-      className="classes"
+      className="classes-container"
       initial={{ x: '100%' }}
       animate={{ x: '0%' }}
       transition={{ ease: 'easeInOut', duration: 0.7 }}
     >
-      <div className="class-header">
-        <h1>Classes</h1>
-      </div>
-      <div>
-        <select
-          className="class-dropdown"
-          value={selectedClass}
-          onChange={(e) => handleClassChange(
-            e.target.value,
-            e.target.options[e.target.selectedIndex].text,
-          )}
-        >
-          <option value="">Select a class</option>
-          {classes.map((classObj) => (
-            <option key={classObj.id} value={classObj.id}>{classObj.name}</option>
-          ))}
-        </select>
-      </div>
-      {students.length > 0 && (
-      <div className="selected-class">
+      <div
+        className="classes"
+      >
+        <div className="class-header">
+          <h1>Classes</h1>
+        </div>
         <div>
-          <h2 className="selected-class-header">{selectedClassName}</h2>
-        </div>
-        <div className="student-table">
-          <StudentTable students={students} handleStudentClick={handleStudentClick} />
-        </div>
-      </div>
-      )}
-      {showModal && selectedStudent && (
-        <div className="modal-backdrop">
-          <motion.div
-            className="modal-content"
-            initial={{ opacity: 0, scale: 0.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            exit={{ scale: 0.5 }}
+          <select
+            className="class-dropdown"
+            value={selectedClass}
+            onChange={(e) => handleClassChange(
+              e.target.value,
+              e.target.options[e.target.selectedIndex].text,
+            )}
           >
-            <StudentGradesModal
-              studentName={selectedStudent.name}
-              studentId={selectedStudent.id}
-              classId={selectedClass}
-              onClose={() => setShowModal(false)}
-            />
-          </motion.div>
+            <option value="">Select a class</option>
+            {classes.map((classObj) => (
+              <option key={classObj.id} value={classObj.id}>{classObj.name}</option>
+            ))}
+          </select>
         </div>
-      )}
+        {students.length > 0 && (
+        <div className="selected-class">
+          <div>
+            <h2 className="selected-class-header">{selectedClassName}</h2>
+          </div>
+          <div className="student-table">
+            <StudentTable students={students} handleStudentClick={handleStudentClick} />
+          </div>
+        </div>
+        )}
+        {showModal && selectedStudent && (
+          <div className="modal-backdrop">
+            <motion.div
+              className="modal-content"
+              initial={{ opacity: 0, scale: 0.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              exit={{ scale: 0.5 }}
+            >
+              <StudentGradesModal
+                studentName={selectedStudent.name}
+                studentId={selectedStudent.id}
+                classId={selectedClass}
+                onClose={() => setShowModal(false)}
+              />
+            </motion.div>
+          </div>
+        )}
+      </div>
     </motion.div>
   );
 }
