@@ -82,7 +82,7 @@ function Homepage() {
   return (
     <div className="homepage-container">
       <h1>{`Welcome back, ${name}`}</h1>
-      {tasks.length > 0 && (
+      {(tasks.length > 0 && assignments.length > 0) && (
       <div className="homepage-flex-container">
         {assignments.length > 0 && (
           <div className="homepage-assignments-container">
