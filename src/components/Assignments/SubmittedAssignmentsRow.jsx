@@ -45,7 +45,7 @@ SubmittedAssignmentsRow.propTypes = {
   submission: PropTypes.shape({
     student_name: PropTypes.string,
     submitted_on: PropTypes.string,
-    grade: PropTypes.number,
+    grade: PropTypes.string,
     student_id: PropTypes.number,
     assignment_id: PropTypes.number,
   }).isRequired,
