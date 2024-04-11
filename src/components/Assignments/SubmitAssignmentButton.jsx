@@ -22,7 +22,7 @@ function SubmitAssignmentButton({
   return (
     <div>
       <button type="button" className="submitAssignmentButtonButton" onClick={handleSubmitAssignmentButtonClick}><FaCheckSquare size={15} /></button>
-      {submitAssignmentModalIsOpen && assignmentToSubmit.id === assignmentId && (
+      {submitAssignmentModalIsOpen && assignmentToSubmit?.id === assignmentId && (
       <SubmitAssignmentModal
         setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}
         studentEmail={studentEmail}
@@ -44,6 +44,10 @@ SubmitAssignmentButton.propTypes = {
   setSubmitAssignmentModalIsOpen: PropTypes.func.isRequired,
   assignmentToSubmit: PropTypes.shape({
     id: PropTypes.number,
-  }).isRequired,
+  }),
   setAssignmentToSubmit: PropTypes.func.isRequired,
+};
+
+SubmitAssignmentButton.defaultProps = {
+  assignmentToSubmit: {},
 };
