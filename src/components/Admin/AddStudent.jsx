@@ -100,7 +100,7 @@ export default AddStudent;
 AddStudent.propTypes = {
   closeModal: PropTypes.func.isRequired,
   studentsInClass: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
   })).isRequired,

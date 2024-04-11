@@ -29,7 +29,6 @@ function Admin() {
       animate={{ x: '0%' }}
       transition={{ ease: 'easeInOut', duration: 0.7 }}
     >
-      {/* Your code here */}
       <div className="admin-create-buttons">
         <button type="button" onClick={handleUsersButtonClick}>Users</button>
         <button type="button" onClick={handleClassesButtonClick}>Classes</button>
@@ -37,7 +36,7 @@ function Admin() {
       <AssignStudentClass />
       {showUsersModal && <CreateUser exitModal={exitModal} />}
       {showClassesModal && <CreateClass exitModal={exitModal} />}
-    </div>
+    </motion.div>
   );
 }
 
