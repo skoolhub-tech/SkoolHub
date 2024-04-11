@@ -4,7 +4,6 @@ const createClient = require('../database/db');
 module.exports = async (submission) => {
   const client = createClient();
   try {
-    console.log(`submission: ${JSON.stringify(submission)}`);
     const {
       grade, score, totalPoints, feedback, submissionId,
     } = submission;
