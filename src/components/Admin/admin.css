@@ -71,3 +71,13 @@
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75 );
     border-radius: 1rem;
 }
+
+.admin-addstudent-container {
+    position:relative;
+}
+
+.admin-addstudent-alert {
+    position: absolute;
+    top: -2rem;
+    left: -7.2rem;
+}
