@@ -134,10 +134,63 @@ LOGIN PAGE / NAV BAR CSS ========================================
 }
 
 
-.page-turned {
-  transform: rotateY(180deg);
-  transition: transform 1s ease;
+.snipp-container1, .snipp-container2, .snipp-container3, .snipp-container4 {
+  display: flex;
+  height: 22.5%;
+  align-items: center;
 }
 
+.snipp-container2 {
+  background-color: #ABBD9A;
+}
 
+.snipp-container3 {
+  background-color: #858D6F;
+}
 
+.landing-page-header {
+  padding-bottom: 2em;
+}
+
+.landing-page-container {
+  width: 100%;
+  height: 160vh;
+  border: 2px solid black;
+}
+
+.snipp-text1,
+.snipp-text2,
+.snipp-text3,
+.snipp-text4 {
+  margin-left: 2em;
+  margin-right: 1em;
+  padding-left: 1em;
+  width: 65%;
+}
+
+.snipp1,
+.snipp2,
+.snipp3,
+.snipp4 {
+  height: 90%;
+  border-radius: 10px;
+  width: 30%;
+  border: 1px solid black;
+}
+
+.snipp1, .snipp3 {
+  margin-left: 2em;
+  order: -1;
+}
+.snipp2, .snipp4 {
+  margin-right: 2em;
+  order: 1;
+}
+.snipp1 {
+  background-color: #DCCCBB;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}

@@ -11,6 +11,8 @@ import Admin from './components/Admin/Admin';
 import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
 import Homepage from './components/Homepage/Homepage';
+import LandingPage from './components/LandingPage';
+import './LandingPage.css';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,6 +31,7 @@ function App() {
     <div className="navbar-container">
       <Router>
         <UserDataProvider>
+          <LandingPage />
           {isLoggedIn ? (
             <>
             <button className="log-out-bttn" type="button" onClick={handleLogOut}>Log out</button>
