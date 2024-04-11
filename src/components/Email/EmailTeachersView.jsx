@@ -187,6 +187,10 @@ function EmailTeachersView() {
             setThreshold={setThreshold}
             threshold={threshold}
             setOpenThreshold={setOpenThreshold}
+            setColor={setColor}
+            setMessage={setMessage}
+            setIcon={setIcon}
+            showNotificationTimer={showNotificationTimer}
           />
         )}
         {notify && (
