@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import { MdOutlineMarkEmailRead } from "react-icons/md";
 import './emailsComponent.css';
 import sendEmail from '../../utils/sendEmail';
 import EmailModal from './EmailModal';
 import DropDown from './DropDownSelector';
 import PeopleList from './PeopleList';
 import ThresholdInput from './ThresholdInput';
-import EmailNotify from './EmailNotify';
+import Notify from '../Notify';
 import { useUserData } from '../data-providers/UserDataProvider';
-// userData needs to contain id, email, name, and role
+
 function EmailTeachersView() {
   const { userData } = useUserData();
   // conditional render states
-  const [emailSent, setEmailSent] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [notify, setNotify] = useState(false);
+  const [color, setColor] = useState(0);
+  const [message, setMessage] = useState('');
+  const [icon, setIcon] = useState(<MdOutlineMarkEmailRead />);
   const [emailModal, setEmailModal] = useState(false);
   const [openThreshold, setOpenThreshold] = useState(false);
   // View states/data
@@ -54,10 +57,10 @@ function EmailTeachersView() {
       });
   }, []);
 
-  function showEmailSentTimer() {
-    setEmailSent(true);
+  function showNotificationTimer() {
+    setNotify(true);
     setTimeout(() => {
-      setEmailSent(false);
+      setNotify(false);
     }, 2000);
   }
 
@@ -72,8 +75,10 @@ function EmailTeachersView() {
       senderEmail: userData.email,
       receiverEmail: emailList,
     };
-    console.log('sent to', data.receiverEmail);
     setEmailModal(false);
+    setColor(0);
+    setMessage('Email Sent!');
+    showNotificationTimer();
     setSubjectLine('');
     setBody('');
     /*
@@ -88,9 +93,9 @@ function EmailTeachersView() {
       setEmailModal(false);
     } */
   };
+
   // get students in class set state to list of student Objects
   const handleClassChange = (classObj) => {
-    setEmailSent(false);
     setSubjectLine('');
     setBody('');
     setRecieverEmailList({});
@@ -136,53 +141,63 @@ function EmailTeachersView() {
   };
 
   return (
-    <motion.div
-      className="emailsDiv"
-      initial={{ x: '100%' }}
-      animate={{ x: '0%' }}
-      transition={{ ease: 'easeInOut', duration: 0.7 }}
-    >
-      <div className="emailsDiv-without-modal">
-        <h1>Email</h1>
-        {errorMessage && <p>{errorMessage}</p>}
-        <DropDown
-          classes={classes}
-          handleClassChange={handleClassChange}
-        />
-        {potentialEmailees.length > 0 && (
-          <PeopleList
-            currentClass={currentClass}
-            potentialEmailees={potentialEmailees}
-            receiverEmailList={receiverEmailList}
-            setRecieverEmailList={setRecieverEmailList}
+    <>
+      <motion.div
+        className="emailsDiv"
+        initial={{ x: '100%' }}
+        animate={{ x: '0%' }}
+        transition={{ ease: 'easeInOut', duration: 0.7 }}
+      >
+        <div className="emailsDiv-without-modal">
+          <h1>Email</h1>
+          <DropDown
+            classes={classes}
+            handleClassChange={handleClassChange}
+          />
+          {potentialEmailees.length > 0 && (
+            <PeopleList
+              currentClass={currentClass}
+              potentialEmailees={potentialEmailees}
+              receiverEmailList={receiverEmailList}
+              setRecieverEmailList={setRecieverEmailList}
+              setEmailModal={setEmailModal}
+              threshold={threshold}
+              setThreshold={setThreshold}
+              setOpenThreshold={setOpenThreshold}
+            />
+          )}
+        </div>
+      </motion.div>
+      <div>
+        {emailModal && (
+          <EmailModal
             setEmailModal={setEmailModal}
-            threshold={threshold}
+            setMessage={setBody}
+            setSubject={setSubjectLine}
+            email={email}
+            subject={subjectLine}
+            body={body}
+            currentClass={currentClass}
+            setSelectedTemplate={setSelectedTemplate}
+          />
+        )}
+        {openThreshold && (
+          <ThresholdInput
+            currentClass={currentClass}
             setThreshold={setThreshold}
+            threshold={threshold}
             setOpenThreshold={setOpenThreshold}
           />
         )}
+        {notify && (
+          <Notify
+            message={message}
+            color={color}
+            icon={icon}
+          />
+        )}
       </div>
-      {emailModal && (
-        <EmailModal
-          setEmailModal={setEmailModal}
-          setMessage={setBody}
-          setSubject={setSubjectLine}
-          email={email}
-          subject={subjectLine}
-          body={body}
-          currentClass={currentClass}
-          setSelectedTemplate={setSelectedTemplate}
-        />
-      )}
-      {openThreshold && (
-        <ThresholdInput
-          currentClass={currentClass}
-          setThreshold={setThreshold}
-          threshold={threshold}
-          setOpenThreshold={setOpenThreshold}
-        />
-      )}
-    </motion.div>
+    </>
   );
 }
 

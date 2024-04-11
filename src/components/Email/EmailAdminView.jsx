@@ -3,10 +3,11 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import './emailsComponent.css';
 import sendEmail from '../../utils/sendEmail';
+import { MdOutlineMarkEmailRead } from "react-icons/md";
 import EmailModal from './EmailModal';
 import AdminDropDown from './AdminDropDown';
 import PeopleList from './PeopleList';
-import EmailNotify from './EmailNotify';
+import Notfiy from '../Notify';
 import { useUserData } from '../data-providers/UserDataProvider';
 // all teachers, all students, and all admin
 // need drop down to be teachers, students, admin
@@ -14,8 +15,10 @@ import { useUserData } from '../data-providers/UserDataProvider';
 function EmailAdminView() {
   const { userData } = useUserData();
   // conditional render states
-  const [emailSent, setEmailSent] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [notify, setNotify] = useState(false);
+  const [color, setColor] = useState(0);
+  const [message, setMessage] = useState('');
+  const [icon, setIcon] = useState(<MdOutlineMarkEmailRead />);
   const [emailModal, setEmailModal] = useState(false);
   // View states/data
   const [potentialEmailees, setPotentialEmailees] = useState([]);
@@ -35,10 +38,10 @@ function EmailAdminView() {
       });
   }, []);
 
-  function showEmailSentTimer() {
-    setEmailSent(true);
+  function showNotificationTimer() {
+    setNotify(true);
     setTimeout(() => {
-      setEmailSent(false);
+      setNotify(false);
     }, 2000);
   }
   // sends email to all selected selected people in class/faculty
@@ -52,9 +55,10 @@ function EmailAdminView() {
       senderEmail: userData.email,
       receiverEmail: emailList,
     };
-    console.log(data, 'data');
-    console.log('sent to', data.receiverEmail);
     setEmailModal(false);
+    setColor(0);
+    setMessage('Email Sent!');
+    showNotificationTimer();
     setSubjectLine('');
     setBody('');
     /*
@@ -110,31 +114,32 @@ function EmailAdminView() {
         });
     }
   };
-// drop down to select teacher
+
   return (
-    <motion.div
-      className="emailsDiv"
-      initial={{ x: '100%' }}
-      animate={{ x: '0%' }}
-      transition={{ ease: 'easeInOut', duration: 0.7 }}
-    >
-      <div className="emailsDiv-without-modal">
-        <h1>Email</h1>
-        {errorMessage && <p>{errorMessage}</p>}
-        <AdminDropDown
-          views={views}
-          handleDropdownChange={handleDropdownChange}
-        />
-        {potentialEmailees.length > 0 && (
-          <PeopleList
-            currentClass={currentClass}
-            potentialEmailees={potentialEmailees}
-            receiverEmailList={receiverEmailList}
-            setRecieverEmailList={setRecieverEmailList}
-            setEmailModal={setEmailModal}
+    <>
+      <motion.div
+        className="emailsDiv"
+        initial={{ x: '100%' }}
+        animate={{ x: '0%' }}
+        transition={{ ease: 'easeInOut', duration: 0.7 }}
+      >
+        <div className="emailsDiv-without-modal">
+          <h1>Email</h1>
+          <AdminDropDown
+            views={views}
+            handleDropdownChange={handleDropdownChange}
           />
-        )}
-      </div>
+          {potentialEmailees.length > 0 && (
+            <PeopleList
+              currentClass={currentClass}
+              potentialEmailees={potentialEmailees}
+              receiverEmailList={receiverEmailList}
+              setRecieverEmailList={setRecieverEmailList}
+              setEmailModal={setEmailModal}
+            />
+          )}
+        </div>
+      </motion.div>
       {emailModal && (
         <EmailModal
           setEmailModal={setEmailModal}
@@ -145,7 +150,14 @@ function EmailAdminView() {
           email={email}
         />
       )}
-    </motion.div>
+      {notify && (
+        <Notify
+          message={message}
+          color={color}
+          icon={icon}
+        />
+      )}
+    </>
   );
 }
 
