@@ -42,3 +42,8 @@
   border-radius: 8px;
   overflow: auto;
 }
+.view-submission-h3 {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}

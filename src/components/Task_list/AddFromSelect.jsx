@@ -12,11 +12,17 @@ function AddFromSelect({
 }) {
   const { userData } = useUserData();
 
+  const currentHour = moment().startOf('hour');
+  const nextHour = moment().startOf('hour').add(1, 'hour');
+
+  const updatedStart = moment(task.start).startOf('day').hour(currentHour.hour());
+  const updatedEnd = moment(task.start).startOf('day').hour(nextHour.hour());
+
   const [newTask, setNewTask] = useState({
     id: userData.id,
     ...task,
-    start: moment.utc(task.start).local().format(),
-    end: moment.utc(task.end).local().format(),
+    start: updatedStart.utc().local().format(),
+    end: updatedEnd.utc().local().format(),
   });
 
   const handleChange = (e) => {

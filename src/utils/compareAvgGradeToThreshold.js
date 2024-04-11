@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 import axios from 'axios';
 
 async function compareAvgGradeToThreshold(classId, studentId) {
@@ -21,11 +22,20 @@ async function compareAvgGradeToThreshold(classId, studentId) {
           to_name: studentDetails.name,
           to_email: studentDetails.email,
         };
-        axios.post('/skoolhub/sendautoemail', emailData)
-          .then(() => 'Auto Email Sent!')
+        console.log(`Sent Auto Email ${emailData.to_name}`);
+        return `Sent Auto Email ${emailData.to_name}`;
+        /*
+          axios.post('/skoolhub/sendautoemail', emailData)
+          .then(() => {
+            console.log('Sent Auto Email', emailData.to_name);
+            return 'Auto Email Sent!';
+          })
           .catch((error) => error.message);
+        */
+      } else {
+        console.log('No email sent, average grade is above the threshold');
+        return 'No email sent, average grade is above the threshold';
       }
-      return null;
     })
     .catch((error) => error.message);
 }

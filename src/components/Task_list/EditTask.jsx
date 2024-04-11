@@ -62,11 +62,12 @@ function EditTask({
   return (
     <div className="modal">
       <motion.div
-      className="calendar-modal-content"
-      initial={{ opacity: 0, scale: 0.1 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6 }}
-      exit={{ scale: 0.5 }}>
+        className="calendar-modal-content"
+        initial={{ opacity: 0, scale: 0.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        exit={{ scale: 0.5 }}
+      >
         <button type="button" className="exit-button" onClick={closeEditTask}>Cancel</button>
         <h2 className="edit-task">Edit Task</h2>
         <div className="floating-form">
@@ -105,6 +106,7 @@ function EditTask({
           />
           <label htmlFor="completed">Completed:</label>
           <input
+            className="completed-input"
             type="checkbox"
             id="completed"
             name="completed"

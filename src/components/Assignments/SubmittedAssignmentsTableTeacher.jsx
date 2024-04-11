@@ -10,6 +10,8 @@ function SubmittedAssignmentsTabelTeacher({
   setStudentId,
   setViewSubmissionModalOpen,
   setAssignmentId,
+  studentId,
+  classObjForEmail,
 }) {
   const [submissions, setSubmissions] = useState([]);
   const [gradeSubmissionModalOpen, setGradeSubmissionModalOpen] = useState(false);
@@ -30,12 +32,10 @@ function SubmittedAssignmentsTabelTeacher({
 
   return (
     <div>
-      <h1>Submitted Assignments</h1>
       <h2>{assignment.name}</h2>
-      <h2>
-        Due Date:
-        {fomratDate(assignment.due_date)}
-      </h2>
+      <h3 className="view-submission-h3" >
+        Due Date: {fomratDate(assignment.due_date)}
+      </h3>
       <table>
         <thead>
           <tr>
@@ -65,6 +65,8 @@ function SubmittedAssignmentsTabelTeacher({
         submission={submissionToGrade}
         setGradeSubmissionModalOpen={setGradeSubmissionModalOpen}
         getSubmissions={getSubmissions}
+        studentId={studentId}
+        classObjForEmail={classObjForEmail}
       />
       )}
     </div>
@@ -82,4 +84,12 @@ SubmittedAssignmentsTabelTeacher.propTypes = {
   setStudentId: PropTypes.func.isRequired,
   setViewSubmissionModalOpen: PropTypes.func.isRequired,
   setAssignmentId: PropTypes.func.isRequired,
+  studentId: PropTypes.number,
+  classObjForEmail: PropTypes.shape({
+    id: PropTypes.number,
+  }).isRequired,
+};
+
+SubmittedAssignmentsTabelTeacher.defaultProps = {
+  studentId: null,
 };

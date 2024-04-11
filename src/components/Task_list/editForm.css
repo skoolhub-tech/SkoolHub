@@ -75,3 +75,18 @@ button:hover {
   margin-top: 20px;
   background-color: rgba(255, 0, 0, 0.379);
 }
+
+.completed-input {
+  width: 30px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  transform: rotate(-90deg);
+  transition: transform 0.5s, scale 0.5s;
+}
+
+.completed-input:checked {
+  transform: rotate(0deg) scale(1.5);
+  transition: transform 0.5s, scale 0.5s;
+}

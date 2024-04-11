@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
 function AddStudent({
   closeModal, studentsInClass, selectedClass, fetchStudentsInClass,
@@ -12,10 +13,10 @@ function AddStudent({
   const fetchStudents = () => {
     axios.get('/skoolhub/students')
       .then((response) => {
-        // console.log(response.data);
         setStudents(response.data);
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.error(error);
       });
   };
@@ -31,12 +32,12 @@ function AddStudent({
 
   const AddStudentToClass = (classId, studentId) => {
     axios.post('/skoolhub/classes/students', { classId, studentId })
-      .then((response) => {
-        // console.log(response);
+      .then(() => {
         fetchStudentsInClass(classId);
         setRefresh(!refresh);
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.error(error);
       });
   };
@@ -73,7 +74,6 @@ function AddStudent({
         <table className="admin-add-student-table">
           <thead>
             <tr>
-              {/* <th>ID</th> */}
               <th>Name</th>
               <th>Email</th>
               <th>Action</th>
@@ -82,7 +82,6 @@ function AddStudent({
           <tbody>
             {filteredStudents.map((student) => (
               <tr key={student.id}>
-                {/* <td>{student.id}</td> */}
                 <td>{student.name}</td>
                 <td>{student.email}</td>
                 <td><button type="button" onClick={() => handleAddClick(student.id)}>ADD</button></td>
@@ -97,3 +96,14 @@ function AddStudent({
 }
 
 export default AddStudent;
+
+AddStudent.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  studentsInClass: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  })).isRequired,
+  selectedClass: PropTypes.string.isRequired,
+  fetchStudentsInClass: PropTypes.func.isRequired,
+};

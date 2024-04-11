@@ -11,11 +11,13 @@ function ViewSubmittedAssignmentButton(
     viewSubmissionModalOpen,
     setViewSubmissionModalOpen,
     setAssignmentId,
+    setSubmitAssignmentModalIsOpen,
   },
 ) {
   const handleClick = () => {
     setAssignmentId(assignmentId);
     setViewSubmissionModalOpen(!viewSubmissionModalOpen);
+    setSubmitAssignmentModalIsOpen(false);
   };
 
   return (
@@ -33,7 +35,8 @@ export default ViewSubmittedAssignmentButton;
 
 ViewSubmittedAssignmentButton.propTypes = {
   assignmentId: PropTypes.number.isRequired,
-  setAssignmentId: PropTypes.func.isRequired,
-  setViewSubmissionModalOpen: PropTypes.func.isRequired,
   viewSubmissionModalOpen: PropTypes.bool.isRequired,
+  setViewSubmissionModalOpen: PropTypes.func.isRequired,
+  setAssignmentId: PropTypes.func.isRequired,
+  setSubmitAssignmentModalIsOpen: PropTypes.func.isRequired,
 };
