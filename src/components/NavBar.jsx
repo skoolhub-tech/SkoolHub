@@ -35,11 +35,18 @@ function NavBar({handleLogOut}) {
           >
             Emails
           </button>
+          <button
+            type="button"
+            onClick={handleLogOut}
+            className={`${location.pathname === '/login' ? 'tab-active' : 'tab'}`}
+          >
+            Log Out
+          </button>
         </div>
       );
     } if (userData.role === 2) {
       return (
-        <div className="nav-bar">
+        <div className="teacher-nav-bar">
           <button
             type="button"
             onClick={() => handleNavigation('homepage')}
@@ -75,11 +82,18 @@ function NavBar({handleLogOut}) {
           >
             Emails
           </button>
+          <button
+            type="button"
+            onClick={handleLogOut}
+            className={`${location.pathname === '/login' ? 'tab-active' : 'tab'}`}
+          >
+            Log Out
+          </button>
         </div>
       );
     } if (userData.role === 3) {
       return (
-        <div className="nav-bar">
+        <div className="student-nav-bar">
           <button
             type="button"
             onClick={() => handleNavigation('homepage')}
@@ -107,6 +121,13 @@ function NavBar({handleLogOut}) {
             className={`${location.pathname === '/emails' ? 'tab-active' : 'tab'}`}
           >
             Emails
+          </button>
+          <button
+            type="button"
+            onClick={handleLogOut}
+            className={`${location.pathname === '/login' ? 'tab-active' : 'tab'}`}
+          >
+            Log Out
           </button>
         </div>
       );
