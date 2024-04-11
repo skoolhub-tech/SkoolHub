@@ -38,7 +38,7 @@ function App() {
       <Router>
         <UserDataProvider>
           <LandingPage />
-          {isLoggedIn ? (
+          {/* {isLoggedIn ? (
             <>
               <div className="after-login-logo-slogan">
                 <img src={logo} alt="logo" className="after-login-logo" />
@@ -78,8 +78,8 @@ function App() {
                 </div>
               </div>
               <Login handleLoginEvent={handleLogin} isLoggedIn={isLoggedIn} />
-            </div>
-          )}
+            </div> */}
+          {/* )} */}
         </UserDataProvider>
       </Router>
     </div>
