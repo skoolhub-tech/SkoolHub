@@ -4,6 +4,7 @@ import snipp2 from '../../photos/snipp2.gif';
 import snipp3 from '../../photos/snipp3.gif';
 import snipp4 from '../../photos/snipp4.gif';
 import skoolhublogo from '../../photos/skoolhub2-no-background.png';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function LandingPage() {
   const snippContainer1Ref = useRef(null);
@@ -11,9 +12,24 @@ function LandingPage() {
   const scrollToSnippContainer1 = () => {
     snippContainer1Ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
+
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
+
   return (
     <div className="landing-page-container">
-      <button>Login</button>
+      <button
+            type="button"
+            onClick={() => handleNavigation('login')}
+            className={`${location.pathname === '/login' ? 'tab-active' : 'tab'}`}
+          >
+            Login
+          </button>
       <div className="landing-page">
       <div className="landing-page-header">
         <h1>Welcome to SkoolHub</h1>
