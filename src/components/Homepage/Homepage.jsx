@@ -44,26 +44,28 @@ function Homepage() {
   };
 
   useEffect(() => {
-    axios.get(`/skoolhub/user/classes/${email}`)
-      .then((response) => setClasses(response.data))
-      .catch((error) => console.error({
-        Message: 'Error retrieving classes.',
-        Error: error,
-      }));
+    if (role === 2 || role === 3) {
+      axios.get(`/skoolhub/user/classes/${email}`)
+        .then((response) => setClasses(response.data))
+        .catch((error) => console.error({
+          Message: 'Error retrieving classes.',
+          Error: error,
+        }));
 
-    axios.get(`/skoolhub/calendar/${role}/${id}`)
-      .then((response) => response.data.map((event) => ({
-        ...event,
-        start: new Date(event.start),
-        end: new Date(event.end),
-      })))
-      .then((formattedEvents) => setTasks(formattedEvents))
-      .catch((error) => console.error({
-        Message: 'Error retrieving calendar.',
-        Error: error,
-      }));
+      axios.get(`/skoolhub/calendar/${role}/${id}`)
+        .then((response) => response.data.map((event) => ({
+          ...event,
+          start: new Date(event.start),
+          end: new Date(event.end),
+        })))
+        .then((formattedEvents) => setTasks(formattedEvents))
+        .catch((error) => console.error({
+          Message: 'Error retrieving calendar.',
+          Error: error,
+        }));
 
-    getCurrentAssignments();
+      getCurrentAssignments();
+    }
     // TODO test login on .role dependency
   }, [userData.role]);
 
