@@ -16,6 +16,7 @@ import BusAnimation from './animations/BusAnimation';
 import HomepageWithTaskCheck from './components/HomepageWithTaskCheck';
 import LandingPage from './components/LandingPage';
 import logo from '../photos/skoolhub2-no-background.png';
+import LoginPage from './components/LoginPage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -37,7 +38,6 @@ function App() {
     <div className="navbar-container">
       <Router>
         <UserDataProvider>
-          <LandingPage />
           {isLoggedIn ? (
             <>
               <div className="after-login-logo-slogan">
@@ -69,16 +69,11 @@ function App() {
               </Routes>
             </>
           ) : (
-            <div className="login-page">
-              <div className="login-logo-slogan">
-                <img src={logo} alt="logo" className="login-logo" />
-                <div className="slogan">
-                  <h3 className="welcome-message-one">Skoolhub</h3>
-                  <h4 className="welcome-message-two">Teaching In. Tedious Out.</h4>
-                </div>
-              </div>
-              <Login handleLoginEvent={handleLogin} isLoggedIn={isLoggedIn} />
-            </div>
+            <Routes>
+              <Route path='/' element={<LandingPage/>} />
+              <Route path="*" element={<Navigate to="/" />} />
+              <Route path="/login" element={<LoginPage handleLogin={handleLogin} isLoggedIn={isLoggedIn}/>} />
+            </Routes>
           )}
         </UserDataProvider>
       </Router>
