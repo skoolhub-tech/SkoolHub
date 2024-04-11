@@ -45,6 +45,7 @@ router.post('/classes/students', controller.createClassStudent);
 router.post('/createUser', controller.createUser);
 router.post('/createClass', controller.createClass);
 // PUT requests
+router.put('/assignments', controller.updateAssignment);
 router.put('/edittask', controller.updateCalendar);
 router.put('/updateThreshold', controller.updateThreshold);
 // DELETE requests

@@ -108,6 +108,7 @@ function AssignmentsPage() {
                 selectedClass={selectedClass}
                 setAssignmentId={setAssignmentId}
                 setViewAssignmentSubmissions={setViewAssignmentSubmissions}
+                getClassesAndAssignments={getClassesAndAssignments}
               />
             )}
             {role === 2 && viewAssignmentSubmissions && (
