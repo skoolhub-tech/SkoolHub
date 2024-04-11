@@ -37,8 +37,13 @@ function App() {
         <UserDataProvider>
           {isLoggedIn ? (
             <>
-              <img src={logo} alt="logo" className="login-logo" />
-              <button className="log-out-bttn" type="button" onClick={handleLogOut}>Log out</button>
+              <div className="after-login-logo-slogan">
+                <img src={logo} alt="logo" className="after-login-logo" />
+                <div className="after-slogan">
+                  <h3 className="after-welcome-message-one">Skoolhub</h3>
+                  <h4 className="after-welcome-message-two">Teaching In. Tedious Out.</h4>
+                </div>
+              </div>
               <NavBar handleLogOut={handleLogOut} />
               <Routes>
                 <Route
@@ -62,9 +67,12 @@ function App() {
             </>
           ) : (
             <div className="login-page">
-              <div>
-                <h1 className="login-h1">SkoolHub</h1>
-                <p className="login-p">Teaching in. Tedious out.</p>
+              <div className="login-logo-slogan">
+                <img src={logo} alt="logo" className="login-logo" />
+                <div className="slogan">
+                  <h3 className="welcome-message-one">Skoolhub</h3>
+                  <h4 className="welcome-message-two">Teaching In. Tedious Out.</h4>
+                </div>
               </div>
               <Login handleLoginEvent={handleLogin} isLoggedIn={isLoggedIn} />
             </div>

@@ -5,9 +5,11 @@
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.75);
 }
 .class-dropdown {
-  transform: scale(1.05);
-  border-radius: 10px;
+  transform: scale(1.15);
   margin-bottom: 1rem;
+  margin-left: 1rem;
+  font-size: medium;
+  border: 1px solid;
 }
 .class-header {
   color: white;
