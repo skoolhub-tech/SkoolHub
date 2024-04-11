@@ -13,6 +13,8 @@ function AssignmentsTableStudent({
   viewSubmissionModalOpen,
 }) {
   const [assignmentToView, setAssignmentToView] = useState(null);
+  const [submitAssignmentModalIsOpen, setSubmitAssignmentModalIsOpen] = useState(false);
+  const [assignmentToSubmit, setAssignmentToSubmit] = useState(null);
   return (
     <>
       <table>
@@ -37,6 +39,10 @@ function AssignmentsTableStudent({
                 setAssignmentId={setAssignmentId}
                 viewSubmissionModalOpen={viewSubmissionModalOpen}
                 setAssignmentToView={setAssignmentToView}
+                submitAssignmentModalIsOpen={submitAssignmentModalIsOpen}
+                setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}
+                assignmentToSubmit={assignmentToSubmit}
+                setAssignmentToSubmit={setAssignmentToSubmit}
               />
             ))}
         </tbody>

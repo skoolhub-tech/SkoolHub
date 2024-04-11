@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 import './emailsComponent.css';
 import sendEmail from '../../utils/sendEmail';
 import EmailModal from './EmailModal';
@@ -76,7 +77,12 @@ function EmailStudentsView() {
   };
 
   return (
-    <div className="emailsDiv">
+    <motion.div
+      className="emailsDiv"
+      initial={{ x: '100%' }}
+      animate={{ x: '0%' }}
+      transition={{ ease: 'easeInOut', duration: 0.7 }}
+    >
       <div className="emailsDiv-without-modal">
         <h1>Email</h1>
         {errorMessage && <p>{errorMessage}</p>}
@@ -101,7 +107,7 @@ function EmailStudentsView() {
           emailSent={emailSent}
         />
       )}
-    </div>
+    </motion.div>
   );
 }
 
