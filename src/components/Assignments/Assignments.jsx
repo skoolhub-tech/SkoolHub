@@ -22,7 +22,6 @@ function AssignmentsPage() {
   const [viewAssignmentSubmissions, setViewAssignmentSubmissions] = useState(null);
   const [createAssignmentModalOpen, setCreateAssignmentModalOpen] = useState(false);
   const [submitAssignmentModalIsOpen, setSubmitAssignmentModalIsOpen] = useState(false);
-
   const [classObjForEmail, setClassObjForEmail] = useState(null);
 
   const getClassesAndAssignments = useCallback(async () => {
