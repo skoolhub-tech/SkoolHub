@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import busImage from '../../photos/bus.png';
 
-function BusAnimation() {
+function BusAnimation({ onComplete }) {
   const busVariants = {
     start: { x: '-60vw' },
     end: {
@@ -19,6 +20,11 @@ function BusAnimation() {
       transition: { duration: 1.5 },
     },
   };
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => onComplete(true), 2000);
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   return (
     <div style={{
@@ -129,5 +135,9 @@ function BusAnimation() {
     </div>
   );
 }
+
+BusAnimation.propTypes = {
+  onComplete: PropTypes.func.isRequired,
+};
 
 export default BusAnimation;
