@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { FaCheck } from "react-icons/fa";
 import { motion } from 'framer-motion';
 
 function ThresholdInput({
-  currentClass, setThreshold, threshold, setOpenThreshold,
+  currentClass,
+  setThreshold, threshold, setOpenThreshold,
+  setColor, setMessage, setIcon,
+  showNotificationTimer
 }) {
   const [inputValue, setInputValue] = useState('');
 
@@ -20,6 +24,10 @@ function ThresholdInput({
     })
       .then(() => {
         setThreshold(Number(inputValue));
+        setColor(0);
+        setMessage('Threshold Set!');
+        setIcon(<FaCheck />);
+        showNotificationTimer();
       });
   };
 

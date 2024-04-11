@@ -7,7 +7,7 @@ import { MdOutlineMarkEmailRead } from "react-icons/md";
 import EmailModal from './EmailModal';
 import AdminDropDown from './AdminDropDown';
 import PeopleList from './PeopleList';
-import Notfiy from '../Notify';
+import Notify from '../Notify';
 import { useUserData } from '../data-providers/UserDataProvider';
 // all teachers, all students, and all admin
 // need drop down to be teachers, students, admin

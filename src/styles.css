@@ -191,18 +191,27 @@ LOGIN PAGE / NAV BAR CSS ========================================
   padding-bottom: 2em;
 }
 
+.landing-page-header {
+  font-size: 30px;
+  padding-bottom: 2em;
+}
+
 .landing-page-header h1 {
   overflow: hidden;
   border-right: .12em solid black;
   white-space: nowrap;
-  margin: 0 auto;
   letter-spacing: .10em;
-  animation: typewriter 2.5s steps(30, end), blink-caret .75s step-end ;
+  animation: typewriter 2.5s steps(30, end), blink-caret .75s step-end infinite;
 }
 
 @keyframes typewriter {
-  from {width: 0%;}
-  to {width: 100%;}
+  from { text-indent: calc(100% + 0.5em); }
+  to { text-indent: -0.5em; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: black; }
 }
 
 /* The typewriter cursor effect */
@@ -278,20 +287,18 @@ LOGIN PAGE / NAV BAR CSS ========================================
 .snipp2-p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
   text-align: center;
-    left: 36%;
-    top: 2.3%;
-    position: relative;
+    position: absolute;
     border-radius: 30px;
     background-color: white;
     width: 27%;
     border: 1px solid black;
 }
 
-.snipp3-p {
+.snipp2-p, .snipp3-p, .snipp4-p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+    margin-top: 46.7rem;;
     text-align: center;
     left: 36%;
-    top: 264.58%;
     position: absolute;
     border-radius: 30px;
     background-color: white;
@@ -321,13 +328,12 @@ LOGIN PAGE / NAV BAR CSS ========================================
 .snipp4-p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
     text-align: center;
-    left: 36%;
-    top: 340.78%;
     position: absolute;
     border-radius: 30px;
     background-color: white;
     width: 27%;
     border: 1px solid black;
+    margin-top: 46.6rem;
 }
 
 .snipp4-p::before,
@@ -398,7 +404,7 @@ LOGIN PAGE / NAV BAR CSS ========================================
 .snipp1-p {
   text-align: center;
     left: 36%;
-    top: 1.5%;
+    top: 5%;
     position: relative;
     border-radius: 30px;
     background-color: white;
@@ -415,6 +421,10 @@ LOGIN PAGE / NAV BAR CSS ========================================
 
 .snipp-container2 {
   background-color: #ABBD9A;
+}
+.snipp-container2::before {
+  border: 10px solid black;
+  z-index: 999;
 }
 
 .snipp-container3 {
@@ -451,19 +461,26 @@ LOGIN PAGE / NAV BAR CSS ========================================
 .snipp3 img {
   border: 5px solid white;
   box-shadow: 5px 5px 5px rgba(0, 0,0, 2);
+  margin-top: -4rem;
+  margin-left: 2rem;
+  width: 32%;
 }
 
 .snipp4 img {
   border: 5px solid white;
-  box-shadow: 5px 5px 5px rgba(0, 0,0, 2);
+  box-shadow: -5px 5px 5px rgba(0, 0,0, 2);
   margin-top: -40px;
+  width: 38%;
+  margin-left: 1rem;
+  margin-top: -4rem;
+
 }
 
 .snipp1 img {
   border: 5px solid white;
-  margin-left: 44px;
-  width: 25.3%;
-  margin-top: -94px;
+  margin-left: 8rem;
+  width: 20.3%;
+  margin-top: -3rem;
   border-radius: 10px;
   position: absolute;
   height: 57%;
