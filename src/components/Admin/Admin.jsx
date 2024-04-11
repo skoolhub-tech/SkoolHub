@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import AssignStudentClass from './AssignStudentClass';
 import { useUserData } from '../data-providers/UserDataProvider';
 import CreateUser from './CreateUser';
@@ -24,7 +25,12 @@ function Admin() {
   };
 
   return (
-    <div className="admin-container">
+    <motion.div
+      className="admin-container"
+      initial={{ x: '100%' }}
+      animate={{ x: '0%' }}
+      transition={{ ease: 'easeInOut', duration: 0.7 }}
+    >
       {/* Your code here */}
       <div className="admin-create-buttons">
         <button type="button" onClick={handleUsersButtonClick}>Users</button>
@@ -40,7 +46,7 @@ function Admin() {
       {showClassesModal && (
         <CreateClass exitModal={exitModal} />
       )}
-    </div>
+    </motion.div>
   );
 }
 
