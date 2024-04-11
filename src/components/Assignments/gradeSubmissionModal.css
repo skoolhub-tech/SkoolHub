@@ -16,8 +16,10 @@
   overflow: auto;
 }
 
-.grade_submission_modal * {
+.grade_submission_modal input,
+.grade_submission_modal textarea {
   width: 90%;
+  padding: 10px
 }
 
 .grade_submission_modal_overlay {

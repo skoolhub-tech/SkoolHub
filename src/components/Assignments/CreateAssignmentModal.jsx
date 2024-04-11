@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/forbid-prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -67,32 +68,31 @@ function CreateAssignmentModal({
       <div className="create_assignment_modal">
         <h1>Create Assignment</h1>
         <form className="create_assignment_form" onSubmit={handleSubmit}>
-          <label className="create-assignment-label" htmlFor="assignmentName">
-            Assignment Name:
-            <input
-              type="text"
-              id="assignmentName"
-              placeholder="Enter Assignment Name"
-              onChange={handleAssignmentNameChange}
-            />
-          </label>
-          <label className="create-assignment-label" htmlFor="dueDate">
-            Due Date:
-            <input
-              type="date"
-              id="dueDate"
-              placeholder="YYYY-MM-DD"
-              onChange={handleDueDateChange}
-            />
-          </label>
-          <label className="create-assignment-label" htmlFor="instructions">
-            Instructions:
-            <textarea
-              id="instructions"
-              placeholder="Enter Assignment Instructions"
-              onChange={handleInstructionsChange}
-            />
-          </label>
+          <br />
+          <br />
+          <label className="create-assignment-label" htmlFor="assignmentName">Assignment Name:</label>
+          <input
+            type="text"
+            id="assignmentName"
+            placeholder="Enter Assignment Name"
+            onChange={handleAssignmentNameChange}
+          />
+          <br />
+          <label className="create-assignment-label" htmlFor="dueDate">Due Date:</label>
+          <input
+            type="date"
+            id="dueDate"
+            placeholder="YYYY-MM-DD"
+            onChange={handleDueDateChange}
+          />
+          <br />
+          <label className="create-assignment-label" htmlFor="instructions">Instructions:</label>
+          <textarea
+            id="instructions"
+            placeholder="Enter Assignment Instructions"
+            onChange={handleInstructionsChange}
+          />
+          <br />
           <br />
           <button type="submit">Create Assignment</button>
         </form>

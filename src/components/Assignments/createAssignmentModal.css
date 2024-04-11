@@ -28,6 +28,13 @@
   padding: 2rem;
 }
 
+.create_assignment_modal input,
+.create_assignment_modal textarea {
+  width: 90%;
+  padding: 10px;
+  margin: 0.5rem 0;
+}
+
 .create_assignment_form {
   display: flex;
   flex-direction: column;

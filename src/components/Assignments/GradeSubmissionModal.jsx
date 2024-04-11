@@ -62,17 +62,30 @@ function GradeSubmissionModal({
       <div className="grade_submission_modal">
         <h2>Grade Submission</h2>
         <form onSubmit={handleSubmitGrade}>
-          <label htmlFor="score">% Score: </label>
-          <input type="number" id="score" name="score" value={score} min="0" max="100" onChange={(e) => setScore(e.target.value)} />
+          <label htmlFor="score">
+            % Score:
+            {' '}
+            <input type="number" id="score" name="score" value={score} min="0" max="100" onChange={(e) => setScore(e.target.value)} />
+          </label>
           <br />
-          <label htmlFor="total_points">Total Points: </label>
-          <input type="number" id="total_points" name="total_points" value={totalPoints} onChange={(e) => setTotalPoints(e.target.value)} />
+          <label htmlFor="total_points">
+            Total Points:
+            {' '}
+            <input type="number" id="total_points" name="total_points" value={totalPoints} onChange={(e) => setTotalPoints(e.target.value)} />
+          </label>
           <br />
-          <label htmlFor="grade">Grade: </label>
-          <input type="text" id="grade" name="grade" value={grade} onChange={(e) => setGrade(e.target.value)} />
+          <label htmlFor="grade">
+            Grade:
+            {' '}
+            <input type="text" id="grade" name="grade" value={grade} onChange={(e) => setGrade(e.target.value)} />
+          </label>
           <br />
-          <label htmlFor="feedback">Feedback: </label>
-          <textarea id="feedback" name="feedback" value={feedback} onChange={(e) => setFeedback(e.target.value)} />
+          <label htmlFor="feedback">
+            Feedback:
+            {' '}
+            <br />
+            <textarea id="feedback" name="feedback" value={feedback} onChange={(e) => setFeedback(e.target.value)} />
+          </label>
           <br />
           <br />
           <button className="grade-sub-modal-bttn" type="submit">Submit Grade</button>
