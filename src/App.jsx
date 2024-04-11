@@ -14,7 +14,7 @@ import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
 import BusAnimation from './animations/BusAnimation';
 import HomepageWithTaskCheck from './components/HomepageWithTaskCheck';
-import logo from '../photos/skoolhublogo.png';
+import logo from '../photos/skoolhub2-no-background.png';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
