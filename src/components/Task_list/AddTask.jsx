@@ -15,8 +15,11 @@ function AddTask({
   const [newTask, setNewTask] = useState({
     ...task,
     id: userData.id,
-    start: moment.utc(task.start).local().format(),
-    end: moment.utc(task.end).local().format(),
+    start: moment.utc().local().startOf('hour').add(Math.ceil(moment().minute() / 30) * 30, 'minutes')
+      .format(),
+    end: moment.utc().local().startOf('hour').add(Math.ceil(moment().minute() / 30) * 30, 'minutes')
+      .add(30, 'minutes')
+      .format(),
   });
 
   const handleChange = (e) => {
