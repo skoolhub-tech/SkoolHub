@@ -5,12 +5,15 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { useUserData } from '../data-providers/UserDataProvider';
+import compareAvgGradeToThreshold from '../../utils/compareAvgGradeToThreshold';
 import './gradeSubmissionModal.css';
 
 function GradeSubmissionModal({
   setGradeSubmissionModalOpen,
   submission,
   getSubmissions,
+  studentId,
+  classObjForEmail,
 }) {
   const [grade, setGrade] = useState(submission.grade);
   const [score, setScore] = useState(submission.score);
@@ -32,6 +35,7 @@ function GradeSubmissionModal({
     })
       .then(() => {
         getSubmissions();
+        compareAvgGradeToThreshold(classObjForEmail.id, studentId);
       })
       .catch((err) => {
         console.error('Error submitting grade: ', err);
@@ -92,4 +96,8 @@ GradeSubmissionModal.propTypes = {
     feedback: PropTypes.string,
   }).isRequired,
   getSubmissions: PropTypes.func.isRequired,
+  studentId: PropTypes.number.isRequired,
+  classObjForEmail: PropTypes.shape({
+    id: PropTypes.number,
+  }).isRequired,
 };

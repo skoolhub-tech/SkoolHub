@@ -22,6 +22,8 @@ function AssignmentsPage() {
   const [viewAssignmentSubmissions, setViewAssignmentSubmissions] = useState(null);
   const [createAssignmentModalOpen, setCreateAssignmentModalOpen] = useState(false);
 
+  const [classObjForEmail, setClassObjForEmail] = useState(null);
+
   const getClassesAndAssignments = useCallback(async () => {
     try {
       const response = await axios.get(`/skoolhub/classesAndAssignments/${role}?email=${email}`);
@@ -36,7 +38,10 @@ function AssignmentsPage() {
   }, []);
 
   useEffect(() => {
-    if (data) setSelectedClass(data[0].name);
+    if (data) {
+      setSelectedClass(data[0].name);
+      setClassObjForEmail(data[0]);
+    }
   }, [data]);
 
   useEffect(() => {
@@ -62,6 +67,7 @@ function AssignmentsPage() {
         <ClassesDropDownMenu
           classes={data}
           setSelectedClass={setSelectedClass}
+          setClassObjForEmail={setClassObjForEmail}
         />
         )}
         {selectedClass && !viewAssignmentSubmissions && role === 2 && (
@@ -130,6 +136,8 @@ function AssignmentsPage() {
                   setStudentId={setStudentId}
                   setViewSubmissionModalOpen={setViewSubmissionModalOpen}
                   setAssignmentId={setAssignmentId}
+                  studentId={studentId}
+                  classObjForEmail={classObjForEmail}
                 />
               </>
             )}
@@ -147,6 +155,7 @@ function AssignmentsPage() {
           classId={data.find((classObj) => classObj.name === selectedClass).id}
           studentId={studentId}
           onCloseModal={handleCloseModal}
+          classObjForEmail={classObjForEmail}
         />
       )}
     </motion.div>

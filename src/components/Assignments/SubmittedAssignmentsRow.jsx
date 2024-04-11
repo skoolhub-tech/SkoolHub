@@ -21,6 +21,7 @@ function SubmittedAssignmentsRow({
 
   function handleGradeSubmissionClick() {
     setSubmissionToGrade(submission);
+    setStudentId(submission.student_id);
     setGradeSubmissionModalOpen(true);
   }
 

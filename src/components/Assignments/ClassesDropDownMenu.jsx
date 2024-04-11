@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './classesDropDownMenu.css';
 
-function ClassesDropDownMenu({ classes, setSelectedClass }) {
+function ClassesDropDownMenu({ classes, setSelectedClass, setClassObjForEmail }) {
   return (
     <div>
       <select
         type="button"
         className="classes_drop_down_menu"
-        onChange={(e) => setSelectedClass(e.target.value)}
+        onChange={(e) => {
+          setSelectedClass(e.target.value);
+          setClassObjForEmail(classes.find((classObj) => classObj.name === e.target.value));
+        }}
       >
         <option value="">Choose a Class</option>
         {classes.map((item) => (
