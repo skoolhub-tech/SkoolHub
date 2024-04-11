@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
-function ThresholdInput({ currentClass, setThreshold, threshold, setOpenThreshold}) {
+function ThresholdInput({
+  currentClass, setThreshold, threshold, setOpenThreshold,
+}) {
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
@@ -11,7 +15,7 @@ function ThresholdInput({ currentClass, setThreshold, threshold, setOpenThreshol
   const handleSetThreshold = () => {
     setOpenThreshold(false);
     axios.put('skoolhub/updateThreshold', {
-      newThreshold: inputValue,
+      newThreshold: Number(inputValue),
       classId: currentClass.id,
     })
       .then(() => {
@@ -21,10 +25,16 @@ function ThresholdInput({ currentClass, setThreshold, threshold, setOpenThreshol
 
   return (
     <div className="thresholdDiv">
-      <div className="thresholdModal">
-        <button onClick={() => setOpenThreshold(false)} className="infoCloseBtn">Back</button>
+      <motion.div
+        className="thresholdModal"
+        initial={{ opacity: 0, scale: 0.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        exit={{ scale: 0.5 }}
+      >
+        <button type="button" onClick={() => setOpenThreshold(false)} className="infoCloseBtn">Back</button>
         <p>
-          {'Enter a grade percentage and we will send an automated email to a student when their grade drops below the threshold for the class!'}
+          Enter a grade percentage and we will send an automated email to a student when their grade drops below the threshold for the class!
         </p>
         <div className="inputConfigure">
           <input
@@ -37,10 +47,17 @@ function ThresholdInput({ currentClass, setThreshold, threshold, setOpenThreshol
           />
           <p className="percent">/100%</p>
         </div>
-        <button onClick={handleSetThreshold} className="thresholdButton">Set Threshold</button>
-      </div>
+        <button type="button" onClick={handleSetThreshold} className="thresholdButton">Set Threshold</button>
+      </motion.div>
     </div>
   );
 }
+
+ThresholdInput.propTypes = {
+  currentClass: PropTypes.shape({}).isRequired,
+  setThreshold: PropTypes.func.isRequired,
+  threshold: PropTypes.number.isRequired,
+  setOpenThreshold: PropTypes.func.isRequired,
+};
 
 export default ThresholdInput;
