@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AssignmentsRowTeacher from './AssignmentsRowTeacher';
 import EditAssignmentModal from './EditAssignmentModal';
+import CreateAssignmentModal from './CreateAssignmentModal';
 
 function AssignmentsTableTeacher({
   data,
@@ -10,12 +11,20 @@ function AssignmentsTableTeacher({
   setAssignmentId,
   setViewAssignmentSubmissions,
   getClassesAndAssignments,
+  viewAssignmentSubmissions,
+  role,
 }) {
   const [editSubmissionModalIsOpen, setEditSubmissionModalIsOpen] = useState(false);
   const [assignmentToView, setAssignmentToEdit] = useState(null);
+  const [createAssignmentModalOpen, setCreateAssignmentModalOpen] = useState(false);
 
   return (
     <div>
+      {selectedClass && !viewAssignmentSubmissions && role === 2 && (
+      <button type="button" className="create_assignment_button" onClick={() => setCreateAssignmentModalOpen(true)}>
+        Create Assignment
+      </button>
+      )}
       <table className="assignments_table_teacher">
         <thead>
           <tr>
@@ -47,6 +56,13 @@ function AssignmentsTableTeacher({
         getClassesAndAssignments={getClassesAndAssignments}
       />
       )}
+      {createAssignmentModalOpen && (
+      <CreateAssignmentModal
+        classObj={data.find((classObj) => classObj.name === selectedClass)}
+        closeModal={() => setCreateAssignmentModalOpen(false)}
+        getClassesAndAssignments={getClassesAndAssignments}
+      />
+      )}
     </div>
   );
 }
@@ -59,4 +75,10 @@ AssignmentsTableTeacher.propTypes = {
   setAssignmentId: PropTypes.func.isRequired,
   setViewAssignmentSubmissions: PropTypes.func.isRequired,
   getClassesAndAssignments: PropTypes.func.isRequired,
+  viewAssignmentSubmissions: PropTypes.object,
+  role: PropTypes.number.isRequired,
+};
+
+AssignmentsTableTeacher.defaultProps = {
+  viewAssignmentSubmissions: null,
 };

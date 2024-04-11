@@ -8,6 +8,9 @@
   margin-top: 1rem;
   border: 1px solid;
   display: inline-block;
+  max-height: 90vh;
+  max-width: 90vw;
+  overflow: auto;
 }
 h1, h2 {
   display: flex;
