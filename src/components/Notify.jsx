@@ -7,6 +7,7 @@ example usage:
 const [notify, setNotify] = useState(false);
 const [message, setMessage] = useState('');
 const [color, setColor] = useState(0);
+const [icon, setIcon] = useState(null);
 
 function showNotificationTimer() {
     setNotify(true);
@@ -18,6 +19,8 @@ function showNotificationTimer() {
   for the action thats returning a success or failure
     set message with the message you want to display
     set color to 0 for success, 1 for failure
+    set icon to the icon you want to display
+      setIcon(<MdOutlineMarkEmailRead />)
     showNotificationTimer();
 
 {notify && (
