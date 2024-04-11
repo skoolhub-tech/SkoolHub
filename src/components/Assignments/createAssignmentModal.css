@@ -25,6 +25,7 @@
   z-index: 9999;
   transform: scale(1.15);
   margin-right: 2%;
+  padding: 2rem;
 }
 
 .create_assignment_form {
@@ -37,5 +38,6 @@
   flex-direction: row;
   align-items: baseline;
   column-gap: 1rem;
+  padding-left: 0;
 }
 

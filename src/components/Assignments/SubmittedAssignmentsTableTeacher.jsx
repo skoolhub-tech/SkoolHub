@@ -30,12 +30,10 @@ function SubmittedAssignmentsTabelTeacher({
 
   return (
     <div>
-      <h1>Submitted Assignments</h1>
       <h2>{assignment.name}</h2>
-      <h2>
-        Due Date:
-        {fomratDate(assignment.due_date)}
-      </h2>
+      <h3 className="view-submission-h3" >
+        Due Date: {fomratDate(assignment.due_date)}
+      </h3>
       <table>
         <thead>
           <tr>
