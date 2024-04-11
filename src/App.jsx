@@ -12,13 +12,19 @@ import Classes from './components/Classes/Classes';
 import Admin from './components/Admin/Admin';
 import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
-import Homepage from './components/Homepage/Homepage';
+import BusAnimation from './animations/BusAnimation';
+import HomepageWithTaskCheck from './components/HomepageWithTaskCheck';
+import LandingPage from './components/LandingPage';
 import logo from '../photos/skoolhub2-no-background.png';
+import LoginPage from './components/LoginPage';
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [animationComplete, setAnimationComplete] = useState(true);
 
   const handleLogin = (boolean) => {
     setIsLoggedIn(boolean);
+    setAnimationComplete(false);
   };
 
   const handleLogOut = () => {
@@ -26,6 +32,7 @@ function App() {
     window.location.href = '/homepage';
     localStorage.clear();
   };
+
 
   return (
     <div className="navbar-container">
@@ -42,7 +49,17 @@ function App() {
               </div>
               <NavBar handleLogOut={handleLogOut} />
               <Routes>
-                <Route path="/homepage" element={<HomepageWithTaskCheck />} />
+                <Route
+                  path="/homepage"
+                  element={(
+                    <div>
+                      {!animationComplete && (
+                        <BusAnimation onComplete={() => setAnimationComplete(true)} />
+                      )}
+                      {animationComplete && <HomepageWithTaskCheck />}
+                    </div>
+                  )}
+                />
                 <Route path="/assignments" element={<RoleBasedRoute roles={[2, 3]} component={<Assignments />} />} />
                 <Route path="/events" element={<Task />} />
                 <Route path="/classes" element={<RoleBasedRoute roles={[2]} component={<Classes />} />} />
@@ -52,16 +69,11 @@ function App() {
               </Routes>
             </>
           ) : (
-            <div className="login-page">
-              <div className="login-logo-slogan">
-                <img src={logo} alt="logo" className="login-logo" />
-                <div className="slogan">
-                  <h3 className="welcome-message-one">Skoolhub</h3>
-                  <h4 className="welcome-message-two">Teaching In. Tedious Out.</h4>
-                </div>
-              </div>
-              <Login handleLoginEvent={handleLogin} isLoggedIn={isLoggedIn} />
-            </div>
+            <Routes>
+              <Route path='/' element={<LandingPage/>} />
+              <Route path="*" element={<Navigate to="/" />} />
+              <Route path="/login" element={<LoginPage handleLogin={handleLogin} isLoggedIn={isLoggedIn}/>} />
+            </Routes>
           )}
         </UserDataProvider>
       </Router>
@@ -69,10 +81,10 @@ function App() {
   );
 }
 
-function HomepageWithTaskCheck() {
-  const { userData } = useUserData();
-  return userData.role === 1 ? <Task /> : <Homepage />;
-}
+// function HomepageWithTaskCheck() {
+//   const { userData } = useUserData();
+//   return userData.role === 1 ? <Task /> : <Homepage />;
+// }
 
 function RoleBasedRoute({ roles, component }) {
   const { userData } = useUserData();

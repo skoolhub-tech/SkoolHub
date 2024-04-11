@@ -9,7 +9,6 @@ import AssignmentsTableStudent from './AssignmentsTableStudent';
 import AssignmentsTableTeacher from './AssignmentsTableTeacher';
 import ViewSubmissionModal from './ViewSubmissionModal';
 import SubmittedAssignmentsTableTeacher from './SubmittedAssignmentsTableTeacher';
-import CreateAssignmentModal from './CreateAssignmentModal';
 import './assignments.css';
 
 function AssignmentsPage() {
@@ -20,7 +19,6 @@ function AssignmentsPage() {
   const [assignmentId, setAssignmentId] = useState(null);
   const [studentId, setStudentId] = useState(null);
   const [viewAssignmentSubmissions, setViewAssignmentSubmissions] = useState(null);
-  const [createAssignmentModalOpen, setCreateAssignmentModalOpen] = useState(false);
   const [submitAssignmentModalIsOpen, setSubmitAssignmentModalIsOpen] = useState(false);
   const [classObjForEmail, setClassObjForEmail] = useState(null);
 
@@ -74,19 +72,7 @@ function AssignmentsPage() {
             setClassObjForEmail={setClassObjForEmail}
           />
           )}
-          {selectedClass && !viewAssignmentSubmissions && role === 2 && (
-          <button type="button" className="create_assignment_button" onClick={() => setCreateAssignmentModalOpen(true)}>
-            Create Assignment
-          </button>
-          )}
         </div>
-        {createAssignmentModalOpen && (
-          <CreateAssignmentModal
-            classObj={data.find((classObj) => classObj.name === selectedClass)}
-            closeModal={() => setCreateAssignmentModalOpen(false)}
-            getClassesAndAssignments={getClassesAndAssignments}
-          />
-        )}
         {viewAssignmentSubmissions && (
           <>
             <button
@@ -103,11 +89,6 @@ function AssignmentsPage() {
         <div>
           {selectedClass ? (
             <div className="assignments_table_student">
-              <h2>
-                Class:
-                {' '}
-                {selectedClass}
-              </h2>
               {role === 3 && (
                 <AssignmentsTableStudent
                   data={data}
@@ -127,25 +108,20 @@ function AssignmentsPage() {
                   setAssignmentId={setAssignmentId}
                   setViewAssignmentSubmissions={setViewAssignmentSubmissions}
                   getClassesAndAssignments={getClassesAndAssignments}
+                  viewAssignmentSubmissions={viewAssignmentSubmissions}
+                  role={role}
                 />
               )}
               {role === 2 && viewAssignmentSubmissions && (
-                <>
-                  <h2>
-                    Assignment:
-                    {' '}
-                    {viewAssignmentSubmissions.name}
-                  </h2>
-                  <SubmittedAssignmentsTableTeacher
-                    assignment={viewAssignmentSubmissions}
-                    setViewAssignmentSubmissions={setViewAssignmentSubmissions}
-                    setStudentId={setStudentId}
-                    setViewSubmissionModalOpen={setViewSubmissionModalOpen}
-                    setAssignmentId={setAssignmentId}
-                    studentId={studentId}
-                    classObjForEmail={classObjForEmail}
-                  />
-                </>
+                <SubmittedAssignmentsTableTeacher
+                  assignment={viewAssignmentSubmissions}
+                  setViewAssignmentSubmissions={setViewAssignmentSubmissions}
+                  setStudentId={setStudentId}
+                  setViewSubmissionModalOpen={setViewSubmissionModalOpen}
+                  setAssignmentId={setAssignmentId}
+                  studentId={studentId}
+                  classObjForEmail={classObjForEmail}
+                />
               )}
             </div>
           ) : (

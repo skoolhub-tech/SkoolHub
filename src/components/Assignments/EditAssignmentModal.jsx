@@ -58,7 +58,7 @@ function EditAssignmentModal({
           {assignment.name}
         </h2>
         <form onSubmit={handleSubmitEdit}>
-          <label htmlFor="assignmentName">
+          <label className="edit-label" htmlFor="assignmentName">
             Assignment Name:
             <input
               type="text"
@@ -67,7 +67,7 @@ function EditAssignmentModal({
               onChange={(e) => setAssignmentName(e.target.value)}
             />
           </label>
-          <label htmlFor="dueDate">
+          <label className="edit-label" htmlFor="dueDate">
             Due Date:
             <input
               type="date"
@@ -76,7 +76,7 @@ function EditAssignmentModal({
               onChange={(e) => setDueDate(e.target.value)}
             />
           </label>
-          <label htmlFor="instructions">
+          <label className="edit-label" htmlFor="instructions">
             Instructions:
             <textarea
               id="instructions"

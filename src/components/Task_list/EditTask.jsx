@@ -106,6 +106,7 @@ function EditTask({
           />
           <label htmlFor="completed">Completed:</label>
           <input
+            className="completed-input"
             type="checkbox"
             id="completed"
             name="completed"
