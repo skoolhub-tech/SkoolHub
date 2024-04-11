@@ -6,7 +6,8 @@ module.exports = async (classId) => {
   try {
     const query = `SELECT *
     FROM assignments
-    WHERE class_id = $1`;
+    WHERE class_id = $1
+    ORDER BY id`;
     const values = [classId];
     await client.connect();
     const { rows } = await client.query(query, values);

@@ -33,6 +33,7 @@ const getClassThreshold = require('./getClassThreshold');
 const updateAssignment = require('./updateAssignment');
 const updateThreshold = require('./updateThreshold');
 const getUserClasses = require('./getUserClasses');
+const gradeAssignment = require('./gradeAssignment');
 
 module.exports = {
   createAssignment,
@@ -70,4 +71,5 @@ module.exports = {
   updateAssignment,
   updateThreshold,
   getUserClasses,
+  gradeAssignment,
 };
