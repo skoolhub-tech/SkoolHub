@@ -1,10 +1,27 @@
+.emails {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
 .emailsDiv {
+  border-radius: 1rem;
   background-color: #ABBD9A;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.75);
-  margin-top: 3%;
-  padding: 5rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 0.1rem;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  margin-top: 1rem;
+  border: 1px solid;
+  /* display: inline-block; */
+  width: 50%;
+  /* max-height: 90vw; */
+  overflow: auto;
+  padding-left: 1rem;
 }
 .emailsDiv > h1 {
   display: flex;
@@ -13,20 +30,25 @@
 }
 
 .emailDropdown {
-  transform: scale(1.15);
+  font-size: medium;
   border-radius: 5px;
   margin-bottom: 1rem;
+  margin-top: 0rem;
   margin-left: 1%;
+  transform: scale(1.15);
+  width: 8vw;
+  height: 3vh;
 }
 /*================= container holding current group and select buttons ======================*/
 .peopleListView {
   border-radius: 10px;
   background-color: #DCCCBB;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 1rem;
-  padding-top: .1rem;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  padding-top: 0.1rem;
+  /*width: 95%;*/
 }
 
 .peopleListView > h2 {
@@ -35,13 +57,13 @@
 
 .peopleListBtns {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 /*==================== People cards container (scrollable) and its children ========================== */
 /* Scroll bar for personCardContainer */
 .personCardContainer::-webkit-scrollbar {
-  width: 8px; /* Adjust width for vertical scrollbar */
+  width: 2px; /* Adjust width for vertical scrollbar */
 }
 
 .personCardContainer::-webkit-scrollbar-track {
@@ -57,13 +79,16 @@
 }
 
 .personCardContainer {
+  /*max-height: height here is how to change height of div need both; */
+  /*height: height here is how to change height of div need both; */
   display: flex;
   flex-direction: column;
   gap: 5px;
-  width: 600px;
+  /* width: 47vw; */
   margin-top: 25px;
   overflow: auto;
-  max-height: 400px;
+  height: 35vh;
+  max-height: 35vh;
 }
 
 .personEmailCard {
@@ -71,8 +96,8 @@
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
   transition: background-color 0.3s ease;
   border: .5px solid;
 }
@@ -86,8 +111,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
   display: flex;
   justify-content: center;
@@ -189,16 +214,38 @@
   margin: auto;
 }
 .thresholdInput {
-  width: 48px;
-  margin-bottom: 0px;
-  height: 7px;
-  border: none;
-  background-color: #858D6F;
+  width: 63px;
+    /* margin-bottom: 0px; */
+    /* height: 7px; */
+    font-size: large;
+    /* border: none; */
+    /* text-align: center; */
+    background-color: #858D6F;
+}
+/* For Firefox */
+.thresholdInput[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* For Chrome, Safari, Edge, Opera */
+.thresholdInput[type="number"]::-webkit-inner-spin-button,
+.thresholdInput[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .thresholdModal > p {
   text-align: center;
 }
-.percent {
+.inputWrap {
+  position: relative;
+  display: inline-block;
+}
+.inputWrap::after {
+  content: "%";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-91%);
 }
 .infoCloseBtn {
   background-color: rgb(164 7 7 / 50%);
@@ -208,8 +255,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
@@ -228,13 +275,3 @@
 }
 /*=================Emails Notify=====================*/
 
-.emailNotifyModalContent {
-  background-color: transparent;
-  position: absolute;
-  text-align: center;
-  row-gap: 5px;
-  top: 19rem;
-  left: 46rem;
-  width: fit-content;
-  color: #ABBD9A;
-}

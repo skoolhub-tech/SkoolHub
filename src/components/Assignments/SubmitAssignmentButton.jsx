@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
@@ -13,6 +14,10 @@ function SubmitAssignmentButton({
   setSubmitAssignmentModalIsOpen,
   assignmentToSubmit,
   setAssignmentToSubmit,
+  setNotify,
+  setMessage,
+  setColor,
+  setIcon,
 }) {
   function handleSubmitAssignmentButtonClick() {
     setSubmitAssignmentModalIsOpen(true);
@@ -28,6 +33,10 @@ function SubmitAssignmentButton({
         studentEmail={studentEmail}
         assignmentId={assignmentId}
         getClassesAndAssignments={getClassesAndAssignments}
+        setNotify={setNotify}
+        setMessage={setMessage}
+        setColor={setColor}
+        setIcon={setIcon}
       />
       )}
     </div>
@@ -42,10 +51,12 @@ SubmitAssignmentButton.propTypes = {
   getClassesAndAssignments: PropTypes.func.isRequired,
   submitAssignmentModalIsOpen: PropTypes.bool.isRequired,
   setSubmitAssignmentModalIsOpen: PropTypes.func.isRequired,
-  assignmentToSubmit: PropTypes.shape({
-    id: PropTypes.number,
-  }),
+  assignmentToSubmit: PropTypes.object,
   setAssignmentToSubmit: PropTypes.func.isRequired,
+  setNotify: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
+  setColor: PropTypes.func.isRequired,
+  setIcon: PropTypes.func.isRequired,
 };
 
 SubmitAssignmentButton.defaultProps = {

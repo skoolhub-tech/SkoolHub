@@ -19,6 +19,10 @@ function AssignmentsRow({
   setSubmitAssignmentModalIsOpen,
   assignmentToSubmit,
   setAssignmentToSubmit,
+  setNotify,
+  setMessage,
+  setColor,
+  setIcon,
 }) {
   const { userData: { email } } = useUserData();
 
@@ -36,6 +40,10 @@ function AssignmentsRow({
           setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}
           assignmentToSubmit={assignmentToSubmit}
           setAssignmentToSubmit={setAssignmentToSubmit}
+          setNotify={setNotify}
+          setMessage={setMessage}
+          setColor={setColor}
+          setIcon={setIcon}
         />
       </td>
       <td className="view-submit-button">
@@ -74,6 +82,10 @@ AssignmentsRow.propTypes = {
     submitted_on: PropTypes.string,
   }),
   setAssignmentToSubmit: PropTypes.func.isRequired,
+  setNotify: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
+  setColor: PropTypes.func.isRequired,
+  setIcon: PropTypes.func.isRequired,
 };
 
 AssignmentsRow.defaultProps = {

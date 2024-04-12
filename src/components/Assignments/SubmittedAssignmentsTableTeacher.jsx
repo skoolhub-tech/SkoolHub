@@ -1,9 +1,11 @@
+/* eslint-disable react/forbid-prop-types */
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import { VscError } from 'react-icons/vsc';
 import PropTypes from 'prop-types';
 import SubmittedAssignmentsRow from './SubmittedAssignmentsRow';
 import GradeSubmissionModal from './GradeSubmissionModal';
-import fomratDate from '../../utils/formatDate_Month_D_Y';
+import formatDate from '../../utils/formatDate_Month_D_Y';
 
 function SubmittedAssignmentsTabelTeacher({
   assignment,
@@ -12,6 +14,10 @@ function SubmittedAssignmentsTabelTeacher({
   setAssignmentId,
   studentId,
   classObjForEmail,
+  setNotify,
+  setMessage,
+  setColor,
+  setIcon,
 }) {
   const [submissions, setSubmissions] = useState([]);
   const [gradeSubmissionModalOpen, setGradeSubmissionModalOpen] = useState(false);
@@ -22,7 +28,10 @@ function SubmittedAssignmentsTabelTeacher({
       const response = await axios.get(`/skoolhub/assignments/submissions/?id=${assignment.id}`);
       setSubmissions(response.data);
     } catch (error) {
-      console.error('Error fetching submissions:', error);
+      setNotify();
+      setMessage('Error retrieving assignment submissions.');
+      setColor(1);
+      setIcon(<VscError />);
     }
   }, [assignment.id]);
 
@@ -33,8 +42,10 @@ function SubmittedAssignmentsTabelTeacher({
   return (
     <div>
       <h2>{assignment.name}</h2>
-      <h3 className="view-submission-h3" >
-        Due Date: {fomratDate(assignment.due_date)}
+      <h3 className="view-submission-h3">
+        Due Date:
+        {' '}
+        {formatDate(assignment.due_date)}
       </h3>
       <table>
         <thead>
@@ -67,6 +78,10 @@ function SubmittedAssignmentsTabelTeacher({
         getSubmissions={getSubmissions}
         studentId={studentId}
         classObjForEmail={classObjForEmail}
+        setNotify={setNotify}
+        setMessage={setMessage}
+        setColor={setColor}
+        setIcon={setIcon}
       />
       )}
     </div>
@@ -76,18 +91,16 @@ function SubmittedAssignmentsTabelTeacher({
 export default SubmittedAssignmentsTabelTeacher;
 
 SubmittedAssignmentsTabelTeacher.propTypes = {
-  assignment: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    due_date: PropTypes.string,
-  }).isRequired,
+  assignment: PropTypes.object.isRequired,
   setStudentId: PropTypes.func.isRequired,
   setViewSubmissionModalOpen: PropTypes.func.isRequired,
   setAssignmentId: PropTypes.func.isRequired,
   studentId: PropTypes.number,
-  classObjForEmail: PropTypes.shape({
-    id: PropTypes.number,
-  }).isRequired,
+  classObjForEmail: PropTypes.object.isRequired,
+  setNotify: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
+  setColor: PropTypes.func.isRequired,
+  setIcon: PropTypes.func.isRequired,
 };
 
 SubmittedAssignmentsTabelTeacher.defaultProps = {

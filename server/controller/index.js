@@ -1,75 +1,75 @@
 const createAssignment = require('./createAssignment');
-const getAdmin = require('./getAdmin');
+const createClass = require('./createClass');
+const createClassStudent = require('./createClassStudent');
+const createUser = require('./createUser');
+const deleteCalendar = require('./deleteCalendar');
+const deleteClass = require('./deleteClass');
+const deleteClassStudent = require('./deleteClassStudent');
+const deleteUser = require('./deleteUser');
+const getAllTeachersAndTheirClasses = require('./getAllTeachersAndTheirClasses');
 const getClassStudents = require('./getClassStudents');
+const getClassThreshold = require('./getClassThreshold');
+const getAdmin = require('./getAdmin');
+const getCalendar = require('./getCalendar');
 const getClasses = require('./getClasses');
 const getClassesAndAssignmentsForStudent = require('./getClassesAndAssignmentsForStudent');
 const getClassesAndAssignmentsForTeacher = require('./getClassesAndAssignmentsForTeacher');
+const getCurrentAssignments = require('./getCurrentAssignments');
 const getRoleAtLogin = require('./getRoleAtLogin');
+const getRoles = require('./getRoles');
+const getStudentClassGrades = require('./getStudentClassGrades');
 const getStudents = require('./getStudents');
-const getTeacherClasses = require('./getTeacherClasses');
-const getTeachers = require('./getTeachers');
 const getSubmittedAssignment = require('./getSubmittedAssignment');
 const getSubmittedAssignmentsForTeacher = require('./getSubmittedAssignmentsForTeacher');
+const getTeacherClasses = require('./getTeacherClasses');
+const getTeachers = require('./getTeachers');
+const getTeachersAndClassesForStudent = require('./getTeachersAndClassesForStudent');
+const getUserClasses = require('./getUserClasses');
+const gradeAssignment = require('./gradeAssignment');
 const login = require('./login');
-const getStudentClassGrades = require('./getStudentClassGrades');
 const sendAutoEmail = require('./sendAutoEmail');
 const sendPeerEmail = require('./sendPeerEmail');
 const submitAssignment = require('./submitAssignment');
-const getTeachersAndClassesForStudent = require('./getTeachersAndClassesForStudent');
-const getAllTeachersAndTheirClasses = require('./getAllTeachersAndTheirClasses');
-const getCalendar = require('./getCalendar');
-const getCurrentAssignments = require('./getCurrentAssignments');
 const submitCalendarTask = require('./submitCalendarTask');
-const createClassStudent = require('./createClassStudent');
-const deleteClassStudent = require('./deleteClassStudent');
-const createUser = require('./createUser');
-const getRoles = require('./getRoles');
-const deleteUser = require('./deleteUser');
-const updateCalendar = require('./updateCalendar');
-const createClass = require('./createClass');
-const deleteClass = require('./deleteClass');
-const deleteCalendar = require('./deleteCalendar');
-const getClassThreshold = require('./getClassThreshold');
 const updateAssignment = require('./updateAssignment');
+const updateCalendar = require('./updateCalendar');
 const updateThreshold = require('./updateThreshold');
-const getUserClasses = require('./getUserClasses');
-const gradeAssignment = require('./gradeAssignment');
 
 module.exports = {
   createAssignment,
-  getAdmin,
+  createClass,
+  createClassStudent,
+  createUser,
+  deleteCalendar,
+  deleteClass,
+  deleteClassStudent,
+  deleteUser,
+  getAllTeachersAndTheirClasses,
   getClassStudents,
+  getClassThreshold,
+  getAdmin,
+  getCalendar,
   getClasses,
   getClassesAndAssignmentsForStudent,
   getClassesAndAssignmentsForTeacher,
+  getCurrentAssignments,
   getRoleAtLogin,
+  getRoles,
+  getStudentClassGrades,
   getStudents,
-  getTeacherClasses,
-  getTeachers,
   getSubmittedAssignment,
   getSubmittedAssignmentsForTeacher,
+  getTeacherClasses,
+  getTeachers,
+  getTeachersAndClassesForStudent,
+  getUserClasses,
+  gradeAssignment,
   login,
-  getStudentClassGrades,
   sendAutoEmail,
   sendPeerEmail,
   submitAssignment,
-  getTeachersAndClassesForStudent,
-  getAllTeachersAndTheirClasses,
-  getCalendar,
-  getCurrentAssignments,
   submitCalendarTask,
-  createClassStudent,
-  deleteClassStudent,
-  createUser,
-  getRoles,
-  deleteUser,
-  updateCalendar,
-  createClass,
-  deleteClass,
-  deleteCalendar,
-  getClassThreshold,
   updateAssignment,
+  updateCalendar,
   updateThreshold,
-  getUserClasses,
-  gradeAssignment,
 };

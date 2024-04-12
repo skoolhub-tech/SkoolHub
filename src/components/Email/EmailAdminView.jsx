@@ -7,7 +7,7 @@ import { MdOutlineMarkEmailRead } from "react-icons/md";
 import EmailModal from './EmailModal';
 import AdminDropDown from './AdminDropDown';
 import PeopleList from './PeopleList';
-import Notfiy from '../Notify';
+import Notify from '../Notify';
 import { useUserData } from '../data-providers/UserDataProvider';
 // all teachers, all students, and all admin
 // need drop down to be teachers, students, admin
@@ -116,48 +116,48 @@ function EmailAdminView() {
   };
 
   return (
-    <>
-      <motion.div
-        className="emailsDiv"
-        initial={{ x: '100%' }}
-        animate={{ x: '0%' }}
-        transition={{ ease: 'easeInOut', duration: 0.7 }}
-      >
-        <div className="emailsDiv-without-modal">
-          <h1>Email</h1>
-          <AdminDropDown
-            views={views}
-            handleDropdownChange={handleDropdownChange}
+    <motion.div
+      className="emails"
+      initial={{ x: '100%' }}
+      animate={{ x: '0%' }}
+      transition={{ ease: 'easeInOut', duration: 0.7 }}
+    >
+      <div className="emailsDiv">
+        <h1>Email</h1>
+        <AdminDropDown
+          views={views}
+          handleDropdownChange={handleDropdownChange}
+        />
+        {potentialEmailees.length > 0 && (
+          <PeopleList
+            currentClass={currentClass}
+            potentialEmailees={potentialEmailees}
+            receiverEmailList={receiverEmailList}
+            setRecieverEmailList={setRecieverEmailList}
+            setEmailModal={setEmailModal}
           />
-          {potentialEmailees.length > 0 && (
-            <PeopleList
-              currentClass={currentClass}
-              potentialEmailees={potentialEmailees}
-              receiverEmailList={receiverEmailList}
-              setRecieverEmailList={setRecieverEmailList}
-              setEmailModal={setEmailModal}
-            />
-          )}
-        </div>
-      </motion.div>
-      {emailModal && (
-        <EmailModal
-          setEmailModal={setEmailModal}
-          setMessage={setBody}
-          setSubject={setSubjectLine}
-          subject={subjectLine}
-          body={body}
-          email={email}
-        />
-      )}
-      {notify && (
-        <Notify
-          message={message}
-          color={color}
-          icon={icon}
-        />
-      )}
-    </>
+        )}
+      </div>
+      <div>
+        {emailModal && (
+          <EmailModal
+            setEmailModal={setEmailModal}
+            setMessage={setBody}
+            setSubject={setSubjectLine}
+            subject={subjectLine}
+            body={body}
+            email={email}
+          />
+        )}
+        {notify && (
+          <Notify
+            message={message}
+            color={color}
+            icon={icon}
+          />
+        )}
+      </div>
+    </motion.div>
   );
 }
 

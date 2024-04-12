@@ -1,7 +1,12 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/forbid-prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { motion } from 'framer-motion';
+import { VscError } from 'react-icons/vsc';
+import { BsFillFileEarmarkCheckFill } from 'react-icons/bs';
 import { useUserData } from '../data-providers/UserDataProvider';
 import './createAssignmentModal.css';
 
@@ -9,6 +14,10 @@ function CreateAssignmentModal({
   classObj,
   closeModal,
   getClassesAndAssignments,
+  setNotify,
+  setMessage,
+  setColor,
+  setIcon,
 }) {
   const [assignmentName, setAssignmentName] = useState('');
   const [dueDate, setDueDate] = useState('');
@@ -40,10 +49,18 @@ function CreateAssignmentModal({
       role,
     })
       .then(() => {
+        setNotify();
+        setMessage('Assignment Created.');
+        setColor(0);
+        setIcon(<BsFillFileEarmarkCheckFill />);
         getClassesAndAssignments();
       })
-      .catch((error) => {
-        console.log(`Error creating assignment: ${error}`);
+      .catch(() => {
+        setNotify();
+        setMessage('Error creating assignment.');
+        setColor(1);
+        setIcon(<VscError />);
+        getClassesAndAssignments();
       })
       .finally(() => {
         closeModal();
@@ -56,6 +73,15 @@ function CreateAssignmentModal({
     }
   }
 
+  function handleClick(event) {
+    // This will stop the click event from propagating to the background
+    event.stopPropagation();
+  }
+
+  function handleKeyPress(event) {
+    event.stopPropagation();
+  }
+
   return (
     <div
       className="create-assignment-modal-background"
@@ -64,39 +90,45 @@ function CreateAssignmentModal({
       onClick={closeModal}
       onKeyPress={handleCloseModalKeypress}
     >
-      <div className="create_assignment_modal">
-        <h1>Create Assignment</h1>
-        <form className="create_assignment_form" onSubmit={handleSubmit}>
-          <label className="create-assignment-label" htmlFor="assignmentName">
-            Assignment Name:
+      <motion.div
+        className="assignments_motion_div"
+        initial={{ x: '100%' }}
+        animate={{ x: '0%' }}
+        transition={{ ease: 'easeInOut', duration: 0.7 }}
+      >
+        <div className="create_assignment_modal" role="button" tabIndex={0} onClick={handleClick} onKeyPress={handleKeyPress}>
+          <h1>Create Assignment</h1>
+          <form className="create_assignment_form" onSubmit={handleSubmit}>
+            <br />
+            <br />
+            <label className="create-assignment-label" htmlFor="assignmentName">Assignment Name:</label>
             <input
               type="text"
               id="assignmentName"
               placeholder="Enter Assignment Name"
               onChange={handleAssignmentNameChange}
             />
-          </label>
-          <label className="create-assignment-label" htmlFor="dueDate">
-            Due Date:
+            <br />
+            <label className="create-assignment-label" htmlFor="dueDate">Due Date:</label>
             <input
               type="date"
               id="dueDate"
               placeholder="YYYY-MM-DD"
               onChange={handleDueDateChange}
             />
-          </label>
-          <label className="create-assignment-label" htmlFor="instructions">
-            Instructions:
+            <br />
+            <label className="create-assignment-label" htmlFor="instructions">Instructions:</label>
             <textarea
               id="instructions"
               placeholder="Enter Assignment Instructions"
               onChange={handleInstructionsChange}
             />
-          </label>
-          <br />
-          <button type="submit">Create Assignment</button>
-        </form>
-      </div>
+            <br />
+            <br />
+            <button type="submit">Create Assignment</button>
+          </form>
+        </div>
+      </motion.div>
     </div>
   );
 }
@@ -107,4 +139,8 @@ CreateAssignmentModal.propTypes = {
   classObj: PropTypes.object.isRequired,
   closeModal: PropTypes.func.isRequired,
   getClassesAndAssignments: PropTypes.func.isRequired,
+  setNotify: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
+  setColor: PropTypes.func.isRequired,
+  setIcon: PropTypes.func.isRequired,
 };

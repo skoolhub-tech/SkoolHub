@@ -141,33 +141,31 @@ function EmailTeachersView() {
   };
 
   return (
-    <>
-      <motion.div
-        className="emailsDiv"
-        initial={{ x: '100%' }}
-        animate={{ x: '0%' }}
-        transition={{ ease: 'easeInOut', duration: 0.7 }}
-      >
-        <div className="emailsDiv-without-modal">
-          <h1>Email</h1>
-          <DropDown
-            classes={classes}
-            handleClassChange={handleClassChange}
+    <motion.div
+      className="emails"
+      initial={{ x: '100%' }}
+      animate={{ x: '0%' }}
+      transition={{ ease: 'easeInOut', duration: 0.7 }}
+    >
+      <div className="emailsDiv">
+        <h1>Email</h1>
+        <DropDown
+          classes={classes}
+          handleClassChange={handleClassChange}
+        />
+        {potentialEmailees.length > 0 && (
+          <PeopleList
+            currentClass={currentClass}
+            potentialEmailees={potentialEmailees}
+            receiverEmailList={receiverEmailList}
+            setRecieverEmailList={setRecieverEmailList}
+            setEmailModal={setEmailModal}
+            threshold={threshold}
+            setThreshold={setThreshold}
+            setOpenThreshold={setOpenThreshold}
           />
-          {potentialEmailees.length > 0 && (
-            <PeopleList
-              currentClass={currentClass}
-              potentialEmailees={potentialEmailees}
-              receiverEmailList={receiverEmailList}
-              setRecieverEmailList={setRecieverEmailList}
-              setEmailModal={setEmailModal}
-              threshold={threshold}
-              setThreshold={setThreshold}
-              setOpenThreshold={setOpenThreshold}
-            />
-          )}
-        </div>
-      </motion.div>
+        )}
+      </div>
       <div>
         {emailModal && (
           <EmailModal
@@ -187,6 +185,10 @@ function EmailTeachersView() {
             setThreshold={setThreshold}
             threshold={threshold}
             setOpenThreshold={setOpenThreshold}
+            setColor={setColor}
+            setMessage={setMessage}
+            setIcon={setIcon}
+            showNotificationTimer={showNotificationTimer}
           />
         )}
         {notify && (
@@ -197,7 +199,7 @@ function EmailTeachersView() {
           />
         )}
       </div>
-    </>
+    </motion.div>
   );
 }
 
