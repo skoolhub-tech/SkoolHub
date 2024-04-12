@@ -21,6 +21,10 @@ function ViewAssignmentModalStudent({
     }
   }
 
+  function handleClickOnModal(event) {
+    event.stopPropagation();
+  }
+
   return (
     <div
       className="view_assignment_modal_overlay"
@@ -37,6 +41,7 @@ function ViewAssignmentModalStudent({
         <div
           className="view_assignment_modal"
           onKeyPress={handleModalKeypress}
+          onClick={handleClickOnModal}
         >
           <h1>{assignment.name}</h1>
           <p>
@@ -64,6 +69,13 @@ function ViewAssignmentModalStudent({
             {' '}
             {assignment.total_points || 'Not Scored'}
           </p>
+          {assignment?.feedback && (
+            <p>
+              Feedback:
+              {' '}
+              {assignment.feedback}
+            </p>
+          )}
         </div>
       </motion.div>
     </div>

@@ -550,7 +550,7 @@ function createInstructions() {
     'all the dogs',
     'all the puppies',
   ];
-  const punctuations = ['.', '!', '!!', '!!!'];
+  const punctuations = ['. ', '! ', '!! ', '!!! '];
   return `${verbs[Math.floor(Math.random() * verbs.length)]} ${subjects[Math.floor(Math.random() * subjects.length)]}${punctuations[Math.floor(Math.random() * punctuations.length)]}`;
 }
 
@@ -578,11 +578,7 @@ function createFeedback() {
     'What a beautiful ',
   ];
   const animals = ['dog', 'puppy', 'pup', 'puppers', 'furry friend', 'pooch'];
-  return `${feedback1[Math.floor(Math.random() * feedback1.length)]}
-    ${punctuations[Math.floor(Math.random() * punctuations.length)]}
-    ${feedback2[Math.floor(Math.random() * feedback2.length)]}
-    ${animals[Math.floor(Math.random() * animals.length)]}
-    ${punctuations[Math.floor(Math.random() * punctuations.length)]}`;
+  return `${feedback1[Math.floor(Math.random() * feedback1.length)]}${punctuations[Math.floor(Math.random() * punctuations.length)]}${feedback2[Math.floor(Math.random() * feedback2.length)]}${animals[Math.floor(Math.random() * animals.length)]}${punctuations[Math.floor(Math.random() * punctuations.length)]}`;
 }
 
 async function seed() {
