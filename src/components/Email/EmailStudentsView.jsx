@@ -81,44 +81,44 @@ function EmailStudentsView() {
   };
 
   return (
-    <>
-      <motion.div
-        className="emailsDiv"
-        initial={{ x: '100%' }}
-        animate={{ x: '0%' }}
-        transition={{ ease: 'easeInOut', duration: 0.7 }}
-      >
-        <div className="emailsDiv-without-modal">
-          <h1>Email</h1>
-          {potentialEmailees.length > 0 && (
-            <PeopleList
-              currentClass={currentClass}
-              potentialEmailees={potentialEmailees}
-              receiverEmailList={receiverEmailList}
-              setRecieverEmailList={setRecieverEmailList}
-              setEmailModal={setEmailModal}
-            />
-          )}
-        </div>
-      </motion.div>
-      {emailModal && (
-        <EmailModal
-          setEmailModal={setEmailModal}
-          setMessage={setBody}
-          setSubject={setSubjectLine}
-          email={email}
-          subject={subjectLine}
-          body={body}
-        />
-      )}
-      {notify && (
-        <Notify
-          message={message}
-          color={color}
-          icon={icon}
-        />
-      )}
-    </>
+    <motion.div
+      className="emails"
+      initial={{ x: '100%' }}
+      animate={{ x: '0%' }}
+      transition={{ ease: 'easeInOut', duration: 0.7 }}
+    >
+      <div className="emailsDiv">
+        <h1>Email</h1>
+        {potentialEmailees.length > 0 && (
+          <PeopleList
+            currentClass={currentClass}
+            potentialEmailees={potentialEmailees}
+            receiverEmailList={receiverEmailList}
+            setRecieverEmailList={setRecieverEmailList}
+            setEmailModal={setEmailModal}
+          />
+        )}
+      </div>
+      <div>
+        {emailModal && (
+          <EmailModal
+            setEmailModal={setEmailModal}
+            setMessage={setBody}
+            setSubject={setSubjectLine}
+            email={email}
+            subject={subjectLine}
+            body={body}
+          />
+        )}
+        {notify && (
+          <Notify
+            message={message}
+            color={color}
+            icon={icon}
+          />
+        )}
+      </div>
+    </motion.div>
   );
 }
 

@@ -34,7 +34,7 @@ function PersonEmailCard({
   return (
     <div className={`personEmailCard ${isChecked ? 'selectedRow' : ''}`} onClick={handleRowClick}>
       <p>{person.name}</p>
-      <p>{Array.isArray(person.class) ? 'Teacher' : person.class}</p>
+      <p>{Array.isArray(person.class) ? person.class.join(', ') : person.class}</p>
     </div>
   );
 }
