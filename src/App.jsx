@@ -33,7 +33,6 @@ function App() {
     localStorage.clear();
   };
 
-
   return (
     <div className="navbar-container">
       <Router>
@@ -70,9 +69,9 @@ function App() {
             </>
           ) : (
             <Routes>
-              <Route path='/' element={<LandingPage/>} />
+              <Route path="/" element={<LandingPage />} />
               <Route path="*" element={<Navigate to="/" />} />
-              <Route path="/login" element={<LoginPage handleLogin={handleLogin} isLoggedIn={isLoggedIn}/>} />
+              <Route path="/login" element={<LoginPage handleLogin={handleLogin} isLoggedIn={isLoggedIn} />} />
             </Routes>
           )}
         </UserDataProvider>
