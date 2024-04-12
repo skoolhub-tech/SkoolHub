@@ -79,9 +79,10 @@ function EditAssignmentModal({
     >
       <motion.div
         className="assignments_motion_div"
-        initial={{ x: '100%' }}
-        animate={{ x: '0%' }}
-        transition={{ ease: 'easeInOut', duration: 0.7 }}
+        initial={{ opacity: 0, scale: 0.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        exit={{ scale: 0.5 }}
       >
         <div
           className="edit_assignment_modal"
