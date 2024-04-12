@@ -26,7 +26,7 @@ function LandingPage() {
       <button
             type="button"
             onClick={() => handleNavigation('login')}
-            className={`${location.pathname === '/login' ? 'tab-active' : 'tab'}`}
+            className={`${location.pathname === '/login' ? 'tab-active landing-page-login-button' : 'tab landing-page-login-button'}`}
           >
             Login
           </button>
@@ -40,7 +40,7 @@ function LandingPage() {
       <button className="scroll-down" onClick={scrollToSnippContainer1}>↓ Learn More ↓</button>
       </div>
       <div className="snipp1-p">
-        <p>Seamless, Easy-to-use 2FA login interface</p>
+        <p>Seamless, easy-to-use 2FA login interface</p>
       </div>
       <div className="snipp-container1" ref={snippContainer1Ref}>
         <div className="snipp-text1">
