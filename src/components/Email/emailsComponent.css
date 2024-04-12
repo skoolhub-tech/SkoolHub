@@ -86,8 +86,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
   display: flex;
   justify-content: center;
@@ -189,16 +189,38 @@
   margin: auto;
 }
 .thresholdInput {
-  width: 48px;
-  margin-bottom: 0px;
-  height: 7px;
-  border: none;
-  background-color: #858D6F;
+  width: 63px;
+    /* margin-bottom: 0px; */
+    /* height: 7px; */
+    font-size: large;
+    /* border: none; */
+    /* text-align: center; */
+    background-color: #858D6F;
+}
+/* For Firefox */
+.thresholdInput[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* For Chrome, Safari, Edge, Opera */
+.thresholdInput[type="number"]::-webkit-inner-spin-button,
+.thresholdInput[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .thresholdModal > p {
   text-align: center;
 }
-.percent {
+.inputWrap {
+  position: relative;
+  display: inline-block;
+}
+.inputWrap::after {
+  content: "%";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-91%);
 }
 .infoCloseBtn {
   background-color: rgb(164 7 7 / 50%);
@@ -208,8 +230,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
