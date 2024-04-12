@@ -11,6 +11,7 @@ import EditTask from './EditTask';
 import AddFromSelect from './AddFromSelect';
 import AddTask from './AddTask';
 import './calendar.css';
+import Notify from '../Notify';
 
 function TaskCalendar({ defaultView, views }) {
   const localizer = momentLocalizer(moment);
@@ -20,6 +21,8 @@ function TaskCalendar({ defaultView, views }) {
   const [events, setEvents] = useState([]);
 
   const [refresh, setRefresh] = useState(false);
+
+  const [notify, setNotify] = useState(false);
 
   useEffect(() => {
     axios.get(`/skoolhub/calendar/${userData.role}/${userData.id}`)
@@ -59,6 +62,13 @@ function TaskCalendar({ defaultView, views }) {
     setAddTask(true);
   };
 
+  function showNotificationTimer() {
+    setNotify(true);
+    setTimeout(() => {
+      setNotify(false);
+    }, 2000);
+  }
+
   const closeEditTask = () => {
     setEditTask(false);
   };
@@ -71,8 +81,10 @@ function TaskCalendar({ defaultView, views }) {
     setAddTask(false);
   };
 
+
   return (
     <div>
+      {notify && <Notify message="Task added" color={0} />}
       {defaultView === 'month' && <button className="add-task" type="submit" onClick={handleAddTask}>Add Task</button>}
       <div style={{ height: 500 }}>
         <Calendar
@@ -111,6 +123,7 @@ function TaskCalendar({ defaultView, views }) {
             closeAddTaskFromSelect={closeAddTaskFromSelect}
             refresh={refresh}
             setRefresh={setRefresh}
+            showNotificationTimer={showNotificationTimer}
           />
         )}
         {addTask && (
@@ -119,6 +132,8 @@ function TaskCalendar({ defaultView, views }) {
             closeAddTask={closeAddTask}
             refresh={refresh}
             setRefresh={setRefresh}
+            notify={notify}
+            showNotificationTimer={showNotificationTimer}
           />
         )}
       </div>

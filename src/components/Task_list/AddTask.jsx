@@ -6,9 +6,10 @@ import moment from 'moment';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useUserData } from '../data-providers/UserDataProvider';
+import Notify from '../Notify';
 
 function AddTask({
-  task, closeAddTask, refresh, setRefresh,
+  task, closeAddTask, refresh, setRefresh, showNotificationTimer
 }) {
   const { userData } = useUserData();
 
@@ -40,6 +41,7 @@ function AddTask({
     })
       .then(() => {
         setRefresh(!refresh);
+        showNotificationTimer();
         closeAddTask();
       })
       .catch((error) => {
