@@ -12,14 +12,16 @@ import Admin from './components/Admin/Admin';
 import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
 import BusAnimation from './animations/BusAnimation';
+import VanAnimation from './animations/VanAnimation';
 import HomepageWithTaskCheck from './components/HomepageWithTaskCheck';
 import LandingPage from './components/LandingPage';
 import logo from '../photos/skoolhub2-no-background.png';
 import LoginPage from './components/LoginPage';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [busAnimationComplete, setBusAnimationComplete] = useState(true);
+  const [vanAnimationComplete, setVanAnimationComplete] = useState(true);
 
   const handleLogin = (boolean) => {
     setIsLoggedIn(boolean);
@@ -68,9 +70,20 @@ function App() {
             </>
           ) : (
             <Routes>
-              <Route path="/" element={<LandingPage />} />
+              <Route path="/" element={<LandingPage triggerAnimation={() => setVanAnimationComplete(false)} />} />
               <Route path="*" element={<Navigate to="/" />} />
-              <Route path="/login" element={<LoginPage handleLogin={handleLogin} isLoggedIn={isLoggedIn} />} />
+              <Route
+                path="/login"
+                element={(
+                  <div>
+                    {!vanAnimationComplete && (
+                      <VanAnimation onComplete={() => setVanAnimationComplete(true)} />
+                    )}
+                    {vanAnimationComplete && (
+                    <LoginPage handleLogin={handleLogin} isLoggedIn={isLoggedIn} />
+                    )}
+                  </div>
+                )} />
             </Routes>
           )}
         </UserDataProvider>
