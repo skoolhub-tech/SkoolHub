@@ -6,31 +6,35 @@ import PropTypes from 'prop-types';
 import { jsPDF } from 'jspdf';
 import axios from 'axios';
 import './submitAssignmentModal.css';
+import { VscError } from 'react-icons/vsc';
+import { BsFillFileEarmarkCheckFill } from 'react-icons/bs';
 
 function SubmitAssignmentModal({
   setSubmitAssignmentModalIsOpen,
   studentEmail,
   assignmentId,
   getClassesAndAssignments,
+  setNotify,
+  setMessage,
+  setColor,
+  setIcon,
 }) {
   const handleFileSubmit = async (file) => {
     const formData = new FormData();
 
     const submitToServer = (fileData) => {
       axios.post('/skoolhub/submitassignment', fileData)
-        .then((response) => {
-          //
-          //
-          //
-          // REPLACE CONSOLE.LOG WITH MODAL DISPLAYING SUCCESS/ERROR MESSAGE
-          console.log('*MODIFY SubmitAssignmentModal to display success/error message* Success:', response);
-          // REPLACE CONSOLE.LOG WITH MODAL DISPLAYING SUCCESS/ERROR MESSAGE
-          //
-          //
-          //
+        .then(() => {
+          setNotify();
+          setMessage('Assignment successfully submitted.');
+          setColor(0);
+          setIcon(<BsFillFileEarmarkCheckFill />);
           getClassesAndAssignments();
-        }).catch((error) => {
-          console.error('Error:', error);
+        }).catch(() => {
+          setNotify();
+          setMessage('Error submitting assignment.');
+          setColor(1);
+          setIcon(<VscError />);
         });
     };
 
@@ -60,7 +64,10 @@ function SubmitAssignmentModal({
       };
       reader.readAsDataURL(file);
     } else {
-      console.log('File type not supported for direct conversion to PDF.');
+      setNotify();
+      setMessage('Please upload a PDF or image file.');
+      setColor(1);
+      setIcon(<VscError />);
     }
   };
 
@@ -91,4 +98,8 @@ SubmitAssignmentModal.propTypes = {
   studentEmail: PropTypes.string.isRequired,
   assignmentId: PropTypes.number.isRequired,
   getClassesAndAssignments: PropTypes.func.isRequired,
+  setNotify: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
+  setColor: PropTypes.func.isRequired,
+  setIcon: PropTypes.func.isRequired,
 };

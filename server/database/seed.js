@@ -534,6 +534,53 @@ const credentialsData = [
   { email: 'natalie.howard@gmail.com', password: 'ghidorah', role_id: 3 },
 ];
 
+function createInstructions() {
+  const verbs = ['Hug ', 'Pet ', 'Play with ', 'Walk ', 'Give treats to '];
+  const subjects = [
+    'a dog',
+    'a puppy',
+    'a few dogs',
+    'a few puppies',
+    'some dogs',
+    'some puppies',
+    'lots of dogs',
+    'lots of puppies',
+    'as many dogs as you can find',
+    'as many puppies as you can find',
+    'all the dogs',
+    'all the puppies',
+  ];
+  const punctuations = ['. ', '! ', '!! ', '!!! '];
+  return `${verbs[Math.floor(Math.random() * verbs.length)]} ${subjects[Math.floor(Math.random() * subjects.length)]}${punctuations[Math.floor(Math.random() * punctuations.length)]}`;
+}
+
+function createFeedback() {
+  const feedback1 = [
+    'WOW',
+    'Great job',
+    'Excellent work',
+    'Fantastic',
+    'Amazing',
+    'Superb',
+    'Impressive',
+    'Bravo',
+    'Well done',
+    'Good job',
+    'Keep it up',
+    'You nailed it',
+  ];
+  const punctuations = ['. ', '! ', '!! ', '!!! '];
+  const feedback2 = ['What a cute ',
+    'What an adorable ',
+    'What a sweet ',
+    'What a lovely ',
+    'What a precious ',
+    'What a beautiful ',
+  ];
+  const animals = ['dog', 'puppy', 'pup', 'puppers', 'furry friend', 'pooch'];
+  return `${feedback1[Math.floor(Math.random() * feedback1.length)]}${punctuations[Math.floor(Math.random() * punctuations.length)]}${feedback2[Math.floor(Math.random() * feedback2.length)]}${animals[Math.floor(Math.random() * animals.length)]}${punctuations[Math.floor(Math.random() * punctuations.length)]}`;
+}
+
 async function seed() {
   const client = createClient();
   try {
@@ -570,8 +617,8 @@ async function seed() {
 
     assignmentData.forEach(async (assignment) => {
       await client.query(`
-        INSERT INTO assignments (name, class_id, due_date, teacher_id) VALUES ('${assignment.name}', ${assignment.class_id}, '${assignment.due_date}', ${assignment.teacher_id});
-      `);
+        INSERT INTO assignments (name, class_id, due_date, teacher_id, instructions) VALUES ('${assignment.name}', ${assignment.class_id}, '${assignment.due_date}', ${assignment.teacher_id}, '${createInstructions()}');
+    `);
     });
 
     classesStudentsData.forEach(async (classStudent) => {
@@ -582,8 +629,8 @@ async function seed() {
 
     studentsAssignmentsData.forEach(async (studentAssignment) => {
       await client.query(`
-        INSERT INTO students_assignments (student_id, assignment_id, file_path, submitted_on, score, total_points, grade, completed) VALUES (${studentAssignment.student_id}, ${studentAssignment.assignment_id}, 'placeholder', '${studentAssignment.submitted_on}', ${studentAssignment.score}, ${studentAssignment.total_points}, '${studentAssignment.grade}', ${studentAssignment.completed});
-      `);
+      INSERT INTO students_assignments (student_id, assignment_id, file_path, submitted_on, score, total_points, grade, completed, feedback) VALUES (${studentAssignment.student_id}, ${studentAssignment.assignment_id}, 'placeholder', '${studentAssignment.submitted_on}', ${studentAssignment.score}, ${studentAssignment.total_points}, '${studentAssignment.grade}', ${studentAssignment.completed}, '${createFeedback()}');
+    `);
     });
 
     teacherCalendarData.forEach(async (teacherEvent) => {

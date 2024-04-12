@@ -10,6 +10,7 @@ import AssignmentsTableTeacher from './AssignmentsTableTeacher';
 import ViewSubmissionModal from './ViewSubmissionModal';
 import SubmittedAssignmentsTableTeacher from './SubmittedAssignmentsTableTeacher';
 import './assignments.css';
+import Notify from '../Notify';
 
 function AssignmentsPage() {
   const { userData: { email, role, id } } = useUserData();
@@ -21,6 +22,10 @@ function AssignmentsPage() {
   const [viewAssignmentSubmissions, setViewAssignmentSubmissions] = useState(null);
   const [submitAssignmentModalIsOpen, setSubmitAssignmentModalIsOpen] = useState(false);
   const [classObjForEmail, setClassObjForEmail] = useState(null);
+  const [notify, setNotify] = useState(false);
+  const [message, setMessage] = useState('');
+  const [color, setColor] = useState(0);
+  const [icon, setIcon] = useState(null);
 
   const getClassesAndAssignments = useCallback(async () => {
     try {
@@ -52,96 +57,132 @@ function AssignmentsPage() {
     }
   }, [role, id]);
 
+  const showNotificationTimer = useCallback(
+    () => {
+      setNotify(true);
+      setTimeout(() => {
+        setNotify(false);
+      }, 2000);
+    },
+  );
+
   return data ? (
-    <motion.div
-      className="assignments_motion_div"
-      initial={{ x: '100%' }}
-      animate={{ x: '0%' }}
-      transition={{ ease: 'easeInOut', duration: 0.7 }}
-    >
-      <div
-        className="assignments-container"
+    <>
+      {notify && (
+      <Notify
+        message={message}
+        color={color}
+        icon={icon}
+      />
+      )}
+      <motion.div
+        className="assignments_motion_div"
+        initial={{ x: '100%' }}
+        animate={{ x: '0%' }}
+        transition={{ ease: 'easeInOut', duration: 0.7 }}
       >
-        <h1>Assignments</h1>
-        <div className="classes-dropdown-create-assignment">
-          {viewAssignmentSubmissions === null && (
-          <ClassesDropDownMenu
-            classes={data}
-            setSelectedClass={setSelectedClass}
-            setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}
-            setClassObjForEmail={setClassObjForEmail}
-          />
-          )}
-        </div>
-        {viewAssignmentSubmissions && (
-          <>
-            <button
-              type="button"
-              className="back_button"
-              onClick={() => setViewAssignmentSubmissions(null)}
-            >
-              Back
-            </button>
-            <br />
-            <br />
-          </>
-        )}
-        <div>
-          {selectedClass ? (
-            <div className="assignments_table_student">
-              {role === 3 && (
-                <AssignmentsTableStudent
-                  data={data}
-                  selectedClass={selectedClass}
-                  getClassesAndAssignments={getClassesAndAssignments}
-                  setViewSubmissionModalOpen={setViewSubmissionModalOpen}
-                  setAssignmentId={setAssignmentId}
-                  viewSubmissionModalOpen={viewSubmissionModalOpen}
-                  submitAssignmentModalIsOpen={submitAssignmentModalIsOpen}
-                  setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}
-                />
-              )}
-              {role === 2 && viewAssignmentSubmissions === null && (
-                <AssignmentsTableTeacher
-                  data={data}
-                  selectedClass={selectedClass}
-                  setAssignmentId={setAssignmentId}
-                  setViewAssignmentSubmissions={setViewAssignmentSubmissions}
-                  getClassesAndAssignments={getClassesAndAssignments}
-                  viewAssignmentSubmissions={viewAssignmentSubmissions}
-                  role={role}
-                />
-              )}
-              {role === 2 && viewAssignmentSubmissions && (
-                <SubmittedAssignmentsTableTeacher
-                  assignment={viewAssignmentSubmissions}
-                  setViewAssignmentSubmissions={setViewAssignmentSubmissions}
-                  setStudentId={setStudentId}
-                  setViewSubmissionModalOpen={setViewSubmissionModalOpen}
-                  setAssignmentId={setAssignmentId}
-                  studentId={studentId}
-                  classObjForEmail={classObjForEmail}
-                />
-              )}
-            </div>
-          ) : (
-            <div>
+        <div
+          className="assignments-container"
+        >
+          <h1>Assignments</h1>
+          <div className="classes-dropdown-create-assignment">
+            {viewAssignmentSubmissions === null && (
+            <ClassesDropDownMenu
+              classes={data}
+              setSelectedClass={setSelectedClass}
+              setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}
+              setClassObjForEmail={setClassObjForEmail}
+            />
+            )}
+          </div>
+          {viewAssignmentSubmissions && (
+            <>
+              <button
+                type="button"
+                className="back_button"
+                onClick={() => setViewAssignmentSubmissions(null)}
+              >
+                Back
+              </button>
               <br />
-              Select a class to see assignments
-            </div>
+              <br />
+            </>
+          )}
+          <div>
+            {selectedClass ? (
+              <div className="assignments_table_student">
+                {role === 3 && (
+                  <AssignmentsTableStudent
+                    data={data}
+                    setData={setData}
+                    selectedClass={selectedClass}
+                    getClassesAndAssignments={getClassesAndAssignments}
+                    setViewSubmissionModalOpen={setViewSubmissionModalOpen}
+                    setAssignmentId={setAssignmentId}
+                    viewSubmissionModalOpen={viewSubmissionModalOpen}
+                    submitAssignmentModalIsOpen={submitAssignmentModalIsOpen}
+                    setSubmitAssignmentModalIsOpen={setSubmitAssignmentModalIsOpen}
+                    setNotify={showNotificationTimer}
+                    setMessage={setMessage}
+                    setColor={setColor}
+                    setIcon={setIcon}
+                  />
+                )}
+                {role === 2 && viewAssignmentSubmissions === null && (
+                  <AssignmentsTableTeacher
+                    data={data}
+                    setData={setData}
+                    selectedClass={selectedClass}
+                    setAssignmentId={setAssignmentId}
+                    setViewAssignmentSubmissions={setViewAssignmentSubmissions}
+                    getClassesAndAssignments={getClassesAndAssignments}
+                    viewAssignmentSubmissions={viewAssignmentSubmissions}
+                    role={role}
+                    setNotify={showNotificationTimer}
+                    setMessage={setMessage}
+                    setColor={setColor}
+                    setIcon={setIcon}
+                  />
+                )}
+                {role === 2 && viewAssignmentSubmissions && (
+                  <SubmittedAssignmentsTableTeacher
+                    assignment={viewAssignmentSubmissions}
+                    setViewAssignmentSubmissions={setViewAssignmentSubmissions}
+                    setStudentId={setStudentId}
+                    setViewSubmissionModalOpen={setViewSubmissionModalOpen}
+                    setAssignmentId={setAssignmentId}
+                    studentId={studentId}
+                    classObjForEmail={classObjForEmail}
+                    setNotify={showNotificationTimer}
+                    setMessage={setMessage}
+                    setColor={setColor}
+                    setIcon={setIcon}
+                  />
+                )}
+              </div>
+            ) : (
+              <div>
+                <br />
+                Select a class to see assignments
+              </div>
+            )}
+          </div>
+          {viewSubmissionModalOpen && assignmentId && studentId && (
+            <ViewSubmissionModal
+              assignmentId={assignmentId}
+              classId={data.find((classObj) => classObj.name === selectedClass).id}
+              studentId={studentId}
+              onCloseModal={handleCloseModal}
+              classObjForEmail={classObjForEmail}
+              setNotify={showNotificationTimer}
+              setMessage={setMessage}
+              setColor={setColor}
+              setIcon={setIcon}
+            />
           )}
         </div>
-        {viewSubmissionModalOpen && assignmentId && studentId && (
-          <ViewSubmissionModal
-            assignmentId={assignmentId}
-            classId={data.find((classObj) => classObj.name === selectedClass).id}
-            studentId={studentId}
-            onCloseModal={handleCloseModal}
-            classObjForEmail={classObjForEmail}
-          />
-        )}
-      </div>
-    </motion.div>
+      </motion.div>
+    </>
   ) : (
     <div>Loading...</div>
   );
