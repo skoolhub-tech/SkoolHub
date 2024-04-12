@@ -32,10 +32,6 @@
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   max-height: 60vh;
   overflow: auto;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
 }
 .selected-class-header {
   display: flex;
