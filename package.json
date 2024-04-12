@@ -6,6 +6,7 @@
   "scripts": {
     "db-connect": "node server/database/connection.js",
     "seed": "node server/database/seed.js",
+    "seedPDF": "node server/database/seedDocuments.js",
     "client-dev": "npx webpack --watch",
     "server-dev": "nodemon server/ --watch"
   },

@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useUserData } from '../data-providers/UserDataProvider';
 
 function AddFromSelect({
-  task, closeAddTaskFromSelect, refresh, setRefresh,
+  task, closeAddTaskFromSelect, refresh, setRefresh, showNotificationTimer
 }) {
   const { userData } = useUserData();
 
@@ -42,7 +42,7 @@ function AddFromSelect({
       data: newTask,
     })
       .then(() => {
-        console.log('Task added');
+        showNotificationTimer();
         setRefresh(!refresh);
         closeAddTaskFromSelect();
       })

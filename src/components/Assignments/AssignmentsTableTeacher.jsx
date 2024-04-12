@@ -13,6 +13,10 @@ function AssignmentsTableTeacher({
   getClassesAndAssignments,
   viewAssignmentSubmissions,
   role,
+  setNotify,
+  setMessage,
+  setColor,
+  setIcon,
 }) {
   const [editSubmissionModalIsOpen, setEditSubmissionModalIsOpen] = useState(false);
   const [assignmentToView, setAssignmentToEdit] = useState(null);
@@ -37,7 +41,9 @@ function AssignmentsTableTeacher({
         <tbody>
           {data
             .find((classObj) => classObj.name === selectedClass)
-            .assignments.map((assignment) => (
+            .assignments
+            .sort((a, b) => new Date(a.due_date) - new Date(b.due_date))
+            .map((assignment) => (
               <AssignmentsRowTeacher
                 key={assignment.id}
                 assignment={assignment}
@@ -54,6 +60,10 @@ function AssignmentsTableTeacher({
         assignment={assignmentToView}
         setEditSubmissionModalIsOpen={setEditSubmissionModalIsOpen}
         getClassesAndAssignments={getClassesAndAssignments}
+        setNotify={setNotify}
+        setMessage={setMessage}
+        setColor={setColor}
+        setIcon={setIcon}
       />
       )}
       {createAssignmentModalOpen && (
@@ -61,6 +71,10 @@ function AssignmentsTableTeacher({
         classObj={data.find((classObj) => classObj.name === selectedClass)}
         closeModal={() => setCreateAssignmentModalOpen(false)}
         getClassesAndAssignments={getClassesAndAssignments}
+        setNotify={setNotify}
+        setMessage={setMessage}
+        setColor={setColor}
+        setIcon={setIcon}
       />
       )}
     </div>
@@ -77,6 +91,10 @@ AssignmentsTableTeacher.propTypes = {
   getClassesAndAssignments: PropTypes.func.isRequired,
   viewAssignmentSubmissions: PropTypes.object,
   role: PropTypes.number.isRequired,
+  setNotify: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
+  setColor: PropTypes.func.isRequired,
+  setIcon: PropTypes.func.isRequired,
 };
 
 AssignmentsTableTeacher.defaultProps = {

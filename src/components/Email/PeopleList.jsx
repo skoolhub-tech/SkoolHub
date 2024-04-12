@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import PersonEmailCard from './PersonEmailCard';
+import { motion } from 'framer-motion';
 import { useUserData } from '../data-providers/UserDataProvider';
 
 // list out people in the given potentialEmailees list
@@ -24,7 +25,16 @@ function PeopleList({
       <div className="peopleListBtns">
         <button type="button" onClick={handleSelectAllChange}>{isAllSelected ? 'Deselect All' : 'Select All'}</button>
         {userData.role === 2 && currentClass.name !== 'Faculty' && (
-          <button type="button" onClick={() => setOpenThreshold(true)}>Threshold</button>
+          <motion.button
+            initial={{ opacity: 0, scale: 0.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.2 }}
+            exit={{ scale: 0.5 }}
+            type="button"
+            onClick={() => setOpenThreshold(true)}
+          >
+            Threshold
+          </motion.button>
         )}
         <button type="button" onClick={() => setEmailModal(true)}>Draft Email</button>
       </div>

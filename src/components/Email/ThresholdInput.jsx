@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { FaCheck } from "react-icons/fa";
 import { motion } from 'framer-motion';
 
 function ThresholdInput({
-  currentClass, setThreshold, threshold, setOpenThreshold,
+  currentClass,
+  setThreshold, threshold, setOpenThreshold,
+  setColor, setMessage, setIcon,
+  showNotificationTimer
 }) {
   const [inputValue, setInputValue] = useState('');
 
@@ -20,6 +24,10 @@ function ThresholdInput({
     })
       .then(() => {
         setThreshold(Number(inputValue));
+        setColor(0);
+        setMessage('Threshold Set!');
+        setIcon(<FaCheck />);
+        showNotificationTimer();
       });
   };
 
@@ -34,18 +42,20 @@ function ThresholdInput({
       >
         <button type="button" onClick={() => setOpenThreshold(false)} className="infoCloseBtn">Back</button>
         <p>
-          Enter a grade percentage and we will send an automated email to a student when their grade drops below the threshold for the class!
+          Enter a minimum grade percentage and an automated email will be sent to students if their grade average falls below this threshold.
         </p>
         <div className="inputConfigure">
-          <input
-            className="thresholdInput"
-            type="number"
-            id="threshold"
-            value={inputValue}
-            max="100"
-            onChange={(e) => setInputValue(e.target.value)}
-          />
-          <p className="percent">/100%</p>
+          <div className="inputWrap">
+            <input
+              className="thresholdInput"
+              type="number"
+              id="threshold"
+              value={inputValue}
+              max="100"
+              onChange={(e) => setInputValue(e.target.value)}
+            />
+          </div>
+          {/* <p className="percent">/100%</p> */}
         </div>
         <button type="button" onClick={handleSetThreshold} className="thresholdButton">Set Threshold</button>
       </motion.div>

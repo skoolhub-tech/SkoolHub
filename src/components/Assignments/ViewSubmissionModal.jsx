@@ -2,12 +2,21 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useRef } from 'react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 import { getDocument } from 'pdfjs-dist/webpack.mjs';
 import PropTypes from 'prop-types';
 import './viewSubmissionModal.css';
+import { VscError } from 'react-icons/vsc';
 
 function ViewSubmissionModal({
-  classId, assignmentId, studentId, onCloseModal,
+  classId,
+  assignmentId,
+  studentId,
+  onCloseModal,
+  setNotify,
+  setMessage,
+  setColor,
+  setIcon,
 }) {
   const canvasRef = useRef(null);
 
@@ -41,7 +50,10 @@ function ViewSubmissionModal({
           await page.render(renderContext).promise;
         };
       } catch (error) {
-        console.error('Error fetching or rendering the PDF:', error);
+        setNotify();
+        setMessage('Unable to display file.');
+        setColor(1);
+        setIcon(<VscError />);
       }
     };
 
@@ -84,9 +96,18 @@ function ViewSubmissionModal({
       tabIndex={0}
       aria-label="View Submission Modal"
     >
-      <div className="canvas_container">
-        <canvas ref={canvasRef} />
-      </div>
+      <motion.div
+        className="assignments_motion_div"
+        initial={{ x: '100%' }}
+        animate={{ x: '0%' }}
+        transition={{ ease: 'easeInOut', duration: 0.7 }}
+        onClick={handleBackgroundClick}
+        onKeyPress={handleKeyPress}
+      >
+        <div className="canvas_container">
+          <canvas ref={canvasRef} />
+        </div>
+      </motion.div>
     </div>
   ) : null;
 }
@@ -98,4 +119,8 @@ ViewSubmissionModal.propTypes = {
   assignmentId: PropTypes.number.isRequired,
   studentId: PropTypes.number.isRequired,
   onCloseModal: PropTypes.func.isRequired,
+  setNotify: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
+  setColor: PropTypes.func.isRequired,
+  setIcon: PropTypes.func.isRequired,
 };
