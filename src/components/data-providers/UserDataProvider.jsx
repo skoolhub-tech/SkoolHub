@@ -13,9 +13,9 @@ const {
 // Data provider component
 export function UserDataProvider({ children }) {
   const [userData, setUserData] = useState({
-    role: 3,
-    name: 'John Smith',
-    email: 'john.smith@gmail.com',
+    role: 2,
+    name: 'John Doe',
+    email: 'john.doe@aol.com',
     id: 1,
   });
 

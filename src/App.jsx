@@ -75,7 +75,7 @@ function App() {
               <Route
                 path="/login"
                 element={(
-                  <div>
+                  <div style={{ width: '100vh' }}>
                     {!vanAnimationComplete && (
                       <MiniVanAnimation onComplete={() => setVanAnimationComplete(true)} />
                     )}
