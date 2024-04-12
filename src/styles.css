@@ -238,6 +238,13 @@ LOGIN PAGE / NAV BAR CSS ========================================
   margin-right: 79px;
   float: right;
 }
+.landing-page-login-button {
+  border-radius: 50%;
+    width: 4.5%;
+    height: 5%;
+    background-color: #abbd9a;
+}
+
 
 
 .starting-page {
