@@ -4,7 +4,6 @@ import './styles.css';
 import {
   BrowserRouter as Router, Route, Routes, Navigate,
 } from 'react-router-dom';
-import Login from './components/Login';
 import NavBar from './components/NavBar';
 import Task from './components/Task_list/Task';
 import { UserDataProvider, useUserData } from './components/data-providers/UserDataProvider';
@@ -19,12 +18,12 @@ import logo from '../photos/skoolhub2-no-background.png';
 import LoginPage from './components/LoginPage';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [animationComplete, setAnimationComplete] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [busAnimationComplete, setBusAnimationComplete] = useState(true);
 
   const handleLogin = (boolean) => {
     setIsLoggedIn(boolean);
-    setAnimationComplete(false);
+    setBusAnimationComplete(false);
   };
 
   const handleLogOut = () => {
@@ -32,7 +31,6 @@ function App() {
     window.location.href = '/homepage';
     localStorage.clear();
   };
-
 
   return (
     <div className="navbar-container">
@@ -53,10 +51,10 @@ function App() {
                   path="/homepage"
                   element={(
                     <div>
-                      {!animationComplete && (
-                        <BusAnimation onComplete={() => setAnimationComplete(true)} />
+                      {!busAnimationComplete && (
+                        <BusAnimation onComplete={() => setBusAnimationComplete(true)} />
                       )}
-                      {animationComplete && <HomepageWithTaskCheck />}
+                      {busAnimationComplete && <HomepageWithTaskCheck />}
                     </div>
                   )}
                 />
@@ -70,9 +68,9 @@ function App() {
             </>
           ) : (
             <Routes>
-              <Route path='/' element={<LandingPage/>} />
+              <Route path="/" element={<LandingPage />} />
               <Route path="*" element={<Navigate to="/" />} />
-              <Route path="/login" element={<LoginPage handleLogin={handleLogin} isLoggedIn={isLoggedIn}/>} />
+              <Route path="/login" element={<LoginPage handleLogin={handleLogin} isLoggedIn={isLoggedIn} />} />
             </Routes>
           )}
         </UserDataProvider>
@@ -80,11 +78,6 @@ function App() {
     </div>
   );
 }
-
-// function HomepageWithTaskCheck() {
-//   const { userData } = useUserData();
-//   return userData.role === 1 ? <Task /> : <Homepage />;
-// }
 
 function RoleBasedRoute({ roles, component }) {
   const { userData } = useUserData();
