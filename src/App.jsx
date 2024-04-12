@@ -4,7 +4,6 @@ import './styles.css';
 import {
   BrowserRouter as Router, Route, Routes, Navigate,
 } from 'react-router-dom';
-import Login from './components/Login';
 import NavBar from './components/NavBar';
 import Task from './components/Task_list/Task';
 import { UserDataProvider, useUserData } from './components/data-providers/UserDataProvider';
@@ -13,18 +12,20 @@ import Admin from './components/Admin/Admin';
 import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
 import BusAnimation from './animations/BusAnimation';
+import MiniVanAnimation from './animations/MiniVanAnimation';
 import HomepageWithTaskCheck from './components/HomepageWithTaskCheck';
 import LandingPage from './components/LandingPage';
 import logo from '../photos/skoolhub2-no-background.png';
 import LoginPage from './components/LoginPage';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [animationComplete, setAnimationComplete] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [busAnimationComplete, setBusAnimationComplete] = useState(true);
+  const [vanAnimationComplete, setVanAnimationComplete] = useState(true);
 
   const handleLogin = (boolean) => {
     setIsLoggedIn(boolean);
-    setAnimationComplete(false);
+    setBusAnimationComplete(false);
   };
 
   const handleLogOut = () => {
@@ -52,10 +53,10 @@ function App() {
                   path="/homepage"
                   element={(
                     <div>
-                      {!animationComplete && (
-                        <BusAnimation onComplete={() => setAnimationComplete(true)} />
+                      {!busAnimationComplete && (
+                        <BusAnimation onComplete={() => setBusAnimationComplete(true)} />
                       )}
-                      {animationComplete && <HomepageWithTaskCheck />}
+                      {busAnimationComplete && <HomepageWithTaskCheck />}
                     </div>
                   )}
                 />
@@ -69,9 +70,20 @@ function App() {
             </>
           ) : (
             <Routes>
-              <Route path="/" element={<LandingPage />} />
+              <Route path="/" element={<LandingPage triggerAnimation={() => setVanAnimationComplete(false)} />} />
               <Route path="*" element={<Navigate to="/" />} />
-              <Route path="/login" element={<LoginPage handleLogin={handleLogin} isLoggedIn={isLoggedIn} />} />
+              <Route
+                path="/login"
+                element={(
+                  <div>
+                    {!vanAnimationComplete && (
+                      <MiniVanAnimation onComplete={() => setVanAnimationComplete(true)} />
+                    )}
+                    {vanAnimationComplete && (
+                    <LoginPage handleLogin={handleLogin} isLoggedIn={isLoggedIn} />
+                    )}
+                  </div>
+                )} />
             </Routes>
           )}
         </UserDataProvider>
@@ -79,11 +91,6 @@ function App() {
     </div>
   );
 }
-
-// function HomepageWithTaskCheck() {
-//   const { userData } = useUserData();
-//   return userData.role === 1 ? <Task /> : <Homepage />;
-// }
 
 function RoleBasedRoute({ roles, component }) {
   const { userData } = useUserData();
