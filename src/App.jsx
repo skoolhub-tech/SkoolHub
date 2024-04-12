@@ -12,7 +12,7 @@ import Admin from './components/Admin/Admin';
 import Email from './components/Email/Email';
 import Assignments from './components/Assignments/Assignments';
 import BusAnimation from './animations/BusAnimation';
-import VanAnimation from './animations/VanAnimation';
+import MiniVanAnimation from './animations/MiniVanAnimation';
 import HomepageWithTaskCheck from './components/HomepageWithTaskCheck';
 import LandingPage from './components/LandingPage';
 import logo from '../photos/skoolhub2-no-background.png';
@@ -77,7 +77,7 @@ function App() {
                 element={(
                   <div>
                     {!vanAnimationComplete && (
-                      <VanAnimation onComplete={() => setVanAnimationComplete(true)} />
+                      <MiniVanAnimation onComplete={() => setVanAnimationComplete(true)} />
                     )}
                     {vanAnimationComplete && (
                     <LoginPage handleLogin={handleLogin} isLoggedIn={isLoggedIn} />
