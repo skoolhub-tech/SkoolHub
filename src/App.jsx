@@ -19,7 +19,7 @@ import logo from '../photos/skoolhub2-no-background.png';
 import LoginPage from './components/LoginPage';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(true);
 
   const handleLogin = (boolean) => {
