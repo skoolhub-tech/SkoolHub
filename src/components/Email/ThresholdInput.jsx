@@ -42,18 +42,20 @@ function ThresholdInput({
       >
         <button type="button" onClick={() => setOpenThreshold(false)} className="infoCloseBtn">Back</button>
         <p>
-          Enter a grade percentage and we will send an automated email to a student when their grade drops below the threshold for the class!
+          Enter a minimum grade percentage and an automated email will be sent to students if their grade average falls below this threshold.
         </p>
         <div className="inputConfigure">
-          <input
-            className="thresholdInput"
-            type="number"
-            id="threshold"
-            value={inputValue}
-            max="100"
-            onChange={(e) => setInputValue(e.target.value)}
-          />
-          <p className="percent">/100%</p>
+          <div className="inputWrap">
+            <input
+              className="thresholdInput"
+              type="number"
+              id="threshold"
+              value={inputValue}
+              max="100"
+              onChange={(e) => setInputValue(e.target.value)}
+            />
+          </div>
+          {/* <p className="percent">/100%</p> */}
         </div>
         <button type="button" onClick={handleSetThreshold} className="thresholdButton">Set Threshold</button>
       </motion.div>
