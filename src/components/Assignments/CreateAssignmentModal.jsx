@@ -74,7 +74,6 @@ function CreateAssignmentModal({
   }
 
   function handleClick(event) {
-    // This will stop the click event from propagating to the background
     event.stopPropagation();
   }
 

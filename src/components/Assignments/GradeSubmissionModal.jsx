@@ -66,6 +66,16 @@ function GradeSubmissionModal({
     }
   }
 
+  function handleModalClick(event) {
+    event.stopPropagation();
+  }
+
+  function handleModalKeypress(event) {
+    if (event.key === 'Escape') {
+      setGradeSubmissionModalOpen(false);
+    }
+  }
+
   return (
     <div
       className="grade_submission_modal_overlay"
@@ -79,7 +89,7 @@ function GradeSubmissionModal({
         animate={{ x: '0%' }}
         transition={{ ease: 'easeInOut', duration: 0.7 }}
       >
-        <div className="grade_submission_modal">
+        <div className="grade_submission_modal" onClick={handleModalClick} onKeyPress={handleModalKeypress}>
           <h2>Grade Submission</h2>
           <form onSubmit={handleSubmitGrade}>
             <label htmlFor="score">

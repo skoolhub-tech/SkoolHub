@@ -60,6 +60,16 @@ function EditAssignmentModal({
     }
   }
 
+  function handleModalClick(event) {
+    event.stopPropagation();
+  }
+
+  function handleModalKeypress(event) {
+    if (event.key === 'Escape') {
+      setEditSubmissionModalIsOpen(false);
+    }
+  }
+
   return (
     <div
       className="edit_assignment_modal_overlay"
@@ -73,7 +83,11 @@ function EditAssignmentModal({
         animate={{ x: '0%' }}
         transition={{ ease: 'easeInOut', duration: 0.7 }}
       >
-        <div className="edit_assignment_modal">
+        <div
+          className="edit_assignment_modal"
+          onClick={handleModalClick}
+          onKeyPress={handleModalKeypress}
+        >
           <h2>
             Edit Assignment:
             {assignment.name}
