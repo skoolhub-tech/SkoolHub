@@ -42,7 +42,7 @@ function ThresholdInput({
       >
         <button type="button" onClick={() => setOpenThreshold(false)} className="infoCloseBtn">Back</button>
         <p>
-          Enter a minimum grade percentage, and an automated email will be sent to students if their grade average falls below this threshold.
+          Enter a minimum grade percentage and an automated email will be sent to students if their grade average falls below this threshold.
         </p>
         <div className="inputConfigure">
           <div className="inputWrap">
