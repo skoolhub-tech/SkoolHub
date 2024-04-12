@@ -19,7 +19,7 @@ import logo from '../photos/skoolhub2-no-background.png';
 import LoginPage from './components/LoginPage';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [busAnimationComplete, setBusAnimationComplete] = useState(true);
   const [vanAnimationComplete, setVanAnimationComplete] = useState(true);
 
@@ -75,7 +75,7 @@ function App() {
               <Route
                 path="/login"
                 element={(
-                  <div>
+                  <div style={{ width: '100vh' }}>
                     {!vanAnimationComplete && (
                       <MiniVanAnimation onComplete={() => setVanAnimationComplete(true)} />
                     )}
