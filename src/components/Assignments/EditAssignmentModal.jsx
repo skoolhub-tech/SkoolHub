@@ -1,7 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { motion } from 'framer-motion';
+import { VscError } from 'react-icons/vsc';
+import { BsFillFileEarmarkCheckFill } from 'react-icons/bs';
 import './editAssignmentModal.css';
 import { useUserData } from '../data-providers/UserDataProvider';
 
@@ -9,6 +13,10 @@ function EditAssignmentModal({
   assignment,
   setEditSubmissionModalIsOpen,
   getClassesAndAssignments,
+  setNotify,
+  setMessage,
+  setColor,
+  setIcon,
 }) {
   const [assignmentName, setAssignmentName] = useState(assignment.name);
   const [dueDate, setDueDate] = useState(assignment.due_date);
@@ -27,15 +35,23 @@ function EditAssignmentModal({
       role,
     })
       .then(() => {
-        setEditSubmissionModalIsOpen(false);
+        setNotify();
+        setMessage('Assignment updated.');
+        setColor(0);
+        setIcon(<BsFillFileEarmarkCheckFill />);
+        getClassesAndAssignments();
       })
-      .catch((error) => {
-        console.error(`Error updating assignment: ${error}`);
+      .catch(() => {
+        setNotify();
+        setMessage('Error updating assignment.');
+        setColor(1);
+        setIcon(<VscError />);
+        getClassesAndAssignments();
       })
       .finally(() => {
         getClassesAndAssignments();
+        setEditSubmissionModalIsOpen(false);
       });
-    setEditSubmissionModalIsOpen(false);
   }
 
   function handleOverlayKeypress(event) {
@@ -45,49 +61,55 @@ function EditAssignmentModal({
   }
 
   return (
-    <>
-      <div
-        className="edit_assignment_modal_overlay"
-        onClick={() => setEditSubmissionModalIsOpen(false)}
-        onKeyPress={handleOverlayKeypress}
-        type="button"
-      />
-      <div className="edit_assignment_modal">
-        <h2>
-          Edit Assignment:
-          {assignment.name}
-        </h2>
-        <form onSubmit={handleSubmitEdit}>
-          <label className="edit-label" htmlFor="assignmentName">
-            Assignment Name:
-            <input
-              type="text"
-              id="assignmentName"
-              value={assignmentName}
-              onChange={(e) => setAssignmentName(e.target.value)}
-            />
-          </label>
-          <label className="edit-label" htmlFor="dueDate">
-            Due Date:
-            <input
-              type="date"
-              id="dueDate"
-              value={dueDate.slice(0, 10)}
-              onChange={(e) => setDueDate(e.target.value)}
-            />
-          </label>
-          <label className="edit-label" htmlFor="instructions">
-            Instructions:
-            <textarea
-              id="instructions"
-              value={instructions || ''}
-              onChange={(e) => setInstructions(e.target.value)}
-            />
-          </label>
-          <button type="submit" className="view_submissions_button" onClick={() => {}}>Edit Assignment</button>
-        </form>
-      </div>
-    </>
+    <div
+      className="edit_assignment_modal_overlay"
+      onClick={() => setEditSubmissionModalIsOpen(false)}
+      onKeyPress={handleOverlayKeypress}
+      type="button"
+    >
+      <motion.div
+        className="assignments_motion_div"
+        initial={{ x: '100%' }}
+        animate={{ x: '0%' }}
+        transition={{ ease: 'easeInOut', duration: 0.7 }}
+      >
+        <div className="edit_assignment_modal">
+          <h2>
+            Edit Assignment:
+            {assignment.name}
+          </h2>
+          <form onSubmit={handleSubmitEdit}>
+            <label className="edit-label" htmlFor="assignmentName">
+              Assignment Name:
+              <input
+                type="text"
+                id="assignmentName"
+                value={assignmentName}
+                onChange={(e) => setAssignmentName(e.target.value)}
+              />
+            </label>
+            <label className="edit-label" htmlFor="dueDate">
+              Due Date:
+              <input
+                type="date"
+                id="dueDate"
+                value={dueDate.slice(0, 10)}
+                onChange={(e) => setDueDate(e.target.value)}
+              />
+            </label>
+            <label className="edit-label" htmlFor="instructions">
+              Instructions:
+              <textarea
+                id="instructions"
+                value={instructions || ''}
+                onChange={(e) => setInstructions(e.target.value)}
+              />
+            </label>
+            <button type="submit" className="view_submissions_button" onClick={() => {}}>Edit Assignment</button>
+          </form>
+        </div>
+      </motion.div>
+    </div>
   );
 }
 
@@ -102,4 +124,8 @@ EditAssignmentModal.propTypes = {
   }).isRequired,
   setEditSubmissionModalIsOpen: PropTypes.func.isRequired,
   getClassesAndAssignments: PropTypes.func.isRequired,
+  setNotify: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
+  setColor: PropTypes.func.isRequired,
+  setIcon: PropTypes.func.isRequired,
 };
