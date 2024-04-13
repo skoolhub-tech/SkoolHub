@@ -49,7 +49,7 @@ SkoolHub is...
 
 ### Prerequisites
 
-![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
+[![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/)
 
 ```sh
 npm install npm@latest -g
