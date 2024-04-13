@@ -150,11 +150,12 @@ function CreateUser({ exitModal }) {
               />
             </label>
 
-            <label htmlFor="roles">
+            <label className="role-dropdown" htmlFor="roles">
               Role:
               {' '}
               {' '}
               <select
+                className="role-dropdown-position"
                 id="roles"
                 name="roles"
                 value={selectedRole}

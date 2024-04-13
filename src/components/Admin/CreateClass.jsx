@@ -109,11 +109,12 @@ function CreateClass({ exitModal }) {
               />
             </label>
 
-            <label htmlFor="teacher">
+            <label className="teacher-label" htmlFor="teacher">
               Teacher:
               {' '}
               {' '}
               <select
+                className="teacher-dropdown"
                 id="teacher"
                 name="teacher"
                 value={selectedTeacher}
