@@ -20,13 +20,18 @@
 
 <br />
 
+
+
 <p>
-SkoolHub is...
+SkoolHub is an education management system that provides
 </p>
 <ul>
-<li><b>Feature 1</b>: Something...</li>
-<li><b>Feature 2</b>: Something...</li>
-<li><b>Feature 3</b>: Something...</li>
+<li>A secure, seamless 2FA login experience</li>
+<li>An easy-to-use interface for administrators to manage students, teachers, and classes</li>
+<li>A platform for posting assignments, grading, and teacher-student communications</li>
+<li>A portal for students to track and submit assignments</li>
+<li>Robust task management for all users, including a multi-view calendar interface</li>
+
 </ul>
 
 ### Built With
@@ -78,11 +83,15 @@ npm run client-dev
 
 ## Roadmap
 
-- [x] Develop
-- [x] Implement
-- [x] Implement
-- [x] Implement
+- [x] Develop easy-to-use, friendly EMS solution
+- [x] Implement 2FA login flow for three-tier user access
+- [x] Implement assignment management/submission with document storage
+- [x] Implement task/events manager using Big Calendar
+- [x] Implement outbound email client with automations and templates using EmailJS
+- [x] Implement CRUD interface for administrative control over user accounts, classes
 - [ ] Leverage Redux as a state management system
+- [ ] Implement internal chat client
+
 
  <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -94,7 +103,7 @@ Skoolhub is run on the designated port. It can also be accessed utilizing localh
 
 ## Team Members
 
-<h3 align='center'>Reagan Tankersly</h3>
+<h3 align='center'>Reagan Tankersley</h3>
 <h4 align='center'>
   <a href="https://www.linkedin.com/in/jrtankersley/"><img src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white' /></a> |
   <a href="https://github.com/jreagant"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
