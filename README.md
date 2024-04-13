@@ -13,7 +13,7 @@
 3. [Roadmap](https://github.com/Mecha-Godzilla-Source-Code/Skoolhub?tab=readme-ov-file#roadmap)
 4. [Usage](https://github.com/Mecha-Godzilla-Source-Code/Skoolhub?tab=readme-ov-file#usage)
 5. [Team Members](https://github.com/Mecha-Godzilla-Source-Code/Skoolhub?tab=readme-ov-file#team-members)
-   
+
 </details>
 
 ## Project Overview
@@ -31,16 +31,16 @@ SkoolHub is...
 
 ### Built With
 
-![React](https://img.shields.io/badge/React-%23000000.svg?style=for-the-badge&logo=react&logoColor)
-![Express](https://img.shields.io/badge/Express-%23000000.svg?style=for-the-badge&logo=Express)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
+[![React](https://img.shields.io/badge/React-%23000000.svg?style=for-the-badge&logo=react&logoColor)](https://react.dev/)
+[![Express](https://img.shields.io/badge/Express-%23000000.svg?style=for-the-badge&logo=Express)](https://expressjs.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 
 ## Getting Started
 <p>
     Instructions to setup Skoolhub on your local machine below.
 </p>
 
-### Prerequisites 
+### Prerequisites
 
 ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
 
@@ -48,7 +48,7 @@ SkoolHub is...
 npm install npm@latest -g
 ```
 
-### Installation 
+### Installation
 
 1. Clone the repo
 ```sh
@@ -57,28 +57,28 @@ git clone https://github.com/Mecha-Godzilla-Source-Code/Skoolhub
 
 2. Install dependencies using
 ```sh
-npm install 
+npm install
 ```
-3. Open two separate terminal tabs and run in your dev environment: 
+3. Open two separate terminal tabs and run in your dev environment:
 ```
 npm run server-dev
-``` 
+```
 ```
 npm run client-dev
 ```
 
  <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Roadmap 
+## Roadmap
 
 - [x] Develop
 - [x] Implement
-- [x] Implement 
+- [x] Implement
 - [x] Implement
 - [ ] Leverage Redux as a state management system
 
  <p align="right">(<a href="#readme-top">back to top</a>)</p>
- 
+
 ## Usage
 
 Skoolhub is run on the designated port. It can also be accessed utilizing localhost:PORT directly in the browser.
