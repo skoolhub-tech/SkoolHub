@@ -1,6 +1,9 @@
 <a id='readme-top'> </a>
 
-<h1 align="center"> SkoolHub </h1>
+<div align="center">
+ <img src="./photos/skoolhub-no-background.png" width="300px" height="300px"/>
+</div>
+<h2 align="center"> An education management system that takes the tedium out of teaching. </h2>
 
 
 <details>
@@ -27,10 +30,13 @@ SkoolHub is an education management system that provides
 </p>
 <ul>
 <li>A secure, seamless 2FA login experience</li>
+ <img src="./photos/snip1.gif" alt="Login feature" width="200px" height="200px"/>
 <li>An easy-to-use interface for administrators to manage students, teachers, and classes</li>
-<li>A platform for posting assignments, grading, and teacher-student communications</li>
-<li>A portal for students to track and submit assignments</li>
+ <img src="./photos/snipp2.gif" alt="Admin feature" width="200px" height="200px"/>
+<li>A platform for posting, submitting, and grading assignments as well as facilitating teacher-student communications</li>
+ <img src="./photos/snipp3.gif" alt="Assignments feature" width="200px" height="200px"/>
 <li>Robust task management for all users, including a multi-view calendar interface</li>
+ <img src="./photos/snipp4.gif" alt="Task feature" width="200px" height="200px"/>
 
 </ul>
 
