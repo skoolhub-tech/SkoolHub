@@ -102,7 +102,7 @@ function Login({ handleLoginEvent }) {
       });
 
       console.log('Responses', response);
-      await sendCodeByEmail('richardli1745@gmail.com', response.data.token);
+      await sendCodeByEmail('fakeemail123@gmail.com', response.data.token);
       setLoginInfo({
         ...loginInfo,
         code: response.data.token,
