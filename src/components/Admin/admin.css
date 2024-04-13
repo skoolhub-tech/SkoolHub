@@ -95,4 +95,19 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-  }
+}
+.role-dropdown {
+    position: relative;
+    left: -1rem;
+}
+.teacher-label {
+    padding: 2rem;
+}
+.teacher-dropdown {
+    position: relative;
+    right: -1rem;
+}
+.role-dropdown-position {
+    position: relative;
+    right: -5px;
+}
