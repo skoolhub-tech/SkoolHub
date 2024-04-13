@@ -30,13 +30,13 @@ SkoolHub is an education management system that provides
 </p>
 <ul>
 <li>A secure, seamless 2FA login experience</li>
- <img src="./photos/snip1.gif" alt="Login feature" width="200px" height="200px"/>
+ <img src="./photos/snip1.gif" alt="Login feature" width="300px" height="300px" />
 <li>An easy-to-use interface for administrators to manage students, teachers, and classes</li>
- <img src="./photos/snipp2.gif" alt="Admin feature" width="200px" height="200px"/>
+ <img src="./photos/snipp2.gif" alt="Admin feature" width="300px" height="auto"/>
 <li>A platform for posting, submitting, and grading assignments as well as facilitating teacher-student communications</li>
- <img src="./photos/snipp3.gif" alt="Assignments feature" width="200px" height="200px"/>
+ <img src="./photos/snipp3.gif" alt="Assignments feature" width="300px" height="auto"/>
 <li>Robust task management for all users, including a multi-view calendar interface</li>
- <img src="./photos/snipp4.gif" alt="Task feature" width="200px" height="200px"/>
+ <img src="./photos/snipp4.gif" alt="Task feature" width="300px" height="auto"/>
 
 </ul>
 
